@@ -19,6 +19,6 @@ We consider the AV at dyadic scales ($\tau_j$) starting from local averages of t
 where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$ therefore determines the number of consecutive observations considered for the average. Then, the AV is defined as
 
 \begin{equation*}
-    \AV_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
+    AV_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
 \end{equation*}
 ```
