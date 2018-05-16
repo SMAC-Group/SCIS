@@ -3,7 +3,7 @@ title: "A Book Example Using bookdown"
 author: "Frida Gomam"
 date: "`r Sys.Date()`"
 documentclass: krantz
-bibliography: [book.bib, packages.bib]
+bibliography: [biblio.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
@@ -14,6 +14,8 @@ description: "A book example for a Chapman & Hall book."
 github-repo: yihui/bookdown-crc
 graphics: yes
 #cover-image: images/cover.jpg
+includes:
+      in_header: style.css
 ---
 
 ```{r setup, include=FALSE}

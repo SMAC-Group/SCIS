@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="software-information-and-conventions" class="section level2 unnumbered">
 <h2>Software information and conventions</h2>
-<p>I used the <strong>knitr</strong> package <span class="citation">(Xie <a href="#ref-xie2015">2015</a>)</span> and the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> to compile my book. My R session information is shown below:</p>
+<p>I used the <strong>knitr</strong> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="xie2015"><strong>???</strong></span>)</span> and the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> to compile my book. My R session information is shown below:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
 <pre><code>## R version 3.4.2 (2017-09-28)
 ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
@@ -201,11 +201,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.16    bookdown_0.7.10 digest_0.6.15  
 ##  [4] rprojroot_1.2   mime_0.5        backports_1.1.1
-##  [7] magrittr_1.5    evaluate_0.10.1 highr_0.6      
-## [10] stringi_1.1.7   rstudioapi_0.7  rmarkdown_1.9  
-## [13] tools_3.4.2     servr_0.9       stringr_1.3.0  
-## [16] httpuv_1.3.6.2  xfun_0.1        yaml_2.1.18    
-## [19] compiler_3.4.2  htmltools_0.3.6 knitr_1.20</code></pre>
+##  [7] magrittr_1.5    evaluate_0.10.1 xaringan_0.6.2 
+## [10] highr_0.6       stringi_1.1.7   rstudioapi_0.7 
+## [13] rmarkdown_1.9   tools_3.4.2     servr_0.9      
+## [16] stringr_1.3.0   httpuv_1.3.6.2  xfun_0.1       
+## [19] yaml_2.1.18     compiler_3.4.2  htmltools_0.3.6
+## [22] knitr_1.20</code></pre>
 <p>Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>bookdown::render_book()</code>).</p>
 </div>
 <div id="acknowledgments" class="section level2 unnumbered">
@@ -222,9 +223,6 @@ on the Mars
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
-</div>
 <div id="ref-R-bookdown">
 <p>Xie, Yihui. 2018. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
 </div>
@@ -276,6 +274,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

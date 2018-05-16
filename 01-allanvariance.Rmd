@@ -2,4 +2,23 @@
 
 # Allan Variance
 
-ADD CONTENT HERE
+- The Allan Variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators [see e.g. @allan1966statistics].
+- It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes). 
+- This method has been adapted to characterize the properties of a variety of devices including inertial sensors [see @elsheimy08av].
+- The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance [see @percival1994long]. We will discuss this connection further on.
+
+
+```{definition}
+We consider the AV at dyadic scales ($\tau_j$) starting from local averages of the process which can be denoted as
+
+\begin{equation*} 
+    \bar{X}_{t}^{(j)} \equiv \frac{1}{\tau_j} \sum_{i = 1}^{\tau_j} X_{t - \tau_j + i}\, ,
+    \label{mean.noav}
+\end{equation*}
+
+where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$ therefore determines the number of consecutive observations considered for the average. Then, the AV is defined as
+
+\begin{equation*}
+    \AV_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
+\end{equation*}
+```

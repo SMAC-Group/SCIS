@@ -165,8 +165,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="allan-variance" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Allan Variance</h1>
-<p>ADD CONTENT HERE</p>
+<ul>
+<li>The Allan Variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators <span class="citation">(see e.g. Allan <a href="#ref-allan1966statistics">1966</a>)</span>.</li>
+<li>It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes).</li>
+<li>This method has been adapted to characterize the properties of a variety of devices including inertial sensors <span class="citation">(see El-Sheimy, Hou, and Niu <a href="#ref-elsheimy08av">2008</a>)</span>.</li>
+<li>The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance <span class="citation">(see Percival and Guttorp <a href="#ref-percival1994long">1994</a>)</span>. We will discuss this connection further on.</li>
+</ul>
 
+<div class="definition">
+<p><span id="def:unnamed-chunk-3" class="definition"><strong>Definition 1.1  </strong></span>We consider the AV at dyadic scales (<span class="math inline">\(\tau_j\)</span>) starting from local averages of the process which can be denoted as</p>
+<span class="math display">\[\begin{equation*} 
+    \bar{X}_{t}^{(j)} \equiv \frac{1}{\tau_j} \sum_{i = 1}^{\tau_j} X_{t - \tau_j + i}\, ,
+    \label{mean.noav}
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\tau_j \equiv 2^j, \; j \in \left\{x \in \mathbb{N} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span> therefore determines the number of consecutive observations considered for the average. Then, the AV is defined as</p>
+<span class="math display">\[\begin{equation*}
+    \AV_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
+\end{equation*}\]</span>
+</div>
+
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-allan1966statistics">
+<p>Allan, D. W. 1966. “Statistics of Atomic Frequency Standards.” <em>Proceedings of the IEEE</em> 54 (2). IEEE:221–30.</p>
+</div>
+<div id="ref-elsheimy08av">
+<p>El-Sheimy, N., H. Hou, and X. Niu. 2008. “Analysis and Modeling of Inertial Sensors using Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 57 (1). IEEE:140–49.</p>
+</div>
+<div id="ref-percival1994long">
+<p>Percival, D. B., and P. Guttorp. 1994. “Long-memory processes, the Allan variance and wavelets.” In <em>Wavelet Analysis and Its Applications</em>, 4:325–44. Elsevier.</p>
+</div>
 </div>
             </section>
 
@@ -215,6 +245,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
