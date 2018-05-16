@@ -12,3 +12,6 @@ script:
 after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deployment/_deploy.sh
+
+notifications:
+  slack: smac-group:28CTwNZ8qZkMoeQ8Ns5bFfwl
