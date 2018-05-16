@@ -8,7 +8,7 @@
 - The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance [see @percival1994long]. We will discuss this connection further on.
 
 
-```{definition}
+```{definition, defAV, name = "Allan Variance"}
 We consider the AV at dyadic scales ($\tau_j$) starting from local averages of the process which can be denoted as
 
 \begin{equation*} 
@@ -23,8 +23,10 @@ where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < 
 \end{equation*}
 ```
 
-```{remark, name = "fsgsv"}
-The definition of the AV is actually valid for ...
+```{rem, sg, name = "Alternative scale definition"}
+The definition of the AV is actually valid for ... $\lfloor \rfloor$
 ```
+
+\@ref(def:defAV)
 
 
