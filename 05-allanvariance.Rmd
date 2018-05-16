@@ -111,6 +111,7 @@ The proof of this result is direct from Lemma REF MISSING HERE. Indeed, since $S
     \end{aligned}
 \end{equation*}
 ```
+<br>
 
 While Lemma \@ref(lem:lemmavpsd) is an important results which is very convenient to determine the theoretical AV of a certain stochastic process. However, the applicability of this results is often limited since the integral defined in (REF MISSING HERE) can be intractable. An alternative to Lemma \@ref(lem:lemmavpsd) has been proposed by @zhang2008allan and is far advantageous from a computational standpoint. 
 
