@@ -1,7 +1,3 @@
-# bookdown for Chapman & Hall books
+This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "[Get Started](https://bookdown.org/yihui/bookdown/get-started.html)" at https://bookdown.org/yihui/bookdown/ for how to compile this example.
 
-This is a minimal example for those who plan to write books for Chapman & Hall. Basically you download this repository from Github, fill out the content in R Markdown files, and add more Rmd files as necessary.
-
-Since this example is minimal, it does not cover all technical details (e.g. the Markdown syntax), and you need to read the [**bookdown** book](https://bookdown.org/yihui/bookdown) before you write anything that is slightly complicated.
-
-For a full example, you may take a look at [the source](https://github.com/rstudio/bookdown/tree/master/inst/examples) of the **bookdown** book.
+You can find the preview of this example at https://bookdown.org/yihui/bookdown-demo/

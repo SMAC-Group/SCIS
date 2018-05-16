@@ -22,3 +22,9 @@ where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < 
     AV_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
 \end{equation*}
 ```
+
+```{remark, name = "fsgsv"}
+The definition of the AV is actually valid for ...
+```
+
+
