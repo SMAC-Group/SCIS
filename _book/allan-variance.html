@@ -142,6 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="allan-variance.html"><a href="allan-variance.html"><i class="fa fa-check"></i><b>6</b> Allan Variance</a><ul>
 <li class="chapter" data-level="6.1" data-path="allan-variance.html"><a href="allan-variance.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>6.1</b> Spectral Ambiguity of the AV</a></li>
 <li class="chapter" data-level="6.2" data-path="allan-variance.html"><a href="allan-variance.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>6.2</b> Properties of the Allan Variance</a></li>
+<li class="chapter" data-level="6.3" data-path="allan-variance.html"><a href="allan-variance.html#estimation"><i class="fa fa-check"></i><b>6.3</b> Estimation</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -187,16 +188,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
-<div class="remark">
- <span class="remark"><em>Remark</em> (Alternative scale definition). </span> The definition of the AV is actually valid for <span class="math inline">\(\tau_j = \lfloor2^j\rfloor\)</span> with <span class="math inline">\(j \in \left\{x \in \mathbb{R} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>. In some case, it could use to consider this alternative definition <span class="citation">(see e.g. El-Sheimy, Hou, and Niu <a href="#ref-elsheimy08av">2008</a>)</span> but we shall restrict ourself here to the case where <span class="math inline">\(j \in \left\{x \in \mathbb{N} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>.
+<div class="exercise">
+<span id="exr:alterDefScale" class="exercise"><strong>Remark 6.1  (Alternative scale definition)  </strong></span>The definition of the AV is actually valid for <span class="math inline">\(\tau_j = \lfloor2^j\rfloor\)</span> with <span class="math inline">\(j \in \left\{x \in \mathbb{R} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>. In some case, it could use to consider this alternative definition <span class="citation">(see e.g. El-Sheimy, Hou, and Niu <a href="#ref-elsheimy08av">2008</a>)</span> but we shall restrict ourself here to the case where <span class="math inline">\(j \in \left\{x \in \mathbb{N} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>.
 </div>
 
 
 <div class="exercise">
-<span id="exr:notationAV" class="exercise"><strong>Remark 6.1  (Notation of the Allan Variance)  </strong></span>For notational simplicity, we may sometimes replace <span class="math inline">\(\text{AV}_j \left(X_t \right)\)</span> by simply <span class="math inline">\(\phi_j^2\)</span> when the dependence of the AV to the process <span class="math inline">\((X_t)\)</span> is evident.
+<span id="exr:notationAV" class="exercise"><strong>Remark 6.2  (Notation of the Allan Variance)  </strong></span>For notational simplicity, we may sometimes replace <span class="math inline">\(\text{AV}_j \left(X_t \right)\)</span> by simply <span class="math inline">\(\phi_j^2\)</span> when the dependence of the AV to the process <span class="math inline">\((X_t)\)</span> is evident.
 </div>
 
-<p>HERE IS HOW TO REF <a href="allan-variance.html#exr:notationAV">6.1</a></p>
 <p>As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process <span class="math inline">\((X_t)\)</span> as shown in the following lemma <span class="citation">(see e.g. Percival and Walden <a href="#ref-percival2006wavelet">2006</a> for a proof)</span>.</p>
 
 <div class="lemma">
@@ -239,8 +239,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     \end{aligned}
 \end{equation*}\]</span></p>
 
-<div class="remark">
- <span class="remark"><em>Remark. </em></span> This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> showed that in the continuous case (i.e. <span class="math inline">\(\tau_j \in \mathbb{R}\)</span>) <span class="math inline">\(\Delta = 0\)</span> if and only if <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. However, the ``only if’’ part of this results (while conjectured) is unknown in the discrete case.
+<div class="exercise">
+<span id="exr:unnamed-chunk-1" class="exercise"><strong>Remark 6.3  </strong></span>This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> showed that in the continuous case (i.e. <span class="math inline">\(\tau_j \in \mathbb{R}\)</span>) <span class="math inline">\(\Delta = 0\)</span> if and only if <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. However, the ``only if’’ part of this results (while conjectured) is unknown in the discrete case.
 </div>
 
 </div>
@@ -280,6 +280,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <p>The proof of this result is instructive and is presented in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.</p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-3" class="exercise"><strong>Remark 6.4  </strong></span>Using Lemma <a href="allan-variance.html#lem:lemmaavtoacf">6.2</a>, the exact form of the AV for different stationary processes, such as the general class of ARMA models, can easily be derived. Moreover, <span class="citation">Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-4" class="exercise"><strong>Remark 6.5  </strong></span>Lemma <a href="allan-variance.html#lem:lemmaavtoacf">6.2</a> was extended to non-stationary processes in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.
+</div>
+
+<p><br></p>
+
+<div class="example">
+<p><span id="exm:avma1" class="example"><strong>Example 6.1  (Theoretical AV of an MA(1) process)  </strong></span>From the autocovariance we obtain</p>
+<span class="math display">\[\begin{equation*}
+        \rho(h) = \text{corr}\left(X_t, X_{t-h} \right) =\left\{
+  \begin{array}{cl}
+    1 &amp;\text{if } h = 0\\
+    \frac{\theta}{1 + \theta^2} &amp;\text{if } |h| = 1\\
+    0 &amp;\text{if } |h| &gt; 1.\\
+  \end{array}
+\right.
+\end{equation*}\]</span>
+<p>We can now apply the formula given in Lemma <a href="allan-variance.html#lem:lemmaavtoacf">6.2</a>, which leads to</p>
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        \text{AV}_j \left(X_t \right)  &amp;= \frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg)\\
+   &amp;=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   + 2 \sum_{i=1}^{\tau_j-1} i \rho(\tau_j-i) -\sum_{i=1}^{\tau_j-1} i \rho(i) - \sum_{i=1}^{\tau_j-1} i \rho(2\tau_j-i)\bigg)\\
+   &amp;=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \left(\tau_j
+   + 2  (\tau_j - 1) \rho(1) -  \rho(1) \right)\\
+   &amp;=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   +  (2\tau_j - 3) \frac{\theta}{1 + \theta^2} \bigg).
+   \end{aligned}
+\end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
+</div>
+
+</div>
+<div id="estimation" class="section level2">
+<h2><span class="header-section-number">6.3</span> Estimation</h2>
+<p>Several estimators of the AV have been introduced in the literature. The most commonly is (probably) the Maximum-Overlapping AV (MOAV) estimator proposed by <span class="citation">Percival and Guttorp (<a href="#ref-percival1994long">1994</a>)</span>, which is defined as follows:</p>
+
+<div class="definition">
+<span id="def:defmoav" class="definition"><strong>Definition 6.2  (Maximum-Overlapping AV Estimator)  </strong></span>The MOAV is defined as:
+<span class="math display">\[\begin{eqnarray}
+\label{eq:MOAVNS_est}
+        \hat{\phi}_j^2 \equiv \widehat{\text{AV}}_j \left(X_t \right) = \frac{1}{2 \left(T - 2\tau_j + 1\right)} \sum_{k = 2 \tau_j}^{T} \left(\bar{X}_{k}^{(j)} - \bar{X}_{k-\tau_j}^{(j)} \right)^2.
+\end{eqnarray}\]</span>
+</div>
+
+<p>We will now study the properties of this estimator through the following lemmas.</p>
+
+<div class="lemma">
+<p><span id="lem:lemmconsistencyAV" class="lemma"><strong>Lemma 6.3  (Consistency)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that:</p>
+<ul>
+<li><span class="math inline">\((X_t - X_{t-1})\)</span> is a (strongly) stationary process,</li>
+<li><span class="math inline">\((X_t - X_{t-1})^2\)</span> has absolutely summable covariance structure,</li>
+<li><span class="math inline">\(\mathbb{E}\left[(X_t - X_{t-1})^4\right] &lt; \infty\)</span>,</li>
+</ul>
+Then, we have
+<span class="math display">\[\widehat{\text{AV}}_j \left(X_t \right) \overset{ \mathcal{P} }{\longrightarrow} \text{AV}_j \left(X_t \right).\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> TO BE ADDED
+</div>
+
 
 </div>
 </div>

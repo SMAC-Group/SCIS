@@ -23,16 +23,13 @@ where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < 
 \end{equation*}
 ```
 
-```{remark, alterDefScale, name = "Alternative scale definition"}
+```{exercise, alterDefScale, name = "Alternative scale definition"}
 The definition of the AV is actually valid for $\tau_j = \lfloor2^j\rfloor$ with $j  \in \left\{x \in \mathbb{R} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$. In some case, it could use to consider this alternative definition [see e.g. @elsheimy08av] but we shall restrict ourself here to the case where $j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$.
 ```
  
 ```{exercise, notationAV, name = "Notation of the Allan Variance"}
 For notational simplicity, we may sometimes replace $\text{AV}_j \left(X_t \right)$ by simply $\phi_j^2$ when the dependence of the AV to the process $(X_t)$ is evident.
 ```
-
-HERE IS HOW TO REF \@ref(exr:notationAV)
-
 
 As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process $(X_t)$ as shown in the following lemma [see e.g. @percival2006wavelet for a proof].
 
@@ -85,7 +82,7 @@ Now suppose that $\Phi(f) = 2 \Phi(2f)$. In this case, we have $\Phi(f) = 2 \Phi
     \end{aligned}
 \end{equation*}
 
-```{remark}
+```{exercise}
 This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. @greenhall1998spectral showed that in the continuous case (i.e. $\tau_j \in \mathbb{R}$) $\Delta = 0$ if and only if $\Phi(f) = 2 \Phi(2f)$. However, the ``only if'' part of this results (while conjectured) is unknown in the discrete case.
 ```
 
@@ -127,3 +124,75 @@ For a stationary process $(X_t)$ with variance $\sigma^2_X$ and ACF $\rho(h)$ we
 ```
 
 The proof of this result is instructive and is presented in @xu2017study.
+
+```{exercise}
+Using Lemma \@ref(lem:lemmaavtoacf), the exact form of the AV for different stationary processes, such as the general class of ARMA models, can easily be derived. Moreover, @zhang2008allan provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
+```
+<br>
+
+```{exercise}
+Lemma \@ref(lem:lemmaavtoacf) was extended to non-stationary processes in @xu2017study.
+```
+<br>
+
+```{example, label = avma1, name = "Theoretical AV of an MA(1) process"}
+From the autocovariance we obtain
+    
+\begin{equation*}
+        \rho(h) = \text{corr}\left(X_t, X_{t-h} \right) =\left\{
+  \begin{array}{cl}
+    1 &\text{if } h = 0\\
+    \frac{\theta}{1 + \theta^2} &\text{if } |h| = 1\\
+    0 &\text{if } |h| > 1.\\
+  \end{array}
+\right.
+\end{equation*}
+    
+We can now apply the formula given in Lemma \@ref(lem:lemmaavtoacf), which leads to
+    
+\begin{equation*}
+    \begin{aligned}
+        \text{AV}_j \left(X_t \right)  &= \frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg)\\
+   &=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   + 2 \sum_{i=1}^{\tau_j-1} i \rho(\tau_j-i) -\sum_{i=1}^{\tau_j-1} i \rho(i) - \sum_{i=1}^{\tau_j-1} i \rho(2\tau_j-i)\bigg)\\
+   &=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \left(\tau_j
+   + 2  (\tau_j - 1) \rho(1) -  \rho(1) \right)\\
+   &=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   +  (2\tau_j - 3) \frac{\theta}{1 + \theta^2} \bigg).
+   \end{aligned}
+\end{equation*}
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
+```
+
+
+## Estimation
+
+Several estimators of the AV have been introduced in the literature. The most commonly is (probably) the Maximum-Overlapping AV (MOAV) estimator proposed by @percival1994long, which is defined as follows:
+    
+```{definition, defmoav, name = "Maximum-Overlapping AV Estimator"}
+The MOAV is defined as:
+    \begin{eqnarray}
+\label{eq:MOAVNS_est}
+        \hat{\phi}_j^2 \equiv \widehat{\text{AV}}_j \left(X_t \right) = \frac{1}{2 \left(T - 2\tau_j + 1\right)} \sum_{k = 2 \tau_j}^{T} \left(\bar{X}_{k}^{(j)} - \bar{X}_{k-\tau_j}^{(j)} \right)^2.
+\end{eqnarray}
+```
+    
+We will now study the properties of this estimator through the following lemmas.
+
+```{lemma, lemmconsistencyAV, name = "Consistency"}
+Let $(X_t)$ be such that:
+
+- $(X_t - X_{t-1})$ is a (strongly) stationary process,
+- $(X_t - X_{t-1})^2$ has absolutely summable covariance structure,
+- $\mathbb{E}\left[(X_t - X_{t-1})^4\right] < \infty$,
+
+Then, we have
+     $$\widehat{\text{AV}}_j \left(X_t \right) \overset{ \mathcal{P} }{\longrightarrow} \text{AV}_j \left(X_t \right).$$
+```
+
+```{proof}
+TO BE ADDED
+```
+
+
