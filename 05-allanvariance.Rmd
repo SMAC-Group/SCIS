@@ -26,11 +26,13 @@ where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < 
 ```{remark, alterDefScale, name = "Alternative scale definition"}
 The definition of the AV is actually valid for $\tau_j = \lfloor2^j\rfloor$ with $j  \in \left\{x \in \mathbb{R} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$. In some case, it could use to consider this alternative definition [see e.g. @elsheimy08av] but we shall restrict ourself here to the case where $j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$.
 ```
-
-
-```{remark, notationAV, name = "Notation of the Allan Variance"}
+ 
+```{exercise, notationAV, name = "Notation of the Allan Variance"}
 For notational simplicity, we may sometimes replace $\text{AV}_j \left(X_t \right)$ by simply $\phi_j^2$ when the dependence of the AV to the process $(X_t)$ is evident.
 ```
+
+HERE IS HOW TO REF \@ref(exr:notationAV)
+
 
 As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process $(X_t)$ as shown in the following lemma [see e.g. @percival2006wavelet for a proof].
 
