@@ -178,6 +178,8 @@ The MOAV is defined as:
     
 We will now study the properties of this estimator through the following lemmas.
 
+### Consistency
+
 ```{lemma, lemmconsistencyAV, name = "Consistency"}
 Let $(X_t)$ be such that:
 
@@ -193,4 +195,84 @@ Then, we have
 TO BE ADDED
 ```
 
+```{exercise, name = "Connection to Wavelet Variance"}
+This result is closely related by the results of @percival1995estimation on the wavelet variance. We shall explore the connection between the AV and wavelet variance in the next section.
+```
 
+### Asymptotic Normality
+
+Compare to consistency, the asymptotic normality requires stronger conditions given in the following lemma.
+
+```{lemma, label = lemmaasyav, name = "Asymptotic normality"}
+Let $(X_t)$ be such that:
+
+- $(X_t - X_{t-1})$ is a (strongly) stationary process.
+- $(X_t - X_{t-1})$ is strong mixing process with mixing coefficient $\alpha(n)$ such that $\sum_{n=1}^{\infty} \alpha(n)^{\frac{\delta}{2+\delta}} < \infty$ for some $\delta > 0$.
+- $\mathbb{E}\left[\left(X_t - X_{t-1}\right)^{4+\delta}\right] < \infty$ for some $\delta > 0$.
+
+Then, under these conditions we have that $$\sqrt{T}\left(\widehat{\text{AV}}_j \left(X_t \right) - \text{AV}_j \left(X_t \right) \right) \overset{ \mathcal{D} }{\longrightarrow}
+\mathcal{N}(0, \sigma^2_T/T),$$ where $\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)$.
+```
+
+```{proof}
+TO BE ADDED
+```
+
+### Confidence Interval of the MOAV Estimator
+
+Based on the asymptotic normality results (Lemma \ref{lemma:asy:av}), we can construct the $1-\alpha$ confidence intervals for $\widehat{\text{AV}}_j \left(X_t \right)$ as
+%
+\begin{equation*}
+    \text{CI}\left(\text{AV}_j \left(X_t \right)\right) = \left[ \widehat{\text{AV}}_j \left(X_t \right) \pm z_{1 - \frac{\alpha}{2}} \frac{\sigma_{T}}{T} \right],
+\end{equation*}
+%
+where $z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)$ is the $(1- \frac{\alpha}{2})$ quantile of a standard normal distribution.\\
+However, the so called ``Long-Run Variance'' $\sigma^2_{T}$ is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions [see e.g.  @newey1986simple].
+
+```{exercise}
+Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. Next, we will discuss an alternative method to construct the CI for such statistic.
+```
+
+## Allan variance based estimation
+
+### Allan Variance log-log Representation
+
+As illustrated in Lemmas \@ref(lem:lemmavpsd) and \@ref(lem:lemmaavtoacf) the AV depends on the properties of the stochastic process $(X_t)$. We will see that ``log-log'' representation of the AV is often useful for the identify various processes that may compose $(X_t)$.
+     
+For example, let's suppose that $X_t$ is a white noise process. We showed in REF MISSING HERE that the theoretical AV of such process is given
+
+\begin{equation*}
+      \phi_j^2 \equiv \text{AV}_j(X_t) = \frac{\sigma^2}{\tau_j}.
+\end{equation*}
+
+Therefore, we have that the Allan Deviation or AD (i.e. $\sqrt{\text{AV}_j(X_t)}$ or $\phi_j$) is such that
+
+\begin{equation}
+       \log\left( \phi_j \right) = \log \left(\sqrt{\frac{\sigma^2}{\tau_j}}\right) = \log \left(\sigma\right) - \frac{1}{2} \log (\tau_j).
+       \label{eq:av:wn}
+\end{equation}
+
+Thus, the log of the AD is linear in $\tau_j$ with a slope of $-1/2$ and with intercept $\log (\sigma)$. Let us start by considering a simple simulated example.
+    
+
+
+### Allan Deviation of a WN process
+
+Simulation based on a white noise process with $\sigma^2 = 10^2$ and $T = 10^5$.
+
+```{r exampleAVwhitenoise, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='ADD A NICE CAPTION'}
+# Load packages
+library(av)      # Package for Allan Variance functions
+library(simts)   # Package for time series simulations
+
+# Simulate white noise
+Xt = gen_gts(WN(sigma2 = 1), n = 10^5)
+
+# Compute allan variance
+av = avar(Xt)
+
+# Allan Variance log-log Representation
+plot(av)
+```
+
+	

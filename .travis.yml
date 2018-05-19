@@ -13,5 +13,9 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deployment/_deploy.sh
 
+r_github_packages:
+  - smac-group/simts
+  - smac-group/av
+
 notifications:
   slack: smac-group:28CTwNZ8qZkMoeQ8Ns5bFfwl

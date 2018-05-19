@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [biblio.bib, book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: SMAC-Group/SCIS
 description: "TO DO"
 ---
 
