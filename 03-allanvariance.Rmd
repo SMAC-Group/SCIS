@@ -1,6 +1,4 @@
-\mainmatter
-
-# Allan Variance
+# Allan Variance Calibration Techniques
 
 - The Allan Variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators [see e.g. @allan1966statistics].
 - It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes). 

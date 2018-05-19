@@ -1,4 +1,5 @@
-book_filename: "bookdown-demo"
+book_filename: "scis"
+output_dir: "docs"
 language:
   label:
     exr: 'Remark '

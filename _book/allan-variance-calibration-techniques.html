@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An Introduction to Inertial Sensors Stochastic Calibration</title>
+  <meta name="description" content="TO DO">
+  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An Introduction to Inertial Sensors Stochastic Calibration" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="TO DO" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An Introduction to Inertial Sensors Stochastic Calibration" />
+  
+  <meta name="twitter:description" content="TO DO" />
+  
+
+<meta name="author" content="Stéphane Guerrier, Roberto Molinari, Haotian Xu, Ahmed Radi, Gaetan Bakalli, Yuming Zhang and Mucyo Karemera">
+
+
+<meta name="date" content="2018-05-19">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="a-review-of-the-properties-of-statistical-estimators.html">
+<link rel="next" href="the-generalized-method-of-wavelet-moments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a></li>
+<li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
+<li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
+<li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
+<li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> Properties of the Allan Variance</a></li>
+<li class="chapter" data-level="4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#estimation"><i class="fa fa-check"></i><b>4.3</b> Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html"><i class="fa fa-check"></i><b>5</b> The Generalized Method of Wavelet Moments</a></li>
+<li class="chapter" data-level="6" data-path="extensions.html"><a href="extensions.html"><i class="fa fa-check"></i><b>6</b> Extensions</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Inertial Sensors Stochastic Calibration</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="allan-variance-calibration-techniques" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Allan Variance Calibration Techniques</h1>
+<ul>
+<li>The Allan Variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators <span class="citation">(see e.g. Allan <a href="#ref-allan1966statistics">1966</a>)</span>.</li>
+<li>It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes).</li>
+<li>This method has been adapted to characterize the properties of a variety of devices including inertial sensors <span class="citation">(see El-Sheimy, Hou, and Niu <a href="#ref-elsheimy08av">2008</a>)</span>.</li>
+<li>The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance <span class="citation">(see Percival and Guttorp <a href="#ref-percival1994long">1994</a>)</span>. We will discuss this connection further on.</li>
+</ul>
+
+<div class="definition">
+<p><span id="def:defAV" class="definition"><strong>Definition 4.1  (Allan Variance)  </strong></span>We consider the AV at dyadic scales (<span class="math inline">\(\tau_j\)</span>) starting from local averages of the process which can be denoted as</p>
+<span class="math display">\[\begin{equation*} 
+    \bar{X}_{t}^{(j)} \equiv \frac{1}{\tau_j} \sum_{i = 1}^{\tau_j} X_{t - \tau_j + i}\, ,
+    \label{mean.noav}
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\tau_j \equiv 2^j, \; j \in \left\{x \in \mathbb{N} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span> therefore determines the number of consecutive observations considered for the average. Then, the AV is defined as</p>
+<span class="math display">\[\begin{equation*}
+    \text{AV}_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
+\end{equation*}\]</span>
+</div>
+
+
+<div class="exercise">
+<span id="exr:alterDefScale" class="exercise"><strong>Remark 4.1  (Alternative scale definition)  </strong></span>The definition of the AV is actually valid for <span class="math inline">\(\tau_j = \lfloor2^j\rfloor\)</span> with <span class="math inline">\(j \in \left\{x \in \mathbb{R} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>. In some case, it could use to consider this alternative definition <span class="citation">(see e.g. El-Sheimy, Hou, and Niu <a href="#ref-elsheimy08av">2008</a>)</span> but we shall restrict ourself here to the case where <span class="math inline">\(j \in \left\{x \in \mathbb{N} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>.
+</div>
+
+
+<div class="exercise">
+<span id="exr:notationAV" class="exercise"><strong>Remark 4.2  (Notation of the Allan Variance)  </strong></span>For notational simplicity, we may sometimes replace <span class="math inline">\(\text{AV}_j \left(X_t \right)\)</span> by simply <span class="math inline">\(\phi_j^2\)</span> when the dependence of the AV to the process <span class="math inline">\((X_t)\)</span> is evident.
+</div>
+
+<p>As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process <span class="math inline">\((X_t)\)</span> as shown in the following lemma <span class="citation">(see e.g. Percival and Walden <a href="#ref-percival2006wavelet">2006</a> for a proof)</span>.</p>
+
+<div class="lemma">
+<p><span id="lem:lemmavpsd" class="lemma"><strong>Lemma 4.1  (AV connection to PSD)  </strong></span>For a stationary process <span class="math inline">\((X_t)\)</span> with PSD <span class="math inline">\(S_{X}(f)\)</span> we have</p>
+<span class="math display">\[\begin{equation*}
+\phi_j^2 \equiv \text{AV}_j \left(X_t \right) = 4  \int_0^{\infty}  \frac{\sin^4(\pi f \tau_j)}{(\pi f \tau_j)^2} S_{X}(f) df. 
+\label{eq:allanvariancePSD_LInk}
+\end{equation*}\]</span>
+</div>
+
+<p>Therefore, this result establishes a direct connection between the AV and PSD. A natural question is therefore whether the mapping PSD <span class="math inline">\(\mapsto\)</span> AV is one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> (see Theorem 1) showed that this is actually not the case. This is illustrated in the following section ????? (ADD REF).</p>
+<div id="spectral-ambiguity-of-the-av" class="section level2">
+<h2><span class="header-section-number">4.1</span> Spectral Ambiguity of the AV</h2>
+<p>Consider two (independent) stochastic processes <span class="math inline">\((X_t)\)</span> and <span class="math inline">\((Y_t)\)</span> with respective PSD <span class="math inline">\(S_X(f)\)</span> and <span class="math inline">\(S_Y(f)\)</span>. Suppose that <span class="math inline">\(S_X(f) \neq S_Y(f)\)</span>, then the two processes will have the same AV if</p>
+<span class="math display">\[\begin{equation*}
+     \Delta \equiv \int_0^{\infty}  \frac{\sin^4(\pi f \tau_j)}{(\pi f \tau_j)^2} \Phi(f) df = 0,
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\Phi(f) \equiv S_{X}(f) - S_{Y}(f)\)</span>. To show that it is possible that <span class="math inline">\(\Delta = 0\)</span> when <span class="math inline">\(\Phi(f) \neq 0\)</span>, we will use the following critical identity:</p>
+<span class="math display">\[\begin{equation}
+    \label{ident:av:indet}
+    \sin^4(x) = \sin^2(x) - \frac{1}{4} \sin^2(2x).
+\end{equation}\]</span>
+<p>First, we note that <span class="math inline">\(\Delta\)</span> may be expressed using () as follows:
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        \Delta &amp;=  \int_{0}^{\infty} \frac{\sin^4\left(\tau \pi f \right)}{\left(\tau \pi f \right)^2} \Phi(f) df \\
+        &amp;= \lim_{n \rightarrow -\infty} \int_{2^{n}}^{\infty} \frac{\sin^2\left(\tau \pi f \right) - \frac{1}{4} \sin^2\left(2 \tau \pi f \right) }{\left(\tau \pi f \right)^2} \Phi(f) df .
+    \end{aligned}
+\end{equation*}\]</span></p>
+<p>Second, by the change of variable <span class="math inline">\(u = 2f\)</span> in the second term we obtain</p>
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        \Delta = \lim_{n \rightarrow -\infty} &amp; \Bigg[ \int_{2^{n}}^{\infty} \frac{\sin^2\left(\tau \pi f \right)}{\left(\tau \pi f \right)^2} \Phi(f) df - \frac{1}{2}\int_{2^{n+1}}^{\infty} \frac{\sin^2\left(\tau \pi u \right)}{\left(\tau \pi u \right)^2} \Phi(f) du \Bigg].
+    \end{aligned}
+\end{equation*}\]</span>
+<p>Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In this case, we have <span class="math inline">\(\Phi(f) = 2 \Phi(u)\)</span> and therefore we obtain
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        \Delta &amp;= \lim_{n \rightarrow -\infty} \int_{2^{n}}^{2^{n+1}} \frac{\sin^2\left(\tau \pi f \right)}{\left(\tau \pi f \right)^2} \Phi(f) df = 0.
+    \end{aligned}
+\end{equation*}\]</span></p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-1" class="exercise"><strong>Remark 4.3  </strong></span>This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> showed that in the continuous case (i.e. <span class="math inline">\(\tau_j \in \mathbb{R}\)</span>) <span class="math inline">\(\Delta = 0\)</span> if and only if <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. However, the ``only if’’ part of this results (while conjectured) is unknown in the discrete case.
+</div>
+
+</div>
+<div id="properties-of-the-allan-variance" class="section level2">
+<h2><span class="header-section-number">4.2</span> Properties of the Allan Variance</h2>
+<p>One reason of explaining the widespread use of the Allan variance for sensor calibration is due to the following additivity property, which is particularly convenient to identify composite stochastic processes (see Definition REF MISSING!).</p>
+
+<div class="corollary">
+<p><span id="cor:coroaddav" class="corollary"><strong>Corollary 4.1  (Additivity of the AV)  </strong></span>Consider two (independent) stochastic processes <span class="math inline">\((X_t)\)</span> and <span class="math inline">\((Y_t)\)</span> with respective PSD <span class="math inline">\(S_X(f)\)</span> and <span class="math inline">\(S_Y(f)\)</span>. Suppose that we observe the process <span class="math inline">\(Z_t = X_t + Y_t\)</span>. Then, we have</p>
+<span class="math display">\[\begin{equation*}
+    \text{AV}_j \left(Z_t \right) = \text{AV}_j \left(X_t \right) + \text{AV}_j \left(Y_t \right).
+\end{equation*}\]</span>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> The proof of this result is direct from Lemma REF MISSING HERE. Indeed, since <span class="math inline">\(S_Z(f) = S_X(f) + S_Y(f)\)</span>, we have</p>
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+    \text{AV}_j \left(Z_t \right) &amp;= 4  \int_0^{\infty}  \frac{\sin^4(\pi f \tau_j)}{(\pi f \tau_j)^2} S_{Z}(f) df\\
+    &amp;= 4  \int_0^{\infty}  \frac{\sin^4(\pi f \tau_j)}{(\pi f \tau_j)^2} S_{X}(f) df + 4  \int_0^{\infty}  \frac{\sin^4(\pi f \tau_j)}{(\pi f \tau_j)^2} S_{Y}(f) df\\
+    &amp;= \text{AV}_j \left(X_t \right) + \text{AV}_j \left(Y_t \right).
+    \end{aligned}
+\end{equation*}\]</span>
+</div>
+
+<p><br></p>
+<p>While Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a> is an important results which is very convenient to determine the theoretical AV of a certain stochastic process. However, the applicability of this results is often limited since the integral defined in (REF MISSING HERE) can be intractable. An alternative to Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a> has been proposed by <span class="citation">Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> and is far advantageous from a computational standpoint.</p>
+
+<div class="lemma">
+<span id="lem:lemmaavtoacf" class="lemma"><strong>Lemma 4.2  (AV connection to ACF)  </strong></span>For a stationary process <span class="math inline">\((X_t)\)</span> with variance <span class="math inline">\(\sigma^2_X\)</span> and ACF <span class="math inline">\(\rho(h)\)</span> we have
+<span class="math display">\[\begin{equation*}
+\label{stat.av}
+    \text{AV}_j \left(X_t \right)  = \frac{\sigma_X^2}{\tau_j^2} \bigg(\tau_j\left[1-\rho(\tau_j)\right] 
+   + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg).
+\end{equation*}\]</span>
+</div>
+
+<p>The proof of this result is instructive and is presented in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.</p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-3" class="exercise"><strong>Remark 4.4  </strong></span>Using Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a>, the exact form of the AV for different stationary processes, such as the general class of ARMA models, can easily be derived. Moreover, <span class="citation">Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
+</div>
+
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-4" class="exercise"><strong>Remark 4.5  </strong></span>Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a> was extended to non-stationary processes in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.
+</div>
+
+<p><br></p>
+
+<div class="example">
+<p><span id="exm:avma1" class="example"><strong>Example 4.1  (Theoretical AV of an MA(1) process)  </strong></span>From the autocovariance we obtain</p>
+<span class="math display">\[\begin{equation*}
+        \rho(h) = \text{corr}\left(X_t, X_{t-h} \right) =\left\{
+  \begin{array}{cl}
+    1 &amp;\text{if } h = 0\\
+    \frac{\theta}{1 + \theta^2} &amp;\text{if } |h| = 1\\
+    0 &amp;\text{if } |h| &gt; 1.\\
+  \end{array}
+\right.
+\end{equation*}\]</span>
+<p>We can now apply the formula given in Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a>, which leads to</p>
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        \text{AV}_j \left(X_t \right)  &amp;= \frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg)\\
+   &amp;=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   + 2 \sum_{i=1}^{\tau_j-1} i \rho(\tau_j-i) -\sum_{i=1}^{\tau_j-1} i \rho(i) - \sum_{i=1}^{\tau_j-1} i \rho(2\tau_j-i)\bigg)\\
+   &amp;=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \left(\tau_j
+   + 2  (\tau_j - 1) \rho(1) -  \rho(1) \right)\\
+   &amp;=\frac{\left(1 + \theta^2 \right) \sigma^2}{\tau_j^2} \bigg(\tau_j
+   +  (2\tau_j - 3) \frac{\theta}{1 + \theta^2} \bigg).
+   \end{aligned}
+\end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
+</div>
+
+</div>
+<div id="estimation" class="section level2">
+<h2><span class="header-section-number">4.3</span> Estimation</h2>
+<p>Several estimators of the AV have been introduced in the literature. The most commonly is (probably) the Maximum-Overlapping AV (MOAV) estimator proposed by <span class="citation">Percival and Guttorp (<a href="#ref-percival1994long">1994</a>)</span>, which is defined as follows:</p>
+
+<div class="definition">
+<span id="def:defmoav" class="definition"><strong>Definition 4.2  (Maximum-Overlapping AV Estimator)  </strong></span>The MOAV is defined as:
+<span class="math display">\[\begin{eqnarray}
+\label{eq:MOAVNS_est}
+        \hat{\phi}_j^2 \equiv \widehat{\text{AV}}_j \left(X_t \right) = \frac{1}{2 \left(T - 2\tau_j + 1\right)} \sum_{k = 2 \tau_j}^{T} \left(\bar{X}_{k}^{(j)} - \bar{X}_{k-\tau_j}^{(j)} \right)^2.
+\end{eqnarray}\]</span>
+</div>
+
+<p>We will now study the properties of this estimator through the following lemmas.</p>
+
+<div class="lemma">
+<p><span id="lem:lemmconsistencyAV" class="lemma"><strong>Lemma 4.3  (Consistency)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that:</p>
+<ul>
+<li><span class="math inline">\((X_t - X_{t-1})\)</span> is a (strongly) stationary process,</li>
+<li><span class="math inline">\((X_t - X_{t-1})^2\)</span> has absolutely summable covariance structure,</li>
+<li><span class="math inline">\(\mathbb{E}\left[(X_t - X_{t-1})^4\right] &lt; \infty\)</span>,</li>
+</ul>
+Then, we have
+<span class="math display">\[\widehat{\text{AV}}_j \left(X_t \right) \overset{ \mathcal{P} }{\longrightarrow} \text{AV}_j \left(X_t \right).\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> TO BE ADDED
+</div>
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-allan1966statistics">
+<p>Allan, D. W. 1966. “Statistics of Atomic Frequency Standards.” <em>Proceedings of the IEEE</em> 54 (2). IEEE:221–30.</p>
+</div>
+<div id="ref-elsheimy08av">
+<p>El-Sheimy, N., H. Hou, and X. Niu. 2008. “Analysis and Modeling of Inertial Sensors using Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 57 (1). IEEE:140–49.</p>
+</div>
+<div id="ref-percival1994long">
+<p>Percival, D. B., and P. Guttorp. 1994. “Long-memory processes, the Allan variance and wavelets.” In <em>Wavelet Analysis and Its Applications</em>, 4:325–44. Elsevier.</p>
+</div>
+<div id="ref-percival2006wavelet">
+<p>Percival, D. B., and A. T. Walden. 2006. <em>Wavelet methods for time series analysis</em>. Cambridge university press.</p>
+</div>
+<div id="ref-greenhall1998spectral">
+<p>Greenhall, C. A. 1998. “Spectral Ambiguity of Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 47 (3). IEEE:623–27.</p>
+</div>
+<div id="ref-zhang2008allan">
+<p>Zhang, N. F. 2008. “Allan Variance of Time Series Models for Measurement Data.” <em>Metrologia</em> 45 (5). IOP Publishing:549.</p>
+</div>
+<div id="ref-xu2017study">
+<p>Xu, H., Stéphane Guerrier, Roberto Molinari, and Yuming Zhang. 2017. “A Study of the Allan Variance for Constant-Mean Nonstationary Processes.” <em>IEEE Signal Processing Letters</em> 24 (8). IEEE:1257–60.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-review-of-the-properties-of-statistical-estimators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-generalized-method-of-wavelet-moments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-allanvariance.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
