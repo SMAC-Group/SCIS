@@ -3,7 +3,11 @@ cache:
   packages: true
   directories:
   - "$TRAVIS_BUILD_DIR/_bookdown_files"
+
 sudo: false
+dist: trusty
+warnings_are_errors: false
+
 before_script:
 - chmod +x ./deployment/_build.sh
 - chmod +x ./deployment/_deploy.sh
@@ -13,9 +17,15 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deployment/_deploy.sh
 
-r_github_packages:
-  - smac-group/simts
-  - smac-group/av
+
+
+Imports:
+  - simts
+  - imudata
+
+Remotes:
+  - SMAC-Group/simts
+  - SMAC-Group/imudata
 
 notifications:
   slack: smac-group:28CTwNZ8qZkMoeQ8Ns5bFfwl
