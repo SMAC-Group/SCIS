@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -113,7 +150,7 @@
 <ul>
 <li>Definition and descriptive analysis of time series;</li>
 <li>Commonly used time series processes;</li>
-<li>Dependence within a time series;</li>
+<li>Dependence within time series;</li>
 <li>Concept of stationarity;</li>
 <li>Fundamental representation of time series.</li>
 </ul>
@@ -121,23 +158,23 @@
 <h2><span class="header-section-number">2.1</span> Time Series</h2>
 
 <div class="definition">
-<p><span id="def:ts" class="definition"><strong>Definition 2.1  (Time Series)  </strong></span>A time series is a stochastic process (i.e. a sequence of random variables (r.v.)), defined on a common probability space denoted as <span class="math inline">\((X_t)_{t = 1,...,T}\)</span> (i.e. <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, …., <span class="math inline">\(X_T\)</span>). Note that the time <span class="math inline">\(t\)</span> is not continuous and belongs to discrete index sets. Therefore, we implicitly assume that</p>
+<p><span id="def:ts" class="definition"><strong>Definition 2.1  (Time Series)  </strong></span>A time series is a stochastic process (i.e. a sequence of random variables (r.v.)), defined on a common probability space denoted as <span class="math inline">\((X_t)_{t = 1,...,T}\)</span> (i.e. {<span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, …., <span class="math inline">\(X_T\)</span>}). Note that the time <span class="math inline">\(t\)</span> is not continuous and belongs to discrete index sets. Therefore, we implicitly assume that</p>
 <ul>
-<li><span class="math inline">\(t\)</span> is not random e.g. the time at which each observation is measured is known, and</li>
+<li><span class="math inline">\(t\)</span> is not random, i.e. the time at which each observation is measured is known, and</li>
 <li>the time between two consecutive observations is constant.
 </div>
 </li>
 </ul>
-<p>When recording values of the time series over an extended period of time, it is usually difficult to discern any trend of pattern by simply looking at the values. However, when these data points are displayed on a plot with time on x-axis and <span class="math inline">\(X_t\)</span> on y-axis, some features of the time series jump out. So it is often useful to understand a process by performing a descriptive analysis, especially when we have data of small or moderate size. This is known as descriptive analysis in classical time series analysis.</p>
+<p>When recording values of a time series over an extended period of time, it is usually difficult to discern any trend or pattern of the time series by simply looking at the values. However, when these data points are displayed on a plot with time on x-axis and <span class="math inline">\(X_t\)</span> on y-axis, some features of the time series jump out. So it is often useful to understand a time series process by performing a descriptive analysis, especially when we have data of small or moderate size.</p>
 <p>When we perform descriptive analysis, we usually check the following in the time series data/graph:</p>
 <ul>
-<li>Trends:
+<li>Trends
 <ul>
 <li>Seasonal (e.g. business cycles)</li>
 <li>Non-seasonal (e.g. impact of economic indicators on stock returns)</li>
 <li>Local fluctuation (e.g. vibrations observed before, during and after an earthquake)</li>
 </ul></li>
-<li>Changes in the statistical properties:
+<li>Changes in the statistical properties
 <ul>
 <li>Mean (e.g. economic crisis)</li>
 <li>Variance (e.g. earnings)</li>
@@ -145,6 +182,63 @@
 </ul></li>
 <li>Model deviations (e.g. outliers)</li>
 </ul>
+
+<div class="example">
+<span id="exm:exampleJJ" class="example"><strong>Example 2.1  (Johnson and Johnson Quarterly Earnings)  </strong></span>A traditional example of a time series is the quarterly earnings of the company Johnson and Johson. In the graph below, we present these earnings between 1960 and 1980.
+</div>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load data</span>
+<span class="kw">data</span>(jj, <span class="dt">package =</span> <span class="st">&quot;astsa&quot;</span>)
+<span class="co"># Construct gts object</span>
+jj =<span class="st"> </span><span class="kw">gts</span>(jj, <span class="dt">start =</span> <span class="dv">1960</span>, <span class="dt">freq =</span> <span class="dv">4</span>)
+<span class="co"># Plot time series</span>
+<span class="kw">plot</span>(jj, <span class="dt">main =</span> <span class="st">&quot;Johnson and Johnson Quarterly Earnings&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Quarterly Earnings per Share ($)&quot;</span>) </code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="scis_files/figure-html/unnamed-chunk-1-1.png" alt="Johnson and Johnson Quarterly Earnings" width="624" />
+<p class="caption">
+Figure 2.1: Johnson and Johnson Quarterly Earnings
+</p>
+</div>
+<p>As we can see from the graph, the data contains a non-linear increasing trend as well as a yearly seasonal component. In addition, we can notice that the variability of the data seems to increase with time. By plotting the time series graph for this data, we can discern some important features of the data, which is helpful for us to conduct further analysis such as selecting suitable models for this data.</p>
+
+<div class="example">
+<span id="exm:examplePrecipitation" class="example"><strong>Example 2.2  (Monthly Precipitation Data)  </strong></span>Now we consider another data set coming from the domain of hydrology. The data records monthly precipitation (in mm) over a certain period of time (1907 to 1972) and is interesting for scientists in order to study water cycles. The data are presented in the graph below:
+</div>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load data</span>
+<span class="kw">data</span>(hydro, <span class="dt">package =</span> <span class="st">&quot;simts&quot;</span>)
+<span class="co"># Construct gts object</span>
+hydro =<span class="st"> </span><span class="kw">gts</span>(hydro, <span class="dt">start =</span> <span class="dv">1907</span>, <span class="dt">freq =</span> <span class="dv">12</span>)
+<span class="co"># Plot data</span>
+<span class="kw">plot</span>(hydro, <span class="dt">main =</span> <span class="st">&quot;Monthly Precipitation Data&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Mean Monthly Precipitation (mm)&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="scis_files/figure-html/unnamed-chunk-2-1.png" alt="Monthly Precipitation Data" width="624" />
+<p class="caption">
+Figure 2.2: Monthly Precipitation Data
+</p>
+</div>
+<p>From the above time series graph, we can observe some extreme observations (i.e. outliers) in this data more easily than if we simply look at all the values of this data.</p>
+
+<div class="example">
+<span id="exm:exampleInertialSensor" class="example"><strong>Example 2.3  (Inertial Sensor Data)  </strong></span>Now we consider the data coming from the calibration procedure of an Inertial Measurement Unit (IMU). The signals coming from an IMU are usually measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. We present the time series graph of some data from an IMU below.
+</div>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load data</span>
+<span class="kw">data</span>(imu6, <span class="dt">package =</span> <span class="st">&quot;imudata&quot;</span>)
+<span class="co"># Construct gts object</span>
+imu =<span class="st"> </span><span class="kw">gts</span>(imu6[,<span class="dv">1</span>], <span class="dt">freq =</span> <span class="dv">100</span>*<span class="dv">60</span>*<span class="dv">60</span>)
+<span class="co"># Plot data</span>
+<span class="kw">plot</span>(imu, <span class="dt">main =</span> <span class="st">&quot;Inertial Sensor Data&quot;</span>,
+     <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;Error &quot;</span>, (rad/s^<span class="dv">2</span>))))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="scis_files/figure-html/unnamed-chunk-3-1.png" alt="Inertial Sensor Data" width="624" />
+<p class="caption">
+Figure 2.3: Inertial Sensor Data
+</p>
+</div>
+<p>As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.</p>
 
 </div>
 </div>
