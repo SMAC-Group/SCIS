@@ -1,3 +1,33 @@
 # Introduction to Time Series Analysis {#timeseries}
 
-TO DO
+In this chapter, we will provide an introduction to time series analysis. This chapter is organized with the following outline:
+
+- Definition and descriptive analysis of time series;
+- Commonly used time series processes;
+- Dependence within a time series;
+- Concept of stationarity;
+- Fundamental representation of time series. 
+
+## Time Series
+```{definition, ts, name = "Time Series"}
+A time series is a stochastic process (i.e. a sequence of random variables (r.v.)), defined on a common probability space denoted as $(X_t)_{t = 1,...,T}$ (i.e. $X_1$, $X_2$, ...., $X_T$). Note that the time $t$ is not continuous and belongs to discrete index sets. Therefore, we implicitly assume that
+
+- $t$ is not random e.g. the time at which each observation is measured is known, and 
+- the time between two consecutive observations is constant.
+```
+
+When recording values of the time series over an extended period of time, it is usually difficult to discern any trend of pattern by simply looking at the values. However, when these data points are displayed on a plot with time on x-axis and $X_t$ on y-axis, some features of the time series jump out. So it is often useful to understand a process by performing a descriptive analysis, especially when we have data of small or moderate size. This is known as descriptive analysis in classical time series analysis. 
+
+When we perform descriptive analysis, we usually check the following in the time series data/graph:
+
+- Trends:
+    - Seasonal (e.g. business cycles)
+    - Non-seasonal (e.g. impact of economic indicators on stock returns)
+    - Local fluctuation (e.g. vibrations observed before, during and after an earthquake)
+- Changes in the statistical properties:
+    - Mean (e.g. economic crisis)
+    - Variance (e.g. earnings)
+    - States (e.g. bear/bull in finance)
+- Model deviations (e.g. outliers)
+
+
