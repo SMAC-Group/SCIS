@@ -14,8 +14,10 @@ Depends: R (>= 3.3.0)
 URL: https://github.com/SMAC-Group/SCIS
 Imports:
   rsconnect,
-  bookdown
-  simts
+  bookdown,
+  simts,
+  imudata
   av
 Remotes: SMAC-Group/simts, 
-  SMAC-Group/av
+  SMAC-Group/av,
+  SMAC-Group/imudata

@@ -17,14 +17,14 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deployment/_deploy.sh
 
-
-
 Imports:
   - simts
+  - av
   - imudata
 
 Remotes:
   - SMAC-Group/simts
+  - SMAC-Group/av
   - SMAC-Group/imudata
 
 notifications:
