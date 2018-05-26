@@ -78,3 +78,70 @@ plot(imu, main = "Inertial Sensor Data",
 
 As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.
 
+
+## Commonly Used Time Series Processes
+We first introduce some latent time series processes that are commonly used, especially in the calibration procedure of inertial sensors.
+
+```{definition, WN, name = "Gaussian White Noise"}
+The Gaussian White Noise (WN) process with parameter $\sigma^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+		X_t  \overset{iid}{\sim} \mathcal{N}\left(0, \sigma^2 \right)
+\end{equation*}
+where "iid" stands for "independent and identically distributed".
+```
+
+```{definition, QN, name = "Quantization Noise"}
+The Quantization Noise (QN) process with parameter $Q^2 \in \mathbb{R}^+$ is a process with Power Spectral Density (PSD) of the form 
+\begin{equation*}
+		S_{X}(f) = 4 Q^2 \sin^2 \left( \frac{\pi f}{\Delta t} \right) \Delta t, \;\; f < \frac{\Delta t}{2}.
+\end{equation*}
+```
+
+```{definition, DR, name = "Drift"}
+The Drift (DR) process with parameter $\omega \in \Omega$, where $\Omega$ is either $\mathbb{R}^+$ or $\mathbb{R}^-$, is defined as 
+\begin{equation*}
+X_t = \omega t.
+\end{equation*}
+```
+
+```{definition, RW, name = "Random Walk"}
+The Random Walk (RW) process with parameter $\gamma^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+X_t = X_{t-1} + \epsilon_t \;\; \text{where}\;\; \epsilon_t  \overset{iid}{\sim} \mathcal{N}\left(0, \gamma^2 \right)\;\; \text{and}\;\; X_0 = 0.
+\end{equation*}
+```
+
+```{definition, AR, name = "Auto-Regressive"}
+The Auto-Regressive Process of Order 1 (AR1) process with parameter $\phi \in (-1, +1)$ and $\upsilon^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon^2).
+\end{equation*}
+```
+
+```{definition, GM, name = "Gauss Markov"}
+The Gauss Markov Process of Order 1 (GM) process with parameter $\beta \in \mathbb{R}$ and $\sigma_G^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+      X_t = \exp(-\beta \Delta_t) X_{t-1} + Z_t, \;\;\; 
+      Z_t \overset{iid}{\sim} \mathcal{N}(0,\sigma^2_{G}(1-\exp(-2\beta\Delta t)))
+\end{equation*}
+where $\Delta t$ denotes the time between $X_t$ and $X_{t-1}$.
+```
+
+```{exercise, GMandAR1, name = "GM and AR1"}
+A GM process is a one-to-one reparametrization of an AR1 process. In the following, we will only discuss AR1 processes but all results remain valid for GM processes.
+```
+
+```{definition, CompStocProc, name = "Composite Stochastic Processes"}
+A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
+```
+
+```{example, exampleCompStocProc, name = "2*AR1 + WN"}
+The composite stochastic process of "2*AR1 + WN" is given as
+\begin{align}
+Y_t &= \phi_1 Y_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_1^2),\\
+W_t &= \phi_2 W_{t-1} + U_t, \;\;\; U_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_2^2),\\
+Q_t &\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
+X_t &= Y_t + W_t + Q_t,
+\end{align}
+where $Y_t$, $W_t$ and $Q_t$ are independent and only $(X_t)$ is observed.
+```

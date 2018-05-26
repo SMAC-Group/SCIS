@@ -106,6 +106,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a><ul>
 <li class="chapter" data-level="2.1" data-path="timeseries.html"><a href="timeseries.html#time-series"><i class="fa fa-check"></i><b>2.1</b> Time Series</a></li>
+<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#commonly-used-time-series-processes"><i class="fa fa-check"></i><b>2.2</b> Commonly Used Time Series Processes</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
@@ -239,6 +240,83 @@ Figure 2.3: Inertial Sensor Data
 </p>
 </div>
 <p>As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.</p>
+</div>
+<div id="commonly-used-time-series-processes" class="section level2">
+<h2><span class="header-section-number">2.2</span> Commonly Used Time Series Processes</h2>
+<p>We first introduce some latent time series processes that are commonly used, especially in the calibration procedure of inertial sensors.</p>
+
+<div class="definition">
+<span id="def:WN" class="definition"><strong>Definition 2.2  (Gaussian White Noise)  </strong></span>The Gaussian White Noise (WN) process with parameter <span class="math inline">\(\sigma^2 \in \mathbb{R}^+\)</span> is defined as
+<span class="math display">\[\begin{equation*}
+        X_t  \overset{iid}{\sim} \mathcal{N}\left(0, \sigma^2 \right)
+\end{equation*}\]</span>
+where “iid” stands for “independent and identically distributed”.
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:QN" class="definition"><strong>Definition 2.3  (Quantization Noise)  </strong></span>The Quantization Noise (QN) process with parameter <span class="math inline">\(Q^2 \in \mathbb{R}^+\)</span> is a process with Power Spectral Density (PSD) of the form
+<span class="math display">\[\begin{equation*}
+        S_{X}(f) = 4 Q^2 \sin^2 \left( \frac{\pi f}{\Delta t} \right) \Delta t, \;\; f &lt; \frac{\Delta t}{2}.
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:DR" class="definition"><strong>Definition 2.4  (Drift)  </strong></span>The Drift (DR) process with parameter <span class="math inline">\(\omega \in \Omega\)</span>, where <span class="math inline">\(\Omega\)</span> is either <span class="math inline">\(\mathbb{R}^+\)</span> or <span class="math inline">\(\mathbb{R}^-\)</span>, is defined as
+<span class="math display">\[\begin{equation*}
+X_t = \omega t.
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:RW" class="definition"><strong>Definition 2.5  (Random Walk)  </strong></span>The Random Walk (RW) process with parameter <span class="math inline">\(\gamma^2 \in \mathbb{R}^+\)</span> is defined as
+<span class="math display">\[\begin{equation*}
+X_t = X_{t-1} + \epsilon_t \;\; \text{where}\;\; \epsilon_t  \overset{iid}{\sim} \mathcal{N}\left(0, \gamma^2 \right)\;\; \text{and}\;\; X_0 = 0.
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:AR" class="definition"><strong>Definition 2.6  (Auto-Regressive)  </strong></span>The Auto-Regressive Process of Order 1 (AR1) process with parameter <span class="math inline">\(\phi \in (-1, +1)\)</span> and <span class="math inline">\(\upsilon^2 \in \mathbb{R}^+\)</span> is defined as
+<span class="math display">\[\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon^2).
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:GM" class="definition"><strong>Definition 2.7  (Gauss Markov)  </strong></span>The Gauss Markov Process of Order 1 (GM) process with parameter <span class="math inline">\(\beta \in \mathbb{R}\)</span> and <span class="math inline">\(\sigma_G^2 \in \mathbb{R}^+\)</span> is defined as
+<span class="math display">\[\begin{equation*}
+      X_t = \exp(-\beta \Delta_t) X_{t-1} + Z_t, \;\;\; 
+      Z_t \overset{iid}{\sim} \mathcal{N}(0,\sigma^2_{G}(1-\exp(-2\beta\Delta t)))
+\end{equation*}\]</span>
+where <span class="math inline">\(\Delta t\)</span> denotes the time between <span class="math inline">\(X_t\)</span> and <span class="math inline">\(X_{t-1}\)</span>.
+</div>
+<p></p>
+
+<div class="exercise">
+<span id="exr:GMandAR1" class="exercise"><strong>Remark 2.1  (GM and AR1)  </strong></span>A GM process is a one-to-one reparametrization of an AR1 process. In the following, we will only discuss AR1 processes but all results remain valid for GM processes.
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:CompStocProc" class="definition"><strong>Definition 2.8  (Composite Stochastic Processes)  </strong></span>A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
+</div>
+<p></p>
+
+<div class="example">
+<span class="example" id="exm:exampleCompStocProc"><strong>Example 2.4  (2*AR1 + WN)  </strong></span>The composite stochastic process of “2*AR1 + WN&quot; is given as
+<span class="math display">\[\begin{align}
+Y_t &amp;= \phi_1 Y_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_1^2),\\
+W_t &amp;= \phi_2 W_{t-1} + U_t, \;\;\; U_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_2^2),\\
+Q_t &amp;\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
+X_t &amp;= Y_t + W_t + Q_t,
+\end{align}\]</span>
+where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Q_t\)</span> are independent and only <span class="math inline">\((X_t)\)</span> is observed.
+</div>
+<p></p>
 
 </div>
 </div>
