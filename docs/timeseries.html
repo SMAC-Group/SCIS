@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Haotian Xu, Ahmed Radi, Gaetan Bakalli, Yuming Zhang and Mucyo Karemera">
 
 
-<meta name="date" content="2018-05-25">
+<meta name="date" content="2018-05-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,7 +106,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a><ul>
 <li class="chapter" data-level="2.1" data-path="timeseries.html"><a href="timeseries.html#time-series"><i class="fa fa-check"></i><b>2.1</b> Time Series</a></li>
-<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#commonly-used-time-series-processes"><i class="fa fa-check"></i><b>2.2</b> Commonly Used Time Series Processes</a></li>
+<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#latent-time-series-processes-and-composite-stochastic-process"><i class="fa fa-check"></i><b>2.2</b> Latent Time Series Processes and Composite Stochastic Process</a></li>
+<li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.3</b> Dependence within Time Series</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
@@ -150,7 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In this chapter, we will provide an introduction to time series analysis. This chapter is organized with the following outline:</p>
 <ul>
 <li>Definition and descriptive analysis of time series;</li>
-<li>Commonly used time series processes;</li>
+<li>Latent time series processes and composite stochastic process;</li>
 <li>Dependence within time series;</li>
 <li>Concept of stationarity;</li>
 <li>Fundamental representation of time series.</li>
@@ -241,8 +242,8 @@ Figure 2.3: Inertial Sensor Data
 </div>
 <p>As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.</p>
 </div>
-<div id="commonly-used-time-series-processes" class="section level2">
-<h2><span class="header-section-number">2.2</span> Commonly Used Time Series Processes</h2>
+<div id="latent-time-series-processes-and-composite-stochastic-process" class="section level2">
+<h2><span class="header-section-number">2.2</span> Latent Time Series Processes and Composite Stochastic Process</h2>
 <p>We first introduce some latent time series processes that are commonly used, especially in the calibration procedure of inertial sensors.</p>
 
 <div class="definition">
@@ -300,6 +301,7 @@ where <span class="math inline">\(\Delta t\)</span> denotes the time between <sp
 <span id="exr:GMandAR1" class="exercise"><strong>Remark 2.1  (GM and AR1)  </strong></span>A GM process is a one-to-one reparametrization of an AR1 process. In the following, we will only discuss AR1 processes but all results remain valid for GM processes.
 </div>
 <p></p>
+<p>With the above defined latent time series processes, we introduce the composite stochastic process, which is widely used in the estimation procedure of inertial sensor stochastic calibration.</p>
 
 <div class="definition">
 <span id="def:CompStocProc" class="definition"><strong>Definition 2.8  (Composite Stochastic Processes)  </strong></span>A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
@@ -317,6 +319,93 @@ X_t &amp;= Y_t + W_t + Q_t,
 where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Q_t\)</span> are independent and only <span class="math inline">\((X_t)\)</span> is observed.
 </div>
 <p></p>
+</div>
+<div id="dependence-within-time-series" class="section level2">
+<h2><span class="header-section-number">2.3</span> Dependence within Time Series</h2>
+<p>One of the main purpose of time series analysis is to make predictions. That is, if <span class="math inline">\((X_t)_{t=1,\ldots,T}\)</span> is an identically distributed but not independent sequence, what is the best predictor for <span class="math inline">\({X}_{T+h}\)</span> for <span class="math inline">\(h &gt; 0\)</span> (i.e. an estimator of <span class="math inline">\(\mathbb{E}[X_{T+h}| X_T,...]\)</span>)? In order to answer this question, we first need to understand the dependence between <span class="math inline">\(X_{1},\ldots,X_{T}\)</span>. Before we start to consider the dependence within time series, let us first take a review on independence.</p>
+
+<div class="definition">
+<span id="def:IndepEvents" class="definition"><strong>Definition 2.9  (Independence of Events)  </strong></span>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if
+<span class="math display">\[\begin{align*}
+\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B).
+\end{align*}\]</span>
+In general, <span class="math inline">\(A_{1},\ldots,A_{n}\)</span> are independent if
+<span class="math display">\[\begin{align*}
+\mathbb{P}(B_1 \ldots B_n) = \mathbb{P}(B_1) \ldots \mathbb{P}(B_n) \;\; \text{for all} \;\; B_i = A_i \;\; \text{or} \;\; S, \;\; i=1,\ldots,n.
+\end{align*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:IndepRV" class="definition"><strong>Definition 2.10  (Independence of Two Random Variables)  </strong></span>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with Cumulative Distribution Functions (CDF) <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(y)\)</span> respectively are independent if and only if their joint CDF <span class="math inline">\(F_{X,Y}(x,y)\)</span> is such that
+<span class="math display">\[\begin{align*}
+F_{X,Y}(x,y) = F_{X}(x) F_{Y}(y).
+\end{align*}\]</span>
+In general, random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> with CDF <span class="math inline">\(F_{X_1}(x_1), \ldots, F_{X_n}(x_n)\)</span> respectively are independent if and only if their joint CDF <span class="math inline">\(F_{X_1, \ldots, X_n}(x_1, \ldots, x_n)\)</span> is such that
+<span class="math display">\[\begin{align*}
+F_{X_1,\ldots,X_n}(x_1,\ldots,x_n) = F_{X_1}(x_1) \ldots F_{X_n}(x_n).
+\end{align*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:iid" class="definition"><strong>Definition 2.11  (iid sequence)  </strong></span>The sequence <span class="math inline">\(X_{1},X_{2},\ldots,X_{T}\)</span> is said to be independent and identically distributed (i.e. iid) if and only if
+<span class="math display">\[\begin{align*}
+\mathbb{P}(X_{i}&lt;x) = \mathbb{P}(X_{j}&lt;x) \;\; \forall x \in \mathbb{R}, \forall i,j \in \{1,\ldots,T\}
+\end{align*}\]</span>
+and
+<span class="math display">\[\begin{align*}
+\mathbb{P}(X_{1}&lt;x_{1},X_{2}&lt;x_{2},\ldots,X_{T}&lt;x_{T})=\mathbb{P}(X_{1}&lt;x_1) \ldots \mathbb{P}(X_{T}&lt;x_T) \;\; \forall T\geq2, x_1, \ldots, x_T \in \mathbb{R}.
+\end{align*}\]</span>
+</div>
+<p></p>
+<p>Now we start to consider the dependence, specifically the linear dependence, within time series. Notice that it is difficult to consider the dependence between <span class="math inline">\(T\)</span> random variables at a time. So we need to consider only two random variables at a time.</p>
+
+<div class="definition">
+<span id="def:ACV" class="definition"><strong>Definition 2.12  (AutoCovariance)  </strong></span>AutoCovariance (ACV) denoted as <span class="math inline">\(\gamma_X(t, t+h)\)</span> is defined as
+<span class="math display">\[\begin{align*}
+\gamma_X(t, t+h) = \text{Cov}(X_{t},X_{t+h})=   \mathbb{E}(X_{t}X_{t+h})-\mathbb{E}(X_{t})\mathbb{E}(X_{t+h})
+\end{align*}\]</span>
+where
+<span class="math display">\[\begin{align*}
+\mathbb{E}(X_{t}) = \int_{-\infty}^{\infty}x f(x) dx \;\; \text{and} \;\; \mathbb{E}(X_{t},X_{t+h}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_{1}x_{2} f(x_{1},x_{2}) dx_{1}dx_{2}
+\end{align*}\]</span>
+where <span class="math inline">\(f(x_{1},x_{2})\)</span> denotes the joint density of <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
+</div>
+<p></p>
+
+<div class="exercise">
+<p><span id="exr:propertiesACV" class="exercise"><strong>Remark 2.2  (Properties of ACV)  </strong></span>1. ACV is symmetric, i.e. <span class="math inline">\(\gamma_X(t, t+h) = \gamma_X(t+h, t)\)</span> as <span class="math inline">\(\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Variance of the process <span class="math inline">\(\text{Var}(X_t) = \gamma_X(t, t)\)</span>.</p></li>
+<li><p>Scale dependent: ACV <span class="math inline">\(\gamma_X(t, t+h)\)</span> is scale dependent like any covariance. So <span class="math inline">\(\gamma_X(t, t+h) \in \mathbb{R}\)</span>.</p>
+<ul>
+<li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “close” to 0, then they are “less (linearly) dependent”.</li>
+<li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “far” from 0, <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are “more (linearly) dependent”.</li>
+</ul></li>
+</ol>
+<p>However in general, it is difficult to assess what “close” and “far” from zero means.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>In general, <span class="math inline">\(\gamma_X(t, t+h)=0\)</span> does not imply <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are independent. However, if <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are joint normally distributed, then <span class="math inline">\(\gamma_X(t, t+h)=0\)</span> implies that <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are independent.
+</div>
+</li>
+</ol>
+<p>Another measure of linear dependence which is related to the ACV is the AutoCorrelation. This is arguably the most commonly used metric in time series analysis.</p>
+
+<div class="definition">
+<span id="def:ACF" class="definition"><strong>Definition 2.13  (AutoCorrelation)  </strong></span>AutoCorrelation (ACF) denoted as <span class="math inline">\(\rho_X(t, t+h)\)</span> is defined as
+<span class="math display">\[\begin{align*}
+\rho_X(t,t+h) = \text{Corr}(X_{t},X_{t+h}) = \frac{\text{Cov}(X_{t},X_{t+h})}{\sqrt{\text{Var}(X_{t})} \sqrt{\text{Var}(X_{t+h})}}.
+\end{align*}\]</span>
+</div>
+<p></p>
+
+<div class="exercise">
+<span id="exr:propertiesACF" class="exercise"><strong>Remark 2.3  (Properties of ACF)  </strong></span>1. <span class="math inline">\(\mid rho_X(t,t+h) \mid leq 1\)</span>. 2. Scale invariant: ACF <span class="math inline">\(\rho_X(t,t+h)\)</span> is scale free like any correlation. Moreover, if <span class="math inline">\(\rho_X(t,t+h)\)</span> is “close” to <span class="math inline">\(\pm 1\)</span>, then this implies that there is “strong” (linear) dependence between <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
+</div>
+<p></p>
+<p>We can simplify the notations <span class="math inline">\(\gamma_X(t, t+h)\)</span> and <span class="math inline">\(\rho_X(t, t+h)\)</span> to be <span class="math inline">\(\gamma(t, t+h)\)</span> and <span class="math inline">\(\rho(t, t+h)\)</span> when there is no ambiguity (i.e. only one time series is considered).</p>
+<p>Notice that both ACV and ACF are appropriate to measure linear dependence only. Besides linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist. However, both ACV and ACF are less helpful to measure these dependence as they might have ACV and ACF to be zero.</p>
 
 </div>
 </div>
