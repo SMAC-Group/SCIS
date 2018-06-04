@@ -316,11 +316,7 @@ In general, neither type of stationarity implies the other one. However,
 ```
 
 ```{example, exampleRelationStat1, name = "Strong Stationarity does NOT imply Weak Stationarity"}
-Consider a Gaussian random walk process $X_t$ where initial value $X_0 = 0$. Since the model is "fixed in time", this process is strongly stationary. However, we have
-\begin{equation*}
-\text{Var}\left(X_t\right) = \text{Var}\left(\sum_{i = 1}^t Z_i\right) = \sum_{i = 1}^t \gamma^2 = t \gamma^2
-\end{equation*}
-and therefore $\mathbb{E}[X^2_t]$ is not fixed and finite, i.e. $X_t$ is not weakly stationary.
+An iid Cauchy process is strongly but not weakly stationary as the mean of the process does not exist.
 ```
 
 ```{example, exampleRelationStat2, name = "Weak Stationarity does NOT imply Strong Stationarity"}
