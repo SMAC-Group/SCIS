@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Haotian Xu, Ahmed Radi, Gaetan Bakalli, Yuming Zhang and Mucyo Karemera">
 
 
-<meta name="date" content="2018-05-27">
+<meta name="date" content="2018-06-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -108,6 +108,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1" data-path="timeseries.html"><a href="timeseries.html#time-series"><i class="fa fa-check"></i><b>2.1</b> Time Series</a></li>
 <li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#latent-time-series-processes-and-composite-stochastic-process"><i class="fa fa-check"></i><b>2.2</b> Latent Time Series Processes and Composite Stochastic Process</a></li>
 <li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.3</b> Dependence within Time Series</a></li>
+<li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
@@ -322,7 +323,7 @@ where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\
 </div>
 <div id="dependence-within-time-series" class="section level2">
 <h2><span class="header-section-number">2.3</span> Dependence within Time Series</h2>
-<p>One of the main purpose of time series analysis is to make predictions. That is, if <span class="math inline">\((X_t)_{t=1,\ldots,T}\)</span> is an identically distributed but not independent sequence, what is the best predictor for <span class="math inline">\({X}_{T+h}\)</span> for <span class="math inline">\(h &gt; 0\)</span> (i.e. an estimator of <span class="math inline">\(\mathbb{E}[X_{T+h}| X_T,...]\)</span>)? In order to answer this question, we first need to understand the dependence between <span class="math inline">\(X_{1},\ldots,X_{T}\)</span>. Before we start to consider the dependence within time series, let us first take a review on independence.</p>
+<p>One of the main purpose of time series analysis is to make predictions. That is, if <span class="math inline">\((X_t)_{t=1,\ldots,T}\)</span> is an identically distributed but not independent sequence, what is the best predictor for <span class="math inline">\({X}_{T+h}\)</span> for <span class="math inline">\(h &gt; 0\)</span> (i.e. an estimator of <span class="math inline">\(\mathbb{E}[X_{T+h}| X_T,...]\)</span>)? In order to answer this question, we need to understand the dependence between <span class="math inline">\(X_{1},\ldots,X_{T}\)</span>. Before we start to consider the dependence within time series, let us first take a review on independence.</p>
 
 <div class="definition">
 <span id="def:IndepEvents" class="definition"><strong>Definition 2.9  (Independence of Events)  </strong></span>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if
@@ -337,7 +338,7 @@ In general, <span class="math inline">\(A_{1},\ldots,A_{n}\)</span> are independ
 <p></p>
 
 <div class="definition">
-<span id="def:IndepRV" class="definition"><strong>Definition 2.10  (Independence of Two Random Variables)  </strong></span>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with Cumulative Distribution Functions (CDF) <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(y)\)</span> respectively are independent if and only if their joint CDF <span class="math inline">\(F_{X,Y}(x,y)\)</span> is such that
+<span id="def:IndepRV" class="definition"><strong>Definition 2.10  (Independence of Random Variables)  </strong></span>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with Cumulative Distribution Functions (CDF) <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(y)\)</span> respectively are independent if and only if their joint CDF <span class="math inline">\(F_{X,Y}(x,y)\)</span> is such that
 <span class="math display">\[\begin{align*}
 F_{X,Y}(x,y) = F_{X}(x) F_{Y}(y).
 \end{align*}\]</span>
@@ -375,16 +376,17 @@ where <span class="math inline">\(f(x_{1},x_{2})\)</span> denotes the joint dens
 <p></p>
 
 <div class="exercise">
-<p><span id="exr:propertiesACV" class="exercise"><strong>Remark 2.2  (Properties of ACV)  </strong></span>1. ACV is symmetric, i.e. <span class="math inline">\(\gamma_X(t, t+h) = \gamma_X(t+h, t)\)</span> as <span class="math inline">\(\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})\)</span>.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Variance of the process <span class="math inline">\(\text{Var}(X_t) = \gamma_X(t, t)\)</span>.</p></li>
+<p><span id="exr:propertiesACV" class="exercise"><strong>Remark 2.2  (Properties of ACV)  </strong></span></p>
+<ol style="list-style-type: decimal">
+<li><p>ACV is symmetric, i.e. <span class="math inline">\(\gamma_X(t, t+h) = \gamma_X(t+h, t)\)</span> as <span class="math inline">\(\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})\)</span>. Under stationarity (will be discussed very soon), <span class="math inline">\(\gamma_X(h) = \gamma_X(-h)\)</span>, i.e. ACV is an even function.</p></li>
+<li><p>Variance of the process <span class="math inline">\(\text{Var}(X_t) = \gamma_X(t, t) \geq 0\)</span>. Under stationarity, <span class="math inline">\(\text{Var}(X_t) = \gamma_X(0)\)</span> and <span class="math inline">\(\mid \gamma_X(h) \mid \leq \gamma_X(0)\)</span> by Cauchy-Schwarz inequality.</p></li>
 <li><p>Scale dependent: ACV <span class="math inline">\(\gamma_X(t, t+h)\)</span> is scale dependent like any covariance. So <span class="math inline">\(\gamma_X(t, t+h) \in \mathbb{R}\)</span>.</p>
 <ul>
 <li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “close” to 0, then they are “less (linearly) dependent”.</li>
 <li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “far” from 0, <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are “more (linearly) dependent”.</li>
 </ul></li>
 </ol>
-<p>However in general, it is difficult to assess what “close” and “far” from zero means.</p>
+<p>However in general, it is difficult to assess what “close” and “far” from zero mean.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>In general, <span class="math inline">\(\gamma_X(t, t+h)=0\)</span> does not imply <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are independent. However, if <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are joint normally distributed, then <span class="math inline">\(\gamma_X(t, t+h)=0\)</span> implies that <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are independent.
 </div>
@@ -401,12 +403,174 @@ where <span class="math inline">\(f(x_{1},x_{2})\)</span> denotes the joint dens
 <p></p>
 
 <div class="exercise">
-<span id="exr:propertiesACF" class="exercise"><strong>Remark 2.3  (Properties of ACF)  </strong></span>1. <span class="math inline">\(\mid rho_X(t,t+h) \mid leq 1\)</span>. 2. Scale invariant: ACF <span class="math inline">\(\rho_X(t,t+h)\)</span> is scale free like any correlation. Moreover, if <span class="math inline">\(\rho_X(t,t+h)\)</span> is “close” to <span class="math inline">\(\pm 1\)</span>, then this implies that there is “strong” (linear) dependence between <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
+<p><span id="exr:propertiesACF" class="exercise"><strong>Remark 2.3  (Properties of ACF)  </strong></span></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\mid \rho_X(t,t+h) \mid \leq 1\)</span> and <span class="math inline">\(\mid \rho_X(t,t) \mid = 1\)</span>.</p></li>
+<li><p>ACF is symmetric, i.e. <span class="math inline">\(\rho_X(t, t+h) = \rho_X(t+h, t)\)</span> as <span class="math inline">\(\text{Corr}(X_{t},X_{t+h}) = \text{Corr}(X_{t+h},X_{t})\)</span>. Under stationarity, <span class="math inline">\(\gamma_X(h) = \gamma_X(-h)\)</span>, i.e. ACF is an even function.</p></li>
+<li>Scale invariant: ACF <span class="math inline">\(\rho_X(t,t+h)\)</span> is scale free like any correlation. Moreover, if <span class="math inline">\(\rho_X(t,t+h)\)</span> is “close” to <span class="math inline">\(\pm 1\)</span>, then this implies that there is “strong” (linear) dependence between <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
+</div>
+<p></p></li>
+</ol>
+<p>We can simplify the notations <span class="math inline">\(\gamma_X(t, t+h)\)</span> and <span class="math inline">\(\rho_X(t, t+h)\)</span> to be <span class="math inline">\(\gamma(t, t+h)\)</span> and <span class="math inline">\(\rho(t, t+h)\)</span> when there is no ambiguity (i.e. only one time series is considered).</p>
+<p>Notice that both ACV and ACF are appropriate to measure linear dependence only. Besides linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist. However, both ACV and ACF are less helpful to measure these dependence as they might have ACV and ACF to be zero. Here is an example:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="images/Cor.png" alt="Different forms of dependence and their ACF values" width="80%" />
+<p class="caption">
+Figure 2.4: Different forms of dependence and their ACF values
+</p>
+</div>
+<p>It is worth noting that correlation does NOT imply causation. For example, if <span class="math inline">\(\rho(t, t+h) \neq 0\)</span>, it does not imply that <span class="math inline">\(X_t \to X_{t+h}\)</span> is causal. Actually, real causation doesn’t exist in statistics but there exists approximated metric to measure this concept such as Granger causality (see <span class="citation">Granger (<a href="#ref-granger1969investigating">1969</a>)</span>). This idea is clearly illustrated in the image below:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="images/corr_cat.jpg" alt="Correlation does NOT imply causation." width="50%" />
+<p class="caption">
+Figure 2.5: Correlation does NOT imply causation.
+</p>
+</div>
+</div>
+<div id="stationarity" class="section level2">
+<h2><span class="header-section-number">2.4</span> Stationarity</h2>
+<p>In this section we are going to introduce the concept of stationarity, one of the most important characteristics of time series data. First let us consider an example of <strong>non-stationary process</strong>.</p>
+
+<div class="example">
+<span id="exm:exampleNonStationary" class="example"><strong>Example 2.5  (Non-Stationary Process)  </strong></span>
+<span class="math display">\[\begin{equation*}
+X_t  \sim \mathcal{N} \left(0, Y_t^2\right) \;\; \text{where $Y_t$ is unobserved and such that} \;\; Y_t  \overset{iid}{\sim} \mathcal{N} \left(0, 1\right).
+\end{equation*}\]</span>
+In this case, it is clear that the estimation of <span class="math inline">\(\text{Var}(X_t)\)</span> is difficult since only <span class="math inline">\(X_t\)</span> is useful for the estimation. So in fact, <span class="math inline">\(X_t^2\)</span> is our best guess for <span class="math inline">\(\text{Var}(X_t)\)</span>.
 </div>
 <p></p>
-<p>We can simplify the notations <span class="math inline">\(\gamma_X(t, t+h)\)</span> and <span class="math inline">\(\rho_X(t, t+h)\)</span> to be <span class="math inline">\(\gamma(t, t+h)\)</span> and <span class="math inline">\(\rho(t, t+h)\)</span> when there is no ambiguity (i.e. only one time series is considered).</p>
-<p>Notice that both ACV and ACF are appropriate to measure linear dependence only. Besides linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist. However, both ACV and ACF are less helpful to measure these dependence as they might have ACV and ACF to be zero.</p>
+<p>On the other hand, let us consider an example of <strong>stationary process</strong> where averaging becomes meaningful for such process.</p>
 
+<div class="example">
+<span id="exm:exampleStationary" class="example"><strong>Example 2.6  (Stationary Process)  </strong></span>
+<span class="math display">\[\begin{equation*}
+X_t = \theta W_{t-1} + W_t \;\;\; \text{where} \;\;\;  W_t  \stackrel{iid}{\sim} \mathcal{N} \left(0, 1\right).
+\end{equation*}\]</span>
+In this case, we can guess that a natural estimator of <span class="math inline">\(\text{Var}(X_t)\)</span> can be <span class="math inline">\(\hat{\sigma}^2 = \frac{1}{T} \sum_{i = 1}^T X_i^2\)</span>. That is, now averages are meaningful for such process.
+</div>
+<p></p>
+<p>There exist two forms of stationarity, which are defined below:</p>
+
+<div class="definition">
+<span id="def:StrongStationarity" class="definition"><strong>Definition 2.14  (Strong Stationarity)  </strong></span>The time series <span class="math inline">\(X_{t}\)</span> is strongly stationary if the joint probability distribution is invariant under a shift in time, i.e.
+<span class="math display">\[\begin{equation*}
+\mathbb{P}(X_{t}\leq x_{0},\ldots,X_{t+k}\leq x_{k}) = \mathbb{P}(X_{t+h}\leq x_{0} ,\ldots,X_{t+h+k}\leq x_{k})
+\end{equation*}\]</span>
+for any time shift <span class="math inline">\(h\)</span> and any <span class="math inline">\(x_{0}, x_{1},x_{2},\cdots,x_{k}\)</span> belong to the domain of <span class="math inline">\(X_t,\cdots,X_{t+k}\)</span> and <span class="math inline">\(X_{t+h},\cdots,X_{t+h+k}\)</span>.
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:WeakStationarity" class="definition"><strong>Definition 2.15  (Weak Stationarity)  </strong></span>The time series <span class="math inline">\((X_{t})_{t \in \mathbb{N}}\)</span> is weakly stationary if the mean and autocovariance are finite and invariant under a shift in time, i.e.
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\mathbb{E}\left[X_t\right] &amp;= \mu &lt; \infty,\\
+\mathbb{E}\left[X_t^2\right]  &amp;= \mu_2 &lt; \infty,\\
+\text{Cov}(X_{t},X_{t+h})&amp;= \text{Cov}(X_{t + k},X_{t+h + k}) = \gamma( h ).
+\end{aligned}
+\end{equation*}\]</span>
+for any time shift <span class="math inline">\(h\)</span>. For convenience, we use the abbreviation “stationary” to indicate “weakly stationary” by default.
+</div>
+<p></p>
+<p>The stationarity of <span class="math inline">\(X_{t}\)</span> is important because it provides a framework in which averaging makes sense. The concept of averaging is essentially meaningless unless properties like mean and covariance are either fixed or evolve in a known manner.</p>
+
+<div class="exercise">
+<span id="exr:StatImpAcvAcf" class="exercise"><strong>Remark 2.4  (Implication on the ACV and ACF)  </strong></span>If a process is weakly stationary or strongly stationary and <span class="math inline">\(\text{Cov}(X_{t},X_{t+h})\)</span> exists for all <span class="math inline">\(h \in \mathbb{Z}\)</span>, then we have both ACV and ACF only depend on the lag between observations, i.e.
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\gamma(t, t+h) &amp;= \text{Cov}(X_{t},X_{t+h})= \text{Cov}(X_{t + k},X_{t+h + k}) = \gamma(t+k, t+h+k) = \gamma(h),\\
+\rho(t, t+h) &amp;= \text{Corr}(X_{t},X_{t+h})= \text{Corr}(X_{t + k},X_{t+h + k}) = \rho(t+k, t+h+k) = \rho(h).
+\end{aligned}
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="exercise">
+<p><span id="exr:RelationStationary" class="exercise"><strong>Remark 2.5  (Relation between Strong and Weak Stationarity)  </strong></span></p>
+<p>In general, neither type of stationarity implies the other one. However,</p>
+<ul>
+<li>If <span class="math inline">\(X_{t}\)</span> is Normal (Gaussian) with <span class="math inline">\(\sigma^2 = \text{Var} (X_{t}) &lt; \infty\)</span>, then weak stationarity implies strong stationarity.</li>
+<li>If <span class="math inline">\(X_{t}\)</span> is strongly stationary, <span class="math inline">\(\mathbb{E}(X_t) &lt; \infty\)</span> and <span class="math inline">\(\mathbb{E}(X_t^2) &lt; \infty\)</span>, then <span class="math inline">\(X_{t}\)</span> is weakly stationary.
+</div>
+</li>
+</ul>
+
+<div class="example">
+<span id="exm:exampleRelationStat1" class="example"><strong>Example 2.7  (Strong Stationarity does NOT imply Weak Stationarity)  </strong></span>Consider a Gaussian random walk process <span class="math inline">\(X_t\)</span> where initial value <span class="math inline">\(X_0 = 0\)</span>. Since the model is “fixed in time”, this process is strongly stationary. However, we have
+<span class="math display">\[\begin{equation*}
+\text{Var}\left(X_t\right) = \text{Var}\left(\sum_{i = 1}^t Z_i\right) = \sum_{i = 1}^t \gamma^2 = t \gamma^2
+\end{equation*}\]</span>
+and therefore <span class="math inline">\(\mathbb{E}[X^2_t]\)</span> is not fixed and finite, i.e. <span class="math inline">\(X_t\)</span> is not weakly stationary.
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:exampleRelationStat2" class="example"><strong>Example 2.8  (Weak Stationarity does NOT imply Strong Stationarity)  </strong></span>Let <span class="math inline">\(X_t \overset{iid}{\sim} \exp(1)\)</span> (i.e. exponential distribution with <span class="math inline">\(\lambda = 1\)</span>) and <span class="math inline">\(Y_t \overset{iid}{\sim} \mathcal{N}(1,1)\)</span>. Then, let
+<span class="math display">\[\begin{equation*}
+Z_t = \left\{
+\begin{array}{cl}
+X_t &amp;\text{if } t \in \left\{2k | k \in \mathbb{N}\right\}\\
+Y_t &amp;\text{if }  t \in \left\{2k + 1 | k \in \mathbb{N}\right\},
+\end{array}
+\right.
+\end{equation*}\]</span>
+we have <span class="math inline">\(Z_t\)</span> is weakly stationary but not strongly stationary.
+</div>
+<p></p>
+
+<div class="exercise">
+<p><span id="exr:StatProcesses" class="exercise"><strong>Remark 2.6  (Stationarity of Latent Time Series Processes)  </strong></span></p>
+<ul>
+<li>(Weakly) Stationary: WN, QN, AR1</li>
+<li>(Weakly) Non-Stationary: DR, RW
+</div>
+</li>
+</ul>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (AR1 is weakly stationary). </span> Consider an AR1 process defined as:
+<span class="math display">\[\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\nu^2),
+\end{equation*}\]</span>
+where <span class="math inline">\(\mid \phi \mid &lt; 1\)</span> and <span class="math inline">\(\nu^2 &lt; \infty\)</span>. Then we have <span class="math display">\[\begin{aligned}
+{X_t}  &amp;=   {\phi }{X_{t - 1}} + {Z_t} = \phi \left[ {\phi {X_{t - 2}} + {Z_{t - 1}}} \right] + {Z_t} =  {\phi ^2}{X_{t - 2}} + \phi {Z_{t - 1}} + {Z_t}  \\
+&amp; \; \vdots  \\
+&amp;=   {\phi ^k}{X_{t-k}} + \sum\limits_{j = 0}^{k - 1} {{\phi ^j}{Z_{t - j}}} .
+\end{aligned} \]</span> By taking the limit in <span class="math inline">\(k\)</span> (which is perfectly valid as we assume <span class="math inline">\(t \in \mathbb{Z}\)</span>), we obtain
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+X_t = \mathop {\lim }\limits_{k \to \infty} \; {X_t}  =  \sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}.
+\end{aligned}
+\end{equation*}\]</span>
+So we have
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\mathbb{E}\left[X_t\right] &amp;=  \sum\limits_{j = 0}^{\infty} {{\phi ^j}{\mathbb{E} [Z_{t - j}]}} = 0, \\
+\text{Var}\left(X_t\right) &amp;= \text{Var}\left(\sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}\right) = \sum\limits_{j = 0}^{\infty} {\phi^{2j}} \text{Var}\left(Z_{t-j}\right) = \nu^2 \sum\limits_{j = 0}^{\infty} {\phi^{2j}} = \frac{\nu^2}{1-\phi^2} &lt; \infty.
+\end{aligned}
+\end{equation*}\]</span>
+Moreover, assuming for notational simplicity that <span class="math inline">\(h &gt; 1\)</span>, we obtain
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\text{Cov}\left(X_t, X_{t+h}\right) &amp;= \phi \text{Cov}\left(X_t, X_{t+h-1}\right) = \phi^2 \text{Cov}\left(X_t, X_{t+h-2}\right) = \ldots = \phi^h \text{Cov}(X_t, X_t).
+\end{aligned}
+\end{equation*}\]</span>
+In general, when <span class="math inline">\(h \in \mathbb{Z}\)</span> we obtain
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\text{Cov}\left(X_t, X_{t+h}\right) &amp; = \phi^{|h|} \text{Cov}(X_t, X_t) = \phi^{|h|} \frac{\nu^2}{1-\phi^2},
+\end{aligned}
+\end{equation*}\]</span>
+which is a function of the lag <span class="math inline">\(h\)</span> only. Therefore, this AR1 process is weakly stationary.
+</div>
+<p></p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-granger1969investigating">
+<p>Granger, C. W. J. 1969. “Investigating Causal Relations by Econometric Models and Cross-Spectral Methods.” <em>Econometrica: Journal of the Econometric Society</em>. JSTOR, 424–38.</p>
 </div>
 </div>
             </section>

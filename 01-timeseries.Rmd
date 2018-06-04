@@ -148,9 +148,8 @@ X_t &= Y_t + W_t + Q_t,
 where $Y_t$, $W_t$ and $Q_t$ are independent and only $(X_t)$ is observed.
 ```
 
-
 ## Dependence within Time Series
-One of the main purpose of time series analysis is to make predictions. That is, if $(X_t)_{t=1,\ldots,T}$ is an identically distributed but not independent sequence, what is the best predictor for ${X}_{T+h}$ for $h > 0$ (i.e. an estimator of $\mathbb{E}[X_{T+h}| X_T,...]$)? In order to answer this question, we first need to understand the dependence between $X_{1},\ldots,X_{T}$. Before we start to consider the dependence within time series, let us first take a review on independence.
+One of the main purpose of time series analysis is to make predictions. That is, if $(X_t)_{t=1,\ldots,T}$ is an identically distributed but not independent sequence, what is the best predictor for ${X}_{T+h}$ for $h > 0$ (i.e. an estimator of $\mathbb{E}[X_{T+h}| X_T,...]$)? In order to answer this question, we need to understand the dependence between $X_{1},\ldots,X_{T}$. Before we start to consider the dependence within time series, let us first take a review on independence.
 
 ```{definition, IndepEvents, name = "Independence of Events"}
 Two events $A$ and $B$ are independent if 
@@ -163,7 +162,7 @@ In general, $A_{1},\ldots,A_{n}$ are independent if
 \end{align*}
 ```
 
-```{definition, IndepRV, name = "Independence of Two Random Variables"}
+```{definition, IndepRV, name = "Independence of Random Variables"}
 Two random variables $X$ and $Y$ with Cumulative Distribution Functions (CDF) $F_X(x)$ and $F_Y(y)$ respectively are independent if and only if their joint CDF $F_{X,Y}(x,y)$ is such that 
 \begin{align*}
 F_{X,Y}(x,y) = F_{X}(x) F_{Y}(y).
@@ -200,16 +199,18 @@ where $f(x_{1},x_{2})$ denotes the joint density of $X_{t}$ and $X_{t+h}$.
 ```
 
 ```{exercise, propertiesACV, name="Properties of ACV"}
-1. ACV is symmetric, i.e. $\gamma_X(t, t+h) = \gamma_X(t+h, t)$ as $\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})$.
 
-2. Variance of the process $\text{Var}(X_t) = \gamma_X(t, t)$.
+
+1. ACV is symmetric, i.e. $\gamma_X(t, t+h) = \gamma_X(t+h, t)$ as $\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})$. Under stationarity (will be discussed very soon), $\gamma_X(h) = \gamma_X(-h)$, i.e. ACV is an even function. 
+
+2. Variance of the process $\text{Var}(X_t) = \gamma_X(t, t) \geq 0$. Under stationarity, $\text{Var}(X_t) = \gamma_X(0)$ and $\mid \gamma_X(h) \mid \leq \gamma_X(0)$ by Cauchy-Schwarz inequality. 
 
 3. Scale dependent: ACV $\gamma_X(t, t+h)$ is scale dependent like any covariance. So $\gamma_X(t, t+h) \in \mathbb{R}$. 
 
     - If $\mid \gamma_X(t, t+h) \mid$ is "close" to 0, then they are "less (linearly) dependent".
     - If $\mid \gamma_X(t, t+h) \mid$ is "far" from 0, $X_{t}$ and $X_{t+h}$ are "more (linearly) dependent".
 
-However in general, it is difficult to assess what "close" and "far" from zero means.
+However in general, it is difficult to assess what "close" and "far" from zero mean.
 
 4. In general, $\gamma_X(t, t+h)=0$ does not imply $X_{t}$ and $X_{t+h}$ are independent. However, if $X_{t}$ and $X_{t+h}$ are joint normally distributed, then $\gamma_X(t, t+h)=0$ implies that $X_{t}$ and $X_{t+h}$ are independent.
 ```
@@ -224,13 +225,160 @@ AutoCorrelation (ACF) denoted as $\rho_X(t, t+h)$ is defined as
 ```
 
 ```{exercise, propertiesACF, name = "Properties of ACF"}
-1. $\mid rho_X(t,t+h) \mid leq 1$.
-2. Scale invariant: ACF $\rho_X(t,t+h)$ is scale free like any correlation. Moreover, if $\rho_X(t,t+h)$ is "close" to $\pm 1$, then this implies that there is "strong" (linear) dependence between $X_{t}$ and $X_{t+h}$.
+
+
+1. $\mid \rho_X(t,t+h) \mid \leq 1$ and $\mid \rho_X(t,t) \mid = 1$. 
+
+2. ACF is symmetric, i.e. $\rho_X(t, t+h) = \rho_X(t+h, t)$ as $\text{Corr}(X_{t},X_{t+h}) = \text{Corr}(X_{t+h},X_{t})$. Under stationarity, $\gamma_X(h) = \gamma_X(-h)$, i.e. ACF is an even function. 
+
+3. Scale invariant: ACF $\rho_X(t,t+h)$ is scale free like any correlation. Moreover, if $\rho_X(t,t+h)$ is "close" to $\pm 1$, then this implies that there is "strong" (linear) dependence between $X_{t}$ and $X_{t+h}$.
 ```
 
 We can simplify the notations $\gamma_X(t, t+h)$ and $\rho_X(t, t+h)$ to be $\gamma(t, t+h)$ and $\rho(t, t+h)$ when there is no ambiguity (i.e. only one time series is considered).
 
-Notice that both ACV and ACF are appropriate to measure linear dependence only. Besides linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist. However, both ACV and ACF are less helpful to measure these dependence as they might have ACV and ACF to be zero. 
+Notice that both ACV and ACF are appropriate to measure linear dependence only. Besides linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist. However, both ACV and ACF are less helpful to measure these dependence as they might have ACV and ACF to be zero. Here is an example:
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='Different forms of dependence and their ACF values', echo=FALSE}
+knitr::include_graphics("images/Cor.png")
+```
+
+It is worth noting that correlation does NOT imply causation. For example, if $\rho(t, t+h) \neq 0$, it does not imply that $X_t \to X_{t+h}$ is causal. Actually, real causation doesn't exist in statistics but there exists approximated metric to measure this concept such as Granger causality (see @granger1969investigating). This idea is clearly illustrated in the image below:
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='50%', fig.cap='Correlation does NOT imply causation.', echo=FALSE}
+knitr::include_graphics("images/corr_cat.jpg")
+```
 
 
 
+
+## Stationarity
+In this section we are going to introduce the concept of stationarity, one of the most important characteristics of time series data. First let us consider an example of **non-stationary process**.
+
+```{example, exampleNonStationary, name = "Non-Stationary Process"}
+\begin{equation*}
+X_t  \sim \mathcal{N} \left(0, Y_t^2\right) \;\; \text{where $Y_t$ is unobserved and such that} \;\; Y_t  \overset{iid}{\sim} \mathcal{N} \left(0, 1\right).
+\end{equation*}
+
+In this case, it is clear that the estimation of $\text{Var}(X_t)$ is difficult since only $X_t$ is useful for the estimation. So in fact, $X_t^2$ is our best guess for $\text{Var}(X_t)$. 
+```
+
+On the other hand, let us consider an example of **stationary process** where averaging becomes meaningful for such process.
+
+```{example, exampleStationary, name = "Stationary Process"}
+\begin{equation*}
+X_t = \theta W_{t-1} + W_t \;\;\; \text{where} \;\;\;  W_t  \stackrel{iid}{\sim} \mathcal{N} \left(0, 1\right).
+\end{equation*}
+
+In this case, we can guess that a natural estimator of $\text{Var}(X_t)$ can be $\hat{\sigma}^2 = \frac{1}{T} \sum_{i = 1}^T X_i^2$. That is, now averages are meaningful for such process. 
+```
+
+There exist two forms of stationarity, which are defined below:
+
+```{definition, StrongStationarity, name = "Strong Stationarity"}
+The time series $X_{t}$ is strongly stationary if the joint probability distribution is invariant under a shift in time, i.e.
+\begin{equation*}
+\mathbb{P}(X_{t}\leq x_{0},\ldots,X_{t+k}\leq x_{k}) = \mathbb{P}(X_{t+h}\leq x_{0} ,\ldots,X_{t+h+k}\leq x_{k})
+\end{equation*}
+for any time shift $h$ and any $x_{0}, x_{1},x_{2},\cdots,x_{k}$ belong to the domain of $X_t,\cdots,X_{t+k}$ and $X_{t+h},\cdots,X_{t+h+k}$. 
+```
+
+```{definition, WeakStationarity, name = "Weak Stationarity"}
+The time series $(X_{t})_{t \in \mathbb{N}}$ is weakly stationary if the mean and autocovariance are finite and invariant under a shift in time, i.e.
+\begin{equation*}
+\begin{aligned}
+\mathbb{E}\left[X_t\right] &= \mu < \infty,\\
+\mathbb{E}\left[X_t^2\right]  &= \mu_2 < \infty,\\
+\text{Cov}(X_{t},X_{t+h})&= \text{Cov}(X_{t + k},X_{t+h + k}) = \gamma( h ).
+\end{aligned}
+\end{equation*}
+for any time shift $h$. For convenience, we use the abbreviation "stationary" to indicate "weakly stationary" by default.
+```
+
+The stationarity of $X_{t}$ is important because it provides a framework in which averaging makes sense. The concept of averaging is essentially meaningless unless properties like mean and covariance are either fixed or evolve in a known manner. 
+
+```{exercise, StatImpAcvAcf, name = "Implication on the ACV and ACF"}
+If a process is weakly stationary or strongly stationary and $\text{Cov}(X_{t},X_{t+h})$ exists for all $h \in \mathbb{Z}$, then we have both ACV and ACF only depend on the lag between observations, i.e.
+\begin{equation*}
+\begin{aligned}
+\gamma(t, t+h) &= \text{Cov}(X_{t},X_{t+h})= \text{Cov}(X_{t + k},X_{t+h + k}) = \gamma(t+k, t+h+k) = \gamma(h),\\
+\rho(t, t+h) &= \text{Corr}(X_{t},X_{t+h})= \text{Corr}(X_{t + k},X_{t+h + k}) = \rho(t+k, t+h+k) = \rho(h).
+\end{aligned}
+\end{equation*}
+```
+
+```{exercise, RelationStationary, name = "Relation between Strong and Weak Stationarity"}
+
+
+In general, neither type of stationarity implies the other one. However, 
+
+- If $X_{t}$ is Normal (Gaussian) with $\sigma^2 = \text{Var} (X_{t}) < \infty$, then weak stationarity implies strong stationarity.
+- If $X_{t}$ is strongly stationary, $\mathbb{E}(X_t) < \infty$ and $\mathbb{E}(X_t^2) < \infty$, then $X_{t}$ is weakly stationary.
+```
+
+```{example, exampleRelationStat1, name = "Strong Stationarity does NOT imply Weak Stationarity"}
+Consider a Gaussian random walk process $X_t$ where initial value $X_0 = 0$. Since the model is "fixed in time", this process is strongly stationary. However, we have
+\begin{equation*}
+\text{Var}\left(X_t\right) = \text{Var}\left(\sum_{i = 1}^t Z_i\right) = \sum_{i = 1}^t \gamma^2 = t \gamma^2
+\end{equation*}
+and therefore $\mathbb{E}[X^2_t]$ is not fixed and finite, i.e. $X_t$ is not weakly stationary.
+```
+
+```{example, exampleRelationStat2, name = "Weak Stationarity does NOT imply Strong Stationarity"}
+Let $X_t \overset{iid}{\sim} \exp(1)$ (i.e. exponential distribution with $\lambda = 1$) and $Y_t \overset{iid}{\sim} \mathcal{N}(1,1)$. Then, let
+\begin{equation*}
+Z_t = \left\{
+\begin{array}{cl}
+X_t &\text{if } t \in \left\{2k | k \in \mathbb{N}\right\}\\
+Y_t &\text{if }  t \in \left\{2k + 1 | k \in \mathbb{N}\right\},
+\end{array}
+\right.
+\end{equation*}
+we have $Z_t$ is weakly stationary but not strongly stationary.
+```
+
+```{exercise, StatProcesses, name = "Stationarity of Latent Time Series Processes"}
+
+
+- (Weakly) Stationary: WN, QN, AR1
+- (Weakly) Non-Stationary: DR, RW
+```
+
+```{proof, proofAR1stationary, name="AR1 is weakly stationary"}
+Consider an AR1 process defined as:
+\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\nu^2),
+\end{equation*}
+where $\mid \phi \mid < 1$ and $\nu^2 < \infty$. Then we have
+\[\begin{aligned}
+{X_t}  &=   {\phi }{X_{t - 1}} + {Z_t} = \phi \left[ {\phi {X_{t - 2}} + {Z_{t - 1}}} \right] + {Z_t} =  {\phi ^2}{X_{t - 2}} + \phi {Z_{t - 1}} + {Z_t}  \\
+& \; \vdots  \\
+&=   {\phi ^k}{X_{t-k}} + \sum\limits_{j = 0}^{k - 1} {{\phi ^j}{Z_{t - j}}} .
+\end{aligned} \]
+By taking the limit in $k$ (which is perfectly valid as we 
+assume $t \in \mathbb{Z}$), we obtain 
+\begin{equation*}
+\begin{aligned}
+X_t = \mathop {\lim }\limits_{k \to \infty} \; {X_t}  =  \sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}.
+\end{aligned}
+\end{equation*}
+So we have
+\begin{equation*}
+\begin{aligned}
+\mathbb{E}\left[X_t\right] &=  \sum\limits_{j = 0}^{\infty} {{\phi ^j}{\mathbb{E} [Z_{t - j}]}} = 0, \\
+\text{Var}\left(X_t\right) &= \text{Var}\left(\sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}\right) = \sum\limits_{j = 0}^{\infty} {\phi^{2j}} \text{Var}\left(Z_{t-j}\right) = \nu^2 \sum\limits_{j = 0}^{\infty} {\phi^{2j}} = \frac{\nu^2}{1-\phi^2} < \infty.
+\end{aligned}
+\end{equation*}
+Moreover, assuming for notational simplicity that $h > 1$, we obtain
+\begin{equation*}
+\begin{aligned}
+\text{Cov}\left(X_t, X_{t+h}\right) &= \phi \text{Cov}\left(X_t, X_{t+h-1}\right) = \phi^2 \text{Cov}\left(X_t, X_{t+h-2}\right) = \ldots = \phi^h \text{Cov}(X_t, X_t).
+\end{aligned}
+\end{equation*}
+In general, when $h \in \mathbb{Z}$ we obtain
+\begin{equation*}
+\begin{aligned}
+\text{Cov}\left(X_t, X_{t+h}\right) & = \phi^{|h|} \text{Cov}(X_t, X_t) = \phi^{|h|} \frac{\nu^2}{1-\phi^2},
+\end{aligned}
+\end{equation*}
+which is a function of the lag $h$ only. Therefore, this AR1 process is weakly stationary.
+```
