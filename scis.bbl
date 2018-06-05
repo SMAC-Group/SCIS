@@ -1,0 +1,59 @@
+\begin{thebibliography}{}
+
+\bibitem[Allan, 1966]{allan1966statistics}
+Allan, D.~W. (1966).
+\newblock {Statistics of Atomic Frequency Standards}.
+\newblock {\em Proceedings of the IEEE}, 54(2):221--230.
+
+\bibitem[El-Sheimy et~al., 2008]{elsheimy08av}
+El-Sheimy, N., Hou, H., and Niu, X. (2008).
+\newblock {Analysis and Modeling of Inertial Sensors using Allan Variance}.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  57(1):140--149.
+
+\bibitem[Granger, 1969]{granger1969investigating}
+Granger, C. W.~J. (1969).
+\newblock {Investigating Causal Relations by Econometric Models and
+  Cross-Spectral Methods}.
+\newblock {\em Econometrica: Journal of the Econometric Society}, pages
+  424--438.
+
+\bibitem[Greenhall, 1998]{greenhall1998spectral}
+Greenhall, C.~A. (1998).
+\newblock {Spectral Ambiguity of Allan Variance}.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  47(3):623--627.
+
+\bibitem[Newey and West, 1986]{newey1986simple}
+Newey, W.~K. and West, K.~D. (1986).
+\newblock A simple, positive semi-definite, heteroskedasticity and
+  autocorrelationconsistent covariance matrix.
+
+\bibitem[Percival and Guttorp, 1994]{percival1994long}
+Percival, D.~B. and Guttorp, P. (1994).
+\newblock {Long-memory processes, the Allan variance and wavelets}.
+\newblock In {\em Wavelet Analysis and its Applications}, volume~4, pages
+  325--344. Elsevier.
+
+\bibitem[Percival and Walden, 2006]{percival2006wavelet}
+Percival, D.~B. and Walden, A.~T. (2006).
+\newblock {\em {Wavelet methods for time series analysis}}.
+\newblock Cambridge university press.
+
+\bibitem[Percival, 1995]{percival1995estimation}
+Percival, D.~P. (1995).
+\newblock {On Estimation of the Wavelet Variance}.
+\newblock {\em Biometrika}, 82(3):619--631.
+
+\bibitem[Xu et~al., 2017]{xu2017study}
+Xu, H., Guerrier, S., Molinari, R., and Zhang, Y. (2017).
+\newblock A study of the allan variance for constant-mean nonstationary
+  processes.
+\newblock {\em IEEE signal processing letters}, 24(8):1257--1260.
+
+\bibitem[Zhang, 2008]{zhang2008allan}
+Zhang, N.~F. (2008).
+\newblock {Allan Variance of Time Series Models for Measurement Data}.
+\newblock {\em Metrologia}, 45(5):549.
+
+\end{thebibliography}

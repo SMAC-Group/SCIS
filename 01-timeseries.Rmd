@@ -36,6 +36,8 @@ A traditional example of a time series is the quarterly earnings of the company 
 ```
 
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Johnson and Johnson Quarterly Earnings'}
+# Load simts package
+library(simts)
 # Load data
 data(jj, package = "astsa")
 # Construct gts object

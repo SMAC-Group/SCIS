@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="TO DO" />
   
 
-<meta name="author" content="Stéphane Guerrier, Roberto Molinari, Haotian Xu, Ahmed Radi, Gaetan Bakalli, Yuming Zhang and Mucyo Karemera">
+<meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-05-19">
+<meta name="date" content="2018-06-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -132,7 +132,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a></li>
+<li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="timeseries.html"><a href="timeseries.html#time-series"><i class="fa fa-check"></i><b>2.1</b> Time Series</a></li>
+<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#latent-time-series-processes-and-composite-stochastic-process"><i class="fa fa-check"></i><b>2.2</b> Latent Time Series Processes and Composite Stochastic Process</a></li>
+<li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.3</b> Dependence within Time Series</a></li>
+<li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
+<li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.5</b> Linear Processes</a></li>
+<li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
 <li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
@@ -244,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation*}\]</span></p>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-1" class="exercise"><strong>Remark 4.3  </strong></span>This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> showed that in the continuous case (i.e. <span class="math inline">\(\tau_j \in \mathbb{R}\)</span>) <span class="math inline">\(\Delta = 0\)</span> if and only if <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. However, the ``only if’’ part of this results (while conjectured) is unknown in the discrete case.
+<span id="exr:unnamed-chunk-6" class="exercise"><strong>Remark 4.3  </strong></span>This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> showed that in the continuous case (i.e. <span class="math inline">\(\tau_j \in \mathbb{R}\)</span>) <span class="math inline">\(\Delta = 0\)</span> if and only if <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. However, the ``only if’’ part of this results (while conjectured) is unknown in the discrete case.
 </div>
 
 </div>
@@ -286,13 +293,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The proof of this result is instructive and is presented in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.</p>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-3" class="exercise"><strong>Remark 4.4  </strong></span>Using Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a>, the exact form of the AV for different stationary processes, such as the general class of ARMA models, can easily be derived. Moreover, <span class="citation">Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
+<span id="exr:unnamed-chunk-8" class="exercise"><strong>Remark 4.4  </strong></span>Using Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a>, the exact form of the AV for different stationary processes, such as the general class of ARMA models, can easily be derived. Moreover, <span class="citation">Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
 </div>
 
 <p><br></p>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-4" class="exercise"><strong>Remark 4.5  </strong></span>Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a> was extended to non-stationary processes in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.
+<span id="exr:unnamed-chunk-9" class="exercise"><strong>Remark 4.5  </strong></span>Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a> was extended to non-stationary processes in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.
 </div>
 
 <p><br></p>
@@ -361,7 +368,7 @@ Then, we have
 
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-6" class="exercise"><strong>Remark 4.6  (Connection to Wavelet Variance)  </strong></span>This result is closely related by the results of <span class="citation">Percival (<a href="#ref-percival1995estimation">1995</a>)</span> on the wavelet variance. We shall explore the connection between the AV and wavelet variance in the next section.
+<span id="exr:unnamed-chunk-11" class="exercise"><strong>Remark 4.6  (Connection to Wavelet Variance)  </strong></span>This result is closely related by the results of <span class="citation">Percival (<a href="#ref-percival1995estimation">1995</a>)</span> on the wavelet variance. We shall explore the connection between the AV and wavelet variance in the next section.
 </div>
 
 </div>
@@ -398,7 +405,7 @@ where <span class="math inline">\(z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\P
 However, the so called ``Long-Run Variance’’ <span class="math inline">\(\sigma^2_{T}\)</span> is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions <span class="citation">(see e.g. Newey and West <a href="#ref-newey1986simple">1986</a>)</span>.</p>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-8" class="exercise"><strong>Remark 4.7  </strong></span>Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. Next, we will discuss an alternative method to construct the CI for such statistic.
+<span id="exr:unnamed-chunk-13" class="exercise"><strong>Remark 4.7  </strong></span>Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. Next, we will discuss an alternative method to construct the CI for such statistic.
 </div>
 
 </div>

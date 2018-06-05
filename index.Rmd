@@ -1,6 +1,6 @@
 --- 
 title: "An Introduction to Inertial Sensors Stochastic Calibration"
-author: "Stéphane Guerrier, Roberto Molinari, Haotian Xu, Ahmed Radi, Gaetan Bakalli, Yuming Zhang and Mucyo Karemera"
+author: "Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
