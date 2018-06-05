@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Haotian Xu, Ahmed Radi, Gaetan Bakalli, Yuming Zhang and Mucyo Karemera">
 
 
-<meta name="date" content="2018-06-04">
+<meta name="date" content="2018-06-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,6 +109,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#latent-time-series-processes-and-composite-stochastic-process"><i class="fa fa-check"></i><b>2.2</b> Latent Time Series Processes and Composite Stochastic Process</a></li>
 <li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.3</b> Dependence within Time Series</a></li>
 <li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
+<li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.5</b> Linear Processes</a></li>
+<li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
@@ -155,7 +157,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Latent time series processes and composite stochastic process;</li>
 <li>Dependence within time series;</li>
 <li>Concept of stationarity;</li>
-<li>Fundamental representation of time series.</li>
+<li>Concept of linear processes;</li>
+<li>Fundamental representations of time series.</li>
 </ul>
 <div id="time-series" class="section level2">
 <h2><span class="header-section-number">2.1</span> Time Series</h2>
@@ -168,7 +171,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </li>
 </ul>
-<p>When recording values of a time series over an extended period of time, it is usually difficult to discern any trend or pattern of the time series by simply looking at the values. However, when these data points are displayed on a plot with time on x-axis and <span class="math inline">\(X_t\)</span> on y-axis, some features of the time series jump out. So it is often useful to understand a time series process by performing a descriptive analysis, especially when we have data of small or moderate size.</p>
+<p>When recording values of a time series over an extended period of time, it is usually difficult to discern any trend or pattern of the time series by simply looking at the values. However, when these data points are displayed on a plot with time on x-axis and <span class="math inline">\(X_t\)</span> on y-axis, some features of the time series jump out. So it is often useful to understand a time series process by performing a <strong>descriptive analysis</strong>, especially when we have data of small or moderate size.</p>
 <p>When we perform descriptive analysis, we usually check the following in the time series data/graph:</p>
 <ul>
 <li>Trends
@@ -187,7 +190,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 
 <div class="example">
-<span id="exm:exampleJJ" class="example"><strong>Example 2.1  (Johnson and Johnson Quarterly Earnings)  </strong></span>A traditional example of a time series is the quarterly earnings of the company Johnson and Johson. In the graph below, we present these earnings between 1960 and 1980.
+<span id="exm:exampleJJ" class="example"><strong>Example 2.1  (Johnson and Johnson Quarterly Earnings)  </strong></span>A traditional example of a time series is the quarterly earnings of the company Johnson and Johnson. In the graph below, we present these earnings between 1960 and 1980.
 </div>
 <p></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load data</span>
@@ -213,7 +216,7 @@ Figure 2.1: Johnson and Johnson Quarterly Earnings
 <span class="kw">data</span>(hydro, <span class="dt">package =</span> <span class="st">&quot;simts&quot;</span>)
 <span class="co"># Construct gts object</span>
 hydro =<span class="st"> </span><span class="kw">gts</span>(hydro, <span class="dt">start =</span> <span class="dv">1907</span>, <span class="dt">freq =</span> <span class="dv">12</span>)
-<span class="co"># Plot data</span>
+<span class="co"># Plot time series</span>
 <span class="kw">plot</span>(hydro, <span class="dt">main =</span> <span class="st">&quot;Monthly Precipitation Data&quot;</span>,
      <span class="dt">ylab =</span> <span class="st">&quot;Mean Monthly Precipitation (mm)&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
@@ -232,7 +235,7 @@ Figure 2.2: Monthly Precipitation Data
 <span class="kw">data</span>(imu6, <span class="dt">package =</span> <span class="st">&quot;imudata&quot;</span>)
 <span class="co"># Construct gts object</span>
 imu =<span class="st"> </span><span class="kw">gts</span>(imu6[,<span class="dv">1</span>], <span class="dt">freq =</span> <span class="dv">100</span>*<span class="dv">60</span>*<span class="dv">60</span>)
-<span class="co"># Plot data</span>
+<span class="co"># Plot time series</span>
 <span class="kw">plot</span>(imu, <span class="dt">main =</span> <span class="st">&quot;Inertial Sensor Data&quot;</span>,
      <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;Error &quot;</span>, (rad/s^<span class="dv">2</span>))))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
@@ -281,7 +284,7 @@ X_t = X_{t-1} + \epsilon_t \;\; \text{where}\;\; \epsilon_t  \overset{iid}{\sim}
 <p></p>
 
 <div class="definition">
-<span id="def:AR" class="definition"><strong>Definition 2.6  (Auto-Regressive)  </strong></span>The Auto-Regressive Process of Order 1 (AR1) process with parameter <span class="math inline">\(\phi \in (-1, +1)\)</span> and <span class="math inline">\(\upsilon^2 \in \mathbb{R}^+\)</span> is defined as
+<span id="def:AR" class="definition"><strong>Definition 2.6  (Auto-Regressive)  </strong></span>The Auto-Regressive process of Order 1 (AR1) with parameter <span class="math inline">\(\phi \in (-1, +1)\)</span> and <span class="math inline">\(\upsilon^2 \in \mathbb{R}^+\)</span> is defined as
 <span class="math display">\[\begin{equation*}
 X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon^2).
 \end{equation*}\]</span>
@@ -289,7 +292,7 @@ X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon^
 <p></p>
 
 <div class="definition">
-<span id="def:GM" class="definition"><strong>Definition 2.7  (Gauss Markov)  </strong></span>The Gauss Markov Process of Order 1 (GM) process with parameter <span class="math inline">\(\beta \in \mathbb{R}\)</span> and <span class="math inline">\(\sigma_G^2 \in \mathbb{R}^+\)</span> is defined as
+<span id="def:GM" class="definition"><strong>Definition 2.7  (Gauss Markov)  </strong></span>The Gauss Markov process of Order 1 (GM) with parameter <span class="math inline">\(\beta \in \mathbb{R}\)</span> and <span class="math inline">\(\sigma_G^2 \in \mathbb{R}^+\)</span> is defined as
 <span class="math display">\[\begin{equation*}
       X_t = \exp(-\beta \Delta_t) X_{t-1} + Z_t, \;\;\; 
       Z_t \overset{iid}{\sim} \mathcal{N}(0,\sigma^2_{G}(1-\exp(-2\beta\Delta t)))
@@ -305,7 +308,7 @@ where <span class="math inline">\(\Delta t\)</span> denotes the time between <sp
 <p>With the above defined latent time series processes, we introduce the composite stochastic process, which is widely used in the estimation procedure of inertial sensor stochastic calibration.</p>
 
 <div class="definition">
-<span id="def:CompStocProc" class="definition"><strong>Definition 2.8  (Composite Stochastic Processes)  </strong></span>A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
+<span id="def:CompStocProc" class="definition"><strong>Definition 2.8  (Composite Stochastic Process)  </strong></span>A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
 </div>
 <p></p>
 
@@ -317,7 +320,7 @@ W_t &amp;= \phi_2 W_{t-1} + U_t, \;\;\; U_t \overset{iid}{\sim} \mathcal{N}(0,\u
 Q_t &amp;\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
 X_t &amp;= Y_t + W_t + Q_t,
 \end{align}\]</span>
-where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Q_t\)</span> are independent and only <span class="math inline">\((X_t)\)</span> is observed.
+where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Q_t\)</span> are independent and only <span class="math inline">\(X_t\)</span> is observed.
 </div>
 <p></p>
 </div>
@@ -332,8 +335,9 @@ where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\
 \end{align*}\]</span>
 In general, <span class="math inline">\(A_{1},\ldots,A_{n}\)</span> are independent if
 <span class="math display">\[\begin{align*}
-\mathbb{P}(B_1 \ldots B_n) = \mathbb{P}(B_1) \ldots \mathbb{P}(B_n) \;\; \text{for all} \;\; B_i = A_i \;\; \text{or} \;\; S, \;\; i=1,\ldots,n.
+\mathbb{P}(B_1 \ldots B_n) = \mathbb{P}(B_1) \ldots \mathbb{P}(B_n) \;\; \text{for all} \;\; B_i = A_i \;\; \text{or} \;\; S, \;\; i=1,\ldots,n
 \end{align*}\]</span>
+where <span class="math inline">\(S\)</span> is the sample space.
 </div>
 <p></p>
 
@@ -360,7 +364,7 @@ and
 \end{align*}\]</span>
 </div>
 <p></p>
-<p>Now we start to consider the dependence, specifically the linear dependence, within time series. Notice that it is difficult to consider the dependence between <span class="math inline">\(T\)</span> random variables at a time. So we need to consider only two random variables at a time.</p>
+<p>Now we start to consider the dependence, specifically the <strong>linear dependence</strong>, within time series. Notice that it is difficult to consider the dependence between <span class="math inline">\(T\)</span> random variables at a time. So we need to consider only two random variables at a time.</p>
 
 <div class="definition">
 <span id="def:ACV" class="definition"><strong>Definition 2.12  (AutoCovariance)  </strong></span>AutoCovariance (ACV) denoted as <span class="math inline">\(\gamma_X(t, t+h)\)</span> is defined as
@@ -371,7 +375,7 @@ where
 <span class="math display">\[\begin{align*}
 \mathbb{E}(X_{t}) = \int_{-\infty}^{\infty}x f(x) dx \;\; \text{and} \;\; \mathbb{E}(X_{t},X_{t+h}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_{1}x_{2} f(x_{1},x_{2}) dx_{1}dx_{2}
 \end{align*}\]</span>
-where <span class="math inline">\(f(x_{1},x_{2})\)</span> denotes the joint density of <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
+where <span class="math inline">\(f(x)\)</span> denotes the density of <span class="math inline">\(X_t\)</span> and <span class="math inline">\(f(x_{1},x_{2})\)</span> denotes the joint density of <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
 </div>
 <p></p>
 
@@ -382,8 +386,8 @@ where <span class="math inline">\(f(x_{1},x_{2})\)</span> denotes the joint dens
 <li><p>Variance of the process <span class="math inline">\(\text{Var}(X_t) = \gamma_X(t, t) \geq 0\)</span>. Under stationarity, <span class="math inline">\(\text{Var}(X_t) = \gamma_X(0)\)</span> and <span class="math inline">\(\mid \gamma_X(h) \mid \leq \gamma_X(0)\)</span> by Cauchy-Schwarz inequality.</p></li>
 <li><p>Scale dependent: ACV <span class="math inline">\(\gamma_X(t, t+h)\)</span> is scale dependent like any covariance. So <span class="math inline">\(\gamma_X(t, t+h) \in \mathbb{R}\)</span>.</p>
 <ul>
-<li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “close” to 0, then they are “less (linearly) dependent”.</li>
-<li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “far” from 0, <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are “more (linearly) dependent”.</li>
+<li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “close” to 0, then <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are “less (linearly) dependent”.</li>
+<li>If <span class="math inline">\(\mid \gamma_X(t, t+h) \mid\)</span> is “far” from 0, then <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are “more (linearly) dependent”.</li>
 </ul></li>
 </ol>
 <p>However in general, it is difficult to assess what “close” and “far” from zero mean.</p>
@@ -429,7 +433,7 @@ Figure 2.5: Correlation does NOT imply causation.
 </div>
 <div id="stationarity" class="section level2">
 <h2><span class="header-section-number">2.4</span> Stationarity</h2>
-<p>In this section we are going to introduce the concept of stationarity, one of the most important characteristics of time series data. First let us consider an example of <strong>non-stationary process</strong>.</p>
+<p>In this section we are going to introduce the concept of stationarity, one of the most important characteristics of time series data. First let us consider an example of <strong>non-stationary processes</strong>.</p>
 
 <div class="example">
 <span id="exm:exampleNonStationary" class="example"><strong>Example 2.5  (Non-Stationary Process)  </strong></span>
@@ -439,7 +443,7 @@ X_t  \sim \mathcal{N} \left(0, Y_t^2\right) \;\; \text{where $Y_t$ is unobserved
 In this case, it is clear that the estimation of <span class="math inline">\(\text{Var}(X_t)\)</span> is difficult since only <span class="math inline">\(X_t\)</span> is useful for the estimation. So in fact, <span class="math inline">\(X_t^2\)</span> is our best guess for <span class="math inline">\(\text{Var}(X_t)\)</span>.
 </div>
 <p></p>
-<p>On the other hand, let us consider an example of <strong>stationary process</strong> where averaging becomes meaningful for such process.</p>
+<p>On the other hand, let us consider an example of <strong>stationary processes</strong> where averaging becomes meaningful for such process.</p>
 
 <div class="example">
 <span id="exm:exampleStationary" class="example"><strong>Example 2.6  (Stationary Process)  </strong></span>
@@ -449,7 +453,7 @@ X_t = \theta W_{t-1} + W_t \;\;\; \text{where} \;\;\;  W_t  \stackrel{iid}{\sim}
 In this case, we can guess that a natural estimator of <span class="math inline">\(\text{Var}(X_t)\)</span> can be <span class="math inline">\(\hat{\sigma}^2 = \frac{1}{T} \sum_{i = 1}^T X_i^2\)</span>. That is, now averages are meaningful for such process.
 </div>
 <p></p>
-<p>There exist two forms of stationarity, which are defined below:</p>
+<p>We formalize the above idea by introducing the concept of stationarity. There exist two forms of stationarity, which are defined below:</p>
 
 <div class="definition">
 <span id="def:StrongStationarity" class="definition"><strong>Definition 2.14  (Strong Stationarity)  </strong></span>The time series <span class="math inline">\(X_{t}\)</span> is strongly stationary if the joint probability distribution is invariant under a shift in time, i.e.
@@ -558,6 +562,90 @@ In general, when <span class="math inline">\(h \in \mathbb{Z}\)</span> we obtain
 \end{aligned}
 \end{equation*}\]</span>
 which is a function of the lag <span class="math inline">\(h\)</span> only. Therefore, this AR1 process is weakly stationary.
+</div>
+<p></p>
+</div>
+<div id="linear-processes" class="section level2">
+<h2><span class="header-section-number">2.5</span> Linear Processes</h2>
+<p>In this section we introduce the concept of linear processes. As a matter of fact, the stationary models considered so far can all be represented as linear processes.</p>
+
+<div class="definition">
+<span id="def:LinearProc" class="definition"><strong>Definition 2.16  (Linear Processes)  </strong></span>A stochastic process <span class="math inline">\((X_t)\)</span> is said to be a linear process if it can be expressed as a linear combination of an iid Gaussian sequence (i.e. white noise process), i.e.: <span class="math display">\[{X_t} = \mu + \sum\limits_{j =  - \infty }^\infty  {{\psi _j}{W_{t - j}}} \]</span> where <span class="math inline">\(W_t \overset{iid}{\sim} \mathcal{N}(0, \sigma^2)\)</span> and <span class="math inline">\(\sum\limits_{j = - \infty }^\infty {\left| {{\psi _j}} \right|} &lt; \infty\)</span>.
+</div>
+<p></p>
+<p>Notice that the condition <span class="math inline">\(\sum\limits_{j = - \infty }^\infty {\left| {{\psi _j}} \right|} &lt; \infty\)</span> is required in the definition of linear processes in order to ensure that the series has a limit and is related to the absolutely summable covariance structure, which is defined below.</p>
+
+<div class="definition">
+<span id="def:AbsSumCov" class="definition"><strong>Definition 2.17  (Absolutely Summable Covariance Structure)  </strong></span>A process <span class="math inline">\((X_t)\)</span> is said to have an absolutely summable covariance structure if <span class="math inline">\(\sum\limits_{h = - \infty }^\infty {\left| \gamma_X(h) \right|} &lt; \infty\)</span>.
+</div>
+<p></p>
+
+<div class="exercise">
+<p><span id="exr:propertiesLinearProc" class="exercise"><strong>Remark 2.7  (Properties of Linear Processes)  </strong></span></p>
+<ol style="list-style-type: decimal">
+<li><p>All linear processes are stationary since <span class="math display">\[\begin{aligned}
+\mathbb{E}[X_t] &amp;= \mu, \\
+\gamma(h) &amp;= \sigma^2\sum\limits_{j =  - \infty }^\infty  {{\psi _j}{\psi _{j+h}}}.
+\end{aligned}\]</span></p></li>
+<li>All linear processes have absolutely summable covariance structures.
+</div>
+<p></p></li>
+</ol>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (ACV of Linear Processes). </span> 
+<span class="math display">\[\begin{align*}
+\gamma(h) &amp;= \text{Cov}(X_t, X_{t+h}) = \text{Cov}(\mu+\sum_{j=-\infty}^{\infty} \psi_j W_{t-j}, \mu+\sum_{j=-\infty}^{\infty} \psi_j W_{t+h-j})\\
+&amp;= \text{Cov}(\sum_{j=-\infty}^{\infty} \psi_j W_{t-j}, \sum_{j=-\infty}^{\infty} \psi_j W_{t-(j-h)}) \\
+&amp;= \text{Cov}(\sum_{j=-\infty}^{\infty} \psi_j W_{t-j}, \sum_{j=-\infty}^{\infty} \psi_{j+h} W_{t-j}) \\
+&amp;= \sum_{j=-\infty}^{\infty} \psi_j \psi_{j+h} \text{Cov}(W_{t-j}, W_{t-j}) \\
+&amp;= \sigma^2\sum\limits_{j =  - \infty }^\infty  {{\psi _j}{\psi _{j+h}}}.
+\end{align*}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (All linear processes have absolutely summable covariance structures.). </span> 
+<span class="math display">\[\begin{align*}
+\sum_{h=-\infty}^{\infty} \mid \gamma(h) \mid &amp;= \sum_{h=-\infty}^{\infty} \sigma^2 \mid \sum_{j=-\infty}^{\infty} \psi_j \psi_{j+h} \mid \\
+&amp;\leq \sigma^2 \sum_{h=-\infty}^{\infty} \sum_{j=-\infty}^{\infty} \mid \psi_j \psi_{j+h} \mid \\
+&amp;= \sigma^2 \sum_{j=-\infty}^{\infty} \sum_{h=-\infty}^{\infty} \mid \psi_j \mid \cdot \mid \psi_{j+h} \mid \\
+&amp;= \sigma^2 \sum_{j=-\infty}^{\infty} \mid \psi_j \mid \sum_{h=-\infty}^{\infty} \mid \psi_{j+h} \mid \\
+&amp;= \sigma^2 \big( \sum_{j=-\infty}^{\infty} \mid \psi_j \mid \big)^2 &lt; \infty
+\end{align*}\]</span>
+So with the assumption that <span class="math inline">\(\sum_{j=-\infty}^{\infty} \mid \psi_j \mid &lt; \infty\)</span>, we obtain that all linear processes have absolutely summable covariance structures. Notice that here we have shown that the condition <span class="math inline">\(\sum\limits_{j = - \infty }^\infty {\left| {{\psi _j}} \right|} &lt; \infty\)</span> is actually stronger than <span class="math inline">\(\sum\limits_{h = - \infty }^\infty {\left| \gamma(h) \right|} &lt; \infty\)</span>.
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:AR1isLP" class="example"><strong>Example 2.9  (AR1 is a linear process)  </strong></span>When we prove above that AR1 is weakly stationary, we have shown that for an AR1 process <span class="math inline">\(X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\nu^2)\)</span>, it can be represented as
+<span class="math display">\[\begin{align*}
+X_t = \sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}.
+\end{align*}\]</span>
+Therefore, AR1 is a linear process.
+</div>
+<p></p>
+</div>
+<div id="fundamental-representations-of-time-series" class="section level2">
+<h2><span class="header-section-number">2.6</span> Fundamental Representations of Time Series</h2>
+<p>We conclude this chapter by summarizing the fundamental representations of time series. If two processes have the same fundamental representations, then these two processes are the same. There are two most commonly used fundamental representations of time series, i.e.</p>
+<ul>
+<li>ACV and ACF;</li>
+<li>the Power Spectral Density (PSD).</li>
+</ul>
+
+<div class="exercise">
+<span id="exr:FundaRepreACVACF" class="exercise"><strong>Remark 2.8  (ACV and ACF as fundamental representation)  </strong></span>If we consider a zero mean normally distributed process, it is clear that its joint distribution is fully characterized by the autocovariances <span class="math inline">\(\mathbb{E}[X_t X_{t+h}]\)</span> since the joint probability density only depends on these covariances. Once we know the autocovariances we know everything there is to know about the process and therefore: if two processes have the same autocovariance function, then they are the same process.
+</div>
+<p></p>
+
+<div class="exercise">
+<span id="exr:FundaReprePSD" class="exercise"><strong>Remark 2.9  (PSD as fundamental representation)  </strong></span>The Power Spectral Density (PSD) is defined as
+<span class="math display">\[\begin{equation*}
+    S_X(f) = \int_{- \infty}^{\infty} \gamma_{X}(h)\,e^{-ifh}dh,
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(f\)</span> is a frequency. Hence, the PSD is a Fourier transform of the autocovariance function which describes the variance of a time series over frequencies (with respect to lags <span class="math inline">\(h\)</span>).</p>
+Given that the definition of the PSD, as for the autocovariance function, once we know the PSD we know everything there is to know about the process and therefore: if two processes have the same PSD, then they are the same process.
 </div>
 <p></p>
 
