@@ -66,7 +66,7 @@ plot(hydro, main = "Monthly Precipitation Data",
 From the above time series graph, we can observe some extreme observations (i.e. outliers) in this data more easily than if we simply look at all the values of this data. 
 
 ```{example, exampleInertialSensor, name = "Inertial Sensor Data"}
-Now we consider the data coming from the calibration procedure of an Inertial Measurement Unit (IMU). The signals coming from an IMU are usually measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. We present the time series graph of some data from an IMU below.
+Now we consider the data coming from the calibration procedure of an Inertial Measurement Unit (IMU). The signals coming from an IMU are usually measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. We present the time series graph of some gyro output data below.
 ```
 
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Inertial Sensor Data'}
@@ -76,7 +76,7 @@ data(imu6, package = "imudata")
 imu = gts(imu6[,1], freq = 100*60*60)
 # Plot time series
 plot(imu, main = "Inertial Sensor Data",
-     ylab = expression(paste("Error ", (rad/s^2))))
+     ylab = expression(paste("Angular Velocity ", (rad/s))))
 ```
 
 As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.
