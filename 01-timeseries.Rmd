@@ -82,6 +82,7 @@ plot(imu, main = "Inertial Sensor Data",
 As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.
 
 
+
 ## Latent Time Series Processes and Composite Stochastic Process
 We first introduce some latent time series processes that are commonly used, especially in the calibration procedure of inertial sensors.
 
@@ -384,7 +385,7 @@ which is a function of the lag $h$ only. Therefore, this AR1 process is weakly s
 ```
 
 ## Linear Processes
-In this section we introduce the concept of linear processes. As a matter of fact, the stationary models considered so far can all be represented as linear processes. 
+In this section we introduce the concept of linear processes. As a matter of fact, considered stationary models can all, so far, be represented as linear processes. 
 
 ```{definition, LinearProc, name = "Linear Processes"}
 A stochastic process $(X_t)$ is said to be a linear process if it can be expressed as a linear combination of an iid Gaussian sequence (i.e. white noise process), i.e.:
@@ -445,18 +446,18 @@ Therefore, AR1 is a linear process.
 We conclude this chapter by summarizing the fundamental representations of time series. If two processes have the same fundamental representations, then these two processes are the same. There are two most commonly used fundamental representations of time series, i.e.
 
 - ACV and ACF;
-- the Power Spectral Density (PSD).
+- Power Spectral Density (PSD).
 
 ```{exercise, FundaRepreACVACF, name = "ACV and ACF as fundamental representation"}
 If we consider a zero mean normally distributed process, it is clear that its joint distribution is fully characterized by the autocovariances $\mathbb{E}[X_t X_{t+h}]$ since the joint probability density only depends on these covariances. Once we know the autocovariances we know everything there is to know about the process and therefore: if two processes have the same autocovariance function, then they are the same process.
 ```
 
 ```{exercise, FundaReprePSD, name = "PSD as fundamental representation"}
-The Power Spectral Density (PSD) is defined as
+The PSD is defined as
 \begin{equation*}
     S_X(f) = \int_{- \infty}^{\infty} \gamma_{X}(h)\,e^{-ifh}dh,
 \end{equation*}
-where $f$ is a frequency. Hence, the PSD is a Fourier transform of the autocovariance function which describes the variance of a time series over frequencies (with respect to lags $h$).
+where $f$ is a frequency. Hence, the PSD is a Fourier Transform (FT) of the autocovariance function which describes the variance of a time series over frequencies (with respect to lags $h$).
 
 Given that the definition of the PSD, as for the autocovariance function, once we know the PSD we know everything there is to know about the process and therefore: if two processes have the same PSD, then they are the same process.
 ```

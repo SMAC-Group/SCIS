@@ -569,7 +569,7 @@ which is a function of the lag <span class="math inline">\(h\)</span> only. Ther
 </div>
 <div id="linear-processes" class="section level2">
 <h2><span class="header-section-number">2.5</span> Linear Processes</h2>
-<p>In this section we introduce the concept of linear processes. As a matter of fact, the stationary models considered so far can all be represented as linear processes.</p>
+<p>In this section we introduce the concept of linear processes. As a matter of fact, considered stationary models can all, so far, be represented as linear processes.</p>
 
 <div class="definition">
 <span id="def:LinearProc" class="definition"><strong>Definition 2.16  (Linear Processes)  </strong></span>A stochastic process <span class="math inline">\((X_t)\)</span> is said to be a linear process if it can be expressed as a linear combination of an iid Gaussian sequence (i.e. white noise process), i.e.: <span class="math display">\[{X_t} = \mu + \sum\limits_{j =  - \infty }^\infty  {{\psi _j}{W_{t - j}}} \]</span> where <span class="math inline">\(W_t \overset{iid}{\sim} \mathcal{N}(0, \sigma^2)\)</span> and <span class="math inline">\(\sum\limits_{j = - \infty }^\infty {\left| {{\psi _j}} \right|} &lt; \infty\)</span>.
@@ -633,7 +633,7 @@ Therefore, AR1 is a linear process.
 <p>We conclude this chapter by summarizing the fundamental representations of time series. If two processes have the same fundamental representations, then these two processes are the same. There are two most commonly used fundamental representations of time series, i.e.</p>
 <ul>
 <li>ACV and ACF;</li>
-<li>the Power Spectral Density (PSD).</li>
+<li>Power Spectral Density (PSD).</li>
 </ul>
 
 <div class="exercise">
@@ -642,11 +642,11 @@ Therefore, AR1 is a linear process.
 
 
 <div class="exercise">
-<span id="exr:FundaReprePSD" class="exercise"><strong>Remark 2.9  (PSD as fundamental representation)  </strong></span>The Power Spectral Density (PSD) is defined as
+<span id="exr:FundaReprePSD" class="exercise"><strong>Remark 2.9  (PSD as fundamental representation)  </strong></span>The PSD is defined as
 <span class="math display">\[\begin{equation*}
     S_X(f) = \int_{- \infty}^{\infty} \gamma_{X}(h)\,e^{-ifh}dh,
 \end{equation*}\]</span>
-<p>where <span class="math inline">\(f\)</span> is a frequency. Hence, the PSD is a Fourier transform of the autocovariance function which describes the variance of a time series over frequencies (with respect to lags <span class="math inline">\(h\)</span>).</p>
+<p>where <span class="math inline">\(f\)</span> is a frequency. Hence, the PSD is a Fourier Transform (FT) of the autocovariance function which describes the variance of a time series over frequencies (with respect to lags <span class="math inline">\(h\)</span>).</p>
 Given that the definition of the PSD, as for the autocovariance function, once we know the PSD we know everything there is to know about the process and therefore: if two processes have the same PSD, then they are the same process.
 </div>
 
