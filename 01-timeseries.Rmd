@@ -79,7 +79,7 @@ plot(imu, main = "Inertial Sensor Data",
      ylab = expression(paste("Angular Velocity ", (rad/s))))
 ```
 
-As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series analysis is not appropriate for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.
+As we can see from the graph, although a linear trend and other processes are present in this data, it is practically impossible to discern any feature of the data based on the time series graph. In general, the descriptive analysis in classical time series is not sutable for the analysis of inertial sensors as these data are usually very large in order to perform parameter estimation.
 
 
 
