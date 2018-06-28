@@ -44,6 +44,7 @@ data(jj, package = "astsa")
 jj = gts(jj, start = 1960, freq = 4)
 # Plot time series
 plot(jj, main = "Johnson and Johnson Quarterly Earnings",
+     xlab = "Time (year)",
      ylab = "Quarterly Earnings per Share ($)") 
 ```
 
@@ -60,6 +61,7 @@ data(hydro, package = "simts")
 hydro = gts(hydro, start = 1907, freq = 12)
 # Plot time series
 plot(hydro, main = "Monthly Precipitation Data",
+     xlab = "Time (year)",
      ylab = "Mean Monthly Precipitation (mm)")
 ```
 
