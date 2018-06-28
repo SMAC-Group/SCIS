@@ -7,7 +7,8 @@ In this chapter, we will provide an introduction to time series analysis. This c
 - Dependence within time series;
 - Concept of stationarity;
 - Concept of linear processes;
-- Fundamental representations of time series. 
+- Fundamental representations of time series;
+- Estimation problems with time series.
 
 ## Time Series
 ```{definition, ts, name = "Time Series"}
@@ -256,8 +257,6 @@ knitr::include_graphics("images/corr_cat.jpg")
 ```
 
 
-
-
 ## Stationarity
 In this section we are going to introduce the concept of stationarity, one of the most important characteristics of time series data. First let us consider an example of **non-stationary processes**.
 
@@ -464,5 +463,85 @@ where $f$ is a frequency. Hence, the PSD is a Fourier Transform (FT) of the auto
 Given that the definition of the PSD, as for the autocovariance function, once we know the PSD we know everything there is to know about the process and therefore: if two processes have the same PSD, then they are the same process.
 ```
 
+
+## Estimation Problems with Time Series 
+Estimation in the context of time series is not as straightforward as in the iid case. For example, let us consider the easiest case of estimation: the sample mean of a stationary time series. 
+
+```{example, EstSampleMean, name = "Estimation with Sample Mean"}
+Let $(X_t)$ be a stationary time series, so we have that $\mathbb{E}[X_t] = \mu$ and the value of $\mu$ can be estimated by the sample mean, i.e.
+\begin{equation*}
+	\bar{X} = \frac{1}{T} \sum_{t = 1}^T X_t.
+\end{equation*}
+Using the properties of a stationary process, we obtain
+\begin{equation*}
+\text{Var} \left(\bar{X}\right) = \frac{\gamma(0)}{T} \sum_{h = -T}^{T} \left(1 - \frac{|h|}{T}\right) \rho(h)
+\end{equation*}
+since
+\begin{align*}
+\text{Var}(\bar{X}) &= \frac{1}{T^2} \text{Var}(\sum_{t=1}^T X_t) = \frac{1}{T^2} (\sum_{t=1}^T \text{Var}(X_t) + 2\underset{1 \leq t<s\leq T}{\sum\sum} \text{Cov}(X_t, X_s)) \\
+&= \frac{1}{T^2} (T\gamma(0) + 2(T-1)\gamma(1) + 2(T-2)\gamma(2) + \ldots + 2\gamma(T-1)) \\
+&= \frac{\gamma(0)}{T^2} (T+ 2(T-1)\rho(1) + \ldots + 2\rho(T-1)) \\
+&= \frac{\gamma(0)}{T} + \frac{2\gamma(0)}{T} \sum_{h=1}^{T-1} (1-\frac{h}{T})\rho(h) \\
+&= \frac{\gamma(0)}{T} \sum_{h = -(T-1)}^{T-1} \left(1 - \frac{|h|}{T}\right) \rho(h) \\
+&= \frac{\gamma(0)}{T} \sum_{h = -T}^{T} \left(1 - \frac{|h|}{T}\right) \rho(h).
+\end{align*}
+```
+
+```{example, EstSampleMeaninAR1, name = "Estimation with Sample Mean in AR1"}
+As in the previous example, let us consider a stationary AR1 process, i.e.
+\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; \text{where} \;\;\; |\phi| < 1 \;\;\; \text{and} \;\;\;  Z_t  \overset{iid}{\sim} \mathcal{N} \left(0, \nu^2\right).
+\end{equation*}
+
+We have obtained before that in AR1, $\gamma(h) = \phi^h \sigma^2 \left(1 - \phi^2\right)^{-1}$. Therefore, we obtain (after some computations):
+
+\begin{equation*}
+\text{Var} \left( {\bar X} \right) = \frac{\nu^2 \left( T - 2\phi - T \phi^2 + 2 \phi^{T + 1}\right)}{T^2\left(1-\phi^2\right)\left(1-\phi\right)^2}.
+\end{equation*}
+
+Unfortunately, deriving such an exact formula is often difficult when considering more complex models. Therefore, asymptotic approximations are often employed to simplify the calculation. For example, in this AR1 case we have
+\begin{equation*}
+\lim_{T \to \infty } \; T \text{Var} \left( {\bar X} \right) = \frac{\nu^2}{\left(1-\phi\right)^2},
+\end{equation*}
+providing the following approximate formula
+\begin{equation*}
+\text{Var} \left( {\bar X} \right) \approx \frac{\nu^2}{T \left(1-\phi\right)^2}.
+\end{equation*}
+
+
+Alternatively, simulation methods can also be employed. For example, one could compute $\text{Var} \left( {\bar X} \right)$ as follows:
+
+Step 1: Simulate under the assumed model, i.e. $X_t^* \sim F_{\theta_0}$, where $F_{\theta_0}$ denotes the true model (in this case an AR1 process).
+
+Step 2: Compute ${\bar X^*}$ (i.e. average based on $(X_t^*)$).
+
+Step 3: Repeat Steps 1 and 2 $B$ times.
+
+Step 4: Compute the empirical variance ${\bar X^*}$ (based on $B$ independent replications).
+
+The above procedure is known as Monte-Carlo method (in this case it is actually a Monte-Carlo integral) and is closely related to the concept of parametric bootstrap (see @efron1994introduction) which is a very popular tool in statistics.
+
+```
+
+Now we define the classical estimators of $\gamma(h)$ and $\rho(h)$ for AutoCovariance and AutoCorrelation functions. 
+
+```{definition, sampleACV, name = "Sample AutoCovariance Function"}
+The sample autocovariance function is defined as
+\begin{equation*}
+\hat{\gamma}(h) = \frac{1}{T} \sum_{t = 1}^{T-h} \left(X_{t} - \bar{X}\right) \left(X_{t+h} - \bar{X}\right)
+\end{equation*}
+with $\hat{\gamma}(h) = \hat{\gamma}(-h)$ for $h = 0, 1, ..., k$, where $k$ is a fixed integer.
+```
+
+```{definition, sampleACF, name = "Sample AutoCorrelation Function"}
+The sample autocorrelation function is defined as
+\begin{equation*}
+\hat{\rho}(h) = \frac{\hat{\gamma}(h)}{\hat{\gamma}(0)}
+\end{equation*}
+with $\hat{\rho}(h) = \hat{\rho}(-h)$ for $h = 0, 1, ..., k$, where $k$ is a fixed integer.
+```
+
+
+We will discuss more about the properties of these estimators in the next chapter.
 
 

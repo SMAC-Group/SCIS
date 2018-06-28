@@ -111,6 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
 <li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.5</b> Linear Processes</a></li>
 <li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
+<li class="chapter" data-level="2.7" data-path="timeseries.html"><a href="timeseries.html#estimation-problems-with-time-series"><i class="fa fa-check"></i><b>2.7</b> Estimation Problems with Time Series</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
@@ -158,7 +159,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Dependence within time series;</li>
 <li>Concept of stationarity;</li>
 <li>Concept of linear processes;</li>
-<li>Fundamental representations of time series.</li>
+<li>Fundamental representations of time series;</li>
+<li>Estimation problems with time series.</li>
 </ul>
 <div id="time-series" class="section level2">
 <h2><span class="header-section-number">2.1</span> Time Series</h2>
@@ -652,6 +654,77 @@ Therefore, AR1 is a linear process.
 Given that the definition of the PSD, as for the autocovariance function, once we know the PSD we know everything there is to know about the process and therefore: if two processes have the same PSD, then they are the same process.
 </div>
 <p></p>
+</div>
+<div id="estimation-problems-with-time-series" class="section level2">
+<h2><span class="header-section-number">2.7</span> Estimation Problems with Time Series</h2>
+<p>Estimation in the context of time series is not as straightforward as in the iid case. For example, let us consider the easiest case of estimation: the sample mean of a stationary time series.</p>
+
+<div class="example">
+<span id="exm:EstSampleMean" class="example"><strong>Example 2.10  (Estimation with Sample Mean)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be a stationary time series, so we have that <span class="math inline">\(\mathbb{E}[X_t] = \mu\)</span> and the value of <span class="math inline">\(\mu\)</span> can be estimated by the sample mean, i.e.
+<span class="math display">\[\begin{equation*}
+    \bar{X} = \frac{1}{T} \sum_{t = 1}^T X_t.
+\end{equation*}\]</span>
+Using the properties of a stationary process, we obtain
+<span class="math display">\[\begin{equation*}
+\text{Var} \left(\bar{X}\right) = \frac{\gamma(0)}{T} \sum_{h = -T}^{T} \left(1 - \frac{|h|}{T}\right) \rho(h)
+\end{equation*}\]</span>
+since
+<span class="math display">\[\begin{align*}
+\text{Var}(\bar{X}) &amp;= \frac{1}{T^2} \text{Var}(\sum_{t=1}^T X_t) = \frac{1}{T^2} (\sum_{t=1}^T \text{Var}(X_t) + 2\underset{1 \leq t&lt;s\leq T}{\sum\sum} \text{Cov}(X_t, X_s)) \\
+&amp;= \frac{1}{T^2} (T\gamma(0) + 2(T-1)\gamma(1) + 2(T-2)\gamma(2) + \ldots + 2\gamma(T-1)) \\
+&amp;= \frac{\gamma(0)}{T^2} (T+ 2(T-1)\rho(1) + \ldots + 2\rho(T-1)) \\
+&amp;= \frac{\gamma(0)}{T} + \frac{2\gamma(0)}{T} \sum_{h=1}^{T-1} (1-\frac{h}{T})\rho(h) \\
+&amp;= \frac{\gamma(0)}{T} \sum_{h = -(T-1)}^{T-1} \left(1 - \frac{|h|}{T}\right) \rho(h) \\
+&amp;= \frac{\gamma(0)}{T} \sum_{h = -T}^{T} \left(1 - \frac{|h|}{T}\right) \rho(h).
+\end{align*}\]</span>
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:EstSampleMeaninAR1" class="example"><strong>Example 2.11  (Estimation with Sample Mean in AR1)  </strong></span>As in the previous example, let us consider a stationary AR1 process, i.e.
+<span class="math display">\[\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; \text{where} \;\;\; |\phi| &lt; 1 \;\;\; \text{and} \;\;\;  Z_t  \overset{iid}{\sim} \mathcal{N} \left(0, \nu^2\right).
+\end{equation*}\]</span>
+<p>We have obtained before that in AR1, <span class="math inline">\(\gamma(h) = \phi^h \sigma^2 \left(1 - \phi^2\right)^{-1}\)</span>. Therefore, we obtain (after some computations):</p>
+<span class="math display">\[\begin{equation*}
+\text{Var} \left( {\bar X} \right) = \frac{\nu^2 \left( T - 2\phi - T \phi^2 + 2 \phi^{T + 1}\right)}{T^2\left(1-\phi^2\right)\left(1-\phi\right)^2}.
+\end{equation*}\]</span>
+Unfortunately, deriving such an exact formula is often difficult when considering more complex models. Therefore, asymptotic approximations are often employed to simplify the calculation. For example, in this AR1 case we have
+<span class="math display">\[\begin{equation*}
+\lim_{T \to \infty } \; T \text{Var} \left( {\bar X} \right) = \frac{\nu^2}{\left(1-\phi\right)^2},
+\end{equation*}\]</span>
+providing the following approximate formula
+<span class="math display">\[\begin{equation*}
+\text{Var} \left( {\bar X} \right) \approx \frac{\nu^2}{T \left(1-\phi\right)^2}.
+\end{equation*}\]</span>
+<p>Alternatively, simulation methods can also be employed. For example, one could compute <span class="math inline">\(\text{Var} \left( {\bar X} \right)\)</span> as follows:</p>
+<p>Step 1: Simulate under the assumed model, i.e. <span class="math inline">\(X_t^* \sim F_{\theta_0}\)</span>, where <span class="math inline">\(F_{\theta_0}\)</span> denotes the true model (in this case an AR1 process).</p>
+<p>Step 2: Compute <span class="math inline">\({\bar X^*}\)</span> (i.e. average based on <span class="math inline">\((X_t^*)\)</span>).</p>
+<p>Step 3: Repeat Steps 1 and 2 <span class="math inline">\(B\)</span> times.</p>
+<p>Step 4: Compute the empirical variance <span class="math inline">\({\bar X^*}\)</span> (based on <span class="math inline">\(B\)</span> independent replications).</p>
+<p>The above procedure is known as Monte-Carlo method (in this case it is actually a Monte-Carlo integral) and is closely related to the concept of parametric bootstrap (see <span class="citation">Efron and Tibshirani (<a href="#ref-efron1994introduction">1994</a>)</span>) which is a very popular tool in statistics.</p>
+</div>
+<p></p>
+<p>Now we define the classical estimators of <span class="math inline">\(\gamma(h)\)</span> and <span class="math inline">\(\rho(h)\)</span> for AutoCovariance and AutoCorrelation functions.</p>
+
+<div class="definition">
+<span id="def:sampleACV" class="definition"><strong>Definition 2.18  (Sample AutoCovariance Function)  </strong></span>The sample autocovariance function is defined as
+<span class="math display">\[\begin{equation*}
+\hat{\gamma}(h) = \frac{1}{T} \sum_{t = 1}^{T-h} \left(X_{t} - \bar{X}\right) \left(X_{t+h} - \bar{X}\right)
+\end{equation*}\]</span>
+with <span class="math inline">\(\hat{\gamma}(h) = \hat{\gamma}(-h)\)</span> for <span class="math inline">\(h = 0, 1, ..., k\)</span>, where <span class="math inline">\(k\)</span> is a fixed integer.
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:sampleACF" class="definition"><strong>Definition 2.19  (Sample AutoCorrelation Function)  </strong></span>The sample autocorrelation function is defined as
+<span class="math display">\[\begin{equation*}
+\hat{\rho}(h) = \frac{\hat{\gamma}(h)}{\hat{\gamma}(0)}
+\end{equation*}\]</span>
+with <span class="math inline">\(\hat{\rho}(h) = \hat{\rho}(-h)\)</span> for <span class="math inline">\(h = 0, 1, ..., k\)</span>, where <span class="math inline">\(k\)</span> is a fixed integer.
+</div>
+<p></p>
+<p>We will discuss more about the properties of these estimators in the next chapter.</p>
 
 </div>
 </div>
@@ -659,6 +732,9 @@ Given that the definition of the PSD, as for the autocovariance function, once w
 <div id="refs" class="references">
 <div id="ref-granger1969investigating">
 <p>Granger, C. W. J. 1969. “Investigating Causal Relations by Econometric Models and Cross-Spectral Methods.” <em>Econometrica: Journal of the Econometric Society</em>. JSTOR, 424–38.</p>
+</div>
+<div id="ref-efron1994introduction">
+<p>Efron, B., and R. J. Tibshirani. 1994. <em>An Introduction to the Bootstrap</em>. CRC press.</p>
 </div>
 </div>
             </section>
