@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Inertial Sensors Stochastic Calibration</title>
   <meta name="description" content="TO DO">
-  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Inertial Sensors Stochastic Calibration" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-06-05">
+<meta name="date" content="2018-06-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,71 +49,6 @@
 
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -139,8 +74,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
 <li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.5</b> Linear Processes</a></li>
 <li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
+<li class="chapter" data-level="2.7" data-path="timeseries.html"><a href="timeseries.html#estimation-problems-with-time-series"><i class="fa fa-check"></i><b>2.7</b> Estimation Problems with Time Series</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
+<li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a><ul>
+<li class="chapter" data-level="3.1" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html#extremum-estimators"><i class="fa fa-check"></i><b>3.1</b> Extremum Estimators</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
 <li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
 <li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> Properties of the Allan Variance</a></li>
@@ -179,8 +117,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="a-review-of-the-properties-of-statistical-estimators" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> A Review of the Properties of Statistical Estimators</h1>
-<p>TO DO</p>
+<p>In this chapter, we will provide a review of the properties of statistical estimators. This chapter is organized with the following outline:</p>
+<ul>
+<li>Extremum estimators;</li>
+<li>Consistency;</li>
+<li>Asymptotic normality.</li>
+</ul>
+<div id="extremum-estimators" class="section level2">
+<h2><span class="header-section-number">3.1</span> Extremum Estimators</h2>
 
+<div class="definition">
+<span id="def:EstreEst" class="definition"><strong>Definition 3.1  (Extremum Estimators)  </strong></span>Many estimators have a common structure, which is often useful to study their asymptotic properties. One structure or framework is the class of estimators that maximize some objective function, referred to as extremum estimators, which can can be defined as follows:
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}} \equiv \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \hat{Q}_n(\boldsymbol{\theta})
+\end{equation*}\]</span>
+where <span class="math inline">\(\boldsymbol{\theta}\)</span> and <span class="math inline">\(\boldsymbol{\Theta}\)</span> denote, respectively, the parameter vector of interest and its set of possible values.
+</div>
+<p></p>
+<p>The vast majority of statistical estimators can be represented as extremum estimators. For example, least squares, maximum likelihood or (generalized) method of moment estimators can all be represented as extremum estimators.</p>
+
+<div class="example">
+<span id="exm:ExtreEstLSE" class="example"><strong>Example 3.1  (Least Squares Estimator as Extremum Estimator)  </strong></span>Consider the linear model <span class="math inline">\(\boldsymbol{y} = \boldsymbol{X} \boldsymbol{\beta}_0 + \boldsymbol{\epsilon}\)</span> where <span class="math inline">\(\boldsymbol{X} \in \mathbb{R}^{n \times p}\)</span> is a full rank constant matrix, <span class="math inline">\(\boldsymbol{\beta} \in {\mathcal{B}} \subseteq \mathbb{R}^p\)</span> and <span class="math inline">\(\epsilon_i \overset{iid}{\sim} \mathcal{N}(0, \sigma_\epsilon^2)\)</span>. Let <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> denote the Least Squares Estimator (LSE) of <span class="math inline">\(\boldsymbol{\beta}_0\)</span>, i.e.
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\beta}} = \left(\boldsymbol{X}^T \boldsymbol{X} \right)^{-1} \boldsymbol{X}^T \boldsymbol{y}. 
+\end{equation*}\]</span>
+This LSE is an extremum estimator since it can be expressed as
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta} \in \mathcal{B}}{\text{argmax}} \; -||\boldsymbol{y} - \boldsymbol{X} \boldsymbol{\beta} ||_2^2.
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ExtreEstMLE" class="example"><strong>Example 3.2  (Maximum Likelihood Estimator as Extremum Estimator)  </strong></span>Let <span class="math inline">\(Z_1, \ldots, Z_n\)</span> be an iid sample with pdf <span class="math inline">\(f(z|\boldsymbol{\theta}_0)\)</span>. The Maximum Likelihood Estimator (MLE) is given by
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
+\end{equation*}\]</span>
+<p>Here instead of the actual log-likelihood, we are actually using a normalized log-likelihood, which has no impact on the estimator but the normalized form is more convenient to use when we let <span class="math inline">\(n \to \infty\)</span>.</p>
+Therefore, the MLE can be seen as an extremum estimator with
+<span class="math display">\[\begin{equation*}
+\hat{Q}_n(\boldsymbol{\theta}) = \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:GMM" class="definition"><strong>Definition 3.2  (Generalized Method of Moments)  </strong></span>Let <span class="math inline">\(Z_1, \ldots, Z_n\)</span> be an iid sample with pdf <span class="math inline">\(f(z|\boldsymbol{\theta}_0)\)</span>. Suppose that there is a moment function vector <span class="math inline">\(\boldsymbol{g}(z | \boldsymbol{\theta})\)</span> such that <span class="math inline">\(\mathbb{E}[\boldsymbol{g} (z | \boldsymbol{\theta}_0)] = 0\)</span>. Then the Generalized Method of Moments (GMM) estimator of <span class="math inline">\(\boldsymbol{\theta}_0\)</span> is defined as
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - \left[\frac{1}{n} \sum_{i = 1}^n \boldsymbol{g}(z_i | \boldsymbol{\theta}) \right]^T \widehat{\boldsymbol{W}} \left[\frac{1}{n} \sum_{i = 1}^n \boldsymbol{g}(z_i | \boldsymbol{\theta}) \right],
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\widehat{\boldsymbol{W}}\)</span> is an positive definite matrix of appropriate dimension.</p>
+Alternatively (but equivalently), we can define GMM estimator as
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\mu}} - \boldsymbol{\mu}(\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2,
+\end{equation*}\]</span>
+where <span class="math inline">\(|| \boldsymbol{x} ||_{\boldsymbol{A}}^2 = \boldsymbol{x}^T \boldsymbol{A} \boldsymbol{x}\)</span>, and where <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span> and <span class="math inline">\(\boldsymbol{\mu}(\boldsymbol{\theta})\)</span> denote, respectively, the empirical and model based moments. We will use this form of definition of GMM estimator more often.
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ExtreEstGMM" class="example"><strong>Example 3.3  (A Simple GMM Estimator as Extremum Estimator)  </strong></span>Let <span class="math inline">\(Z_i \overset{iid}{\sim} \mathcal{N}(\mu_0, \sigma^2_0)\)</span> and <span class="math inline">\(\boldsymbol{\theta}_0 = (\mu_0, \sigma_0^2)^T\)</span>. Suppose we wish to estimate <span class="math inline">\(\boldsymbol{\theta}_0\)</span> by matching the first three empirical moments with their theoretical counterparts. In this case, a reasonable moment function or condition defining a GMM estimator is given by:
+<span class="math display">\[\begin{equation*}
+\boldsymbol{g} (Z | \boldsymbol{\theta}) = \begin{bmatrix}
+Z - \mu\\
+Z^2 - \left(\mu^2 + \sigma^2\right)\\
+Z^3 - \left(\mu^3 + 3 \mu \sigma^2\right)
+\end{bmatrix}.
+\end{equation*}\]</span>
+Notice that <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n \boldsymbol{g} (Z_i | \boldsymbol{\theta}) = \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\)</span>, where <span class="math inline">\(\hat{\boldsymbol{\gamma}}\)</span> and <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta})\)</span> denote, respectively, the empirical and model based moments, i.e.
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\gamma}} = \frac{1}{n}  \sum_{i = 1}^n 
+\begin{bmatrix}
+Z_i\\
+Z_i^2\\
+Z_i^3\\
+\end{bmatrix}, \;\;\;\;
+\boldsymbol{\gamma}(\boldsymbol{\theta}) =  \begin{bmatrix}
+\mu\\
+\mu^2 + \sigma^2\\
+\mu^3 + 3 \mu \sigma^2
+\end{bmatrix}.
+\end{equation*}\]</span>
+Therefore we can write the GMM estimator of <span class="math inline">\(\boldsymbol{\theta}_0\)</span> as
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmin}} \; || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+</div>
 </div>
             </section>
 
@@ -234,7 +259,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

@@ -1,3 +1,97 @@
 # A Review of the Properties of Statistical Estimators
 
-TO DO
+In this chapter, we will provide a review of the properties of statistical estimators. This chapter is organized with the following outline:
+
+- Extremum estimators;
+- Consistency;
+- Asymptotic normality.
+
+## Extremum Estimators
+```{definition, EstreEst, name = "Extremum Estimators"}
+Many estimators have a common structure, which is often useful to study their asymptotic properties. One structure or framework is the class of estimators that maximize some objective function, referred to as extremum estimators, which can can be defined as follows:
+\begin{equation*}
+\hat{\boldsymbol{\theta}} \equiv \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \hat{Q}_n(\boldsymbol{\theta})
+\end{equation*}
+where $\boldsymbol{\theta}$ and $\boldsymbol{\Theta}$ denote, respectively, the parameter vector of interest and its set of possible values.
+```
+
+The vast majority of statistical estimators can be represented as extremum estimators. For example, least squares, maximum likelihood or (generalized) method of moment estimators can all be represented as extremum estimators.
+
+```{example, ExtreEstLSE, name = "Least Squares Estimator as Extremum Estimator"}
+Consider the linear model $\boldsymbol{y} = \boldsymbol{X} \boldsymbol{\beta}_0 + \boldsymbol{\epsilon}$ where $\boldsymbol{X} \in \mathbb{R}^{n \times p}$ is a full rank constant matrix, $\boldsymbol{\beta} \in {\mathcal{B}} \subseteq \mathbb{R}^p$ and $\epsilon_i \overset{iid}{\sim} \mathcal{N}(0, \sigma_\epsilon^2)$. Let $\hat{\boldsymbol{\beta}}$ denote the Least Squares Estimator (LSE) of $\boldsymbol{\beta}_0$, i.e.
+\begin{equation*}
+\hat{\boldsymbol{\beta}} = \left(\boldsymbol{X}^T \boldsymbol{X} \right)^{-1} \boldsymbol{X}^T \boldsymbol{y}. 
+\end{equation*}
+This LSE is an extremum estimator since it can be expressed as 
+\begin{equation*}
+\hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta} \in \mathcal{B}}{\text{argmax}} \; -||\boldsymbol{y} - \boldsymbol{X} \boldsymbol{\beta} ||_2^2.
+\end{equation*}
+```
+
+```{example, ExtreEstMLE, name = "Maximum Likelihood Estimator as Extremum Estimator"}
+Let $Z_1, \ldots, Z_n$ be an iid sample with pdf $f(z|\boldsymbol{\theta}_0)$. The Maximum Likelihood Estimator (MLE) is given by
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
+\end{equation*}
+
+Here instead of the actual log-likelihood, we are actually using a normalized log-likelihood, which has no impact on the estimator but the normalized form is more convenient to use when we let $n \to \infty$.
+
+Therefore, the MLE can be seen as an extremum estimator with 
+\begin{equation*}
+\hat{Q}_n(\boldsymbol{\theta}) = \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
+\end{equation*}
+```
+
+```{definition, GMM, name = "Generalized Method of Moments"}
+Let $Z_1, \ldots, Z_n$ be an iid sample with pdf $f(z|\boldsymbol{\theta}_0)$. Suppose that there is a moment function vector $\boldsymbol{g}(z | \boldsymbol{\theta})$ such that $\mathbb{E}[\boldsymbol{g} (z | \boldsymbol{\theta}_0)] = 0$. Then the Generalized Method of Moments (GMM) estimator of $\boldsymbol{\theta}_0$ is defined as 
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - \left[\frac{1}{n} \sum_{i = 1}^n \boldsymbol{g}(z_i | \boldsymbol{\theta}) \right]^T \widehat{\boldsymbol{W}} \left[\frac{1}{n} \sum_{i = 1}^n \boldsymbol{g}(z_i | \boldsymbol{\theta}) \right],
+\end{equation*}
+where $\widehat{\boldsymbol{W}}$ is an positive definite matrix of appropriate dimension.
+
+Alternatively (but equivalently), we can define GMM estimator as 
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\mu}} - \boldsymbol{\mu}(\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2,
+\end{equation*}
+where $|| \boldsymbol{x} ||_{\boldsymbol{A}}^2 = \boldsymbol{x}^T \boldsymbol{A} \boldsymbol{x}$, and where $\hat{\boldsymbol{\mu}}$ and $\boldsymbol{\mu}(\boldsymbol{\theta})$ denote, respectively, the empirical and model based moments. We will use this form of definition of GMM estimator more often.
+```
+
+```{example, ExtreEstGMM, name = "A Simple GMM Estimator as Extremum Estimator"}
+Let $Z_i \overset{iid}{\sim} \mathcal{N}(\mu_0, \sigma^2_0)$ and $\boldsymbol{\theta}_0 = (\mu_0, \sigma_0^2)^T$. Suppose we wish to estimate $\boldsymbol{\theta}_0$ by matching the first three empirical moments with their theoretical counterparts. In this case, a reasonable moment function or condition defining a GMM estimator is given by:
+\begin{equation*}
+\boldsymbol{g} (Z | \boldsymbol{\theta}) = \begin{bmatrix}
+Z - \mu\\
+Z^2 - \left(\mu^2 + \sigma^2\right)\\
+Z^3 - \left(\mu^3 + 3 \mu \sigma^2\right)
+\end{bmatrix}.
+\end{equation*}
+
+Notice that $\frac{1}{n} \sum_{i=1}^n \boldsymbol{g} (Z_i | \boldsymbol{\theta}) = \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})$, where $\hat{\boldsymbol{\gamma}}$ and $\boldsymbol{\gamma}(\boldsymbol{\theta})$ denote, respectively, the empirical and model based moments, i.e.
+\begin{equation*}
+\hat{\boldsymbol{\gamma}} = \frac{1}{n}  \sum_{i = 1}^n 
+\begin{bmatrix}
+Z_i\\
+Z_i^2\\
+Z_i^3\\
+\end{bmatrix}, \;\;\;\;
+\boldsymbol{\gamma}(\boldsymbol{\theta}) = 	\begin{bmatrix}
+\mu\\
+\mu^2 + \sigma^2\\
+\mu^3 + 3 \mu \sigma^2
+\end{bmatrix}.
+\end{equation*}
+
+Therefore we can write the GMM estimator of $\boldsymbol{\theta}_0$ as
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmin}} \; || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 
+\end{equation*}
+```
+
+
+
+
+
+
+
+
+
