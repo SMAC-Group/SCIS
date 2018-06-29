@@ -1,4 +1,4 @@
-# A Review of the Properties of Statistical Estimators
+# Properties of Statistical Estimators
 
 In this chapter, we will provide a review of the properties of statistical estimators. This chapter is organized with the following outline:
 
@@ -7,6 +7,8 @@ In this chapter, we will provide a review of the properties of statistical estim
 - Asymptotic normality.
 
 ## Extremum Estimators
+In this section, we will introduce a commonly used class of estimators, extremum estimators, and some examples of it. 
+
 ```{definition, EstreEst, name = "Extremum Estimators"}
 Many estimators have a common structure, which is often useful to study their asymptotic properties. One structure or framework is the class of estimators that maximize some objective function, referred to as extremum estimators, which can can be defined as follows:
 \begin{equation*}
@@ -88,10 +90,91 @@ Therefore we can write the GMM estimator of $\boldsymbol{\theta}_0$ as
 ```
 
 
+## Consistency
+In this section, we will introduce one of the most important properties of statistical estimators, consistency. And we will discuss in details about the conditions for consistency of the extremum estimators. 
+
+```{definition, consistency, name = "Consistency"}
+An estimator $\hat{\boldsymbol{\theta}}$ is said to be consistent or weakly consistent if it converges in probability to $\boldsymbol{\theta}_0$, i.e.
+\begin{equation*}
+\underset{n \to \infty}{\text{lim}} \mathbb{P} (||\hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0||_2 \geq \epsilon) = 0,
+\end{equation*}
+for all $\epsilon >0$.
+```
+
+In Layman's term, consistency simply means that if $n$ is large enough, then $\hat{\boldsymbol{\theta}}$ will be arbitrarily close to $\boldsymbol{\theta}_0$ (i.e. inside of an hypersphere of radius $\epsilon$ centered at $\boldsymbol{\theta}_0$). This also means the procedure (i.e. our estimator $\hat{\boldsymbol{\theta}}$) based on unlimited data will be able to identify the underlying truth (i.e. $\boldsymbol{\theta}_0$).
 
 
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='Interpretation of consistency', echo=FALSE}
+knitr::include_graphics("images/consistency.pdf")
+```
 
+To show the consistency of estimators, we often make use of the following two important results:
 
+```{theorem, WLLN, name = "Weak Law of Large Number"}
+Suppose $X_i$ are iid random variables with finite mean $\mu$ (i.e. $\mathbb{E}[X_i] = \mu$) and finite variance. Let $\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i$, then $\bar{X}_n \overset{\mathcal{P}}{\mapsto} \mu$.
+```
 
+```{theorem, CMT, name = "Continuous Mapping Theorem"}
+If $Y_n \overset{\mathcal{P}}{\mapsto} \mu$ and $g(\cdot)$ is a continuous function, then $g(Y_n) \overset{\mathcal{P}}{\mapsto} g(\mu)$.
+```
 
+Here we present a simple example to prove the consistency of an estimator with the above two results.
 
+```{example, ConsistencyExpDist, name = "Consistency in Exponential Distribution"}
+Suppose we have an iid sample from exponential distribution, i.e. $X_i \overset{iid}{\sim} \text{exp}(\lambda_0),\;  \lambda_0 \in \mathbb{R}^+, \; i = 1,..., n$. So assuming $X \geq 0$, the density of $X$ is given by 
+\begin{equation*}
+f(x|\lambda) = \lambda \text{exp}\left( - \lambda x \right).
+\end{equation*}
+In this example, we want to show that the MLE for $\lambda_0$ is a consistent estimator of $\lambda_0$.
+
+First, we want to find the MLE for $\lambda_0$. The normalized log-likelihood function is given by
+\begin{equation*}
+\mathcal{L}(\lambda | X_1, ..., X_n) = \text{log}(\lambda) - \lambda \bar{X}_n.
+\end{equation*}
+By solving 
+\begin{equation*}
+\frac{\partial}{\partial \lambda} \; \mathcal{L}(\lambda | X_1, \ldots, X_n) = \frac{1}{\lambda} - \bar{X}_n = 0,
+\end{equation*}
+we obtain $\hat{\lambda} = \frac{1}{\bar{X}_n}$.
+We verify that 
+\begin{equation*}
+\frac{\partial^2}{\partial \lambda^2} \; \mathcal{L}(\lambda | X_1, \ldots, X_n) = -\frac{1}{\lambda^2} < 0,
+\end{equation*}
+which implies that $\hat{\lambda}$ is the maxima of $\mathcal{L}(\lambda | X_1, \ldots, X_n)$. Therefore, the MLE for $\lambda_0$ is $\hat{\lambda} = \frac{1}{\bar{X}_n}$.
+
+By Weak Law of Large Number, we have $\bar{X}_n \overset{\mathcal{P}}{\mapsto} \mu$, where \mu is given by 
+\begin{equation*}
+\mu = \mathbb{E}[X_i] = \int_{0}^{\infty} x \lambda_0 \text{exp}\left( - \lambda_0 x \right) dx = \frac{1}{\lambda_0}.
+\end{equation*}
+And also since the function $g(x) = 1/x$ is continuous in $\mathbb{R}^+$, we obtain by the Continuous Mapping Theorem that $\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0$, which concludes that the MLE for $\lambda_0$ is a consistent estimator of $\lambda_0$ in exponential distribution.
+```
+
+However, when considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following. 
+
+```{theorem, ConsExtreEst, name = "Consistency of Extremum Estimators"}
+If there is a function ${Q}_0 (\boldsymbol{\theta})$ such that:
+
+C1. ${Q}_0 (\boldsymbol{\theta})$ is uniquely maximized in $\boldsymbol{\theta}_0$,
+
+C2. $\boldsymbol{\Theta}$ is compact,
+
+C3. ${Q}_0 (\boldsymbol{\theta})$ is continuous in $\boldsymbol{\theta}$,
+
+C4. $\hat{Q}_n (\boldsymbol{\theta})$ converges uniformly in probability to $Q_0 (\boldsymbol{\theta})$,
+
+then we have $\hat{\boldsymbol{\theta}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{\theta}_0$.
+```
+
+```{definition, compact, name = "Compactness"}
+We say $\boldsymbol{\Theta}$ is compact if every open cover of $\boldsymbol{\Theta}$ contains a finite subcover. If $\boldsymbol{\Theta}$ is compact, then $\boldsymbol{\Theta}$ is closed (i.e. containing all its limit points) and bounded (i.e. all its points are within some finite distance of each other). 
+```
+
+```{definition, UnifCont, name = "Uniform Convergence in Probability"}
+$\hat{Q}_n (\boldsymbol{\theta})$ is said to converges uniformly in probability to $Q_0 (\boldsymbol{\theta})$ if $\underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{sup}} \; |\hat{Q}_n (\boldsymbol{\theta}) - {Q}_0 (\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0$.  
+```
+
+Theorem \@ref(thm:ConsExtreEst) is an important result as it provides a general approach to prove the consistency of the class of extremum estimators. Notice that in this theorem:
+
+- Condition (C1) is **substantive** and there are well-known examples where it fails. We will discuss further on how this assumption can (in some cases) be verified in practice.
+- Condition (C2) is also **substantive** as it requires that there exist some known bounds on the parameters. In practice, this assumption is often neglected although it is in most cases unrealistic to assume it.
+- Condition (C3) and (C4) are often referred to as **"standard regularity conditions"**. They are typically satisfied. The verification of these conditions will be discussed further later in this section.

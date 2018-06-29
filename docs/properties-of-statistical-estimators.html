@@ -76,9 +76,9 @@
 <li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
 <li class="chapter" data-level="2.7" data-path="timeseries.html"><a href="timeseries.html#estimation-problems-with-time-series"><i class="fa fa-check"></i><b>2.7</b> Estimation Problems with Time Series</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a><ul>
-<li class="chapter" data-level="3.1" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html#extremum-estimators"><i class="fa fa-check"></i><b>3.1</b> Extremum Estimators</a></li>
-<li class="chapter" data-level="3.2" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html#consistency"><i class="fa fa-check"></i><b>3.2</b> Consistency</a></li>
+<li class="chapter" data-level="3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> Properties of Statistical Estimators</a><ul>
+<li class="chapter" data-level="3.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#extremum-estimators"><i class="fa fa-check"></i><b>3.1</b> Extremum Estimators</a></li>
+<li class="chapter" data-level="3.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency"><i class="fa fa-check"></i><b>3.2</b> Consistency</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
 <li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
@@ -116,8 +116,8 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-review-of-the-properties-of-statistical-estimators" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> A Review of the Properties of Statistical Estimators</h1>
+<div id="properties-of-statistical-estimators" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Properties of Statistical Estimators</h1>
 <p>In this chapter, we will provide a review of the properties of statistical estimators. This chapter is organized with the following outline:</p>
 <ul>
 <li>Extremum estimators;</li>
@@ -209,7 +209,7 @@ Therefore we can write the GMM estimator of <span class="math inline">\(\boldsym
 </div>
 <div id="consistency" class="section level2">
 <h2><span class="header-section-number">3.2</span> Consistency</h2>
-<p>In this section, we will introduce one of the most important properties of statistical estimators, consistency. We will discuss in details about the conditions for consistency of the extremum estimators.</p>
+<p>In this section, we will introduce one of the most important properties of statistical estimators, consistency. And we will discuss in details about the conditions for consistency of the extremum estimators.</p>
 
 <div class="definition">
 <span id="def:consistency" class="definition"><strong>Definition 3.3  (Consistency)  </strong></span>An estimator <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> is said to be consistent or weakly consistent if it converges in probability to <span class="math inline">\(\boldsymbol{\theta}_0\)</span>, i.e.
@@ -226,6 +226,72 @@ for all <span class="math inline">\(\epsilon &gt;0\)</span>.
 Figure 3.1: Interpretation of consistency
 </p>
 </div>
+<p>To show the consistency of estimators, we often make use of the following two important results:</p>
+
+<div class="theorem">
+<span id="thm:WLLN" class="theorem"><strong>Theorem 3.1  (Weak Law of Large Number)  </strong></span>Suppose <span class="math inline">\(X_i\)</span> are iid random variables with finite mean <span class="math inline">\(\mu\)</span> (i.e. <span class="math inline">\(\mathbb{E}[X_i] = \mu\)</span>) and finite variance. Let <span class="math inline">\(\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i\)</span>, then <span class="math inline">\(\bar{X}_n \overset{\mathcal{P}}{\mapsto} \mu\)</span>.
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:CMT" class="theorem"><strong>Theorem 3.2  (Continuous Mapping Theorem)  </strong></span>If <span class="math inline">\(Y_n \overset{\mathcal{P}}{\mapsto} \mu\)</span> and <span class="math inline">\(g(\cdot)\)</span> is a continuous function, then <span class="math inline">\(g(Y_n) \overset{\mathcal{P}}{\mapsto} g(\mu)\)</span>.
+</div>
+<p></p>
+<p>Here we present a simple example to prove the consistency of an estimator with the above two results.</p>
+
+<div class="example">
+<span id="exm:ConsistencyExpDist" class="example"><strong>Example 3.4  (Consistency in Exponential Distribution)  </strong></span>Suppose we have an iid sample from exponential distribution, i.e. <span class="math inline">\(X_i \overset{iid}{\sim} \text{exp}(\lambda_0),\; \lambda_0 \in \mathbb{R}^+, \; i = 1,..., n\)</span>. So assuming <span class="math inline">\(X \geq 0\)</span>, the density of <span class="math inline">\(X\)</span> is given by
+<span class="math display">\[\begin{equation*}
+f(x|\lambda) = \lambda \text{exp}\left( - \lambda x \right).
+\end{equation*}\]</span>
+<p>In this example, we want to show that the MLE for <span class="math inline">\(\lambda_0\)</span> is a consistent estimator of <span class="math inline">\(\lambda_0\)</span>.</p>
+First, we want to find the MLE for <span class="math inline">\(\lambda_0\)</span>. The normalized log-likelihood function is given by
+<span class="math display">\[\begin{equation*}
+\mathcal{L}(\lambda | X_1, ..., X_n) = \text{log}(\lambda) - \lambda \bar{X}_n.
+\end{equation*}\]</span>
+By solving
+<span class="math display">\[\begin{equation*}
+\frac{\partial}{\partial \lambda} \; \mathcal{L}(\lambda | X_1, \ldots, X_n) = \frac{1}{\lambda} - \bar{X}_n = 0,
+\end{equation*}\]</span>
+we obtain <span class="math inline">\(\hat{\lambda} = \frac{1}{\bar{X}_n}\)</span>. We verify that
+<span class="math display">\[\begin{equation*}
+\frac{\partial^2}{\partial \lambda^2} \; \mathcal{L}(\lambda | X_1, \ldots, X_n) = -\frac{1}{\lambda^2} &lt; 0,
+\end{equation*}\]</span>
+<p>which implies that <span class="math inline">\(\hat{\lambda}\)</span> is the maxima of <span class="math inline">\(\mathcal{L}(\lambda | X_1, \ldots, X_n)\)</span>. Therefore, the MLE for <span class="math inline">\(\lambda_0\)</span> is <span class="math inline">\(\hat{\lambda} = \frac{1}{\bar{X}_n}\)</span>.</p>
+By Weak Law of Large Number, we have <span class="math inline">\(\bar{X}_n \overset{\mathcal{P}}{\mapsto} \mu\)</span>, where is given by
+<span class="math display">\[\begin{equation*}
+\mu = \mathbb{E}[X_i] = \int_{0}^{\infty} x \lambda_0 \text{exp}\left( - \lambda_0 x \right) dx = \frac{1}{\lambda_0}.
+\end{equation*}\]</span>
+And also since the function <span class="math inline">\(g(x) = 1/x\)</span> is continuous in <span class="math inline">\(\mathbb{R}^+\)</span>, we obtain by the Continuous Mapping Theorem that <span class="math inline">\(\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0\)</span>, which concludes that the MLE for <span class="math inline">\(\lambda_0\)</span> is a consistent estimator of <span class="math inline">\(\lambda_0\)</span> in exponential distribution.
+</div>
+<p></p>
+<p>However, when considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following.</p>
+
+<div class="theorem">
+<p><span id="thm:ConsExtreEst" class="theorem"><strong>Theorem 3.3  (Consistency of Extremum Estimators)  </strong></span>If there is a function <span class="math inline">\({Q}_0 (\boldsymbol{\theta})\)</span> such that:</p>
+<p>C1. <span class="math inline">\({Q}_0 (\boldsymbol{\theta})\)</span> is uniquely maximized in <span class="math inline">\(\boldsymbol{\theta}_0\)</span>,</p>
+<p>C2. <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact,</p>
+<p>C3. <span class="math inline">\({Q}_0 (\boldsymbol{\theta})\)</span> is continuous in <span class="math inline">\(\boldsymbol{\theta}\)</span>,</p>
+<p>C4. <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> converges uniformly in probability to <span class="math inline">\(Q_0 (\boldsymbol{\theta})\)</span>,</p>
+then we have <span class="math inline">\(\hat{\boldsymbol{\theta}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{\theta}_0\)</span>.
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:compact" class="definition"><strong>Definition 3.4  (Compactness)  </strong></span>We say <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact if every open cover of <span class="math inline">\(\boldsymbol{\Theta}\)</span> contains a finite subcover. If <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact, then <span class="math inline">\(\boldsymbol{\Theta}\)</span> is closed (i.e. containing all its limit points) and bounded (i.e. all its points are within some finite distance of each other).
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:UnifCont" class="definition"><strong>Definition 3.5  (Uniform Convergence in Probability)  </strong></span><span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is said to converges uniformly in probability to <span class="math inline">\(Q_0 (\boldsymbol{\theta})\)</span> if <span class="math inline">\(\underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{sup}} \; |\hat{Q}_n (\boldsymbol{\theta}) - {Q}_0 (\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0\)</span>.
+</div>
+<p></p>
+<p>Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a> is an important result as it provides a general approach to prove the consistency of the class of extremum estimators. Notice that in this theorem:</p>
+<ul>
+<li>Condition (C1) is <strong>substantive</strong> and there are well-known examples where it fails. We will discuss further on how this assumption can (in some cases) be verified in practice.</li>
+<li>Condition (C2) is also <strong>substantive</strong> as it requires that there exist some known bounds on the parameters. In practice, this assumption is often neglected although it is in most cases unrealistic to assume it.</li>
+<li>Condition (C3) and (C4) are often referred to as <strong>“standard regularity conditions”</strong>. They are typically satisfied. The verification of these conditions will be discussed further later in this section.</li>
+</ul>
 
 </div>
 </div>
