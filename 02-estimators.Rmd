@@ -149,7 +149,9 @@ By Weak Law of Large Number, we have $\bar{X}_n \overset{\mathcal{P}}{\mapsto} \
 And also since the function $g(x) = 1/x$ is continuous in $\mathbb{R}^+$, we obtain by the Continuous Mapping Theorem that $\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0$, which concludes that the MLE for $\lambda_0$ is a consistent estimator of $\lambda_0$ in exponential distribution.
 ```
 
-However, when considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following. 
+
+### Consistency of Extremum Estimators
+When considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following. 
 
 ```{theorem, ConsExtreEst, name = "Consistency of Extremum Estimators"}
 If there is a function ${Q}_0 (\boldsymbol{\theta})$ such that:
@@ -178,3 +180,163 @@ Theorem \@ref(thm:ConsExtreEst) is an important result as it provides a general 
 - Condition (C1) is **substantive** and there are well-known examples where it fails. We will discuss further on how this assumption can (in some cases) be verified in practice.
 - Condition (C2) is also **substantive** as it requires that there exist some known bounds on the parameters. In practice, this assumption is often neglected although it is in most cases unrealistic to assume it.
 - Condition (C3) and (C4) are often referred to as **"standard regularity conditions"**. They are typically satisfied. The verification of these conditions will be discussed further later in this section.
+
+
+```{proof, proofConsExtreEst, name="Consistency of Extremum Estimators"}
+Let $\mathcal{G}$ be an $\epsilon$-neighborhood centered at $\boldsymbol{\theta}_0$ for some $\epsilon > 0$, i.e. $\mathcal{G} = \{ \boldsymbol{\theta} \in \boldsymbol{\Theta}: || \boldsymbol{\theta} - \boldsymbol{\theta}_0 ||_2 < \epsilon\}$ for some $\epsilon > 0$.
+
+We want to show $\hat{\boldsymbol{\theta}}  \overset{\mathcal{P}}{\mapsto}  \boldsymbol{\theta}_0$, which is equivalent to show
+\begin{equation*}
+\underset{n \to \infty}{\text{lim}} \mathbb{P}(||\boldsymbol{\theta} - \boldsymbol{\theta}_0 ||_2 \geq \epsilon) = \underset{n \to \infty}{\text{lim}} \mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0
+\end{equation*}
+
+Define $\gamma = Q_0(\boldsymbol{\theta}_0) - \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta} \setminus \mathcal{G}}{\text{sup}} Q_0({\boldsymbol{\theta}}) > 0 \;\;$ by condition C1.
+
+So $\hat{\boldsymbol{\theta}} \notin \mathcal{G}$ implies that $Q_0(\hat{\boldsymbol{\theta}}) \leq \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta} \setminus \mathcal{G}}{\text{sup}} Q_0({\boldsymbol{\theta}}) = Q_0(\boldsymbol{\theta}_0) - \gamma$.
+
+Let $\mathcal{A} = \{ Q_0(\hat{\boldsymbol{\theta}}) \leq Q_0(\boldsymbol{\theta}_0) - \gamma  \}$. So $\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) \leq \underset{n \to \infty}{\text{lim}}\mathbb{P}(\mathcal{A})$.
+
+Now we define the following events: 
+\begin{align*}
+\mathcal{B} &= \{|\hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}})| > \gamma/3  \}, \\
+\mathcal{C} &= \{|\hat{Q_n}(\boldsymbol{\theta}_0) - Q_0(\boldsymbol{\theta}_0)| > \gamma/3 \}, \\
+\mathcal{D} &= \{\underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{sup}} |\hat{Q_n}(\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| >\gamma/3 \}.
+\end{align*}
+
+So we have 
+\begin{align*}
+\mathbb{P} (\mathcal{A}) &\leq \mathbb{P} (\mathcal{A} \cup (\mathcal{B} \cup \mathcal{C})) + \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&= \mathbb{P}(\mathcal{A} \cap \mathcal{B}^c \cap \mathcal{C}^c) + \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&= \mathbb{P}(\emptyset) + \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&= \mathbb{P}(\mathcal{B} \cup \mathcal{C}).
+\end{align*}
+
+Notice that $\mathcal{A} \cap \mathcal{B}^c \cap \mathcal{C}^c = \emptyset$ because if $\mathcal{A}$, $\mathcal{B}^c$, and $\mathcal{C}^c$ hold simultaneously, then
+
+\begin{align*}
+\hat{Q_n}(\hat{\boldsymbol{\theta}}) &= \hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}}) + Q_0(\hat{\boldsymbol{\theta}}) \\
+&\leq |\hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}})| + Q_0(\hat{\boldsymbol{\theta}}) \\
+&\leq \gamma/3 + Q_0(\hat{\boldsymbol{\theta}}) \;\;\;\;\;\; \text{since} \;\; \mathcal{B}^c \;\; \text{holds}\\
+&\leq Q_0({\boldsymbol{\theta}}_0) - 2\gamma/3 \;\;\;\;\;\; \text{since} \;\; \mathcal{A} \;\; \text{holds}\\
+&\leq Q_0({\boldsymbol{\theta}}_0) - \hat{Q_n}(\hat{\boldsymbol{\theta}}_0) + \hat{Q_n}(\hat{\boldsymbol{\theta}}_0) - 2\gamma/3 \\
+&\leq |Q_0({\boldsymbol{\theta}}_0) - \hat{Q_n}({\boldsymbol{\theta}}_0)| + \hat{Q_n}({\boldsymbol{\theta}}_0) - 2\gamma/3 \\
+&\leq \hat{Q_n}({\boldsymbol{\theta}}_0)  - \gamma/3 \;\;\;\;\;\; \text{since} \;\; \mathcal{C}^c \;\; \text{holds}\\
+&< \hat{Q_n}({\boldsymbol{\theta}}_0)
+\end{align*}
+which contradicts that $\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \hat{Q_n}({\boldsymbol{\theta}})$.
+
+So 
+\begin{align*}
+\mathbb{P}(\mathcal{A}) &= \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&= \mathbb{P}(|\hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}})| > \gamma/3 \;\; \text{or} \;\; |\hat{Q_n}(\boldsymbol{\theta}_0) - Q_0(\boldsymbol{\theta}_0)| > \gamma/3) \\
+&= \mathbb{P} (\underset{\boldsymbol{\theta} \in  \{\hat{\boldsymbol{\theta}}, \boldsymbol{\theta}_0\} }{\text{sup}} |\hat{Q_n}(\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| > \gamma/3) \\
+& \leq \mathbb{P} (\underset{\boldsymbol{\theta} \in  \boldsymbol{\Theta} }{\text{sup}} |\hat{Q_n}(\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| > \gamma/3) \\
+&= \mathbb{P}(\mathcal{D}).
+\end{align*}
+
+So by condition C4, we have
+\begin{equation*}
+\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) \leq \underset{n \to \infty}{\text{lim}} \mathbb{P}(\mathcal{A}) \leq \underset{n \to \infty}{\text{lim}}\mathbb{P}(\mathcal{D}) = 0.
+\end{equation*}
+
+Therefore, $\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0$.
+```
+
+### Verification of Condition C1 
+In general, the verification of Condition C1 is difficult and is often assumed in the statistical literature. Here we present two results based on @newey1994vlarge and @komunjer2012global respectively, which allow us to verify the condition C1 for GMM-type estimators. A discussion on the verification of this condition for other estimators can for example be found in Chapter 7 of @baltagi2008companion. 
+
+```{lemma, GMMindentification, name = "GMM Identification"}
+If $\boldsymbol{W} > 0$ (i.e. positive definite), where $\boldsymbol{W}$ is such that $\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W}$, and for $\boldsymbol{g}_0(\boldsymbol{\theta}) = \mathbb{E}[\boldsymbol{g}(z|\boldsymbol{\theta})]$, we have $\boldsymbol{g}_0(\boldsymbol{\theta}_0)=0$ and $\boldsymbol{g}_0(\boldsymbol{\theta}) \neq 0$ if $\boldsymbol{\theta} \neq \boldsymbol{\theta}_0$, 
+then $Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta})$ has a unique maximum at $\boldsymbol{\theta}_0$.
+```
+
+```{proof, proofGMMindentification, name = "GMM Identification"}
+Since $\boldsymbol{W} >0$ and there exists a unique $\boldsymbol{\theta}_0 \in \boldsymbol{\Theta}$ such that $\boldsymbol{g}_0(\boldsymbol{\theta}) = 0$, we can say that for all $\boldsymbol{\theta} \in \boldsymbol{\Theta}$,
+\begin{equation*}
+Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}) \leq -\boldsymbol{g}_0(\boldsymbol{\theta}_0) \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}_0) = Q_0(\boldsymbol{\theta_0}).
+\end{equation*}
+```
+
+
+Notice that if we write a GMM estimator as in Example \@ref(exm:ExtreEstGMM), then the condition $\boldsymbol{g}_0(\boldsymbol{\theta}) = 0$ if and only if $\boldsymbol{\theta} = \boldsymbol{\theta}_0$ can be replaced by $\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)$ if and only if $\boldsymbol{\theta} = \boldsymbol{\theta}_0$. 
+
+
+In order to verify the condition in Lemma \@ref(lem:GMMindentification) that $\boldsymbol{g}_0(\boldsymbol{\theta}) = 0$ if and only if $\boldsymbol{\theta} = \boldsymbol{\theta}_0$ (or alternatively $\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)$ if and only if $\boldsymbol{\theta} = \boldsymbol{\theta}_0$), the following theorem based on @komunjer2012global provides us a way.
+
+
+```{theorem, Homomorphism, name = "Homomorphism"}
+Let $\boldsymbol{\theta} \in \boldsymbol{\Theta} \subset \mathbb{R}^p$. Let $\boldsymbol{g}^*(\boldsymbol{\theta})$ denote a subset of $p$ elements of $\boldsymbol{g}_0 (\boldsymbol{\theta}) \in \mathbb{R}^q, \; q \geq p$ such that:
+
+- $\boldsymbol{g}^*(\boldsymbol{\theta})$ is in $\mathcal{C}^2$ (i.e. $\boldsymbol{g}^*(\boldsymbol{\theta})$ can be differentiated twice);
+- For every $\boldsymbol{\theta} \in \boldsymbol{\Theta}$, $J(\boldsymbol{\theta})$ is non-negative (or alternatively non-positive), where $J(\boldsymbol{\theta}) \equiv \text{det} (\frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) )$;
+- $||\boldsymbol{g}^*(\boldsymbol{\theta})|| \to \infty$ whenever $|| \boldsymbol{\theta} || \to \infty$;
+- For every $s \in \mathbb{R}^p$ the equation $\boldsymbol{g}^*(\boldsymbol{\theta}) = s$ has countably many (possibly zero) solutions in $\boldsymbol{\Theta}$;
+
+then $\boldsymbol{g}^*(\boldsymbol{\theta})$ is a homeomorphism (i.e. $\boldsymbol{g}^*(\boldsymbol{\theta})$ is continuous and one-to-one).
+```
+
+
+- A direct consequence of Lemma \@ref(lem:GMMindentification) and Theorem \@ref(thm:Homomorphism) is that any GMM estimator with $\boldsymbol{W} > 0$ satisfying the conditions of Theorem \@ref(thm:Homomorphism) verifies Condition C1 of Theorem \@ref(thm:ConsExtreEst).
+
+- If one can show that $\boldsymbol{g}^c(\boldsymbol{\theta})$ is in $\mathcal{C}$ (where $\boldsymbol{g}^c(\boldsymbol{\theta})$ denotes the element of $\boldsymbol{g}_0(\boldsymbol{\theta})$ that are not in $\boldsymbol{g}^*(\boldsymbol{\theta})$) then Condition C3 of Theorem \@ref(thm:ConsExtreEst) is also verified.
+
+- When considering a GMM estimator of the form used in Example \@ref(exm:ExtreEstGMM), one can simply verify the conditions of Theorem \@ref(thm:ConsExtreEst) with $\boldsymbol{g}(\boldsymbol{\theta}) = \boldsymbol{\gamma} (\boldsymbol{\theta})$.
+
+- For Theorem \@ref(thm:Homomorphism), in @komunjer2012global it is actually assumed that $\boldsymbol{\theta} \in \mathbb{R}^p$ while we assume that $\boldsymbol{\theta} \in \boldsymbol{\Theta}$. We use this simplification to avoid an overly technical treatment of this topic. In fact, we assume here that there exists a one-to-one function $h(\cdot)$ such that $h \, : \,\mathbb{R}^p  \mapsto \boldsymbol{\Theta}$. This condition is typically verified in practice.
+
+```{example, exmC1, name = "An Example to Verify Condition C1"}
+In this example we revisit Example \@ref(exm:ExtreEstGMM). Let us say that $\widehat{\boldsymbol{W}}$ is such that $\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W} > 0$. 
+
+We have shown that 
+\begin{equation*}
+		\boldsymbol{\gamma}(\boldsymbol{\theta}) = 	\begin{bmatrix}
+			 \mu\\
+			\mu^2 + \sigma^2\\
+			\mu^3 + 3 \mu \sigma^2
+	 		 \end{bmatrix}.
+\end{equation*}
+
+So we define that 
+\begin{equation*}
+    \boldsymbol{g}^*(\boldsymbol{\theta}) = \begin{bmatrix}
+			 \mu\\
+			\mu^2 + \sigma^2\\
+	 		 \end{bmatrix}
+	 		 \;\;\;\;\; \text{and} \;\;\;\;\; g^c(\boldsymbol{\theta}) = \begin{bmatrix}
+			 \mu^3 + 3 \mu \sigma^2\\
+	 		 \end{bmatrix}.
+\end{equation*}
+
+Since the elements of $\boldsymbol{g}^*(\boldsymbol{\theta})$ are polynomial in $\boldsymbol{\Theta}$, the condition $\boldsymbol{g}^*(\boldsymbol{\theta}) \in \mathcal{C}^2$ is trivially satisfied.
+
+Next, since 
+\begin{equation*}
+		\frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) = 	\begin{bmatrix}
+			 1 & 0\\
+			2\mu & 1
+	 		 \end{bmatrix},
+\end{equation*}
+we have $J(\boldsymbol{\theta}) \equiv \text{det} (\frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) ) = 1$.
+
+Finally, the last two conditions of Theorem \@ref(thm:Homomorphism) are trivially satisfied since $||\boldsymbol{g}^*(\boldsymbol{\theta})||$ can only diverge if $|| \boldsymbol{\theta} ||$ diverges and since $\boldsymbol{g}^*(\boldsymbol{\theta}) = s$ has (one) countably solutions in $\boldsymbol{\Theta}$.
+
+Therefore, it follows from Lemma \@ref(lem:GMMindentification) and Theorem \@ref(thm:Homomorphism) that the function $Q_0(\boldsymbol{\theta}) = - || \boldsymbol{\gamma}(\boldsymbol{\theta}_0)  - \boldsymbol{\gamma}(\boldsymbol{\theta})  ||^2_{\boldsymbol{W}}$ is uniquely maximized in $\boldsymbol{\theta}_0$.
+```
+
+### Verification of Condition C4
+In general, the verification of Condition C4 requires pointwise convergence and Lipschitz continuity as specified in the following theorem, which is a slightly adapted version of the Arzela-Ascoli Theorem.
+
+```{theorem, ArzelaAscoli, name = "modified Arzela-Ascoli Theorem"}
+Suppose $\boldsymbol{\Theta}$ is compact. If
+
+- for every $\boldsymbol{\theta} \in \boldsymbol{\Theta}$, we have $\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0 (\boldsymbol{\theta})$,
+
+- $\hat{Q}_n (\boldsymbol{\theta})$ is almost surely Lipschitz continuous, i.e. $\underset{\boldsymbol{\theta}_1, \boldsymbol{\theta}_2 \in \boldsymbol{\Theta}}{\text{sup}} |\hat{Q}_n (\boldsymbol{\theta}_1) - \hat{Q}_n (\boldsymbol{\theta}_2)| \leq H ||\boldsymbol{\theta}_1 - \boldsymbol{\theta}_2||$ where $H$ is bounded almost surely,
+
+then $\hat{Q}_n (\boldsymbol{\theta})$ converges uniformly in probability to $Q_0 (\boldsymbol{\theta})$.
+```
+
+Here we will not discuss how to prove that $\hat{Q}_n (\boldsymbol{\theta})$ is almost surely Lipschitz continuous and assume it for simplicity (more discussion on this topic can for example be found in @newey1994vlarge). Nevertheless, it worth mentioning that this condition is almost always satisfied in practice and is therefore reasonable to assume for simplicity. 
+
+
+

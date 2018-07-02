@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-06-29">
+<meta name="date" content="2018-07-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -78,7 +78,11 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> Properties of Statistical Estimators</a><ul>
 <li class="chapter" data-level="3.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#extremum-estimators"><i class="fa fa-check"></i><b>3.1</b> Extremum Estimators</a></li>
-<li class="chapter" data-level="3.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency"><i class="fa fa-check"></i><b>3.2</b> Consistency</a></li>
+<li class="chapter" data-level="3.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency"><i class="fa fa-check"></i><b>3.2</b> Consistency</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency-of-extremum-estimators"><i class="fa fa-check"></i><b>3.2.1</b> Consistency of Extremum Estimators</a></li>
+<li class="chapter" data-level="3.2.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c1"><i class="fa fa-check"></i><b>3.2.2</b> Verification of Condition C1</a></li>
+<li class="chapter" data-level="3.2.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c4"><i class="fa fa-check"></i><b>3.2.3</b> Verification of Condition C4</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
 <li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
@@ -265,7 +269,9 @@ By Weak Law of Large Number, we have <span class="math inline">\(\bar{X}_n \over
 And also since the function <span class="math inline">\(g(x) = 1/x\)</span> is continuous in <span class="math inline">\(\mathbb{R}^+\)</span>, we obtain by the Continuous Mapping Theorem that <span class="math inline">\(\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0\)</span>, which concludes that the MLE for <span class="math inline">\(\lambda_0\)</span> is a consistent estimator of <span class="math inline">\(\lambda_0\)</span> in exponential distribution.
 </div>
 <p></p>
-<p>However, when considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following.</p>
+<div id="consistency-of-extremum-estimators" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Consistency of Extremum Estimators</h3>
+<p>When considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following.</p>
 
 <div class="theorem">
 <p><span id="thm:ConsExtreEst" class="theorem"><strong>Theorem 3.3  (Consistency of Extremum Estimators)  </strong></span>If there is a function <span class="math inline">\({Q}_0 (\boldsymbol{\theta})\)</span> such that:</p>
@@ -293,6 +299,155 @@ then we have <span class="math inline">\(\hat{\boldsymbol{\theta}} \overset{\mat
 <li>Condition (C3) and (C4) are often referred to as <strong>“standard regularity conditions”</strong>. They are typically satisfied. The verification of these conditions will be discussed further later in this section.</li>
 </ul>
 
+<div class="proof">
+<p> <span class="proof"><em>Proof</em> (Consistency of Extremum Estimators). </span> Let <span class="math inline">\(\mathcal{G}\)</span> be an <span class="math inline">\(\epsilon\)</span>-neighborhood centered at <span class="math inline">\(\boldsymbol{\theta}_0\)</span> for some <span class="math inline">\(\epsilon &gt; 0\)</span>, i.e. <span class="math inline">\(\mathcal{G} = \{ \boldsymbol{\theta} \in \boldsymbol{\Theta}: || \boldsymbol{\theta} - \boldsymbol{\theta}_0 ||_2 &lt; \epsilon\}\)</span> for some <span class="math inline">\(\epsilon &gt; 0\)</span>.</p>
+We want to show <span class="math inline">\(\hat{\boldsymbol{\theta}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{\theta}_0\)</span>, which is equivalent to show
+<span class="math display">\[\begin{equation*}
+\underset{n \to \infty}{\text{lim}} \mathbb{P}(||\boldsymbol{\theta} - \boldsymbol{\theta}_0 ||_2 \geq \epsilon) = \underset{n \to \infty}{\text{lim}} \mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0
+\end{equation*}\]</span>
+<p>Define <span class="math inline">\(\gamma = Q_0(\boldsymbol{\theta}_0) - \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta} \setminus \mathcal{G}}{\text{sup}} Q_0({\boldsymbol{\theta}}) &gt; 0 \;\;\)</span> by condition C1.</p>
+<p>So <span class="math inline">\(\hat{\boldsymbol{\theta}} \notin \mathcal{G}\)</span> implies that <span class="math inline">\(Q_0(\hat{\boldsymbol{\theta}}) \leq \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta} \setminus \mathcal{G}}{\text{sup}} Q_0({\boldsymbol{\theta}}) = Q_0(\boldsymbol{\theta}_0) - \gamma\)</span>.</p>
+<p>Let <span class="math inline">\(\mathcal{A} = \{ Q_0(\hat{\boldsymbol{\theta}}) \leq Q_0(\boldsymbol{\theta}_0) - \gamma \}\)</span>. So <span class="math inline">\(\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) \leq \underset{n \to \infty}{\text{lim}}\mathbb{P}(\mathcal{A})\)</span>.</p>
+Now we define the following events:
+<span class="math display">\[\begin{align*}
+\mathcal{B} &amp;= \{|\hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}})| &gt; \gamma/3  \}, \\
+\mathcal{C} &amp;= \{|\hat{Q_n}(\boldsymbol{\theta}_0) - Q_0(\boldsymbol{\theta}_0)| &gt; \gamma/3 \}, \\
+\mathcal{D} &amp;= \{\underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{sup}} |\hat{Q_n}(\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| &gt;\gamma/3 \}.
+\end{align*}\]</span>
+So we have
+<span class="math display">\[\begin{align*}
+\mathbb{P} (\mathcal{A}) &amp;\leq \mathbb{P} (\mathcal{A} \cup (\mathcal{B} \cup \mathcal{C})) + \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&amp;= \mathbb{P}(\mathcal{A} \cap \mathcal{B}^c \cap \mathcal{C}^c) + \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&amp;= \mathbb{P}(\emptyset) + \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&amp;= \mathbb{P}(\mathcal{B} \cup \mathcal{C}).
+\end{align*}\]</span>
+<p>Notice that <span class="math inline">\(\mathcal{A} \cap \mathcal{B}^c \cap \mathcal{C}^c = \emptyset\)</span> because if <span class="math inline">\(\mathcal{A}\)</span>, <span class="math inline">\(\mathcal{B}^c\)</span>, and <span class="math inline">\(\mathcal{C}^c\)</span> hold simultaneously, then</p>
+<span class="math display">\[\begin{align*}
+\hat{Q_n}(\hat{\boldsymbol{\theta}}) &amp;= \hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}}) + Q_0(\hat{\boldsymbol{\theta}}) \\
+&amp;\leq |\hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}})| + Q_0(\hat{\boldsymbol{\theta}}) \\
+&amp;\leq \gamma/3 + Q_0(\hat{\boldsymbol{\theta}}) \;\;\;\;\;\; \text{since} \;\; \mathcal{B}^c \;\; \text{holds}\\
+&amp;\leq Q_0({\boldsymbol{\theta}}_0) - 2\gamma/3 \;\;\;\;\;\; \text{since} \;\; \mathcal{A} \;\; \text{holds}\\
+&amp;\leq Q_0({\boldsymbol{\theta}}_0) - \hat{Q_n}(\hat{\boldsymbol{\theta}}_0) + \hat{Q_n}(\hat{\boldsymbol{\theta}}_0) - 2\gamma/3 \\
+&amp;\leq |Q_0({\boldsymbol{\theta}}_0) - \hat{Q_n}({\boldsymbol{\theta}}_0)| + \hat{Q_n}({\boldsymbol{\theta}}_0) - 2\gamma/3 \\
+&amp;\leq \hat{Q_n}({\boldsymbol{\theta}}_0)  - \gamma/3 \;\;\;\;\;\; \text{since} \;\; \mathcal{C}^c \;\; \text{holds}\\
+&amp;&lt; \hat{Q_n}({\boldsymbol{\theta}}_0)
+\end{align*}\]</span>
+<p>which contradicts that <span class="math inline">\(\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \hat{Q_n}({\boldsymbol{\theta}})\)</span>.</p>
+So
+<span class="math display">\[\begin{align*}
+\mathbb{P}(\mathcal{A}) &amp;= \mathbb{P}(\mathcal{B} \cup \mathcal{C}) \\
+&amp;= \mathbb{P}(|\hat{Q_n}(\hat{\boldsymbol{\theta}}) - Q_0(\hat{\boldsymbol{\theta}})| &gt; \gamma/3 \;\; \text{or} \;\; |\hat{Q_n}(\boldsymbol{\theta}_0) - Q_0(\boldsymbol{\theta}_0)| &gt; \gamma/3) \\
+&amp;= \mathbb{P} (\underset{\boldsymbol{\theta} \in  \{\hat{\boldsymbol{\theta}}, \boldsymbol{\theta}_0\} }{\text{sup}} |\hat{Q_n}(\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| &gt; \gamma/3) \\
+&amp; \leq \mathbb{P} (\underset{\boldsymbol{\theta} \in  \boldsymbol{\Theta} }{\text{sup}} |\hat{Q_n}(\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| &gt; \gamma/3) \\
+&amp;= \mathbb{P}(\mathcal{D}).
+\end{align*}\]</span>
+So by condition C4, we have
+<span class="math display">\[\begin{equation*}
+\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) \leq \underset{n \to \infty}{\text{lim}} \mathbb{P}(\mathcal{A}) \leq \underset{n \to \infty}{\text{lim}}\mathbb{P}(\mathcal{D}) = 0.
+\end{equation*}\]</span>
+Therefore, <span class="math inline">\(\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0\)</span>.
+</div>
+<p></p>
+</div>
+<div id="verification-of-condition-c1" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Verification of Condition C1</h3>
+<p>In general, the verification of Condition C1 is difficult and is often assumed in the statistical literature. Here we present two results based on <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span> and <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> respectively, which allow us to verify the condition C1 for GMM-type estimators. A discussion on the verification of this condition for other estimators can for example be found in Chapter 7 of <span class="citation">Baltagi (<a href="#ref-baltagi2008companion">2008</a>)</span>.</p>
+
+<div class="lemma">
+<span id="lem:GMMindentification" class="lemma"><strong>Lemma 3.1  (GMM Identification)  </strong></span>If <span class="math inline">\(\boldsymbol{W} &gt; 0\)</span> (i.e. positive definite), where <span class="math inline">\(\boldsymbol{W}\)</span> is such that <span class="math inline">\(\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W}\)</span>, and for <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = \mathbb{E}[\boldsymbol{g}(z|\boldsymbol{\theta})]\)</span>, we have <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}_0)=0\)</span> and <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) \neq 0\)</span> if <span class="math inline">\(\boldsymbol{\theta} \neq \boldsymbol{\theta}_0\)</span>, then <span class="math inline">\(Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta})\)</span> has a unique maximum at <span class="math inline">\(\boldsymbol{\theta}_0\)</span>.
+</div>
+<p></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (GMM Identification). </span> Since <span class="math inline">\(\boldsymbol{W} &gt;0\)</span> and there exists a unique <span class="math inline">\(\boldsymbol{\theta}_0 \in \boldsymbol{\Theta}\)</span> such that <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span>, we can say that for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>,
+<span class="math display">\[\begin{equation*}
+Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}) \leq -\boldsymbol{g}_0(\boldsymbol{\theta}_0) \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}_0) = Q_0(\boldsymbol{\theta_0}).
+\end{equation*}\]</span>
+</div>
+<p></p>
+<p>Notice that if we write a GMM estimator as in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>, then the condition <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span> can be replaced by <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span>.</p>
+<p>In order to verify the condition in Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> that <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span> (or alternatively <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span>), the following theorem based on <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> provides us a way.</p>
+
+<div class="theorem">
+<p><span id="thm:Homomorphism" class="theorem"><strong>Theorem 3.4  (Homomorphism)  </strong></span>Let <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta} \subset \mathbb{R}^p\)</span>. Let <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> denote a subset of <span class="math inline">\(p\)</span> elements of <span class="math inline">\(\boldsymbol{g}_0 (\boldsymbol{\theta}) \in \mathbb{R}^q, \; q \geq p\)</span> such that:</p>
+<ul>
+<li><span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> is in <span class="math inline">\(\mathcal{C}^2\)</span> (i.e. <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> can be differentiated twice);</li>
+<li>For every <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>, <span class="math inline">\(J(\boldsymbol{\theta})\)</span> is non-negative (or alternatively non-positive), where <span class="math inline">\(J(\boldsymbol{\theta}) \equiv \text{det} (\frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) )\)</span>;</li>
+<li><span class="math inline">\(||\boldsymbol{g}^*(\boldsymbol{\theta})|| \to \infty\)</span> whenever <span class="math inline">\(|| \boldsymbol{\theta} || \to \infty\)</span>;</li>
+<li>For every <span class="math inline">\(s \in \mathbb{R}^p\)</span> the equation <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta}) = s\)</span> has countably many (possibly zero) solutions in <span class="math inline">\(\boldsymbol{\Theta}\)</span>;</li>
+</ul>
+then <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> is a homeomorphism (i.e. <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> is continuous and one-to-one).
+</div>
+<p></p>
+<ul>
+<li><p>A direct consequence of Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> and Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> is that any GMM estimator with <span class="math inline">\(\boldsymbol{W} &gt; 0\)</span> satisfying the conditions of Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> verifies Condition C1 of Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a>.</p></li>
+<li><p>If one can show that <span class="math inline">\(\boldsymbol{g}^c(\boldsymbol{\theta})\)</span> is in <span class="math inline">\(\mathcal{C}\)</span> (where <span class="math inline">\(\boldsymbol{g}^c(\boldsymbol{\theta})\)</span> denotes the element of <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta})\)</span> that are not in <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span>) then Condition C3 of Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a> is also verified.</p></li>
+<li><p>When considering a GMM estimator of the form used in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>, one can simply verify the conditions of Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a> with <span class="math inline">\(\boldsymbol{g}(\boldsymbol{\theta}) = \boldsymbol{\gamma} (\boldsymbol{\theta})\)</span>.</p></li>
+<li><p>For Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a>, in <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> it is actually assumed that <span class="math inline">\(\boldsymbol{\theta} \in \mathbb{R}^p\)</span> while we assume that <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>. We use this simplification to avoid an overly technical treatment of this topic. In fact, we assume here that there exists a one-to-one function <span class="math inline">\(h(\cdot)\)</span> such that <span class="math inline">\(h \, : \,\mathbb{R}^p \mapsto \boldsymbol{\Theta}\)</span>. This condition is typically verified in practice.</p></li>
+</ul>
+
+<div class="example">
+<p><span id="exm:exmC1" class="example"><strong>Example 3.5  (An Example to Verify Condition C1)  </strong></span>In this example we revisit Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. Let us say that <span class="math inline">\(\widehat{\boldsymbol{W}}\)</span> is such that <span class="math inline">\(\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W} &gt; 0\)</span>.</p>
+We have shown that
+<span class="math display">\[\begin{equation*}
+        \boldsymbol{\gamma}(\boldsymbol{\theta}) =  \begin{bmatrix}
+             \mu\\
+            \mu^2 + \sigma^2\\
+            \mu^3 + 3 \mu \sigma^2
+             \end{bmatrix}.
+\end{equation*}\]</span>
+So we define that
+<span class="math display">\[\begin{equation*}
+    \boldsymbol{g}^*(\boldsymbol{\theta}) = \begin{bmatrix}
+             \mu\\
+            \mu^2 + \sigma^2\\
+             \end{bmatrix}
+             \;\;\;\;\; \text{and} \;\;\;\;\; g^c(\boldsymbol{\theta}) = \begin{bmatrix}
+             \mu^3 + 3 \mu \sigma^2\\
+             \end{bmatrix}.
+\end{equation*}\]</span>
+<p>Since the elements of <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> are polynomial in <span class="math inline">\(\boldsymbol{\Theta}\)</span>, the condition <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta}) \in \mathcal{C}^2\)</span> is trivially satisfied.</p>
+Next, since
+<span class="math display">\[\begin{equation*}
+        \frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) =   \begin{bmatrix}
+             1 &amp; 0\\
+            2\mu &amp; 1
+             \end{bmatrix},
+\end{equation*}\]</span>
+<p>we have <span class="math inline">\(J(\boldsymbol{\theta}) \equiv \text{det} (\frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) ) = 1\)</span>.</p>
+<p>Finally, the last two conditions of Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> are trivially satisfied since <span class="math inline">\(||\boldsymbol{g}^*(\boldsymbol{\theta})||\)</span> can only diverge if <span class="math inline">\(|| \boldsymbol{\theta} ||\)</span> diverges and since <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta}) = s\)</span> has (one) countably solutions in <span class="math inline">\(\boldsymbol{\Theta}\)</span>.</p>
+Therefore, it follows from Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> and Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> that the function <span class="math inline">\(Q_0(\boldsymbol{\theta}) = - || \boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma}(\boldsymbol{\theta}) ||^2_{\boldsymbol{W}}\)</span> is uniquely maximized in <span class="math inline">\(\boldsymbol{\theta}_0\)</span>.
+</div>
+<p></p>
+</div>
+<div id="verification-of-condition-c4" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Verification of Condition C4</h3>
+<p>In general, the verification of Condition C4 requires pointwise convergence and Lipschitz continuity as specified in the following theorem, which is a slightly adapted version of the Arzela-Ascoli Theorem.</p>
+
+<div class="theorem">
+<p><span id="thm:ArzelaAscoli" class="theorem"><strong>Theorem 3.5  (modified Arzela-Ascoli Theorem)  </strong></span>Suppose <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact. If</p>
+<ul>
+<li><p>for every <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>, we have <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0 (\boldsymbol{\theta})\)</span>,</p></li>
+<li><p><span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is almost surely Lipschitz continuous, i.e. <span class="math inline">\(\underset{\boldsymbol{\theta}_1, \boldsymbol{\theta}_2 \in \boldsymbol{\Theta}}{\text{sup}} |\hat{Q}_n (\boldsymbol{\theta}_1) - \hat{Q}_n (\boldsymbol{\theta}_2)| \leq H ||\boldsymbol{\theta}_1 - \boldsymbol{\theta}_2||\)</span> where <span class="math inline">\(H\)</span> is bounded almost surely,</p></li>
+</ul>
+then <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> converges uniformly in probability to <span class="math inline">\(Q_0 (\boldsymbol{\theta})\)</span>.
+</div>
+<p></p>
+<p>Here we will not discuss how to prove that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is almost surely Lipschitz continuous and assume it for simplicity (more discussion on this topic can for example be found in <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>). Nevertheless, it worth mentioning that this condition is almost always satisfied in practice and is therefore reasonable to assume for simplicity.</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-newey1994vlarge">
+<p>Newey, W. K., and D. McFadden. 1994. “Large Sample Estimation and Hypothesis Testing, V in Handbook of Econometrics.” In. Vol. 4. Elsevier, Amsterdam.</p>
+</div>
+<div id="ref-komunjer2012global">
+<p>Komunjer, I. 2012. “Global Identification in Nonlinear Models with Moment Restrictions.” <em>Econometric Theory</em> 28 (4): 719.</p>
+</div>
+<div id="ref-baltagi2008companion">
+<p>Baltagi, Badi H. 2008. <em>A Companion to Theoretical Econometrics</em>. John Wiley &amp; Sons.</p>
 </div>
 </div>
             </section>
