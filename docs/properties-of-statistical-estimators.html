@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-01">
+<meta name="date" content="2018-07-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -82,6 +82,7 @@
 <li class="chapter" data-level="3.2.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency-of-extremum-estimators"><i class="fa fa-check"></i><b>3.2.1</b> Consistency of Extremum Estimators</a></li>
 <li class="chapter" data-level="3.2.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c1"><i class="fa fa-check"></i><b>3.2.2</b> Verification of Condition C1</a></li>
 <li class="chapter" data-level="3.2.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c4"><i class="fa fa-check"></i><b>3.2.3</b> Verification of Condition C4</a></li>
+<li class="chapter" data-level="3.2.4" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency-of-sample-autocovariance-and-autocorrelation-functions"><i class="fa fa-check"></i><b>3.2.4</b> Consistency of Sample AutoCovariance and AutoCorrelation Functions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
@@ -435,6 +436,149 @@ then <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> conver
 <p></p>
 <p>Here we will not discuss how to prove that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is almost surely Lipschitz continuous and assume it for simplicity (more discussion on this topic can for example be found in <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>). Nevertheless, it worth mentioning that this condition is almost always satisfied in practice and is therefore reasonable to assume for simplicity.</p>
 
+<div class="example">
+<span id="exm:exmC4" class="example"><strong>Example 3.6  (An Example to Verify Condition C4)  </strong></span>In this example we revisit Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. Since we have <span class="math inline">\(Z_i \overset{iid}{\sim} \mathcal{N}(\mu_0, \sigma^2_0)\)</span>, we let
+<span class="math display">\[\begin{equation*}
+    \boldsymbol{X}_i \equiv  \begin{bmatrix}
+    Z_i\\
+    Z_i^2\\
+    Z_i^3
+    \end{bmatrix}.
+\end{equation*}\]</span>
+So by the Weak Law of Large Number (Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>), we have
+<span class="math display">\[\begin{equation*}
+    \hat{\boldsymbol{\gamma}} = \frac{1}{n} \sum_{i = 1}^n \boldsymbol{X}_i  \overset{\mathcal{P}}{\mapsto} \mathbb{E}[\boldsymbol{X}_i] = \boldsymbol{\gamma}({\boldsymbol{\theta}_0}) \equiv \boldsymbol{\gamma}_0.
+\end{equation*}\]</span>
+Define
+<span class="math display">\[\begin{equation*}
+\hat{Q}_n (\boldsymbol{\theta}) = -||\hat{\boldsymbol{\gamma}}- \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2
+\end{equation*}\]</span>
+where <span class="math inline">\(\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W}\)</span>, and also define
+<span class="math display">\[\begin{equation*}
+Q_0(\boldsymbol{\theta}) = -||\boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma}(\boldsymbol{\theta})||_\boldsymbol{W}^2.
+\end{equation*}\]</span>
+<p>In order to show that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0(\boldsymbol{\theta})\)</span> for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>, we want to show that <span class="math inline">\(|\hat{Q}_n (\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0\)</span>.</p>
+<span class="math display">\[\begin{equation*}
+    \begin{aligned}
+         \hat{Q}_n (\boldsymbol{\theta}) - {Q}_0 (\boldsymbol{\theta}) &amp;\leq |\hat{Q}_n (\boldsymbol{\theta}) - {Q}_0 (\boldsymbol{\theta})| =   \left|\underbrace{ ||\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 - ||\gamma_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_\boldsymbol{W}^2}_\boldsymbol{A}\right|.
+    \end{aligned}
+\end{equation*}\]</span>
+<p>Without loss of generality, we assume that <span class="math inline">\(\boldsymbol{W}^* = \widehat{\boldsymbol{W}} - \boldsymbol{W}\)</span> and that <span class="math inline">\(\boldsymbol{W}\)</span> is symmetric.</p>
+<span class="math display">\[\begin{align*}
+\boldsymbol{A} &amp;=  \hat{\boldsymbol{\gamma}}^T \widehat{\boldsymbol{W}}\hat{\boldsymbol{\gamma}} + \boldsymbol{\gamma}(\boldsymbol{\theta})^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}(\boldsymbol{\theta}) - 2\hat{\boldsymbol{\gamma}}^T\widehat{\boldsymbol{W}}\boldsymbol{\gamma}(\boldsymbol{\theta}) - \boldsymbol{\gamma}_0^T \boldsymbol{W} \boldsymbol{\gamma}_0 - \boldsymbol{\gamma}(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{\gamma}(\boldsymbol{\theta}) + 2\boldsymbol{\gamma}_0^T \boldsymbol{W} \boldsymbol{\gamma}(\boldsymbol{\theta})  \\ 
+&amp;= ||\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}_0||_{\widehat{\boldsymbol{W}}}^2 - \boldsymbol{\gamma}_0^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}_0 + 2\widehat{\boldsymbol{\gamma}}^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}_0 \\
+&amp;+ \boldsymbol{\gamma}(\boldsymbol{\theta})^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}(\boldsymbol{\theta}) - 2\hat{\boldsymbol{\gamma}}^T\widehat{\boldsymbol{W}}\boldsymbol{\gamma}(\boldsymbol{\theta}) - \boldsymbol{\gamma}_0^T \boldsymbol{W} \boldsymbol{\gamma}_0 - \boldsymbol{\gamma}(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{\gamma}(\boldsymbol{\theta}) + 2\boldsymbol{\gamma}_0^T \boldsymbol{W} \boldsymbol{\gamma}(\boldsymbol{\theta})  \\ 
+&amp;= ||\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}_0||_{\widehat{\boldsymbol{W}}}^2 + ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma}(\boldsymbol{\theta})||_{\boldsymbol{W}^*}^2 \\
+&amp;- 2\boldsymbol{\gamma}_0^T\widehat{\boldsymbol{W}}\boldsymbol{\gamma}_0 - 2\hat{\boldsymbol{\gamma}}^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}(\boldsymbol{\theta}) + 2\boldsymbol{\gamma}_0^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}(\boldsymbol{\theta}) + 2\hat{\boldsymbol{\gamma}}^T \widehat{\boldsymbol{W}} \boldsymbol{\gamma}_0 \\
+&amp;= ||\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}_0||_{\widehat{\boldsymbol{W}}}^2 + ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma}(\boldsymbol{\theta})||_{\boldsymbol{W}^*}^2 + 2(\boldsymbol{\gamma}_0 - \boldsymbol{\gamma}(\boldsymbol{\theta}))^T \widehat{\boldsymbol{W}} (\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}_0).
+\end{align*}\]</span>
+So by triangular inequality, we have
+<span class="math display">\[\begin{align*}
+|\hat{Q}_n (\boldsymbol{\theta}) - {Q}_0 (\boldsymbol{\theta})| &amp;\leq  \left| \underbrace{\|\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0)  \|_{\widehat{\boldsymbol{W}}}^2}_{\equiv a_1} \right| + \left| \underbrace{\|\boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma} (\boldsymbol{\theta}) \|_{{\boldsymbol{W}}^*}^2}_{\equiv a_2} \right| \\ 
+&amp;+ \left| \underbrace{2 \left( \boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma} (\boldsymbol{\theta})\right)^T \widehat{\boldsymbol{W}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\right)}_{\equiv a_3}\right|. 
+\end{align*}\]</span>
+<p>Before continuing, suppose that <span class="math inline">\(\boldsymbol{x}\)</span> is a vector and <span class="math inline">\(\boldsymbol{W}\)</span> the above defined matrix, we have that <span class="math inline">\(\boldsymbol{x}^T \boldsymbol{W} \boldsymbol{x} \leq \lambda_1 ||\boldsymbol{x}||^2\)</span>, where <span class="math inline">\(\lambda_1\)</span> is the largest eigenvalue of <span class="math inline">\(\boldsymbol{W}\)</span>. Furthermore, let us also define the Frobenius norm of a matrix as <span class="math inline">\(||\boldsymbol{W}|| = (\sum_i^N \sum_j^J w_{i,j}^2)^{\frac{1}{2}}\)</span> and <span class="math inline">\(||\boldsymbol{W}||^2 = \sigma_{\text{max}} \leq ||\boldsymbol{W}||\)</span>, where <span class="math inline">\(\sigma_{\text{max}}\)</span> is the largest singular value of <span class="math inline">\(||\boldsymbol{W}||\)</span>.</p>
+<p>Using those properties, we can investigate the terms in the above equation.</p>
+Considering <span class="math inline">\(a_1\)</span> , we have
+<span class="math display">\[\begin{align*}
+a_1 &amp;\leq ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||^2 \lambda_1  \leq ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||^2 \|\boldsymbol{W}^*|| \\ 
+&amp;= \sum^3_{i = 1} \left(\boldsymbol{\gamma}_{0_i} - \boldsymbol{\gamma}_i (\boldsymbol{\theta})\right)^2  \sqrt{\sum^3_{i = 1} \sum^3_{j = 1} \left(\hat{w}_{i,j} - w_{i,j}\right)^2} \\
+&amp;\leq 3 \underset{i}{\text{max}}  \left(\boldsymbol{\gamma}_{0_i} - \boldsymbol{\gamma}_i (\boldsymbol{\theta})\right)^2 \cdot 3 \underset{i}{\text{max}} \sqrt{\left(\hat{w}_{i,j} - w_{i,j}\right)^2}
+\end{align*}\]</span>
+<p>Since <span class="math inline">\(\underset{i}{\text{max}} \left(\boldsymbol{\gamma}_{0_i} - \boldsymbol{\gamma}_i (\boldsymbol{\theta})\right)^2\)</span> is bounded by conditions C1 to C3, and <span class="math inline">\(\underset{i}{\text{max}} \sqrt{\left(\hat{w}_{i,j} - w_{i,j}\right)^2} \overset{\mathcal{P}}{\mapsto} 0\)</span> by <span class="math inline">\(\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W}\)</span>, we show that <span class="math inline">\(a_1 \overset{\mathcal{P}}{\mapsto} 0\)</span>.</p>
+<p>Similarly, we can also show that <span class="math inline">\(a_2 \overset{\mathcal{P}}{\mapsto} 0\)</span> using the fact that he sample moments converge to the population ones.</p>
+<p>Finally, considering the previous results on <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>, we can see that the last term <span class="math inline">\(a_3\)</span> also tends to 0. Therefore, we can say that for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>,</p>
+<span class="math display">\[\begin{equation*}
+|\hat{Q}_n (\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0.
+\end{equation*}\]</span>
+</div>
+<p></p>
+<p>In general, showing that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0(\boldsymbol{\theta})\)</span> for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> for every <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> is generally done using the Weak Law of Large Number (i.e. Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>). However, when <span class="math inline">\(X_i\)</span> which are not iid random variables, Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>) cannot be applied. The following theorem (taken from Proposition 7.5 of <span class="citation">Hamilton (<a href="#ref-hamilton1994time">1994</a>)</span>) generalizes this result for (weak) stationary processes with absolutely summable covariance structure.</p>
+
+<div class="theorem">
+<span id="thm:WLLNdep" class="theorem"><strong>Theorem 3.6  (Weak Law of Large Number for Dependent Process)  </strong></span>Suppose <span class="math inline">\((X_t)\)</span> is a (weak) stationary process with absolutely summable autocovariance structure, then
+<span class="math display">\[\begin{equation*}
+\bar{X}_T \overset{\mathcal{P}}{\mapsto} \mathbb{E}[X_t].
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (Weak Law of Large Number for Dependent Process). </span> Since <span class="math inline">\(\bar{X}_n - \mu\)</span> has mean zero, its variance is
+<span class="math display">\[\begin{equation*}
+\mathbb{E}[(\bar{X}_n - \mu)^2] = 1/n\sum_{k=-\infty}^{\infty} \zeta_k \leq 1/n\sum_{k=-\infty}^{\infty} |\zeta_k| \leq C/n.
+\end{equation*}\]</span>
+By Chebychev’s inequality, for all <span class="math inline">\(\epsilon &gt; 0\)</span>,
+<span class="math display">\[\begin{equation*}
+\mathbb{P} \left(| \bar{X}_n - \mu | \geq \epsilon \right) \leq \frac{\mathbb{E}[(\bar{X}_n - \mu)^2]}{\epsilon^2} \leq \frac{C}{\epsilon^2n},
+\end{equation*}\]</span>
+so that
+<span class="math display">\[\begin{equation*}
+\underset{n \to \infty}{\text{lim}} \mathbb{P} \left(| \bar{X}_n - \mu | \geq \epsilon \right) \to 0,
+\end{equation*}\]</span>
+which concludes the proof.
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ConsistSampleMean" class="example"><strong>Example 3.7  (Consistency of Sample Mean)  </strong></span>Consider a stationary AR1 process and suppose we want to study whether its sample mean converges in probability to its expected value. This time we consider a non-zero mean AR1, i.e.
+<span class="math display">\[\begin{equation*}
+    \left(X_t - \mu\right) = \phi \left(X_{t-1} - \mu\right) + Z_t,
+\end{equation*}\]</span>
+where <span class="math inline">\(\mu = \mathbb{E}[X_t]\)</span>, <span class="math inline">\(Z_t \overset{iid}{\sim} \mathcal{N} (0, \nu^2)\)</span> and <span class="math inline">\(\nu^2 &lt; \infty\)</span>. This process can also be written as a linear process:
+<span class="math display">\[\begin{equation*}
+    X_i - \mu = \sum_{k=0}^{\infty}\phi^k Z_{i-k}.
+\end{equation*}\]</span>
+Since the process is stationary for <span class="math inline">\(|\phi| &lt; 1\)</span>, we have
+<span class="math display">\[\begin{equation*}
+\gamma_h = \frac{\nu^2 \phi^{|h|}}{1-\phi^2},
+\end{equation*}\]</span>
+<p>for <span class="math inline">\(h \in \mathbb{Z}\)</span>.</p>
+Then we have
+<span class="math display">\[\begin{equation*}
+\sum_{h = -\infty}^{\infty} |\gamma_k| = \sum_{h = -\infty}^{\infty} \frac{\nu^2 |\phi|^{|h|}}{1-\phi^2} &lt; 2 \lim_{n\to\infty}\frac{\nu^2 (1-|\phi|^{n+1})}{(1-\phi^2)(1-|\phi|)} = \frac{2\nu^2 }{(1-\phi^2)(1-|\phi|)} &lt; \infty,
+\end{equation*}\]</span>
+implying that the process has an absolutely summable covariance structure. Therefore, by applying Theorem <a href="properties-of-statistical-estimators.html#thm:WLLNdep">3.6</a>, we can verify that
+<span class="math display">\[\begin{equation*}
+    \bar{X}_T = \frac{1}{T} \sum_{t = 1}^T \, X_t \overset{\mathcal{P}}{\mapsto} \mathbb{E}[X_t] = \mu.
+\end{equation*}\]</span>
+</div>
+<p></p>
+</div>
+<div id="consistency-of-sample-autocovariance-and-autocorrelation-functions" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Consistency of Sample AutoCovariance and AutoCorrelation Functions</h3>
+<p>In Chapter 2, we have defined the sample autocovariance andautocorrelation functions. In the following, we will show that these estimators are both consistent.</p>
+
+<div class="corollary">
+<span id="cor:ConsistACVACF" class="corollary"><strong>Corollary 3.1  (Consistency of Sample AutoCovariance and AutoCorrelation Functions)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that <span class="math inline">\((X_t)\)</span> is weakly stationary and <span class="math inline">\((X_t^2)\)</span> has an absolutely summable covariance structure, then for all <span class="math inline">\(|h| &lt; \infty\)</span>, we have
+<span class="math display">\[\begin{align*}
+\hat{\gamma}(h) &amp;\overset{\mathcal{P}}{\mapsto} \gamma(h),\\
+\hat{\rho}(h) &amp;\overset{\mathcal{P}}{\mapsto} \rho(h).
+\end{align*}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (Consistency of Sample AutoCovariance and AutoCorrelation Functions). </span> <span class="math inline">\((X_t^2)\)</span> has an absolutely summable covariance structure implies that both <span class="math inline">\((X_t)\)</span> and <span class="math inline">\((X_tX_{t-h})\)</span> for all <span class="math inline">\(h \in \mathbb{Z}\)</span> have absolutely summable covariance structures. Under the conditions that <span class="math inline">\((X_t)\)</span> is weakly stationary and has absolutely summable covariance structure, we have <span class="math inline">\(\bar{X}_T \overset{\mathcal{P}}{\mapsto} \mu\)</span>. Let
+<span class="math display">\[\begin{equation*}
+\tilde{\gamma}(h) = \frac{1}{T} \sum_{t = h+1}^{T} \left(X_{t} - \mu\right) \left(X_{t-h} - \mu\right).
+\end{equation*}\]</span>
+Since <span class="math inline">\((\left(X_{t} - \mu\right) \left(X_{t-h} - \mu\right))\)</span> is stationary and has absolutely summable covariance structure, we have <span class="math inline">\(\tilde{\gamma}(h) \overset{\mathcal{P}}{\mapsto} \gamma(h)\)</span>. We can also show that <span class="math inline">\(\sqrt{T} \left(\tilde{\gamma}(h) - \hat{\gamma}(h) \right) = o_p(1)\)</span>. Therefore, we obtain
+<span class="math display">\[\begin{equation*}
+\hat{\gamma}(h) \overset{\mathcal{P}}{\mapsto} \gamma(h).
+\end{equation*}\]</span>
+Similarly, we can show that
+<span class="math display">\[\begin{equation*}
+\left( \hat{\gamma}(0), \hat{\gamma}(h) \right)^T \overset{\mathcal{P}}{\mapsto} \left( \gamma(0), \gamma(h) \right)^T.
+\end{equation*}\]</span>
+Then by Theorem <a href="properties-of-statistical-estimators.html#thm:CMT">3.2</a>, we have
+<span class="math display">\[\begin{equation*}
+\hat{\rho}(h) \overset{\mathcal{P}}{\mapsto} \rho(h),
+\end{equation*}\]</span>
+which concludes the proof.
+</div>
+<p></p>
+
 </div>
 </div>
 </div>
@@ -448,6 +592,9 @@ then <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> conver
 </div>
 <div id="ref-baltagi2008companion">
 <p>Baltagi, Badi H. 2008. <em>A Companion to Theoretical Econometrics</em>. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-hamilton1994time">
+<p>Hamilton, J. D. 1994. <em>Time Series Analysis</em>. Vol. 2. Princeton university press Princeton.</p>
 </div>
 </div>
             </section>
