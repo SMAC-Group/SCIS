@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-02">
+<meta name="date" content="2018-07-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -84,13 +84,18 @@
 <li class="chapter" data-level="3.2.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c4"><i class="fa fa-check"></i><b>3.2.3</b> Verification of Condition C4</a></li>
 <li class="chapter" data-level="3.2.4" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency-of-sample-autocovariance-and-autocorrelation-functions"><i class="fa fa-check"></i><b>3.2.4</b> Consistency of Sample AutoCovariance and AutoCorrelation Functions</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#asymptotic-normality"><i class="fa fa-check"></i><b>3.3</b> Asymptotic Normality</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#clt-for-iid-random-variables"><i class="fa fa-check"></i><b>3.3.1</b> CLT for iid Random Variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#clt-for-dependent-processes"><i class="fa fa-check"></i><b>3.3.2</b> CLT for Dependent Processes</a></li>
+<li class="chapter" data-level="3.3.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#asymptotic-normality-of-sample-autocovariance-and-autocorrelation-functions"><i class="fa fa-check"></i><b>3.3.3</b> Asymptotic Normality of Sample AutoCovariance and AutoCorrelation Functions</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
 <li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
 <li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> Properties of the Allan Variance</a></li>
 <li class="chapter" data-level="4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#estimation"><i class="fa fa-check"></i><b>4.3</b> Estimation</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency-1"><i class="fa fa-check"></i><b>4.3.1</b> Consistency</a></li>
-<li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
 <li class="chapter" data-level="4.3.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#confidence-interval-of-the-moav-estimator"><i class="fa fa-check"></i><b>4.3.3</b> Confidence Interval of the MOAV Estimator</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4</b> Allan variance based estimation</a><ul>
@@ -506,7 +511,7 @@ a_1 &amp;\leq ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}
 <div class="proof">
  <span class="proof"><em>Proof</em> (Weak Law of Large Number for Dependent Process). </span> Since <span class="math inline">\(\bar{X}_n - \mu\)</span> has mean zero, its variance is
 <span class="math display">\[\begin{equation*}
-\mathbb{E}[(\bar{X}_n - \mu)^2] = 1/n\sum_{k=-\infty}^{\infty} \zeta_k \leq 1/n\sum_{k=-\infty}^{\infty} |\zeta_k| \leq C/n.
+\mathbb{E}[(\bar{X}_n - \mu)^2] = 1/n\sum_{h=-\infty}^{\infty} \gamma(h) \leq 1/n\sum_{h=-\infty}^{\infty} |\gamma(h)| \leq C/n.
 \end{equation*}\]</span>
 By Chebychev’s inequality, for all <span class="math inline">\(\epsilon &gt; 0\)</span>,
 <span class="math display">\[\begin{equation*}
@@ -578,6 +583,151 @@ Then by Theorem <a href="properties-of-statistical-estimators.html#thm:CMT">3.2<
 which concludes the proof.
 </div>
 <p></p>
+</div>
+</div>
+<div id="asymptotic-normality" class="section level2">
+<h2><span class="header-section-number">3.3</span> Asymptotic Normality</h2>
+<p>The Central Limit Theorem (CLT) takes one step further than the Law of Large Number. It identifies the limiting distribution of the (properly scaled) sum of random variables as the normal distribution, which allows us to do the statistical inference (confidence interval and hypothesis testing). The scale will tell us how fast this approximation converges to the normal distribution.</p>
+<div id="clt-for-iid-random-variables" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> CLT for iid Random Variables</h3>
+
+<div class="theorem">
+<span id="thm:CLT" class="theorem"><strong>Theorem 3.7  (CLT for iid sequences)  </strong></span>Suppose <span class="math inline">\(X_i\)</span> are iid random variables with <span class="math inline">\(\mathbb{E}[X_i] = \mu\)</span> and <span class="math inline">\(\text{Var}(X_i) = \sigma^2 &lt; \infty\)</span>. Let <span class="math inline">\(\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i\)</span>, then <span class="math inline">\(\sqrt{n}\left(\bar{X}_n - \mu\right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(0, \sigma^2)\)</span>.
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:CLTmulti" class="theorem"><strong>Theorem 3.8  (CLT for iid multivariate sequences)  </strong></span>Suppose <span class="math inline">\(\boldsymbol{X}_i\)</span> are iid random vectors with <span class="math inline">\(\mathbb{E}[\boldsymbol{X}_i] = \boldsymbol{\mu} \in \mathbb{R}^d\)</span> and <span class="math inline">\(\boldsymbol{\text{Cov}}(\boldsymbol{X}_i) = \boldsymbol{\Sigma} \in \mathbb{R}^{d \times d}\)</span>. Then, we have <span class="math inline">\(\sqrt{n}\left(\bar{\boldsymbol{X}}_n - \boldsymbol{\mu}\right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(\boldsymbol{0}, \boldsymbol{\Sigma})\)</span>.
+</div>
+<p></p>
+
+<div class="theorem">
+<p><span id="thm:slutsky" class="theorem"><strong>Theorem 3.9  (Slutsky’s Theorem)  </strong></span>Let <span class="math inline">\(X_n\)</span>, <span class="math inline">\(Y_n\)</span> and <span class="math inline">\(X\)</span> be random variables. If <span class="math inline">\(X_n \overset{\mathcal{D}}{\mapsto} X\)</span> and <span class="math inline">\(Y_n \overset{\mathcal{P}}{\mapsto} c\)</span> for some constant <span class="math inline">\(c\)</span>, then</p>
+<ul>
+<li><span class="math inline">\(X_n + Y_n \overset{\mathcal{D}}{\mapsto} X+c\)</span>,</li>
+<li><span class="math inline">\(X_n Y_n \overset{\mathcal{D}}{\mapsto} cX\)</span>,</li>
+<li><span class="math inline">\(X_n / Y_n \overset{\mathcal{D}}{\mapsto} X/c\)</span> if <span class="math inline">\(c \neq 0\)</span>.
+</div>
+</li>
+</ul>
+<p>General results on the asymptotic normality of extremum estimators can be found in <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>. In this section, we will only restrict our attention to a simple example of GMM estimators as in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. We will see that the asymptotic normality of extremum estimators is implied by combining the following results and techniques:</p>
+<ul>
+<li>Consistency of <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span>,</li>
+<li>Central Limit Theorem (see Theorem <a href="properties-of-statistical-estimators.html#thm:CLTmulti">3.8</a>),</li>
+<li>Slutsky’s Theorem (see Theorem <a href="properties-of-statistical-estimators.html#thm:slutsky">3.9</a>),</li>
+<li>Taylor expansions.</li>
+</ul>
+
+<div class="example">
+<p><span id="exm:exmAsympNormality" class="example"><strong>Example 3.8  (An Example to Prove Asymptotic Normality of Extremum Estimators)  </strong></span>In this example we revisit Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. So we have</p>
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \hat{Q}_n(\boldsymbol{\theta}) = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} -||\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) ||_\widehat{\boldsymbol{W}}^2
+\end{equation*}\]</span>
+where
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\gamma}} = \frac{1}{n}  \sum_{i = 1}^n 
+\begin{bmatrix}
+Z_i\\
+Z_i^2\\
+Z_i^3\\
+\end{bmatrix}, \;\;\;\;
+\boldsymbol{\gamma}(\boldsymbol{\theta}) =  \begin{bmatrix}
+\mu\\
+\mu^2 + \sigma^2\\
+\mu^3 + 3 \mu \sigma^2
+\end{bmatrix}.
+\end{equation*}\]</span>
+So by CLT (Theorem <a href="properties-of-statistical-estimators.html#thm:CLTmulti">3.8</a>), we have
+<span class="math display">\[\begin{equation*}
+\sqrt{n}\left(\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\right)  = \frac{1}{\sqrt{n}}  \sum_{i = 1}^n 
+    \begin{bmatrix}
+      Z_i - \mu_0\\
+     Z_i^2 - \mu_0^2 - \sigma_0^2\\
+     Z_i^3 - \mu_0^3 - 3 \mu_0 \sigma_0^2\\
+     \end{bmatrix} \overset{\mathcal{D}}{\mapsto} \mathcal{N}(\boldsymbol{0}, \boldsymbol{\Sigma}),
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\boldsymbol{\Sigma} = \text{Cov}\left( \begin{bmatrix}  Z_i &amp; Z_i^2&amp; Z_i^3\\  \end{bmatrix}^T \right)\)</span>.</p>
+Since <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> maximizes <span class="math inline">\(\hat{Q}_n(\boldsymbol{\theta})\)</span>, we have
+<span class="math display">\[\begin{equation*}
+\frac{\partial \hat{Q}_n(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}} \bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} = \frac{\partial}{\partial \boldsymbol{\theta}} \left(\left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right) \right)^T \widehat{\boldsymbol{W}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right) \bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} = \boldsymbol{0}.
+\end{equation*}\]</span>
+Using Taylor expansion for <span class="math inline">\(\boldsymbol{\gamma}(\hat{\boldsymbol{\theta}})\)</span> around the true <span class="math inline">\(\boldsymbol{\theta}_0\)</span>, we obtain
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\hat{\boldsymbol{\theta}})  = \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0) + \frac{\partial \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)}{\partial \boldsymbol{\theta}}\bigg\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \left( \hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0 \right) + o_p(1).
+\end{equation*}\]</span>
+<p>Under certain regularity conditions, we have (using Theorem <a href="properties-of-statistical-estimators.html#thm:CMT">3.2</a>) that</p>
+<span class="math display">\[\begin{equation*}
+\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} = - \frac{\partial}{\partial \boldsymbol{\theta}}  \boldsymbol{\gamma}(\boldsymbol{\theta}) \bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}}  \overset{\mathcal{P}}{\mapsto} - \frac{\partial}{\partial \boldsymbol{\theta}}  \boldsymbol{\gamma}(\boldsymbol{\theta}) \bigg\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0}.
+\end{equation*}\]</span>
+<p>So under certain regularity conditions, using the above equations and Slutsky’s Theorem, we can obtain that</p>
+<span class="math display">\[\begin{equation*}
+\sqrt{n}\left( \hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0 \right) \overset{\mathcal{D}}{\mapsto}  \mathcal{N}\left(\boldsymbol{0}, \boldsymbol{D}^T \boldsymbol{\Sigma} \boldsymbol{D}\right),
+\end{equation*}\]</span>
+<p>where</p>
+<span class="math display">\[\begin{equation*}
+\boldsymbol{D} = \left[ ||\frac{\partial}{\partial \boldsymbol{\theta}} \left(  \boldsymbol{\gamma}(\boldsymbol{\theta})\right)||_{\boldsymbol{W}}\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right]^{-1} \left(\frac{\partial}{\partial \boldsymbol{\theta}}  \boldsymbol{\gamma}(\boldsymbol{\theta})\bigg\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right)^T \boldsymbol{W}
+\end{equation*}\]</span>
+<p>due to the fact that</p>
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+&amp;\sqrt{n}\left( \hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0 \right) 
+        = \overbrace{-\left[ \left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right)^T \widehat{\boldsymbol{W}} \left( \frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right) \right]^{-1}}^{ \overset{p}{\to} \left[ ||\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\right)||_{\boldsymbol{W}}\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right]^{-1}}\\
+&amp;\underbrace{\left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right)^T \widehat{\boldsymbol{W}}}_{\overset{p}{\to} \left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\right)\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right)^T \boldsymbol{W}} \sqrt{n} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0) \right) + o_p(1).
+\end{aligned}
+\end{equation*}\]</span>
+</div>
+<p></p>
+</div>
+<div id="clt-for-dependent-processes" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> CLT for Dependent Processes</h3>
+<p>For a dependent process, the validity of CLT requires the process to be “mixing” or “asymptotically independent”. Suppose two events <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> are independent, then <span class="math display">\[|\mathbb{P}(G \cap H) - \mathbb{P}(G) \mathbb{P}(H)| = 0.\]</span></p>
+<p>Based on this idea, many dependence measures have been developed. The most commonly used <span class="math inline">\(\alpha\)</span>-mixing coefficient is one of these dependence measures which can be easily verified for certain stochastic processes.</p>
+
+<div class="definition">
+<p><span id="def:mixcoef" class="definition"><strong>Definition 3.6  (Mixing Coefficients)  </strong></span>For a stochastic process <span class="math inline">\(\{ X_i \}_{i \in \mathbb{Z}}\)</span>, we define the strong- or <span class="math inline">\(\alpha\)</span>-mixing coefficients as</p>
+<span class="math display">\[\begin{equation*}
+\alpha(t_1, t_2) = \text{sup}\{ |\mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B)|: \; A\in\mathcal{F}_{-\infty}^{t_1}, B\in\mathcal{F}_{t_2}^{\infty} \},
+\end{equation*}\]</span>
+where <span class="math inline">\(\mathcal{F}_{-\infty}^{t_1} = \sigma(X_{-\infty}, \dots, X_{t_1})\)</span> and <span class="math inline">\(\mathcal{F}_{t_2}^{\infty} = \sigma(X_{t_2}, \dots, X_{\infty})\)</span> are <span class="math inline">\(\sigma\)</span>-algebras generated by corresponding random variables.
+</div>
+<p></p>
+
+<div class="exercise">
+<span id="exr:MixCoefRemark" class="exercise"><strong>Remark 3.1  (Mixing Coefficients)  </strong></span>If the process is stationary, then <span class="math inline">\(\alpha(t_1, t_2) = \alpha(t_2, t_1) = \alpha(|t_1-t_2|) \equiv \alpha(\tau)\)</span>. If <span class="math inline">\(\alpha(\tau) \to 0\)</span> as <span class="math inline">\(\tau \to \infty\)</span>, then the process is strong-mixing or <span class="math inline">\(\alpha\)</span>-mixing.
+</div>
+<p></p>
+
+<div class="theorem">
+<p><span id="thm:CLTalpha" class="theorem"><strong>Theorem 3.10  (Central Limit Theorem and Alpha-Mixing)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be a strictly stationary process with <span class="math inline">\(\mathbb{E}[X_t] =0\)</span>. <span class="math inline">\(S_n \equiv \sum_{t=1}^{n}X_t\)</span> is the partial sum process with <span class="math inline">\(\sigma_n^2 \equiv \text{Var}(S_n)\)</span>. Suppose <span class="math inline">\((X_t)\)</span> is <span class="math inline">\(\alpha\)</span>-mixing, and that for <span class="math inline">\(\delta &gt; 0\)</span>, we have</p>
+<span class="math display">\[\begin{equation*}
+\mathbb{E}\left[ |X_t|^{2+\delta} \right] \leq \infty, \mbox{ and } \sum_{n = 0}^{\infty} \alpha(n)^{\delta/2 + \delta} \leq \infty.
+\end{equation*}\]</span>
+Then
+<span class="math display">\[\begin{equation*}
+\underset{n \to \infty}{\text{lim}}\frac{\sigma_n^2}{n} = \mathbb{E}\left[ |X_t|^{2} \right] + 2\sum_{k=1}^{\infty}\mathbb{E}\left[ X_1X_k \right] \equiv \sigma^2.
+\end{equation*}\]</span>
+If <span class="math inline">\(\sigma^2 &gt; 0\)</span>, <span class="math inline">\((X_t)\)</span> obeys both the Central Limit Theorem with variance <span class="math inline">\(\sigma^2\)</span>, and the functional Central Limit Theorem.
+</div>
+<p></p>
+
+<div class="exercise">
+<span id="exr:ImpAlphaMix" class="exercise"><strong>Remark 3.2  (Implication of Alpha-Mixing)  </strong></span>If a process <span class="math inline">\((X_t)\)</span> is <span class="math inline">\(\alpha\)</span>-mixing, then its covariance structure is absolutely summable.
+</div>
+<p></p>
+</div>
+<div id="asymptotic-normality-of-sample-autocovariance-and-autocorrelation-functions" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Asymptotic Normality of Sample AutoCovariance and AutoCorrelation Functions</h3>
+<p>If <span class="math inline">\((X_t)\)</span> is a white noise, then <span class="math inline">\(\hat{\rho}(h)\)</span> should be equal to 0 if <span class="math inline">\(h \neq 0\)</span>. In practice, this is of course not the case due the estimation error of <span class="math inline">\(\hat{\rho}(h)\)</span>. The next result gives us a way to assess whether the data comes from a completely random series or whether correlations are statistically significant at some lags.</p>
+
+<div class="theorem">
+<span id="thm:DistACF" class="theorem"><strong>Theorem 3.11  (Distribution of Sample ACF in iid Case)  </strong></span>If <span class="math inline">\((X_t)\)</span> is white noise (with finite variance) and <span class="math inline">\(h = 1, ..., H\)</span> where <span class="math inline">\(H\)</span> is fixed but arbitrary, then we have that
+<span class="math display">\[\begin{equation*}
+\sqrt{T} \left(\hat{\rho}(h) - {\rho}(h)\right) \overset{\mathcal{D}}{\mapsto}  \mathcal{N}\left(0, 1\right).
+\end{equation*}\]</span>
+</div>
+<p></p>
+<p>The proof of Theorem <a href="properties-of-statistical-estimators.html#thm:DistACF">3.11</a> is straightforward from the CLT and Delta method. It is therefore omitted here but can for example be found in <span class="citation">Hamilton (<a href="#ref-hamilton1994time">1994</a>)</span>.</p>
+<p>Theorem <a href="properties-of-statistical-estimators.html#thm:DistACF">3.11</a> implies that an approximate confidence interval for <span class="math inline">\(\hat{\rho}(h)\)</span> (in the iid case) is given by <span class="math display">\[\text{CI}({\rho}(h), \alpha) = \hat{\rho}(h) \pm \frac{z_{1-\frac{\alpha}{2}} }{\sqrt{T}}\]</span> for <span class="math inline">\(0 &lt; h &lt; k &lt; \infty\)</span> and where <span class="math inline">\(z_{1- \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)\)</span> is the <span class="math inline">\((1- \frac{\alpha}{2})\)</span> quantile of a standard normal distribution. Typically, for <span class="math inline">\(\alpha = 0.05\)</span> one would consider the following confidence interval: <span class="math display">\[\text{CI}({\rho}(h), 0.05) = \hat{\rho}(h) \pm \frac{2}{\sqrt{T}}.\]</span></p>
 
 </div>
 </div>

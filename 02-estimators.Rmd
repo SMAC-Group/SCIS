@@ -420,7 +420,7 @@ Suppose $(X_t)$ is a (weak) stationary process with absolutely summable autocova
 ```{proof, proofWLLNdep, name = "Weak Law of Large Number for Dependent Process"}
 Since $\bar{X}_n - \mu$ has mean zero, its variance is
 \begin{equation*}
-\mathbb{E}[(\bar{X}_n - \mu)^2] = 1/n\sum_{k=-\infty}^{\infty} \zeta_k \leq 1/n\sum_{k=-\infty}^{\infty} |\zeta_k| \leq C/n.
+\mathbb{E}[(\bar{X}_n - \mu)^2] = 1/n\sum_{h=-\infty}^{\infty} \gamma(h) \leq 1/n\sum_{h=-\infty}^{\infty} |\gamma(h)| \leq C/n.
 \end{equation*}
 
 By Chebychev's inequality, for all $\epsilon > 0$,
@@ -499,16 +499,161 @@ which concludes the proof.
 
 
 
+## Asymptotic Normality
+The Central Limit Theorem (CLT) takes one step further than the Law of Large Number. It identifies the limiting distribution of the (properly scaled) sum of random variables as the normal distribution, which allows us to do the statistical inference (confidence interval and hypothesis testing). The scale will tell us how fast this approximation converges to the normal distribution. 
+
+### CLT for iid Random Variables
+```{theorem, CLT, name = "CLT for iid sequences"}
+Suppose $X_i$ are iid random variables with $\mathbb{E}[X_i] = \mu$ and $\text{Var}(X_i) = \sigma^2 < \infty$. Let $\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i$, then $\sqrt{n}\left(\bar{X}_n - \mu\right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(0, \sigma^2)$.
+```
+
+```{theorem, CLTmulti, name = "CLT for iid multivariate sequences"}
+Suppose $\boldsymbol{X}_i$ are iid random vectors with $\mathbb{E}[\boldsymbol{X}_i] = \boldsymbol{\mu} \in \mathbb{R}^d$ and $\boldsymbol{\text{Cov}}(\boldsymbol{X}_i) = \boldsymbol{\Sigma} \in \mathbb{R}^{d \times d}$. Then, we have $\sqrt{n}\left(\bar{\boldsymbol{X}}_n - \boldsymbol{\mu}\right) \overset{\mathcal{D}}{\mapsto}  \mathcal{N}(\boldsymbol{0}, \boldsymbol{\Sigma})$.
+```
+
+```{theorem, slutsky, name = "Slutsky's Theorem"}
+Let $X_n$, $Y_n$ and $X$ be random variables. If $X_n \overset{\mathcal{D}}{\mapsto} X$ and $Y_n \overset{\mathcal{P}}{\mapsto} c$ for some constant $c$, then
+
+- $X_n + Y_n \overset{\mathcal{D}}{\mapsto} X+c$,
+- $X_n Y_n \overset{\mathcal{D}}{\mapsto} cX$,
+- $X_n / Y_n \overset{\mathcal{D}}{\mapsto} X/c$ if $c \neq 0$.
+```
 
 
+General results on the asymptotic normality of extremum estimators can be found in @newey1994vlarge. In this section, we will only restrict our attention to a simple example of GMM estimators as in Example \@ref(exm:ExtreEstGMM). We will see that the asymptotic normality of extremum estimators is implied by combining the following results and techniques:
+
+- Consistency of $\hat{\boldsymbol{\theta}}$,
+- Central Limit Theorem (see Theorem \@ref(thm:CLTmulti)),
+- Slutsky's Theorem (see Theorem \@ref(thm:slutsky)),
+- Taylor expansions.
+
+```{example, exmAsympNormality, name = "An Example to Prove Asymptotic Normality of Extremum Estimators"}
+In this example we revisit Example \@ref(exm:ExtreEstGMM). So we have 
+
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \hat{Q}_n(\boldsymbol{\theta}) = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} -||\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) ||_\widehat{\boldsymbol{W}}^2
+\end{equation*}
+where
+\begin{equation*}
+\hat{\boldsymbol{\gamma}} = \frac{1}{n}  \sum_{i = 1}^n 
+\begin{bmatrix}
+Z_i\\
+Z_i^2\\
+Z_i^3\\
+\end{bmatrix}, \;\;\;\;
+\boldsymbol{\gamma}(\boldsymbol{\theta}) = 	\begin{bmatrix}
+\mu\\
+\mu^2 + \sigma^2\\
+\mu^3 + 3 \mu \sigma^2
+\end{bmatrix}.
+\end{equation*}
+
+So by CLT (Theorem \@ref(thm:CLTmulti)), we have
+\begin{equation*}
+\sqrt{n}\left(\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\right)  = \frac{1}{\sqrt{n}}  \sum_{i = 1}^n 
+	\begin{bmatrix}
+	  Z_i - \mu_0\\
+	 Z_i^2 - \mu_0^2 - \sigma_0^2\\
+	 Z_i^3 - \mu_0^3 - 3 \mu_0 \sigma_0^2\\
+	 \end{bmatrix} \overset{\mathcal{D}}{\mapsto} \mathcal{N}(\boldsymbol{0}, \boldsymbol{\Sigma}),
+\end{equation*}
+
+where $\boldsymbol{\Sigma} = \text{Cov}\left( \begin{bmatrix}
+	  Z_i & Z_i^2& Z_i^3\\
+	 \end{bmatrix}^T \right)$.
+	 
+Since $\hat{\boldsymbol{\theta}}$ maximizes $\hat{Q}_n(\boldsymbol{\theta})$, we have
+\begin{equation*}
+\frac{\partial \hat{Q}_n(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}} \bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} = \frac{\partial}{\partial \boldsymbol{\theta}} \left(\left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right) \right)^T \widehat{\boldsymbol{W}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right) \bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} = \boldsymbol{0}.
+\end{equation*}
+
+Using Taylor expansion for $\boldsymbol{\gamma}(\hat{\boldsymbol{\theta}})$ around the true $\boldsymbol{\theta}_0$, we obtain
+\begin{equation*}
+\hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\hat{\boldsymbol{\theta}})  = \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0) + \frac{\partial \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)}{\partial \boldsymbol{\theta}}\bigg\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \left( \hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0 \right) + o_p(1).
+\end{equation*}
+
+Under certain regularity conditions, we have (using Theorem \@ref(thm:CMT)) that
+
+\begin{equation*}
+\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} = - \frac{\partial}{\partial \boldsymbol{\theta}}  \boldsymbol{\gamma}(\boldsymbol{\theta}) \bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}}  \overset{\mathcal{P}}{\mapsto} - \frac{\partial}{\partial \boldsymbol{\theta}}  \boldsymbol{\gamma}(\boldsymbol{\theta}) \bigg\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0}.
+\end{equation*}
+
+So under certain regularity conditions, using the above equations and Slutsky's Theorem, we can obtain that 
+
+\begin{equation*}
+\sqrt{n}\left( \hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0 \right) \overset{\mathcal{D}}{\mapsto}  \mathcal{N}\left(\boldsymbol{0}, \boldsymbol{D}^T \boldsymbol{\Sigma} \boldsymbol{D}\right),
+\end{equation*}
+
+where 
+
+\begin{equation*}
+\boldsymbol{D} = \left[ ||\frac{\partial}{\partial \boldsymbol{\theta}} \left(  \boldsymbol{\gamma}(\boldsymbol{\theta})\right)||_{\boldsymbol{W}}\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right]^{-1} \left(\frac{\partial}{\partial \boldsymbol{\theta}}  \boldsymbol{\gamma}(\boldsymbol{\theta})\bigg\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right)^T \boldsymbol{W}
+\end{equation*}
+
+due to the fact that 
+
+\begin{equation*}
+\begin{aligned}
+&\sqrt{n}\left( \hat{\boldsymbol{\theta}} - \boldsymbol{\theta}_0 \right) 
+        = \overbrace{-\left[ \left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right)^T \widehat{\boldsymbol{W}} \left( \frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right) \right]^{-1}}^{ \overset{p}{\to} \left[ ||\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\right)||_{\boldsymbol{W}}\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right]^{-1}}\\
+&\underbrace{\left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right)^T \widehat{\boldsymbol{W}}}_{\overset{p}{\to} \left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\right)\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right)^T \boldsymbol{W}} \sqrt{n} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0) \right) + o_p(1).
+\end{aligned}
+\end{equation*}
+```
 
 
+### CLT for Dependent Processes
+For a dependent process, the validity of CLT requires the process to be "mixing" or "asymptotically independent". Suppose two events $G$ and $H$ are independent, then $$|\mathbb{P}(G \cap H) - \mathbb{P}(G) \mathbb{P}(H)| = 0.$$
+
+Based on this idea, many dependence measures have been developed. The most commonly used $\alpha$-mixing coefficient is one of these dependence measures which can be easily verified for certain stochastic processes.
+
+```{definition, mixcoef, name = "Mixing Coefficients"}
+For a stochastic process $\{ X_i \}_{i \in \mathbb{Z}}$, we define the strong- or $\alpha$-mixing coefficients as
+
+\begin{equation*}
+\alpha(t_1, t_2) = \text{sup}\{ |\mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B)|: \; A\in\mathcal{F}_{-\infty}^{t_1}, B\in\mathcal{F}_{t_2}^{\infty} \},
+\end{equation*}
+where $\mathcal{F}_{-\infty}^{t_1} = \sigma(X_{-\infty}, \dots, X_{t_1})$ and $\mathcal{F}_{t_2}^{\infty} = \sigma(X_{t_2}, \dots, X_{\infty})$ are $\sigma$-algebras generated by corresponding random variables.
+```
+
+```{exercise, MixCoefRemark, name = "Mixing Coefficients"}
+If the process is stationary, then $\alpha(t_1, t_2) = \alpha(t_2, t_1) = \alpha(|t_1-t_2|) \equiv \alpha(\tau)$. If $\alpha(\tau) \to 0$ as $\tau \to \infty$, then the process is strong-mixing or $\alpha$-mixing.
+```
+
+```{theorem, CLTalpha, name = "Central Limit Theorem and Alpha-Mixing"}
+Let $(X_t)$ be a strictly stationary process with $\mathbb{E}[X_t] =0$. $S_n \equiv \sum_{t=1}^{n}X_t$ is the partial sum process with $\sigma_n^2 \equiv \text{Var}(S_n)$. Suppose $(X_t)$ is $\alpha$-mixing, and that for $\delta > 0$, we have 
+
+\begin{equation*}
+\mathbb{E}\left[ |X_t|^{2+\delta} \right] \leq \infty, \mbox{ and } \sum_{n = 0}^{\infty} \alpha(n)^{\delta/2 + \delta} \leq \infty.
+\end{equation*}
+
+Then 
+\begin{equation*}
+\underset{n \to \infty}{\text{lim}}\frac{\sigma_n^2}{n} = \mathbb{E}\left[ |X_t|^{2} \right] + 2\sum_{k=1}^{\infty}\mathbb{E}\left[ X_1X_k \right] \equiv \sigma^2.
+\end{equation*}
+
+If $\sigma^2 > 0$, $(X_t)$ obeys both the Central Limit Theorem with variance $\sigma^2$, and the functional Central Limit Theorem.
+```
 
 
+```{exercise, ImpAlphaMix, name = "Implication of Alpha-Mixing"}
+If a process $(X_t)$ is $\alpha$-mixing, then its covariance structure is absolutely summable.
+```
 
 
+### Asymptotic Normality of Sample AutoCovariance and AutoCorrelation Functions
+If $(X_t)$ is a white noise, then $\hat{\rho}(h)$ should be equal to 0 if $h \neq 0$. In practice, this is of course not the case due the estimation error of $\hat{\rho}(h)$. The next result gives us a way to assess whether the data comes from a completely random series or whether correlations are statistically significant at some lags.
 
+```{theorem, DistACF, name = "Distribution of Sample ACF in iid Case"}
+If $(X_t)$ is white noise (with finite variance) and $h = 1, ..., H$ where $H$ is fixed but arbitrary, then we have that
+\begin{equation*}
+\sqrt{T} \left(\hat{\rho}(h) - {\rho}(h)\right) \overset{\mathcal{D}}{\mapsto}  \mathcal{N}\left(0, 1\right).
+\end{equation*}
+```
 
+The proof of Theorem \@ref(thm:DistACF) is straightforward from the CLT and Delta method. It is therefore omitted here but can for example be found in @hamilton1994time.
 
-
-
+Theorem \@ref(thm:DistACF) implies that an approximate confidence interval for $\hat{\rho}(h)$ (in the iid case) is given by
+$$\text{CI}({\rho}(h), \alpha) = \hat{\rho}(h) \pm \frac{z_{1-\frac{\alpha}{2}} }{\sqrt{T}}$$
+for $0 < h < k < \infty$ and where $z_{1- \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)$ is the $(1- \frac{\alpha}{2})$ quantile of a standard normal distribution. Typically, for $\alpha = 0.05$ one would consider the following confidence interval:
+$$\text{CI}({\rho}(h), 0.05) = \hat{\rho}(h) \pm \frac{2}{\sqrt{T}}.$$
