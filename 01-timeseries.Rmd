@@ -5,6 +5,7 @@ In this chapter we give an introduction to time series analysis. For this purpos
 - Definition and descriptive analysis of time series
 - Dependence within time series (and fundamental representations)
 - Stationarity of time series
+- Basic time series models
 - Linear processes
 - Latent (or composite) stochastic processes
 - Estimation problems with time series
@@ -186,85 +187,15 @@ As underlined up to now, both ACV and ACF are appropriate to measure linear depe
 knitr::include_graphics("images/Cor.png")
 ```
 
-As can be seen, the first line in the figure shows are consistent behaviour of the ACF value since the absolute value goes closer to 1 the more the points go closer to forming a line. However, the other lines show plots where there is clearly a strong relation (dependence) between the variables but the ACF doesn't detect this characteristic since this relation is not linear.
+As can be seen, the first row in the figure shows a consistent behaviour of the ACF value since the absolute value goes closer to 1 the more the points go closer to forming a line. However, the following rows show plots where there is clearly a strong relation (dependence) between the variables but the ACF doesn't detect this characteristic since this relation is not linear.
 
-It is worth noting that correlation does NOT imply causation. For example, if $\rho(t, t+h) \neq 0$, it does not imply that $X_t \to X_{t+h}$ is causal. Actually, real causation doesn't exist in statistics but there exists approximated metric to measure this concept such as Granger causality (see @granger1969investigating). This idea is clearly illustrated in the image below:
+Finally, it is worth noting that correlation does NOT imply causation. For example, if $\rho(t, t+h) \neq 0$, this does not imply that $X_t \to X_{t+h}$ is causal. More specifically, the presence (or absence) of causality cannot be detected through statistical tools although some approximated metrics have been proposed to measure this concept (e.g Granger causality, see  @granger1969investigating). This idea is clearly illustrated in the image below:
 
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='50%', fig.cap='Correlation does NOT imply causation.', echo=FALSE}
 knitr::include_graphics("images/corr_cat.jpg")
 ```
 
-We can simplify the notations $\gamma_X(t, t+h)$ and $\rho_X(t, t+h)$ to be $\gamma(t, t+h)$ and $\rho(t, t+h)$ when there is no ambiguity (i.e. only one time series is considered).
-
-
-## Latent Time Series Processes and Composite Stochastic Process
-We first introduce some latent time series processes that are commonly used, especially in the calibration procedure of inertial sensors.
-
-```{definition, WN, name = "Gaussian White Noise"}
-The Gaussian White Noise (WN) process with parameter $\sigma^2 \in \mathbb{R}^+$ is defined as 
-\begin{equation*}
-		X_t  \overset{iid}{\sim} \mathcal{N}\left(0, \sigma^2 \right)
-\end{equation*}
-where "iid" stands for "independent and identically distributed".
-```
-
-```{definition, QN, name = "Quantization Noise"}
-The Quantization Noise (QN) process with parameter $Q^2 \in \mathbb{R}^+$ is a process with Power Spectral Density (PSD) of the form 
-\begin{equation*}
-		S_{X}(f) = 4 Q^2 \sin^2 \left( \frac{\pi f}{\Delta t} \right) \Delta t, \;\; f < \frac{\Delta t}{2}.
-\end{equation*}
-```
-
-```{definition, DR, name = "Drift"}
-The Drift (DR) process with parameter $\omega \in \Omega$, where $\Omega$ is either $\mathbb{R}^+$ or $\mathbb{R}^-$, is defined as 
-\begin{equation*}
-X_t = \omega t.
-\end{equation*}
-```
-
-```{definition, RW, name = "Random Walk"}
-The Random Walk (RW) process with parameter $\gamma^2 \in \mathbb{R}^+$ is defined as 
-\begin{equation*}
-X_t = X_{t-1} + \epsilon_t \;\; \text{where}\;\; \epsilon_t  \overset{iid}{\sim} \mathcal{N}\left(0, \gamma^2 \right)\;\; \text{and}\;\; X_0 = 0.
-\end{equation*}
-```
-
-```{definition, AR, name = "Auto-Regressive"}
-The Auto-Regressive process of Order 1 (AR1) with parameter $\phi \in (-1, +1)$ and $\upsilon^2 \in \mathbb{R}^+$ is defined as 
-\begin{equation*}
-X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon^2).
-\end{equation*}
-```
-
-```{definition, GM, name = "Gauss Markov"}
-The Gauss Markov process of Order 1 (GM) with parameter $\beta \in \mathbb{R}$ and $\sigma_G^2 \in \mathbb{R}^+$ is defined as 
-\begin{equation*}
-      X_t = \exp(-\beta \Delta_t) X_{t-1} + Z_t, \;\;\; 
-      Z_t \overset{iid}{\sim} \mathcal{N}(0,\sigma^2_{G}(1-\exp(-2\beta\Delta t)))
-\end{equation*}
-where $\Delta t$ denotes the time between $X_t$ and $X_{t-1}$.
-```
-
-```{exercise, GMandAR1, name = "GM and AR1"}
-A GM process is a one-to-one reparametrization of an AR1 process. In the following, we will only discuss AR1 processes but all results remain valid for GM processes.
-```
-
-With the above defined latent time series processes, we introduce the composite stochastic process, which is widely used in the estimation procedure of inertial sensor stochastic calibration.
-
-```{definition, CompStocProc, name = "Composite Stochastic Process"}
-A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
-```
-
-```{example, exampleCompStocProc, name = "2*AR1 + WN"}
-The composite stochastic process of "2*AR1 + WN" is given as
-\begin{align}
-Y_t &= \phi_1 Y_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_1^2),\\
-W_t &= \phi_2 W_{t-1} + U_t, \;\;\; U_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_2^2),\\
-Q_t &\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
-X_t &= Y_t + W_t + Q_t,
-\end{align}
-where $Y_t$, $W_t$ and $Q_t$ are independent and only $X_t$ is observed.
-```
+For the following sections we will simplify the notations $\gamma_X(t, t+h)$ and $\rho_X(t, t+h)$ to be $\gamma(h)$ and $\rho(h)$ when there is no ambiguity (i.e. only one time series is considered and the ACF only depends on the time-lag $h$).
 
 
 ## Stationarity
@@ -451,6 +382,78 @@ X_t = \sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}.
 \end{align*}
 Therefore, AR1 is a linear process.
 ```
+
+
+## Basic Time Series Models
+
+We first introduce some latent time series models that are commonly used, especially in the calibration procedure of inertial sensors.
+
+```{definition, WN, name = "Gaussian White Noise"}
+The Gaussian White Noise (WN) process with parameter $\sigma^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+		X_t  \overset{iid}{\sim} \mathcal{N}\left(0, \sigma^2 \right)
+\end{equation*}
+where "iid" stands for "independent and identically distributed".
+```
+
+```{definition, QN, name = "Quantization Noise"}
+The Quantization Noise (QN) process with parameter $Q^2 \in \mathbb{R}^+$ is a process with Power Spectral Density (PSD) of the form 
+\begin{equation*}
+		S_{X}(f) = 4 Q^2 \sin^2 \left( \frac{\pi f}{\Delta t} \right) \Delta t, \;\; f < \frac{\Delta t}{2}.
+\end{equation*}
+```
+
+```{definition, DR, name = "Drift"}
+The Drift (DR) process with parameter $\omega \in \Omega$, where $\Omega$ is either $\mathbb{R}^+$ or $\mathbb{R}^-$, is defined as 
+\begin{equation*}
+X_t = \omega t.
+\end{equation*}
+```
+
+```{definition, RW, name = "Random Walk"}
+The Random Walk (RW) process with parameter $\gamma^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+X_t = X_{t-1} + \epsilon_t \;\; \text{where}\;\; \epsilon_t  \overset{iid}{\sim} \mathcal{N}\left(0, \gamma^2 \right)\;\; \text{and}\;\; X_0 = 0.
+\end{equation*}
+```
+
+```{definition, AR, name = "Auto-Regressive"}
+The Auto-Regressive process of Order 1 (AR1) with parameter $\phi \in (-1, +1)$ and $\upsilon^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon^2).
+\end{equation*}
+```
+
+```{definition, GM, name = "Gauss Markov"}
+The Gauss Markov process of Order 1 (GM) with parameter $\beta \in \mathbb{R}$ and $\sigma_G^2 \in \mathbb{R}^+$ is defined as 
+\begin{equation*}
+      X_t = \exp(-\beta \Delta_t) X_{t-1} + Z_t, \;\;\; 
+      Z_t \overset{iid}{\sim} \mathcal{N}(0,\sigma^2_{G}(1-\exp(-2\beta\Delta t)))
+\end{equation*}
+where $\Delta t$ denotes the time between $X_t$ and $X_{t-1}$.
+```
+
+```{exercise, GMandAR1, name = "GM and AR1"}
+A GM process is a one-to-one reparametrization of an AR1 process. In the following, we will only discuss AR1 processes but all results remain valid for GM processes.
+```
+
+With the above defined latent time series processes, we introduce the composite stochastic process, which is widely used in the estimation procedure of inertial sensor stochastic calibration.
+
+```{definition, CompStocProc, name = "Composite Stochastic Process"}
+A composite stochastic process is a sum of latent processes. We implicitly assume that these latent processes are independent.
+```
+
+```{example, exampleCompStocProc, name = "2*AR1 + WN"}
+The composite stochastic process of "2*AR1 + WN" is given as
+\begin{align}
+Y_t &= \phi_1 Y_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_1^2),\\
+W_t &= \phi_2 W_{t-1} + U_t, \;\;\; U_t \overset{iid}{\sim} \mathcal{N}(0,\upsilon_2^2),\\
+Q_t &\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
+X_t &= Y_t + W_t + Q_t,
+\end{align}
+where $Y_t$, $W_t$ and $Q_t$ are independent and only $X_t$ is observed.
+```
+
 
 
 ## Fundamental Representations of Time Series

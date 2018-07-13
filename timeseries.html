@@ -329,14 +329,15 @@ where <span class="math inline">\(\text{Var}(\cdot)\)</span> denotes the varianc
 
 3. Scale invariant: ACF $\rho_X(t,t+h)$ is scale free like any correlation. Moreover, if $\rho_X(t,t+h)$ is &quot;close&quot; to $\pm 1$, then this implies that there is &quot;strong&quot; (linear) dependence between $X_{t}$ and $X_{t+h}$.</code></pre>
 <p>Since the ACV is bounded by the product of the standard deviations of the two variables, we have that the ACF is bounded between 1 and -1. Therefore it is possible to better interpret the linear dependence where an ACF of zero indicates an absence of linear dependence while an ACF close to 1 or -1 indicates respectively a strong positive or negative linear dependence.</p>
-<p>As underlined up to now, both ACV and ACF are appropriate to measure linear dependence only. Therefore if the ACV and ACF are both zero, this does not imply that there isn’t dependence between the variables. Indeed, aside from linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist which the ACV or ACF don’t measure directly. Here is an example:</p>
+<p>As underlined up to now, both ACV and ACF are appropriate to measure linear dependence only. Therefore if the ACV and ACF are both zero, this does not imply that there isn’t dependence between the variables. Indeed, aside from linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist which the ACV or ACF don’t measure directly. The figure below shows scatterplots (one variable on the x-axis and another on the y-axis) along with the values of the ACF:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/Cor.png" alt="Different forms of dependence and their ACF values" width="80%" />
 <p class="caption">
 Figure 1.4: Different forms of dependence and their ACF values
 </p>
 </div>
-<p>It is worth noting that correlation does NOT imply causation. For example, if <span class="math inline">\(\rho(t, t+h) \neq 0\)</span>, it does not imply that <span class="math inline">\(X_t \to X_{t+h}\)</span> is causal. Actually, real causation doesn’t exist in statistics but there exists approximated metric to measure this concept such as Granger causality (see <span class="citation">@granger1969investigating</span>). This idea is clearly illustrated in the image below:</p>
+<p>As can be seen, the first row in the figure shows a consistent behaviour of the ACF value since the absolute value goes closer to 1 the more the points go closer to forming a line. However, the following rows show plots where there is clearly a strong relation (dependence) between the variables but the ACF doesn’t detect this characteristic since this relation is not linear.</p>
+<p>Finally, it is worth noting that correlation does NOT imply causation. For example, if <span class="math inline">\(\rho(t, t+h) \neq 0\)</span>, this does not imply that <span class="math inline">\(X_t \to X_{t+h}\)</span> is causal. More specifically, the presence (or absence) of causality cannot be detected through statistical tools although some approximated metrics have been proposed to measure this concept (e.g Granger causality, see <span class="citation">@granger1969investigating</span>). This idea is clearly illustrated in the image below:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="images/corr_cat.jpg" alt="Correlation does NOT imply causation." width="50%" />
 <p class="caption">
