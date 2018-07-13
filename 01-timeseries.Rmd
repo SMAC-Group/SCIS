@@ -2,17 +2,17 @@
 
 In this chapter we give an introduction to time series analysis. For this purpose, it is organized in the following order:
 
-- Definition and descriptive analysis of time series
-- Dependence within time series (and fundamental representations)
-- Stationarity of time series
-- Basic time series models
-- Linear processes
-- Latent (or composite) stochastic processes
-- Estimation problems with time series
+- Definition and descriptive analysis of time series;
+- Dependence within time series (and fundamental representations);
+- Stationarity of time series;
+- Basic time series models;
+- Linear processes;
+- Latent (or composite) stochastic processes;
+- Estimation problems with time series.
 
 ## Time Series
 ```{definition, ts, name = "Time Series"}
-A time series is a stochastic process (i.e. a sequence of random variables) defined on a common probability space. Let us denote this time-indexed stochastic process (time series) as $(X_t)_{t = 1,...,T}$ (i.e. \{$X_1$, $X_2$, ...., $X_T$\}) where the time $t$ belongs to the discrete index set. Therefore, we implicitly assume that
+A time series is a stochastic process (i.e. a sequence of random variables) defined on a common probability space. Let us denote this time-indexed stochastic process (time series) as $(X_t)_{t = 1,...,T}$, i.e. ($X_1$, $X_2$, ...., $X_T$), where the time $t$ belongs to the discrete index set. Therefore, we implicitly assume that
 
 - $t$ is non-random, i.e. the time at which each observation is measured is known, and 
 - the time between two consecutive observations is constant (i.e. sampling occurs at regular intervals).
@@ -41,10 +41,13 @@ A first example of a time series is the quarterly earnings of the company Johnso
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Johnson and Johnson Quarterly Earnings'}
 # Load simts package
 library(simts)
+
 # Load data
 data(jj, package = "astsa")
+
 # Construct gts object
 jj = gts(jj, start = 1960, freq = 4)
+
 # Plot time series
 plot(jj, main = "Johnson and Johnson Quarterly Earnings",
      xlab = "Time (year)",
@@ -60,8 +63,10 @@ Let us consider another data set coming from the domain of hydrology. The data r
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Monthly Precipitation Data'}
 # Load data
 data(hydro, package = "simts")
+
 # Construct gts object
 hydro = gts(hydro, start = 1907, freq = 12)
+
 # Plot time series
 plot(hydro, main = "Monthly Precipitation Data",
      xlab = "Time (year)",
@@ -77,11 +82,14 @@ Another example is provided by the data coming from the calibration procedure of
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Inertial Sensor Data'}
 # Load data
 data(imu6, package = "imudata")
+
 # Construct gts object
 imu = gts(imu6[,1], freq = 100*60*60)
+
 # Plot time series
 plot(imu, main = "Inertial Sensor Data",
-     ylab = expression(paste("Angular Velocity ", (rad/s))))
+     ylab = expression(paste("Angular Velocity ", (rad/s))),
+     xlab = "Time (h)")
 ```
 
 As we can see from the plot, there wouldn't appear to be any linear trend, seasonality or increased variation in the time series. Indeed, from this plot it is difficult to detect any particular characteristic of this time series although a linear trend and other processes are present in this data. Therefore, especially when the length of the time series is considerable, this representation of time series can only give insight into few aspects (if none) and consequently is not suitable, on its own, to adequately inform the subsequent statistical analysis.
@@ -553,7 +561,6 @@ The sample autocorrelation function is defined as
 \end{equation*}
 with $\hat{\rho}(h) = \hat{\rho}(-h)$ for $h = 0, 1, ..., k$, where $k$ is a fixed integer.
 ```
-
 
 We will discuss more about the properties of these estimators in the next chapter.
 
