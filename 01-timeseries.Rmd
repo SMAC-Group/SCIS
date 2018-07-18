@@ -54,7 +54,8 @@ plot(jj, main = "Johnson and Johnson Quarterly Earnings",
      ylab = "Quarterly Earnings per Share ($)") 
 ```
 
-As we can see from the plot, the data contains a non-linear increasing trend as well as a seasonal component highlighted by the almost regularly-spaced peaks and valleys along time. In addition, we can notice that the variability of the data seems to increase with time (the seasonal variations appear to be larger towards the end of the plot). Hence, this simple visual representation can deliver important insight as to the behaviour of the time series and consequently determine the steps to take for further analysis (e.g. consider a non-linear model to explain the trend and consider approaches to model changing variance).
+As we can see from the plot, the data contains a non-linear increasing trend as well as a seasonal component highlighted by the almost regularly-spaced peaks and valleys along time. In addition, we can notice that the variability of the data seems to increase with time (the seasonal variations appear to be larger towards the end of the plot). Hence, this simple visual representation can deliver important insight as to the behaviour of the time series and consequently determine the steps to take for further analysis (e.g. consider a non-linear model to explain the trend and consider approaches to model changing variance). <div style="text-align: right"> $\LARGE{\bullet}$ </div> 
+<br>
 
 ```{example, examplePrecipitation, name = "Monthly Precipitation Data"}
 Let us consider another data set coming from the domain of hydrology. The data records monthly precipitation (in mm) over a certain period of time (1907 to 1972) and is interesting for hydrologists for the purpose of studying water cycles. The data are presented in the plot below:
@@ -73,7 +74,8 @@ plot(hydro, main = "Monthly Precipitation Data",
      ylab = "Mean Monthly Precipitation (mm)")
 ```
 
-The time series plot above differs considerably from the previous one since the values of the time series, being always non-negative, remain almost always between 0 and 1 (no apparent trend) and randomly shows some larger observations that go beyond the value of 2 (or even 3). The latter appear to be extreme observations which could qualify as outliers, i.e. observations that are not representative of the true underlying model that generates the time series and can considerably affect the statistical analysis if not dealt with. 
+The time series plot above differs considerably from the previous one since the values of the time series, being always non-negative, remain almost always between 0 and 1 (no apparent trend) and randomly shows some larger observations that go beyond the value of 2 (or even 3). The latter appear to be extreme observations which could qualify as outliers, i.e. observations that are not representative of the true underlying model that generates the time series and can considerably affect the statistical analysis if not dealt with. <div style="text-align: right"> $\LARGE{\bullet}$ </div>
+<br>
 
 ```{example, exampleInertialSensor, name = "Inertial Sensor Data"}
 Another example is provided by the data coming from the calibration procedure of an Inertial Measurement Unit (IMU). The signals (or time series) coming from an IMU are usually measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. The plot below represents the time series of an error signal coming from a gyroscope belonging to an IMU.
@@ -92,7 +94,8 @@ plot(imu, main = "Inertial Sensor Data",
      xlab = "Time (h)")
 ```
 
-As we can see from the plot, there wouldn't appear to be any linear trend, seasonality or increased variation in the time series. Indeed, from this plot it is difficult to detect any particular characteristic of this time series although a linear trend and other processes are present in this data. Therefore, especially when the length of the time series is considerable, this representation of time series can only give insight into few aspects (if none) and consequently is not suitable, on its own, to adequately inform the subsequent statistical analysis.
+As we can see from the plot, there wouldn't appear to be any linear trend, seasonality or increased variation in the time series. Indeed, from this plot it is difficult to detect any particular characteristic of this time series although a linear trend and other processes are present in this data. Therefore, especially when the length of the time series is considerable, this representation of time series can only give insight into few aspects (if none) and consequently is not suitable, on its own, to adequately inform the subsequent statistical analysis. <div style="text-align: right"> $\LARGE{\bullet}$ </div>
+<br>
 
 In order to deliver a more appropriate (or more complete) representation of a time series, it is important to study the concept of dependence since (in a linear vision of time) past observations have an influence on present and (possibly) future ones. Hence, the next section gives an overview of this concept.
 
@@ -105,15 +108,16 @@ Two events $A$ and $B$ are independent if
 \begin{align*}
 \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B),
 \end{align*}
-with $\mathbb{P}(A)$ denoting the probability of event A occuring and $\mathbb{P}(A \cap B)$ denoting the joint probability (i.e. the probability that events A and B occur jointly). In general, $A_{1},\ldots,A_{n}$ are independent if 
+with $\mathbb{P}(A)$ denoting the probability of event $A$ occuring and $\mathbb{P}(A \cap B)$ denoting the joint probability (i.e. the probability that events $A$ and $B$ occur jointly). In general, $A_{1},\ldots,A_{n}$ are independent if 
 \begin{align*}
 \mathbb{P}(A_1 \ldots A_n) = \mathbb{P}(A_1) \ldots \mathbb{P}(A_n) \;\; \forall \; A_i \in S, \;\; i=1,\ldots,n
 \end{align*}
 where $S$ is the sample space.
 ```
+<br>
 
 ```{definition, IndepRV, name = "Independence of Random Variables"}
-Two random variables $X$ and $Y$ with Cumulative Distribution Functions (CDF) $F_X(x)$ and $F_Y(y)$ respectively are independent if and only if their joint CDF $F_{X,Y}(x,y)$ is such that 
+Two random variables $X$ and $Y$ with Cumulative Distribution Functions (CDF) $F_X(x)$ and $F_Y(y)$, respectively, are independent if and only if their joint CDF $F_{X,Y}(x,y)$ is such that 
 \begin{align*}
 F_{X,Y}(x,y) = F_{X}(x) F_{Y}(y).
 \end{align*}
@@ -122,38 +126,41 @@ In general, random variables $X_1, \ldots, X_n$ with CDF $F_{X_1}(x_1), \ldots, 
 F_{X_1,\ldots,X_n}(x_1,\ldots,x_n) = F_{X_1}(x_1) \ldots F_{X_n}(x_n).
 \end{align*}
 ```
+<br>
 
 ```{definition, iid, name = "iid sequence"}
 The sequence $X_{1},X_{2},\ldots,X_{T}$ is said to be independent and identically distributed (i.e. iid) if and only if
 \begin{align*}
-\mathbb{P}(X_{i}<x) = \mathbb{P}(X_{j}<x) \;\; \forall x \in \mathbb{R}, \forall i,j \in \{1,\ldots,T\}
+\mathbb{P}(X_{i}<x) = \mathbb{P}(X_{j}<x) \;\; \forall x \in \mathbb{R}, \forall i,j \in \{1,\ldots,T\},
 \end{align*}
 and
 \begin{align*}
 \mathbb{P}(X_{1}<x_{1},X_{2}<x_{2},\ldots,X_{T}<x_{T})=\mathbb{P}(X_{1}<x_1) \ldots \mathbb{P}(X_{T}<x_T) \;\; \forall T\geq2, x_1, \ldots, x_T \in \mathbb{R}.
 \end{align*}
 ```
+<br>
 
 The basic idea behind the above definitions of independence is the fact that the probability of an event regarding variable $X_i$ remains unaltered no matter what occurs for variable $X_j$ (for $i \neq j$). From this definition, we can now start exploring the concept of dependence, starting from **linear dependence** within a time series. For this purpose, below we define a quantity called AutoCovariance (ACV). 
 
 ```{definition, ACV, name="AutoCovariance"}
-AutoCovariance (ACV) denoted as $\gamma_X(t, t+h)$ is defined as
+Autocovariance denoted as $\gamma_X(t, t+h)$ is defined as
 \begin{align*}
-\gamma_X(t, t+h) = \text{Cov}(X_{t},X_{t+h})= 	\mathbb{E}(X_{t}X_{t+h})-\mathbb{E}(X_{t})\mathbb{E}(X_{t+h})
+\gamma_X(t, t+h) = \text{Cov}(X_{t},X_{t+h})= 	\mathbb{E}(X_{t}X_{t+h})-\mathbb{E}(X_{t})\mathbb{E}(X_{t+h}),
 \end{align*}
 where $\text{Cov}(\cdot)$ denotes the covariance and
 \begin{align*}
-\mathbb{E}(X_{t}) = \int_{-\infty}^{\infty}x \, f(x) \, dx \;\; \text{and} \;\; \mathbb{E}(X_{t},X_{t+h}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_{t}\,x_{t+h}\, f(x_{t},x_{t+h}) \, dx_{t}\,dx_{t+h}
+\mathbb{E}(X_{t}) = \int_{-\infty}^{\infty}x \, f(x) \, dx \;\; \text{and} \;\; \mathbb{E}(X_{t},X_{t+h}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_{t}\,x_{t+h}\, f(x_{t},x_{t+h}) \, dx_{t}\,dx_{t+h},
 \end{align*}
 where $f(x)$ denotes the density of $X_t$ and $f(x_{t},x_{t+h})$ denotes the joint density of $X_{t}$ and $X_{t+h}$.
 ```
+<br>
 
 Notice that, when two variable are independent, $\mathbb{E}(X_{t}X_{t+h}) = \mathbb{E}(X_{t})\mathbb{E}(X_{t+h})$ and hence $\gamma_X(t, t+h) = 0$. In a nutshell, the ACV measures the degree to which the mean-behaviour of a variable (e.g. $X_{t+h}$) changes when another one changes (e.g. $X_t$) and hence, to what extent they are linearly dependent.  
 
 ```{exercise, propertiesACV, name="Properties of ACV"}
+\phantom{a}
 
-
-1. ACV is symmetric, i.e. $\gamma_X(t, t+h) = \gamma_X(t+h, t)$ as $\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})$. Under stationarity (will be discussed very soon), $\gamma_X(h) = \gamma_X(-h)$, i.e. ACV is an even function. 
+1. ACV is symmetric, i.e. $\gamma_X(t, t+h) = \gamma_X(t+h, t)$ as $\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})$. Under stationarity (will be discussed very soon, see Section \@ref(stationarity) for more details), $\gamma_X(h) = \gamma_X(-h)$, i.e. ACV is an even function. 
 
 2. Variance of the process $\text{Var}(X_t) = \gamma_X(t, t) \geq 0$. Under stationarity, $\text{Var}(X_t) = \gamma_X(0)$ and $\mid \gamma_X(h) \mid \leq \gamma_X(0)$ by Cauchy-Schwarz inequality. 
 
@@ -166,6 +173,7 @@ However in general, it is difficult to assess what "close" and "far" from zero m
 
 4. In general, $\gamma_X(t, t+h)=0$ does not imply $X_{t}$ and $X_{t+h}$ are independent. However, if $X_{t}$ and $X_{t+h}$ are joint normally distributed, then $\gamma_X(t, t+h)=0$ implies that $X_{t}$ and $X_{t+h}$ are independent.
 ```
+<br>
 
 However the ACV is a quantity whose bounds are not known *a priori* and it can consequently be impossible to determine whether the degree of linear dependence is large or not. For this reason another measure of linear dependence can be used which is related to the ACV. Indeed, the AutoCorrelation Function (ACF) is a commonly used metric in time series analysis and is defined below.
 
@@ -176,6 +184,7 @@ AutoCorrelation (ACF) denoted as $\rho_X(t, t+h)$ is defined as
 \end{align*}
 where $\text{Var}(\cdot)$ denotes the variance.
 ```
+<br>
 
 ```{exercise, propertiesACF, name = "Properties of ACF"}
 
@@ -186,6 +195,7 @@ where $\text{Var}(\cdot)$ denotes the variance.
 
 3. Scale invariant: ACF $\rho_X(t,t+h)$ is scale free like any correlation. Moreover, if $\rho_X(t,t+h)$ is "close" to $\pm 1$, then this implies that there is "strong" (linear) dependence between $X_{t}$ and $X_{t+h}$.
 ```
+<br>
 
 Since the ACV is bounded by the product of the standard deviations of the two variables, we have that the ACF is bounded between 1 and -1. Therefore it is possible to better interpret the linear dependence where an ACF of zero indicates an absence of linear dependence while an ACF close to 1 or -1 indicates respectively a strong positive or negative linear dependence. 
 
@@ -197,16 +207,12 @@ knitr::include_graphics("images/Cor.png")
 
 As can be seen, the first row in the figure shows a consistent behaviour of the ACF value since the absolute value goes closer to 1 the more the points go closer to forming a line. However, the following rows show plots where there is clearly a strong relation (dependence) between the variables but the ACF doesn't detect this characteristic since this relation is not linear.
 
-Finally, it is worth noting that correlation does NOT imply causation. For example, if $\rho(t, t+h) \neq 0$, this does not imply that $X_t \to X_{t+h}$ is causal. More specifically, the presence (or absence) of causality cannot be detected through statistical tools although some approximated metrics have been proposed to measure this concept (e.g Granger causality, see  @granger1969investigating). This idea is clearly illustrated in the image below:
-
-```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='50%', fig.cap='Correlation does NOT imply causation.', echo=FALSE}
-knitr::include_graphics("images/corr_cat.jpg")
-```
+Finally, it is worth noting that correlation does NOT imply causation. For example, if $\rho(t, t+h) \neq 0$, this does not imply that $X_t \to X_{t+h}$ is causal. More specifically, the presence (or absence) of causality cannot be detected through statistical tools although some approximated metrics have been proposed to measure this concept [e.g Granger causality, see  @granger1969investigating]. 
 
 For the following sections we will simplify the notations $\gamma_X(t, t+h)$ and $\rho_X(t, t+h)$ to be $\gamma(h)$ and $\rho(h)$ when there is no ambiguity (i.e. only one time series is considered and the ACF only depends on the time-lag $h$).
+ 
+## Stationarity {#stationarity}
 
-
-## Stationarity
 In this section we are going to introduce the concept of stationarity, one of the most important characteristics of time series data. First let us consider an example of **non-stationary processes**.
 
 ```{example, exampleNonStationary, name = "Non-Stationary Process"}
