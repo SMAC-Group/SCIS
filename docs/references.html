@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Inertial Sensors Stochastic Calibration</title>
   <meta name="description" content="TO DO">
-  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.14 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Inertial Sensors Stochastic Calibration" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-06-05">
+<meta name="date" content="2018-07-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,69 +50,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -134,19 +106,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a><ul>
 <li class="chapter" data-level="2.1" data-path="timeseries.html"><a href="timeseries.html#time-series"><i class="fa fa-check"></i><b>2.1</b> Time Series</a></li>
-<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#latent-time-series-processes-and-composite-stochastic-process"><i class="fa fa-check"></i><b>2.2</b> Latent Time Series Processes and Composite Stochastic Process</a></li>
-<li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.3</b> Dependence within Time Series</a></li>
-<li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
-<li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.5</b> Linear Processes</a></li>
+<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.2</b> Dependence within Time Series</a></li>
+<li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.3</b> Stationarity</a></li>
+<li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.4</b> Linear Processes</a></li>
+<li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#basic-time-series-models"><i class="fa fa-check"></i><b>2.5</b> Basic Time Series Models</a></li>
 <li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
+<li class="chapter" data-level="2.7" data-path="timeseries.html"><a href="timeseries.html#estimation-problems-with-time-series"><i class="fa fa-check"></i><b>2.7</b> Estimation Problems with Time Series</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="a-review-of-the-properties-of-statistical-estimators.html"><a href="a-review-of-the-properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> A Review of the Properties of Statistical Estimators</a></li>
+<li class="chapter" data-level="3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html"><i class="fa fa-check"></i><b>3</b> Properties of Statistical Estimators</a><ul>
+<li class="chapter" data-level="3.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#extremum-estimators"><i class="fa fa-check"></i><b>3.1</b> Extremum Estimators</a></li>
+<li class="chapter" data-level="3.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency"><i class="fa fa-check"></i><b>3.2</b> Consistency</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency-of-extremum-estimators"><i class="fa fa-check"></i><b>3.2.1</b> Consistency of Extremum Estimators</a></li>
+<li class="chapter" data-level="3.2.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c1"><i class="fa fa-check"></i><b>3.2.2</b> Verification of Condition C1</a></li>
+<li class="chapter" data-level="3.2.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#verification-of-condition-c4"><i class="fa fa-check"></i><b>3.2.3</b> Verification of Condition C4</a></li>
+<li class="chapter" data-level="3.2.4" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#consistency-of-sample-autocovariance-and-autocorrelation-functions"><i class="fa fa-check"></i><b>3.2.4</b> Consistency of Sample AutoCovariance and AutoCorrelation Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#asymptotic-normality"><i class="fa fa-check"></i><b>3.3</b> Asymptotic Normality</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#clt-for-iid-random-variables"><i class="fa fa-check"></i><b>3.3.1</b> CLT for iid Random Variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#clt-for-dependent-processes"><i class="fa fa-check"></i><b>3.3.2</b> CLT for Dependent Processes</a></li>
+<li class="chapter" data-level="3.3.3" data-path="properties-of-statistical-estimators.html"><a href="properties-of-statistical-estimators.html#asymptotic-normality-of-sample-autocovariance-and-autocorrelation-functions"><i class="fa fa-check"></i><b>3.3.3</b> Asymptotic Normality of Sample AutoCovariance and AutoCorrelation Functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
 <li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
 <li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> Properties of the Allan Variance</a></li>
 <li class="chapter" data-level="4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#estimation"><i class="fa fa-check"></i><b>4.3</b> Estimation</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency"><i class="fa fa-check"></i><b>4.3.1</b> Consistency</a></li>
-<li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency-1"><i class="fa fa-check"></i><b>4.3.1</b> Consistency</a></li>
+<li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
 <li class="chapter" data-level="4.3.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#confidence-interval-of-the-moav-estimator"><i class="fa fa-check"></i><b>4.3.3</b> Confidence Interval of the MOAV Estimator</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4</b> Allan variance based estimation</a><ul>
@@ -182,16 +168,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="refs" class="references">
 <div>
-<p>Allan, D. W. 1966. “Statistics of Atomic Frequency Standards.” <em>Proceedings of the IEEE</em> 54 (2). IEEE:221–30.</p>
+<p>Allan, D. W. 1966. “Statistics of Atomic Frequency Standards.” <em>Proceedings of the IEEE</em> 54 (2). IEEE: 221–30.</p>
 </div>
 <div>
-<p>El-Sheimy, N., H. Hou, and X. Niu. 2008. “Analysis and Modeling of Inertial Sensors using Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 57 (1). IEEE:140–49.</p>
+<p>Baltagi, Badi H. 2008. <em>A Companion to Theoretical Econometrics</em>. John Wiley &amp; Sons.</p>
+</div>
+<div>
+<p>Efron, B., and R. J. Tibshirani. 1994. <em>An Introduction to the Bootstrap</em>. CRC press.</p>
+</div>
+<div>
+<p>El-Sheimy, N., H. Hou, and X. Niu. 2008. “Analysis and Modeling of Inertial Sensors using Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 57 (1). IEEE: 140–49.</p>
 </div>
 <div>
 <p>Granger, C. W. J. 1969. “Investigating Causal Relations by Econometric Models and Cross-Spectral Methods.” <em>Econometrica: Journal of the Econometric Society</em>. JSTOR, 424–38.</p>
 </div>
 <div>
-<p>Greenhall, C. A. 1998. “Spectral Ambiguity of Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 47 (3). IEEE:623–27.</p>
+<p>Greenhall, C. A. 1998. “Spectral Ambiguity of Allan Variance.” <em>IEEE Transactions on Instrumentation and Measurement</em> 47 (3). IEEE: 623–27.</p>
+</div>
+<div>
+<p>Hamilton, J. D. 1994. <em>Time Series Analysis</em>. Vol. 2. Princeton university press Princeton.</p>
+</div>
+<div>
+<p>Komunjer, I. 2012. “Global Identification in Nonlinear Models with Moment Restrictions.” <em>Econometric Theory</em> 28 (4): 719.</p>
+</div>
+<div>
+<p>Newey, W. K., and D. McFadden. 1994. “Large Sample Estimation and Hypothesis Testing, V in Handbook of Econometrics.” In. Vol. 4. Elsevier, Amsterdam.</p>
 </div>
 <div>
 <p>Newey, Whitney K, and Kenneth D West. 1986. “A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelationconsistent Covariance Matrix.” National Bureau of Economic Research Cambridge, Mass., USA.</p>
@@ -203,13 +204,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Percival, D. B., and A. T. Walden. 2006. <em>Wavelet methods for time series analysis</em>. Cambridge university press.</p>
 </div>
 <div>
-<p>Percival, D. P. 1995. “On Estimation of the Wavelet Variance.” <em>Biometrika</em> 82 (3). Oxford University Press:619–31.</p>
+<p>Percival, D. P. 1995. “On Estimation of the Wavelet Variance.” <em>Biometrika</em> 82 (3). Oxford University Press: 619–31.</p>
 </div>
 <div>
-<p>Xu, H., Stéphane Guerrier, Roberto Molinari, and Yuming Zhang. 2017. “A Study of the Allan Variance for Constant-Mean Nonstationary Processes.” <em>IEEE Signal Processing Letters</em> 24 (8). IEEE:1257–60.</p>
+<p>Xu, H., Stéphane Guerrier, Roberto Molinari, and Yuming Zhang. 2017. “A Study of the Allan Variance for Constant-Mean Nonstationary Processes.” <em>IEEE Signal Processing Letters</em> 24 (8). IEEE: 1257–60.</p>
 </div>
 <div>
-<p>Zhang, N. F. 2008. “Allan Variance of Time Series Models for Measurement Data.” <em>Metrologia</em> 45 (5). IOP Publishing:549.</p>
+<p>Zhang, N. F. 2008. “Allan Variance of Time Series Models for Measurement Data.” <em>Metrologia</em> 45 (5). IOP Publishing: 549.</p>
 </div>
 </div>
 </div>
@@ -265,7 +266,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

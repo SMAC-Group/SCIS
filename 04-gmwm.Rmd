@@ -1,1 +1,33 @@
 # The Generalized Method of Wavelet Moments
+
+- A new framework for inertial sensor calibration.
+- It is based on the Generalized Method of Wavelet Moments (GMWM) of @guerrier2013wavelet, which is a new statistical approach to estimate the parameters of (complex) time series models.
+- The GMWM is able to estimate efficiently time series models which are commonly used to describe the errors of inertial sensors.
+- This calibration approach provides considerable improvements (in terms of navigation performance) compared to existing methods.
+- This methodology is robust (potentially applicable for FDI purposes) and is able to automatically select a suitable model (or rank models).
+
+The GMWM estimator is a GMM type estimator based on a quantity called the Wavelet Variance (WV). This quantity is computed by taking the variance of the Wavelet Coefficient wich are defined as
+
+```{definition, defAV, name = "Wavelet Coefficient"}
+
+In a similar way to the AV, we can define the Wavelet Variance (WV) at dyadic scales ($\tau_j$) for $j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$. To do so, we first need to define the wavelet filters $h_{j,l}$ as ``weights'' having the following properties
+    \begin{equation*}
+     \sum_{l=0}^{L_j-1} h_{j,l}=0, \,\, \sum_{l=0}^{L_1-1} h_{1,l}^2 =\frac{1}{2} \, \mathrm{and } \, \sum_{l=-\infty}^{\infty} h_{1,l}  h_{1,l+2m} = 0 ,
+    \label{def:wvfilter}
+\end{equation*}
+where $m \in \mathbb{N}^+$, $L_j = (2^j-1)(L_1-1)+1$ is the length of the filter at level $j$ and $L_1$ is the length of the first level filter $h_{1,l}$.\\[0.2cm]
+
+Then, the wavelet coefficients $W_{j,t}$ are defined as
+
+\begin{equation*}
+    W_{j,t} = \sum_{l=0}^{L_j-1}h_{j,l} X_{t-l}.
+\end{equation*}
+
+```
+
+
+There exist many type of Wavelet Filter. In this book, we will focus on the Maximum Overlap Discrete Wavelet Transform (MODWT), which is the most usefull one. 
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='MODWT Wavelet Coefficient', echo=FALSE}
+knitr::include_graphics("images/modwt.png")
+```

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Inertial Sensors Stochastic Calibration</title>
   <meta name="description" content="TO DO">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.14 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Inertial Sensors Stochastic Calibration" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-04">
+<meta name="date" content="2018-07-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -69,10 +106,10 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="timeseries.html"><a href="timeseries.html"><i class="fa fa-check"></i><b>2</b> Introduction to Time Series Analysis</a><ul>
 <li class="chapter" data-level="2.1" data-path="timeseries.html"><a href="timeseries.html#time-series"><i class="fa fa-check"></i><b>2.1</b> Time Series</a></li>
-<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#latent-time-series-processes-and-composite-stochastic-process"><i class="fa fa-check"></i><b>2.2</b> Latent Time Series Processes and Composite Stochastic Process</a></li>
-<li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.3</b> Dependence within Time Series</a></li>
-<li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.4</b> Stationarity</a></li>
-<li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.5</b> Linear Processes</a></li>
+<li class="chapter" data-level="2.2" data-path="timeseries.html"><a href="timeseries.html#dependence-within-time-series"><i class="fa fa-check"></i><b>2.2</b> Dependence within Time Series</a></li>
+<li class="chapter" data-level="2.3" data-path="timeseries.html"><a href="timeseries.html#stationarity"><i class="fa fa-check"></i><b>2.3</b> Stationarity</a></li>
+<li class="chapter" data-level="2.4" data-path="timeseries.html"><a href="timeseries.html#linear-processes"><i class="fa fa-check"></i><b>2.4</b> Linear Processes</a></li>
+<li class="chapter" data-level="2.5" data-path="timeseries.html"><a href="timeseries.html#basic-time-series-models"><i class="fa fa-check"></i><b>2.5</b> Basic Time Series Models</a></li>
 <li class="chapter" data-level="2.6" data-path="timeseries.html"><a href="timeseries.html#fundamental-representations-of-time-series"><i class="fa fa-check"></i><b>2.6</b> Fundamental Representations of Time Series</a></li>
 <li class="chapter" data-level="2.7" data-path="timeseries.html"><a href="timeseries.html#estimation-problems-with-time-series"><i class="fa fa-check"></i><b>2.7</b> Estimation Problems with Time Series</a></li>
 </ul></li>
@@ -145,7 +182,7 @@
 \end{equation*}\]</span>
 where <span class="math inline">\(\boldsymbol{\theta}\)</span> and <span class="math inline">\(\boldsymbol{\Theta}\)</span> denote, respectively, the parameter vector of interest and its set of possible values.
 </div>
-<p></p>
+
 <p>The vast majority of statistical estimators can be represented as extremum estimators. For example, least squares, maximum likelihood or (generalized) method of moment estimators can all be represented as extremum estimators.</p>
 
 <div class="example">
@@ -158,7 +195,7 @@ This LSE is an extremum estimator since it can be expressed as
 \hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta} \in \mathcal{B}}{\text{argmax}} \; -||\boldsymbol{y} - \boldsymbol{X} \boldsymbol{\beta} ||_2^2.
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 
 <div class="example">
 <span id="exm:ExtreEstMLE" class="example"><strong>Example 3.2  (Maximum Likelihood Estimator as Extremum Estimator)  </strong></span>Let <span class="math inline">\(Z_1, \ldots, Z_n\)</span> be an iid sample with pdf <span class="math inline">\(f(z|\boldsymbol{\theta}_0)\)</span>. The Maximum Likelihood Estimator (MLE) is given by
@@ -171,7 +208,7 @@ Therefore, the MLE can be seen as an extremum estimator with
 \hat{Q}_n(\boldsymbol{\theta}) = \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 
 <div class="definition">
 <span id="def:GMM" class="definition"><strong>Definition 3.2  (Generalized Method of Moments)  </strong></span>Let <span class="math inline">\(Z_1, \ldots, Z_n\)</span> be an iid sample with pdf <span class="math inline">\(f(z|\boldsymbol{\theta}_0)\)</span>. Suppose that there is a moment function vector <span class="math inline">\(\boldsymbol{g}(z | \boldsymbol{\theta})\)</span> such that <span class="math inline">\(\mathbb{E}[\boldsymbol{g} (z | \boldsymbol{\theta}_0)] = 0\)</span>. Then the Generalized Method of Moments (GMM) estimator of <span class="math inline">\(\boldsymbol{\theta}_0\)</span> is defined as
@@ -185,7 +222,7 @@ Alternatively (but equivalently), we can define GMM estimator as
 \end{equation*}\]</span>
 where <span class="math inline">\(|| \boldsymbol{x} ||_{\boldsymbol{A}}^2 = \boldsymbol{x}^T \boldsymbol{A} \boldsymbol{x}\)</span>, and where <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span> and <span class="math inline">\(\boldsymbol{\mu}(\boldsymbol{\theta})\)</span> denote, respectively, the empirical and model based moments. We will use this form of definition of GMM estimator more often.
 </div>
-<p></p>
+
 
 <div class="example">
 <span id="exm:ExtreEstGMM" class="example"><strong>Example 3.3  (A Simple GMM Estimator as Extremum Estimator)  </strong></span>Let <span class="math inline">\(Z_i \overset{iid}{\sim} \mathcal{N}(\mu_0, \sigma^2_0)\)</span> and <span class="math inline">\(\boldsymbol{\theta}_0 = (\mu_0, \sigma_0^2)^T\)</span>. Suppose we wish to estimate <span class="math inline">\(\boldsymbol{\theta}_0\)</span> by matching the first three empirical moments with their theoretical counterparts. In this case, a reasonable moment function or condition defining a GMM estimator is given by:
@@ -215,7 +252,7 @@ Therefore we can write the GMM estimator of <span class="math inline">\(\boldsym
 \hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmin}} \; || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 </div>
 <div id="consistency" class="section level2">
 <h2><span class="header-section-number">3.2</span> Consistency</h2>
@@ -228,9 +265,9 @@ Therefore we can write the GMM estimator of <span class="math inline">\(\boldsym
 \end{equation*}\]</span>
 for all <span class="math inline">\(\epsilon &gt;0\)</span>.
 </div>
-<p></p>
+
 <p>In Layman’s term, consistency simply means that if <span class="math inline">\(n\)</span> is large enough, then <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> will be arbitrarily close to <span class="math inline">\(\boldsymbol{\theta}_0\)</span> (i.e. inside of an hypersphere of radius <span class="math inline">\(\epsilon\)</span> centered at <span class="math inline">\(\boldsymbol{\theta}_0\)</span>). This also means the procedure (i.e. our estimator <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span>) based on unlimited data will be able to identify the underlying truth (i.e. <span class="math inline">\(\boldsymbol{\theta}_0\)</span>).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="images/consistency.pdf" alt="Interpretation of consistency" width="80%" />
 <p class="caption">
 Figure 3.1: Interpretation of consistency
@@ -241,12 +278,12 @@ Figure 3.1: Interpretation of consistency
 <div class="theorem">
 <span id="thm:WLLN" class="theorem"><strong>Theorem 3.1  (Weak Law of Large Number)  </strong></span>Suppose <span class="math inline">\(X_i\)</span> are iid random variables with finite mean <span class="math inline">\(\mu\)</span> (i.e. <span class="math inline">\(\mathbb{E}[X_i] = \mu\)</span>) and finite variance. Let <span class="math inline">\(\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i\)</span>, then <span class="math inline">\(\bar{X}_n \overset{\mathcal{P}}{\mapsto} \mu\)</span>.
 </div>
-<p></p>
+
 
 <div class="theorem">
 <span id="thm:CMT" class="theorem"><strong>Theorem 3.2  (Continuous Mapping Theorem)  </strong></span>If <span class="math inline">\(Y_n \overset{\mathcal{P}}{\mapsto} \mu\)</span> and <span class="math inline">\(g(\cdot)\)</span> is a continuous function, then <span class="math inline">\(g(Y_n) \overset{\mathcal{P}}{\mapsto} g(\mu)\)</span>.
 </div>
-<p></p>
+
 <p>Here we present a simple example to prove the consistency of an estimator with the above two results.</p>
 
 <div class="example">
@@ -274,7 +311,7 @@ By Weak Law of Large Number, we have <span class="math inline">\(\bar{X}_n \over
 \end{equation*}\]</span>
 And also since the function <span class="math inline">\(g(x) = 1/x\)</span> is continuous in <span class="math inline">\(\mathbb{R}^+\)</span>, we obtain by the Continuous Mapping Theorem that <span class="math inline">\(\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0\)</span>, which concludes that the MLE for <span class="math inline">\(\lambda_0\)</span> is a consistent estimator of <span class="math inline">\(\lambda_0\)</span> in exponential distribution.
 </div>
-<p></p>
+
 <div id="consistency-of-extremum-estimators" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Consistency of Extremum Estimators</h3>
 <p>When considering real-life problems, the above approach based on Weak Law of Large Number and Continuous Mapping Theorem is in general not flexible enough. Therefore, we often rely on the results as following.</p>
@@ -287,17 +324,17 @@ And also since the function <span class="math inline">\(g(x) = 1/x\)</span> is c
 <p>C4. <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> converges uniformly in probability to <span class="math inline">\(Q_0 (\boldsymbol{\theta})\)</span>,</p>
 then we have <span class="math inline">\(\hat{\boldsymbol{\theta}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{\theta}_0\)</span>.
 </div>
-<p></p>
+
 
 <div class="definition">
 <span id="def:compact" class="definition"><strong>Definition 3.4  (Compactness)  </strong></span>We say <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact if every open cover of <span class="math inline">\(\boldsymbol{\Theta}\)</span> contains a finite subcover. If <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact, then <span class="math inline">\(\boldsymbol{\Theta}\)</span> is closed (i.e. containing all its limit points) and bounded (i.e. all its points are within some finite distance of each other).
 </div>
-<p></p>
+
 
 <div class="definition">
 <span id="def:UnifCont" class="definition"><strong>Definition 3.5  (Uniform Convergence in Probability)  </strong></span><span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is said to converges uniformly in probability to <span class="math inline">\(Q_0 (\boldsymbol{\theta})\)</span> if <span class="math inline">\(\underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{sup}} \; |\hat{Q}_n (\boldsymbol{\theta}) - {Q}_0 (\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0\)</span>.
 </div>
-<p></p>
+
 <p>Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a> is an important result as it provides a general approach to prove the consistency of the class of extremum estimators. Notice that in this theorem:</p>
 <ul>
 <li>Condition (C1) is <strong>substantive</strong> and there are well-known examples where it fails. We will discuss further on how this assumption can (in some cases) be verified in practice.</li>
@@ -353,16 +390,16 @@ So by condition C4, we have
 \end{equation*}\]</span>
 Therefore, <span class="math inline">\(\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0\)</span>.
 </div>
-<p></p>
+
 </div>
 <div id="verification-of-condition-c1" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Verification of Condition C1</h3>
-<p>In general, the verification of Condition C1 is difficult and is often assumed in the statistical literature. Here we present two results based on <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span> and <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> respectively, which allow us to verify the condition C1 for GMM-type estimators. A discussion on the verification of this condition for other estimators can for example be found in Chapter 7 of <span class="citation">Baltagi (<a href="#ref-baltagi2008companion">2008</a>)</span>.</p>
+<p>In general, the verification of Condition C1 is difficult and is often assumed in the statistical literature. Here we present two results based on <span class="citation">W. K. Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span> and <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> respectively, which allow us to verify the condition C1 for GMM-type estimators. A discussion on the verification of this condition for other estimators can for example be found in Chapter 7 of <span class="citation">Baltagi (<a href="#ref-baltagi2008companion">2008</a>)</span>.</p>
 
 <div class="lemma">
 <span id="lem:GMMindentification" class="lemma"><strong>Lemma 3.1  (GMM Identification)  </strong></span>If <span class="math inline">\(\boldsymbol{W} &gt; 0\)</span> (i.e. positive definite), where <span class="math inline">\(\boldsymbol{W}\)</span> is such that <span class="math inline">\(\widehat{\boldsymbol{W}} \overset{\mathcal{P}}{\mapsto} \boldsymbol{W}\)</span>, and for <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = \mathbb{E}[\boldsymbol{g}(z|\boldsymbol{\theta})]\)</span>, we have <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}_0)=0\)</span> and <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) \neq 0\)</span> if <span class="math inline">\(\boldsymbol{\theta} \neq \boldsymbol{\theta}_0\)</span>, then <span class="math inline">\(Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta})\)</span> has a unique maximum at <span class="math inline">\(\boldsymbol{\theta}_0\)</span>.
 </div>
-<p></p>
+
 
 <div class="proof">
  <span class="proof"><em>Proof</em> (GMM Identification). </span> Since <span class="math inline">\(\boldsymbol{W} &gt;0\)</span> and there exists a unique <span class="math inline">\(\boldsymbol{\theta}_0 \in \boldsymbol{\Theta}\)</span> such that <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span>, we can say that for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span>,
@@ -370,7 +407,7 @@ Therefore, <span class="math inline">\(\underset{n \to \infty}{\text{lim}}\mathb
 Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}) \leq -\boldsymbol{g}_0(\boldsymbol{\theta}_0) \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}_0) = Q_0(\boldsymbol{\theta_0}).
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 <p>Notice that if we write a GMM estimator as in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>, then the condition <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span> can be replaced by <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span>.</p>
 <p>In order to verify the condition in Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> that <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span> (or alternatively <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span>), the following theorem based on <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> provides us a way.</p>
 
@@ -384,7 +421,7 @@ Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{
 </ul>
 then <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> is a homeomorphism (i.e. <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span> is continuous and one-to-one).
 </div>
-<p></p>
+
 <ul>
 <li><p>A direct consequence of Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> and Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> is that any GMM estimator with <span class="math inline">\(\boldsymbol{W} &gt; 0\)</span> satisfying the conditions of Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> verifies Condition C1 of Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a>.</p></li>
 <li><p>If one can show that <span class="math inline">\(\boldsymbol{g}^c(\boldsymbol{\theta})\)</span> is in <span class="math inline">\(\mathcal{C}\)</span> (where <span class="math inline">\(\boldsymbol{g}^c(\boldsymbol{\theta})\)</span> denotes the element of <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta})\)</span> that are not in <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta})\)</span>) then Condition C3 of Theorem <a href="properties-of-statistical-estimators.html#thm:ConsExtreEst">3.3</a> is also verified.</p></li>
@@ -424,7 +461,7 @@ Next, since
 <p>Finally, the last two conditions of Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> are trivially satisfied since <span class="math inline">\(||\boldsymbol{g}^*(\boldsymbol{\theta})||\)</span> can only diverge if <span class="math inline">\(|| \boldsymbol{\theta} ||\)</span> diverges and since <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta}) = s\)</span> has (one) countably solutions in <span class="math inline">\(\boldsymbol{\Theta}\)</span>.</p>
 Therefore, it follows from Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> and Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> that the function <span class="math inline">\(Q_0(\boldsymbol{\theta}) = - || \boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma}(\boldsymbol{\theta}) ||^2_{\boldsymbol{W}}\)</span> is uniquely maximized in <span class="math inline">\(\boldsymbol{\theta}_0\)</span>.
 </div>
-<p></p>
+
 </div>
 <div id="verification-of-condition-c4" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Verification of Condition C4</h3>
@@ -438,8 +475,8 @@ Therefore, it follows from Lemma <a href="properties-of-statistical-estimators.h
 </ul>
 then <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> converges uniformly in probability to <span class="math inline">\(Q_0 (\boldsymbol{\theta})\)</span>.
 </div>
-<p></p>
-<p>Here we will not discuss how to prove that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is almost surely Lipschitz continuous and assume it for simplicity (more discussion on this topic can for example be found in <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>). Nevertheless, it worth mentioning that this condition is almost always satisfied in practice and is therefore reasonable to assume for simplicity.</p>
+
+<p>Here we will not discuss how to prove that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta})\)</span> is almost surely Lipschitz continuous and assume it for simplicity (more discussion on this topic can for example be found in <span class="citation">W. K. Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>). Nevertheless, it worth mentioning that this condition is almost always satisfied in practice and is therefore reasonable to assume for simplicity.</p>
 
 <div class="example">
 <span id="exm:exmC4" class="example"><strong>Example 3.6  (An Example to Verify Condition C4)  </strong></span>In this example we revisit Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. Since we have <span class="math inline">\(Z_i \overset{iid}{\sim} \mathcal{N}(\mu_0, \sigma^2_0)\)</span>, we let
@@ -497,7 +534,7 @@ a_1 &amp;\leq ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}
 |\hat{Q}_n (\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0.
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 <p>In general, showing that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0(\boldsymbol{\theta})\)</span> for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> for every <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> is generally done using the Weak Law of Large Number (i.e. Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>). However, when <span class="math inline">\(X_i\)</span> which are not iid random variables, Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>) cannot be applied. The following theorem (taken from Proposition 7.5 of <span class="citation">Hamilton (<a href="#ref-hamilton1994time">1994</a>)</span>) generalizes this result for (weak) stationary processes with absolutely summable covariance structure.</p>
 
 <div class="theorem">
@@ -506,7 +543,7 @@ a_1 &amp;\leq ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}
 \bar{X}_T \overset{\mathcal{P}}{\mapsto} \mathbb{E}[X_t].
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 
 <div class="proof">
  <span class="proof"><em>Proof</em> (Weak Law of Large Number for Dependent Process). </span> Since <span class="math inline">\(\bar{X}_n - \mu\)</span> has mean zero, its variance is
@@ -523,7 +560,7 @@ so that
 \end{equation*}\]</span>
 which concludes the proof.
 </div>
-<p></p>
+
 
 <div class="example">
 <span id="exm:ConsistSampleMean" class="example"><strong>Example 3.7  (Consistency of Sample Mean)  </strong></span>Consider a stationary AR1 process and suppose we want to study whether its sample mean converges in probability to its expected value. This time we consider a non-zero mean AR1, i.e.
@@ -548,7 +585,7 @@ implying that the process has an absolutely summable covariance structure. There
     \bar{X}_T = \frac{1}{T} \sum_{t = 1}^T \, X_t \overset{\mathcal{P}}{\mapsto} \mathbb{E}[X_t] = \mu.
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 </div>
 <div id="consistency-of-sample-autocovariance-and-autocorrelation-functions" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Consistency of Sample AutoCovariance and AutoCorrelation Functions</h3>
@@ -561,7 +598,7 @@ implying that the process has an absolutely summable covariance structure. There
 \hat{\rho}(h) &amp;\overset{\mathcal{P}}{\mapsto} \rho(h).
 \end{align*}\]</span>
 </div>
-<p></p>
+
 
 <div class="proof">
  <span class="proof"><em>Proof</em> (Consistency of Sample AutoCovariance and AutoCorrelation Functions). </span> <span class="math inline">\((X_t^2)\)</span> has an absolutely summable covariance structure implies that both <span class="math inline">\((X_t)\)</span> and <span class="math inline">\((X_tX_{t-h})\)</span> for all <span class="math inline">\(h \in \mathbb{Z}\)</span> have absolutely summable covariance structures. Under the conditions that <span class="math inline">\((X_t)\)</span> is weakly stationary and has absolutely summable covariance structure, we have <span class="math inline">\(\bar{X}_T \overset{\mathcal{P}}{\mapsto} \mu\)</span>. Let
@@ -582,7 +619,7 @@ Then by Theorem <a href="properties-of-statistical-estimators.html#thm:CMT">3.2<
 \end{equation*}\]</span>
 which concludes the proof.
 </div>
-<p></p>
+
 </div>
 </div>
 <div id="asymptotic-normality" class="section level2">
@@ -594,12 +631,12 @@ which concludes the proof.
 <div class="theorem">
 <span id="thm:CLT" class="theorem"><strong>Theorem 3.7  (CLT for iid sequences)  </strong></span>Suppose <span class="math inline">\(X_i\)</span> are iid random variables with <span class="math inline">\(\mathbb{E}[X_i] = \mu\)</span> and <span class="math inline">\(\text{Var}(X_i) = \sigma^2 &lt; \infty\)</span>. Let <span class="math inline">\(\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i\)</span>, then <span class="math inline">\(\sqrt{n}\left(\bar{X}_n - \mu\right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(0, \sigma^2)\)</span>.
 </div>
-<p></p>
+
 
 <div class="theorem">
 <span id="thm:CLTmulti" class="theorem"><strong>Theorem 3.8  (CLT for iid multivariate sequences)  </strong></span>Suppose <span class="math inline">\(\boldsymbol{X}_i\)</span> are iid random vectors with <span class="math inline">\(\mathbb{E}[\boldsymbol{X}_i] = \boldsymbol{\mu} \in \mathbb{R}^d\)</span> and <span class="math inline">\(\boldsymbol{\text{Cov}}(\boldsymbol{X}_i) = \boldsymbol{\Sigma} \in \mathbb{R}^{d \times d}\)</span>. Then, we have <span class="math inline">\(\sqrt{n}\left(\bar{\boldsymbol{X}}_n - \boldsymbol{\mu}\right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(\boldsymbol{0}, \boldsymbol{\Sigma})\)</span>.
 </div>
-<p></p>
+
 
 <div class="theorem">
 <p><span id="thm:slutsky" class="theorem"><strong>Theorem 3.9  (Slutsky’s Theorem)  </strong></span>Let <span class="math inline">\(X_n\)</span>, <span class="math inline">\(Y_n\)</span> and <span class="math inline">\(X\)</span> be random variables. If <span class="math inline">\(X_n \overset{\mathcal{D}}{\mapsto} X\)</span> and <span class="math inline">\(Y_n \overset{\mathcal{P}}{\mapsto} c\)</span> for some constant <span class="math inline">\(c\)</span>, then</p>
@@ -610,7 +647,7 @@ which concludes the proof.
 </div>
 </li>
 </ul>
-<p>General results on the asymptotic normality of extremum estimators can be found in <span class="citation">Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>. In this section, we will only restrict our attention to a simple example of GMM estimators as in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. We will see that the asymptotic normality of extremum estimators is implied by combining the following results and techniques:</p>
+<p>General results on the asymptotic normality of extremum estimators can be found in <span class="citation">W. K. Newey and McFadden (<a href="#ref-newey1994vlarge">1994</a>)</span>. In this section, we will only restrict our attention to a simple example of GMM estimators as in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>. We will see that the asymptotic normality of extremum estimators is implied by combining the following results and techniques:</p>
 <ul>
 <li>Consistency of <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span>,</li>
 <li>Central Limit Theorem (see Theorem <a href="properties-of-statistical-estimators.html#thm:CLTmulti">3.8</a>),</li>
@@ -676,7 +713,7 @@ Using Taylor expansion for <span class="math inline">\(\boldsymbol{\gamma}(\hat{
 \end{aligned}
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 </div>
 <div id="clt-for-dependent-processes" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> CLT for Dependent Processes</h3>
@@ -690,12 +727,12 @@ Using Taylor expansion for <span class="math inline">\(\boldsymbol{\gamma}(\hat{
 \end{equation*}\]</span>
 where <span class="math inline">\(\mathcal{F}_{-\infty}^{t_1} = \sigma(X_{-\infty}, \dots, X_{t_1})\)</span> and <span class="math inline">\(\mathcal{F}_{t_2}^{\infty} = \sigma(X_{t_2}, \dots, X_{\infty})\)</span> are <span class="math inline">\(\sigma\)</span>-algebras generated by corresponding random variables.
 </div>
-<p></p>
+
 
 <div class="exercise">
 <span id="exr:MixCoefRemark" class="exercise"><strong>Remark 3.1  (Mixing Coefficients)  </strong></span>If the process is stationary, then <span class="math inline">\(\alpha(t_1, t_2) = \alpha(t_2, t_1) = \alpha(|t_1-t_2|) \equiv \alpha(\tau)\)</span>. If <span class="math inline">\(\alpha(\tau) \to 0\)</span> as <span class="math inline">\(\tau \to \infty\)</span>, then the process is strong-mixing or <span class="math inline">\(\alpha\)</span>-mixing.
 </div>
-<p></p>
+
 
 <div class="theorem">
 <p><span id="thm:CLTalpha" class="theorem"><strong>Theorem 3.10  (Central Limit Theorem and Alpha-Mixing)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be a strictly stationary process with <span class="math inline">\(\mathbb{E}[X_t] =0\)</span>. <span class="math inline">\(S_n \equiv \sum_{t=1}^{n}X_t\)</span> is the partial sum process with <span class="math inline">\(\sigma_n^2 \equiv \text{Var}(S_n)\)</span>. Suppose <span class="math inline">\((X_t)\)</span> is <span class="math inline">\(\alpha\)</span>-mixing, and that for <span class="math inline">\(\delta &gt; 0\)</span>, we have</p>
@@ -708,12 +745,12 @@ Then
 \end{equation*}\]</span>
 If <span class="math inline">\(\sigma^2 &gt; 0\)</span>, <span class="math inline">\((X_t)\)</span> obeys both the Central Limit Theorem with variance <span class="math inline">\(\sigma^2\)</span>, and the functional Central Limit Theorem.
 </div>
-<p></p>
+
 
 <div class="exercise">
 <span id="exr:ImpAlphaMix" class="exercise"><strong>Remark 3.2  (Implication of Alpha-Mixing)  </strong></span>If a process <span class="math inline">\((X_t)\)</span> is <span class="math inline">\(\alpha\)</span>-mixing, then its covariance structure is absolutely summable.
 </div>
-<p></p>
+
 </div>
 <div id="asymptotic-normality-of-sample-autocovariance-and-autocorrelation-functions" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Asymptotic Normality of Sample AutoCovariance and AutoCorrelation Functions</h3>
@@ -725,7 +762,7 @@ If <span class="math inline">\(\sigma^2 &gt; 0\)</span>, <span class="math inlin
 \sqrt{T} \left(\hat{\rho}(h) - {\rho}(h)\right) \overset{\mathcal{D}}{\mapsto}  \mathcal{N}\left(0, 1\right).
 \end{equation*}\]</span>
 </div>
-<p></p>
+
 <p>The proof of Theorem <a href="properties-of-statistical-estimators.html#thm:DistACF">3.11</a> is straightforward from the CLT and Delta method. It is therefore omitted here but can for example be found in <span class="citation">Hamilton (<a href="#ref-hamilton1994time">1994</a>)</span>.</p>
 <p>Theorem <a href="properties-of-statistical-estimators.html#thm:DistACF">3.11</a> implies that an approximate confidence interval for <span class="math inline">\(\hat{\rho}(h)\)</span> (in the iid case) is given by <span class="math display">\[\text{CI}({\rho}(h), \alpha) = \hat{\rho}(h) \pm \frac{z_{1-\frac{\alpha}{2}} }{\sqrt{T}}\]</span> for <span class="math inline">\(0 &lt; h &lt; k &lt; \infty\)</span> and where <span class="math inline">\(z_{1- \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)\)</span> is the <span class="math inline">\((1- \frac{\alpha}{2})\)</span> quantile of a standard normal distribution. Typically, for <span class="math inline">\(\alpha = 0.05\)</span> one would consider the following confidence interval: <span class="math display">\[\text{CI}({\rho}(h), 0.05) = \hat{\rho}(h) \pm \frac{2}{\sqrt{T}}.\]</span></p>
 
