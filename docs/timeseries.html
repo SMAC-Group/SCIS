@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-13">
+<meta name="date" content="2018-07-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,6 +171,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html"><i class="fa fa-check"></i><b>5</b> The Generalized Method of Wavelet Moments</a></li>
 <li class="chapter" data-level="6" data-path="extensions.html"><a href="extensions.html"><i class="fa fa-check"></i><b>6</b> Extensions</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7</b> Introduction</a><ul>
+<li class="chapter" data-level="7.1" data-path="introduction-1.html"><a href="introduction-1.html#time-series-1"><i class="fa fa-check"></i><b>7.1</b> Time Series</a></li>
+<li class="chapter" data-level="7.2" data-path="introduction-1.html"><a href="introduction-1.html#eda"><i class="fa fa-check"></i><b>7.2</b> Exploratory Data Analysis for Time Series</a></li>
+<li class="chapter" data-level="7.3" data-path="introduction-1.html"><a href="introduction-1.html#basicmodels"><i class="fa fa-check"></i><b>7.3</b> Basic Time Series Models</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="introduction-1.html"><a href="introduction-1.html#wn"><i class="fa fa-check"></i><b>7.3.1</b> White noise processes</a></li>
+<li class="chapter" data-level="7.3.2" data-path="introduction-1.html"><a href="introduction-1.html#rw"><i class="fa fa-check"></i><b>7.3.2</b> Random Walk Processes</a></li>
+<li class="chapter" data-level="7.3.3" data-path="introduction-1.html"><a href="introduction-1.html#ar1"><i class="fa fa-check"></i><b>7.3.3</b> Autoregressive Process of Order 1</a></li>
+<li class="chapter" data-level="7.3.4" data-path="introduction-1.html"><a href="introduction-1.html#ma1"><i class="fa fa-check"></i><b>7.3.4</b> Moving Average Process of Order 1</a></li>
+<li class="chapter" data-level="7.3.5" data-path="introduction-1.html"><a href="introduction-1.html#drift"><i class="fa fa-check"></i><b>7.3.5</b> Linear Drift</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="introduction-1.html"><a href="introduction-1.html#lts"><i class="fa fa-check"></i><b>7.4</b> Composite Stochastic Processes</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -195,12 +207,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> Introduction to Time Series Analysis</h1>
 <p>In this chapter we give an introduction to time series analysis. For this purpose, it is organized in the following order:</p>
 <ul>
-<li>Definition and descriptive analysis of time series</li>
-<li>Dependence within time series (and fundamental representations)</li>
-<li>Stationarity of time series</li>
-<li>Basic time series models</li>
-<li>Linear processes</li>
-<li>Latent (or composite) stochastic processes</li>
+<li>Definition and descriptive analysis of time series;</li>
+<li>Dependence within time series (and fundamental representations);</li>
+<li>Stationarity of time series;</li>
+<li>Basic time series models;</li>
+<li>Linear processes;</li>
+<li>Latent (or composite) stochastic processes;</li>
 <li>Estimation problems with time series.</li>
 </ul>
 <div id="time-series" class="section level2">
@@ -255,7 +267,11 @@ jj =<span class="st"> </span><span class="kw">gts</span>(jj, <span class="dt">st
 Figure 2.1: Johnson and Johnson Quarterly Earnings
 </p>
 </div>
-<p>As we can see from the plot, the data contains a non-linear increasing trend as well as a seasonal component highlighted by the almost regularly-spaced peaks and valleys along time. In addition, we can notice that the variability of the data seems to increase with time (the seasonal variations appear to be larger towards the end of the plot). Hence, this simple visual representation can deliver important insight as to the behaviour of the time series and consequently determine the steps to take for further analysis (e.g. consider a non-linear model to explain the trend and consider approaches to model changing variance).</p>
+As we can see from the plot, the data contains a non-linear increasing trend as well as a seasonal component highlighted by the almost regularly-spaced peaks and valleys along time. In addition, we can notice that the variability of the data seems to increase with time (the seasonal variations appear to be larger towards the end of the plot). Hence, this simple visual representation can deliver important insight as to the behaviour of the time series and consequently determine the steps to take for further analysis (e.g. consider a non-linear model to explain the trend and consider approaches to model changing variance).
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
+<p><br></p>
 
 <div class="example">
 <span id="exm:examplePrecipitation" class="example"><strong>Example 2.2  (Monthly Precipitation Data)  </strong></span>Let us consider another data set coming from the domain of hydrology. The data records monthly precipitation (in mm) over a certain period of time (1907 to 1972) and is interesting for hydrologists for the purpose of studying water cycles. The data are presented in the plot below:
@@ -277,7 +293,11 @@ hydro =<span class="st"> </span><span class="kw">gts</span>(hydro, <span class="
 Figure 2.2: Monthly Precipitation Data
 </p>
 </div>
-<p>The time series plot above differs considerably from the previous one since the values of the time series, being always non-negative, remain almost always between 0 and 1 (no apparent trend) and randomly shows some larger observations that go beyond the value of 2 (or even 3). The latter appear to be extreme observations which could qualify as outliers, i.e. observations that are not representative of the true underlying model that generates the time series and can considerably affect the statistical analysis if not dealt with.</p>
+The time series plot above differs considerably from the previous one since the values of the time series, being always non-negative, remain almost always between 0 and 1 (no apparent trend) and randomly shows some larger observations that go beyond the value of 2 (or even 3). The latter appear to be extreme observations which could qualify as outliers, i.e. observations that are not representative of the true underlying model that generates the time series and can considerably affect the statistical analysis if not dealt with.
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
+<p><br></p>
 
 <div class="example">
 <span id="exm:exampleInertialSensor" class="example"><strong>Example 2.3  (Inertial Sensor Data)  </strong></span>Another example is provided by the data coming from the calibration procedure of an Inertial Measurement Unit (IMU). The signals (or time series) coming from an IMU are usually measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. The plot below represents the time series of an error signal coming from a gyroscope belonging to an IMU.
@@ -292,14 +312,18 @@ imu =<span class="st"> </span><span class="kw">gts</span>(imu6[,<span class="dv"
 <span class="co"># Plot time series</span>
 <span class="kw">plot</span>(imu, <span class="dt">main =</span> <span class="st">&quot;Inertial Sensor Data&quot;</span>,
      <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;Angular Velocity &quot;</span>, (rad<span class="op">/</span>s))),
-     <span class="dt">xlab =</span> <span class="st">&quot;Time (hour)&quot;</span>)</code></pre>
+     <span class="dt">xlab =</span> <span class="st">&quot;Time (h)&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="scis_files/figure-html/unnamed-chunk-3-1.png" alt="Inertial Sensor Data" width="624" />
 <p class="caption">
 Figure 2.3: Inertial Sensor Data
 </p>
 </div>
-<p>As we can see from the plot, there wouldn’t appear to be any linear trend, seasonality or increased variation in the time series. Indeed, from this plot it is difficult to detect any particular characteristic of this time series although a linear trend and other processes are present in this data. Therefore, especially when the length of the time series is considerable, this representation of time series can only give insight into few aspects (if none) and consequently is not suitable, on its own, to adequately inform the subsequent statistical analysis.</p>
+As we can see from the plot, there wouldn’t appear to be any linear trend, seasonality or increased variation in the time series. Indeed, from this plot it is difficult to detect any particular characteristic of this time series although a linear trend and other processes are present in this data. Therefore, especially when the length of the time series is considerable, this representation of time series can only give insight into few aspects (if none) and consequently is not suitable, on its own, to adequately inform the subsequent statistical analysis.
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
+<p><br></p>
 <p>In order to deliver a more appropriate (or more complete) representation of a time series, it is important to study the concept of dependence since (in a linear vision of time) past observations have an influence on present and (possibly) future ones. Hence, the next section gives an overview of this concept.</p>
 </div>
 <div id="dependence-within-time-series" class="section level2">
@@ -311,16 +335,17 @@ Figure 2.3: Inertial Sensor Data
 <span class="math display">\[\begin{align*}
 \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B),
 \end{align*}\]</span>
-with <span class="math inline">\(\mathbb{P}(A)\)</span> denoting the probability of event A occuring and <span class="math inline">\(\mathbb{P}(A \cap B)\)</span> denoting the joint probability (i.e. the probability that events A and B occur jointly). In general, <span class="math inline">\(A_{1},\ldots,A_{n}\)</span> are independent if
+with <span class="math inline">\(\mathbb{P}(A)\)</span> denoting the probability of event <span class="math inline">\(A\)</span> occuring and <span class="math inline">\(\mathbb{P}(A \cap B)\)</span> denoting the joint probability (i.e. the probability that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur jointly). In general, <span class="math inline">\(A_{1},\ldots,A_{n}\)</span> are independent if
 <span class="math display">\[\begin{align*}
 \mathbb{P}(A_1 \ldots A_n) = \mathbb{P}(A_1) \ldots \mathbb{P}(A_n) \;\; \forall \; A_i \in S, \;\; i=1,\ldots,n
 \end{align*}\]</span>
 where <span class="math inline">\(S\)</span> is the sample space.
 </div>
 
+<p><br></p>
 
 <div class="definition">
-<span id="def:IndepRV" class="definition"><strong>Definition 2.3  (Independence of Random Variables)  </strong></span>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with Cumulative Distribution Functions (CDF) <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(y)\)</span> respectively are independent if and only if their joint CDF <span class="math inline">\(F_{X,Y}(x,y)\)</span> is such that
+<span id="def:IndepRV" class="definition"><strong>Definition 2.3  (Independence of Random Variables)  </strong></span>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with Cumulative Distribution Functions (CDF) <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(y)\)</span>, respectively, are independent if and only if their joint CDF <span class="math inline">\(F_{X,Y}(x,y)\)</span> is such that
 <span class="math display">\[\begin{align*}
 F_{X,Y}(x,y) = F_{X}(x) F_{Y}(y).
 \end{align*}\]</span>
@@ -330,11 +355,12 @@ F_{X_1,\ldots,X_n}(x_1,\ldots,x_n) = F_{X_1}(x_1) \ldots F_{X_n}(x_n).
 \end{align*}\]</span>
 </div>
 
+<p><br></p>
 
 <div class="definition">
 <span id="def:iid" class="definition"><strong>Definition 2.4  (iid sequence)  </strong></span>The sequence <span class="math inline">\(X_{1},X_{2},\ldots,X_{T}\)</span> is said to be independent and identically distributed (i.e. iid) if and only if
 <span class="math display">\[\begin{align*}
-\mathbb{P}(X_{i}&lt;x) = \mathbb{P}(X_{j}&lt;x) \;\; \forall x \in \mathbb{R}, \forall i,j \in \{1,\ldots,T\}
+\mathbb{P}(X_{i}&lt;x) = \mathbb{P}(X_{j}&lt;x) \;\; \forall x \in \mathbb{R}, \forall i,j \in \{1,\ldots,T\},
 \end{align*}\]</span>
 and
 <span class="math display">\[\begin{align*}
@@ -342,26 +368,28 @@ and
 \end{align*}\]</span>
 </div>
 
+<p><br></p>
 <p>The basic idea behind the above definitions of independence is the fact that the probability of an event regarding variable <span class="math inline">\(X_i\)</span> remains unaltered no matter what occurs for variable <span class="math inline">\(X_j\)</span> (for <span class="math inline">\(i \neq j\)</span>). From this definition, we can now start exploring the concept of dependence, starting from <strong>linear dependence</strong> within a time series. For this purpose, below we define a quantity called AutoCovariance (ACV).</p>
 
 <div class="definition">
-<span id="def:ACV" class="definition"><strong>Definition 2.5  (AutoCovariance)  </strong></span>AutoCovariance (ACV) denoted as <span class="math inline">\(\gamma_X(t, t+h)\)</span> is defined as
+<span id="def:ACV" class="definition"><strong>Definition 2.5  (AutoCovariance)  </strong></span>Autocovariance denoted as <span class="math inline">\(\gamma_X(t, t+h)\)</span> is defined as
 <span class="math display">\[\begin{align*}
-\gamma_X(t, t+h) = \text{Cov}(X_{t},X_{t+h})=   \mathbb{E}(X_{t}X_{t+h})-\mathbb{E}(X_{t})\mathbb{E}(X_{t+h})
+\gamma_X(t, t+h) = \text{Cov}(X_{t},X_{t+h})=   \mathbb{E}(X_{t}X_{t+h})-\mathbb{E}(X_{t})\mathbb{E}(X_{t+h}),
 \end{align*}\]</span>
 where <span class="math inline">\(\text{Cov}(\cdot)\)</span> denotes the covariance and
 <span class="math display">\[\begin{align*}
-\mathbb{E}(X_{t}) = \int_{-\infty}^{\infty}x \, f(x) \, dx \;\; \text{and} \;\; \mathbb{E}(X_{t},X_{t+h}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_{t}\,x_{t+h}\, f(x_{t},x_{t+h}) \, dx_{t}\,dx_{t+h}
+\mathbb{E}(X_{t}) = \int_{-\infty}^{\infty}x \, f(x) \, dx \;\; \text{and} \;\; \mathbb{E}(X_{t},X_{t+h}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_{t}\,x_{t+h}\, f(x_{t},x_{t+h}) \, dx_{t}\,dx_{t+h},
 \end{align*}\]</span>
 where <span class="math inline">\(f(x)\)</span> denotes the density of <span class="math inline">\(X_t\)</span> and <span class="math inline">\(f(x_{t},x_{t+h})\)</span> denotes the joint density of <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
 </div>
 
+<p><br></p>
 <p>Notice that, when two variable are independent, <span class="math inline">\(\mathbb{E}(X_{t}X_{t+h}) = \mathbb{E}(X_{t})\mathbb{E}(X_{t+h})\)</span> and hence <span class="math inline">\(\gamma_X(t, t+h) = 0\)</span>. In a nutshell, the ACV measures the degree to which the mean-behaviour of a variable (e.g. <span class="math inline">\(X_{t+h}\)</span>) changes when another one changes (e.g. <span class="math inline">\(X_t\)</span>) and hence, to what extent they are linearly dependent.</p>
 
 <div class="exercise">
 <p><span id="exr:propertiesACV" class="exercise"><strong>Remark 2.1  (Properties of ACV)  </strong></span></p>
 <ol style="list-style-type: decimal">
-<li><p>ACV is symmetric, i.e. <span class="math inline">\(\gamma_X(t, t+h) = \gamma_X(t+h, t)\)</span> as <span class="math inline">\(\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})\)</span>. Under stationarity (will be discussed very soon), <span class="math inline">\(\gamma_X(h) = \gamma_X(-h)\)</span>, i.e. ACV is an even function.</p></li>
+<li><p>ACV is symmetric, i.e. <span class="math inline">\(\gamma_X(t, t+h) = \gamma_X(t+h, t)\)</span> as <span class="math inline">\(\text{Cov}(X_{t},X_{t+h}) = \text{Cov}(X_{t+h},X_{t})\)</span>. Under stationarity (will be discussed very soon, see Section <a href="timeseries.html#stationarity">2.3</a> for more details), <span class="math inline">\(\gamma_X(h) = \gamma_X(-h)\)</span>, i.e. ACV is an even function.</p></li>
 <li><p>Variance of the process <span class="math inline">\(\text{Var}(X_t) = \gamma_X(t, t) \geq 0\)</span>. Under stationarity, <span class="math inline">\(\text{Var}(X_t) = \gamma_X(0)\)</span> and <span class="math inline">\(\mid \gamma_X(h) \mid \leq \gamma_X(0)\)</span> by Cauchy-Schwarz inequality.</p></li>
 <li><p>Scale dependent: ACV <span class="math inline">\(\gamma_X(t, t+h)\)</span> is scale dependent like any covariance. So <span class="math inline">\(\gamma_X(t, t+h) \in \mathbb{R}\)</span>.</p>
 <ul>
@@ -372,7 +400,8 @@ where <span class="math inline">\(f(x)\)</span> denotes the density of <span cla
 <p>However in general, it is difficult to assess what “close” and “far” from zero mean.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>In general, <span class="math inline">\(\gamma_X(t, t+h)=0\)</span> does not imply <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are independent. However, if <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are joint normally distributed, then <span class="math inline">\(\gamma_X(t, t+h)=0\)</span> implies that <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span> are independent.
-</div></li>
+</div>
+<br></li>
 </ol>
 <p>However the ACV is a quantity whose bounds are not known <em>a priori</em> and it can consequently be impossible to determine whether the degree of linear dependence is large or not. For this reason another measure of linear dependence can be used which is related to the ACV. Indeed, the AutoCorrelation Function (ACF) is a commonly used metric in time series analysis and is defined below.</p>
 
@@ -384,6 +413,7 @@ where <span class="math inline">\(f(x)\)</span> denotes the density of <span cla
 where <span class="math inline">\(\text{Var}(\cdot)\)</span> denotes the variance.
 </div>
 
+<p><br></p>
 
 <div class="exercise">
 <p><span id="exr:propertiesACF" class="exercise"><strong>Remark 2.2  (Properties of ACF)  </strong></span></p>
@@ -391,7 +421,8 @@ where <span class="math inline">\(\text{Var}(\cdot)\)</span> denotes the varianc
 <li><p><span class="math inline">\(\mid \rho_X(t,t+h) \mid \leq 1\)</span> and <span class="math inline">\(\mid \rho_X(t,t) \mid = 1\)</span>.</p></li>
 <li><p>ACF is symmetric, i.e. <span class="math inline">\(\rho_X(t, t+h) = \rho_X(t+h, t)\)</span> as <span class="math inline">\(\text{Corr}(X_{t},X_{t+h}) = \text{Corr}(X_{t+h},X_{t})\)</span>. Under stationarity, <span class="math inline">\(\gamma_X(h) = \gamma_X(-h)\)</span>, i.e. ACF is an even function.</p></li>
 <li>Scale invariant: ACF <span class="math inline">\(\rho_X(t,t+h)\)</span> is scale free like any correlation. Moreover, if <span class="math inline">\(\rho_X(t,t+h)\)</span> is “close” to <span class="math inline">\(\pm 1\)</span>, then this implies that there is “strong” (linear) dependence between <span class="math inline">\(X_{t}\)</span> and <span class="math inline">\(X_{t+h}\)</span>.
-</div></li>
+</div>
+<p><br></p></li>
 </ol>
 <p>Since the ACV is bounded by the product of the standard deviations of the two variables, we have that the ACF is bounded between 1 and -1. Therefore it is possible to better interpret the linear dependence where an ACF of zero indicates an absence of linear dependence while an ACF close to 1 or -1 indicates respectively a strong positive or negative linear dependence.</p>
 <p>As underlined up to now, both ACV and ACF are appropriate to measure linear dependence only. Therefore if the ACV and ACF are both zero, this does not imply that there isn’t dependence between the variables. Indeed, aside from linear dependence, other forms of dependence such as monotonic or nonlinear dependence also exist which the ACV or ACF don’t measure directly. The figure below shows scatterplots (one variable on the x-axis and another on the y-axis) along with the values of the ACF:</p>
@@ -402,13 +433,7 @@ Figure 2.4: Different forms of dependence and their ACF values
 </p>
 </div>
 <p>As can be seen, the first row in the figure shows a consistent behaviour of the ACF value since the absolute value goes closer to 1 the more the points go closer to forming a line. However, the following rows show plots where there is clearly a strong relation (dependence) between the variables but the ACF doesn’t detect this characteristic since this relation is not linear.</p>
-<p>Finally, it is worth noting that correlation does NOT imply causation. For example, if <span class="math inline">\(\rho(t, t+h) \neq 0\)</span>, this does not imply that <span class="math inline">\(X_t \to X_{t+h}\)</span> is causal. More specifically, the presence (or absence) of causality cannot be detected through statistical tools although some approximated metrics have been proposed to measure this concept (e.g Granger causality, see <span class="citation">Granger (<a href="#ref-granger1969investigating">1969</a>)</span>). This idea is clearly illustrated in the image below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="images/corr_cat.jpg" alt="Correlation does NOT imply causation." width="50%" />
-<p class="caption">
-Figure 2.5: Correlation does NOT imply causation.
-</p>
-</div>
+<p>Finally, it is worth noting that correlation does NOT imply causation. For example, if <span class="math inline">\(\rho(t, t+h) \neq 0\)</span>, this does not imply that <span class="math inline">\(X_t \to X_{t+h}\)</span> is causal. More specifically, the presence (or absence) of causality cannot be detected through statistical tools although some approximated metrics have been proposed to measure this concept <span class="citation">(e.g Granger causality, see Granger <a href="#ref-granger1969investigating">1969</a>)</span>.</p>
 <p>For the following sections we will simplify the notations <span class="math inline">\(\gamma_X(t, t+h)\)</span> and <span class="math inline">\(\rho_X(t, t+h)\)</span> to be <span class="math inline">\(\gamma(h)\)</span> and <span class="math inline">\(\rho(h)\)</span> when there is no ambiguity (i.e. only one time series is considered and the ACF only depends on the time-lag <span class="math inline">\(h\)</span>).</p>
 </div>
 <div id="stationarity" class="section level2">
