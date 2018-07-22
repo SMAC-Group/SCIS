@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-21">
+<meta name="date" content="2018-07-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -91,8 +91,12 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
-<li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
-<li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> Properties of the Allan Variance</a></li>
+<li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#review-on-mle-based-methods"><i class="fa fa-check"></i><b>4.1</b> Review on MLE-based Methods</a></li>
+<li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#an-introduction-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> An Introduction of the Allan Variance</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#definition-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.1</b> Definition of the Allan Variance</a></li>
+<li class="chapter" data-level="4.2.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.2</b> Spectral Ambiguity of the Allan Variance</a></li>
+<li class="chapter" data-level="4.2.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.3</b> Properties of the Allan Variance</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#estimation"><i class="fa fa-check"></i><b>4.3</b> Estimation</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency-1"><i class="fa fa-check"></i><b>4.3.1</b> Consistency</a></li>
 <li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
@@ -157,6 +161,9 @@ This LSE is an extremum estimator since it can be expressed as
 <span class="math display">\[\begin{equation*}
 \hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta} \in \mathcal{B}}{\text{argmax}} \; -||\boldsymbol{y} - \boldsymbol{X} \boldsymbol{\beta} ||_2^2.
 \end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 
@@ -170,6 +177,9 @@ Therefore, the MLE can be seen as an extremum estimator with
 <span class="math display">\[\begin{equation*}
 \hat{Q}_n(\boldsymbol{\theta}) = \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
 \end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 
@@ -214,6 +224,9 @@ Therefore we can write the GMM estimator of <span class="math inline">\(\boldsym
 <span class="math display">\[\begin{equation*}
 \hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmin}} \; || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 
 \end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 </div>
@@ -272,7 +285,10 @@ By Weak Law of Large Number, we have <span class="math inline">\(\bar{X}_n \over
 <span class="math display">\[\begin{equation*}
 \mu = \mathbb{E}[X_i] = \int_{0}^{\infty} x \lambda_0 \text{exp}\left( - \lambda_0 x \right) dx = \frac{1}{\lambda_0}.
 \end{equation*}\]</span>
-And also since the function <span class="math inline">\(g(x) = 1/x\)</span> is continuous in <span class="math inline">\(\mathbb{R}^+\)</span>, we obtain by the Continuous Mapping Theorem that <span class="math inline">\(\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0\)</span>, which concludes that the MLE for <span class="math inline">\(\lambda_0\)</span> is a consistent estimator of <span class="math inline">\(\lambda_0\)</span> in exponential distribution.
+<p>And also since the function <span class="math inline">\(g(x) = 1/x\)</span> is continuous in <span class="math inline">\(\mathbb{R}^+\)</span>, we obtain by the Continuous Mapping Theorem that <span class="math inline">\(\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0\)</span>, which concludes that the MLE for <span class="math inline">\(\lambda_0\)</span> is a consistent estimator of <span class="math inline">\(\lambda_0\)</span> in exponential distribution.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 <div id="consistency-of-extremum-estimators" class="section level3">
@@ -353,7 +369,7 @@ So by condition C4, we have
 \end{equation*}\]</span>
 Therefore, <span class="math inline">\(\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0\)</span>.
 </div>
-<p></p>
+<p> <br></p>
 </div>
 <div id="verification-of-condition-c1" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Verification of Condition C1</h3>
@@ -370,7 +386,7 @@ Therefore, <span class="math inline">\(\underset{n \to \infty}{\text{lim}}\mathb
 Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}) \leq -\boldsymbol{g}_0(\boldsymbol{\theta}_0) \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}_0) = Q_0(\boldsymbol{\theta_0}).
 \end{equation*}\]</span>
 </div>
-<p></p>
+<p> <br></p>
 <p>Notice that if we write a GMM estimator as in Example <a href="properties-of-statistical-estimators.html#exm:ExtreEstGMM">3.3</a>, then the condition <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span> can be replaced by <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span>.</p>
 <p>In order to verify the condition in Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> that <span class="math inline">\(\boldsymbol{g}_0(\boldsymbol{\theta}) = 0\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span> (or alternatively <span class="math inline">\(\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta} = \boldsymbol{\theta}_0\)</span>), the following theorem based on <span class="citation">Komunjer (<a href="#ref-komunjer2012global">2012</a>)</span> provides us a way.</p>
 
@@ -422,7 +438,10 @@ Next, since
 \end{equation*}\]</span>
 <p>we have <span class="math inline">\(J(\boldsymbol{\theta}) \equiv \text{det} (\frac{\partial}{\partial \boldsymbol{\theta}^T}\, \boldsymbol{g}^*(\boldsymbol{\theta}) ) = 1\)</span>.</p>
 <p>Finally, the last two conditions of Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> are trivially satisfied since <span class="math inline">\(||\boldsymbol{g}^*(\boldsymbol{\theta})||\)</span> can only diverge if <span class="math inline">\(|| \boldsymbol{\theta} ||\)</span> diverges and since <span class="math inline">\(\boldsymbol{g}^*(\boldsymbol{\theta}) = s\)</span> has (one) countably solutions in <span class="math inline">\(\boldsymbol{\Theta}\)</span>.</p>
-Therefore, it follows from Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> and Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> that the function <span class="math inline">\(Q_0(\boldsymbol{\theta}) = - || \boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma}(\boldsymbol{\theta}) ||^2_{\boldsymbol{W}}\)</span> is uniquely maximized in <span class="math inline">\(\boldsymbol{\theta}_0\)</span>.
+<p>Therefore, it follows from Lemma <a href="properties-of-statistical-estimators.html#lem:GMMindentification">3.1</a> and Theorem <a href="properties-of-statistical-estimators.html#thm:Homomorphism">3.4</a> that the function <span class="math inline">\(Q_0(\boldsymbol{\theta}) = - || \boldsymbol{\gamma}(\boldsymbol{\theta}_0) - \boldsymbol{\gamma}(\boldsymbol{\theta}) ||^2_{\boldsymbol{W}}\)</span> is uniquely maximized in <span class="math inline">\(\boldsymbol{\theta}_0\)</span>.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 </div>
@@ -496,6 +515,9 @@ a_1 &amp;\leq ||\boldsymbol{\gamma}_0 - \boldsymbol{\gamma} (\boldsymbol{\theta}
 <span class="math display">\[\begin{equation*}
 |\hat{Q}_n (\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0.
 \end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 <p>In general, showing that <span class="math inline">\(\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0(\boldsymbol{\theta})\)</span> for all <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> for every <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> is generally done using the Weak Law of Large Number (i.e. Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>). However, when <span class="math inline">\(X_i\)</span> which are not iid random variables, Theorem <a href="properties-of-statistical-estimators.html#thm:WLLN">3.1</a>) cannot be applied. The following theorem (taken from Proposition 7.5 of <span class="citation">Hamilton (<a href="#ref-hamilton1994time">1994</a>)</span>) generalizes this result for (weak) stationary processes with absolutely summable covariance structure.</p>
@@ -523,7 +545,7 @@ so that
 \end{equation*}\]</span>
 which concludes the proof.
 </div>
-<p></p>
+<p> <br></p>
 
 <div class="example">
 <span id="exm:ConsistSampleMean" class="example"><strong>Example 3.7  (Consistency of Sample Mean)  </strong></span>Consider a stationary AR1 process and suppose we want to study whether its sample mean converges in probability to its expected value. This time we consider a non-zero mean AR1, i.e.
@@ -547,6 +569,9 @@ implying that the process has an absolutely summable covariance structure. There
 <span class="math display">\[\begin{equation*}
     \bar{X}_T = \frac{1}{T} \sum_{t = 1}^T \, X_t \overset{\mathcal{P}}{\mapsto} \mathbb{E}[X_t] = \mu.
 \end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 </div>
@@ -582,7 +607,7 @@ Then by Theorem <a href="properties-of-statistical-estimators.html#thm:CMT">3.2<
 \end{equation*}\]</span>
 which concludes the proof.
 </div>
-<p></p>
+<p> <br></p>
 </div>
 </div>
 <div id="asymptotic-normality" class="section level2">
@@ -675,6 +700,9 @@ Using Taylor expansion for <span class="math inline">\(\boldsymbol{\gamma}(\hat{
 &amp;\underbrace{\left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right)^T \widehat{\boldsymbol{W}}}_{\overset{p}{\to} \left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\right)\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right)^T \boldsymbol{W}} \sqrt{n} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0) \right) + o_p(1).
 \end{aligned}
 \end{equation*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 </div>

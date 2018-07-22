@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-21">
+<meta name="date" content="2018-07-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -128,8 +128,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html"><i class="fa fa-check"></i><b>4</b> Allan Variance Calibration Techniques</a><ul>
-<li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-av"><i class="fa fa-check"></i><b>4.1</b> Spectral Ambiguity of the AV</a></li>
-<li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> Properties of the Allan Variance</a></li>
+<li class="chapter" data-level="4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#review-on-mle-based-methods"><i class="fa fa-check"></i><b>4.1</b> Review on MLE-based Methods</a></li>
+<li class="chapter" data-level="4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#an-introduction-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2</b> An Introduction of the Allan Variance</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#definition-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.1</b> Definition of the Allan Variance</a></li>
+<li class="chapter" data-level="4.2.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#spectral-ambiguity-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.2</b> Spectral Ambiguity of the Allan Variance</a></li>
+<li class="chapter" data-level="4.2.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.3</b> Properties of the Allan Variance</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#estimation"><i class="fa fa-check"></i><b>4.3</b> Estimation</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency-1"><i class="fa fa-check"></i><b>4.3.1</b> Consistency</a></li>
 <li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
@@ -401,7 +405,10 @@ Figure 2.4: Different forms of dependence and their ACF values
 <span class="math display">\[\begin{equation*}
 X_t  \sim \mathcal{N} \left(0, Y_t^2\right) \;\; \text{where $Y_t$ is unobserved and such that} \;\; Y_t  \overset{iid}{\sim} \mathcal{N} \left(0, 1\right).
 \end{equation*}\]</span>
-In this case, it is clear that the estimation of <span class="math inline">\(\text{Var}(X_t)\)</span> is difficult since only <span class="math inline">\(X_t\)</span> is useful for the estimation. So in fact, <span class="math inline">\(X_t^2\)</span> is our best guess for <span class="math inline">\(\text{Var}(X_t)\)</span>.
+<p>In this case, it is clear that the estimation of <span class="math inline">\(\text{Var}(X_t)\)</span> is difficult since only <span class="math inline">\(X_t\)</span> is useful for the estimation. So in fact, <span class="math inline">\(X_t^2\)</span> is our best guess for <span class="math inline">\(\text{Var}(X_t)\)</span>.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 <p>On the other hand, let us consider an example of <strong>stationary processes</strong> where averaging becomes meaningful for such process.</p>
@@ -411,7 +418,10 @@ In this case, it is clear that the estimation of <span class="math inline">\(\te
 <span class="math display">\[\begin{equation*}
 X_t = \theta W_{t-1} + W_t \;\;\; \text{where} \;\;\;  W_t  \stackrel{iid}{\sim} \mathcal{N} \left(0, 1\right).
 \end{equation*}\]</span>
-In this case, we can guess that a natural estimator of <span class="math inline">\(\text{Var}(X_t)\)</span> can be <span class="math inline">\(\hat{\sigma}^2 = \frac{1}{T} \sum_{i = 1}^T X_i^2\)</span>. That is, now averages are meaningful for such process.
+<p>In this case, we can guess that a natural estimator of <span class="math inline">\(\text{Var}(X_t)\)</span> can be <span class="math inline">\(\hat{\sigma}^2 = \frac{1}{T} \sum_{i = 1}^T X_i^2\)</span>. That is, now averages are meaningful for such process.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 <p>We formalize the above idea by introducing the concept of stationarity. There exist two forms of stationarity, which are defined below:</p>
@@ -461,7 +471,10 @@ for any time shift <span class="math inline">\(h\)</span>. For convenience, we u
 </ul>
 
 <div class="example">
-<span id="exm:exampleRelationStat1" class="example"><strong>Example 2.6  (Strong Stationarity does NOT imply Weak Stationarity)  </strong></span>An iid Cauchy process is strongly but not weakly stationary as the mean of the process does not exist.
+<p><span id="exm:exampleRelationStat1" class="example"><strong>Example 2.6  (Strong Stationarity does NOT imply Weak Stationarity)  </strong></span>An iid Cauchy process is strongly but not weakly stationary as the mean of the process does not exist.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 
@@ -475,7 +488,10 @@ Y_t &amp;\text{if }  t \in \left\{2k + 1 | k \in \mathbb{N}\right\},
 \end{array}
 \right.
 \end{equation*}\]</span>
-we have <span class="math inline">\(Z_t\)</span> is weakly stationary but not strongly stationary.
+<p>we have <span class="math inline">\(Z_t\)</span> is weakly stationary but not strongly stationary.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 
@@ -524,7 +540,7 @@ In general, when <span class="math inline">\(h \in \mathbb{Z}\)</span> we obtain
 \end{equation*}\]</span>
 which is a function of the lag <span class="math inline">\(h\)</span> only. Therefore, this AR1 process is weakly stationary.
 </div>
-<p></p>
+<p> <br></p>
 </div>
 <div id="linear-processes" class="section level2">
 <h2><span class="header-section-number">2.4</span> Linear Processes</h2>
@@ -563,7 +579,7 @@ which is a function of the lag <span class="math inline">\(h\)</span> only. Ther
 &amp;= \sigma^2\sum\limits_{j =  - \infty }^\infty  {{\psi _j}{\psi _{j+h}}}.
 \end{align*}\]</span>
 </div>
-<p></p>
+<p> <br></p>
 
 <div class="proof">
  <span class="proof"><em>Proof</em> (All linear processes have absolutely summable covariance structures.). </span> 
@@ -576,14 +592,17 @@ which is a function of the lag <span class="math inline">\(h\)</span> only. Ther
 \end{align*}\]</span>
 So with the assumption that <span class="math inline">\(\sum_{j=-\infty}^{\infty} \mid \psi_j \mid &lt; \infty\)</span>, we obtain that all linear processes have absolutely summable covariance structures. Notice that here we have shown that the condition <span class="math inline">\(\sum\limits_{j = - \infty }^\infty {\left| {{\psi _j}} \right|} &lt; \infty\)</span> is actually stronger than <span class="math inline">\(\sum\limits_{h = - \infty }^\infty {\left| \gamma(h) \right|} &lt; \infty\)</span>.
 </div>
-<p></p>
+<p> <br></p>
 
 <div class="example">
 <span id="exm:AR1isLP" class="example"><strong>Example 2.8  (AR1 is a linear process)  </strong></span>When we prove above that AR1 is weakly stationary, we have shown that for an AR1 process <span class="math inline">\(X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\nu^2)\)</span>, it can be represented as
 <span class="math display">\[\begin{align*}
 X_t = \sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}.
 \end{align*}\]</span>
-Therefore, AR1 is a linear process.
+<p>Therefore, AR1 is a linear process.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 </div>
@@ -661,7 +680,10 @@ W_t &amp;= \phi_2 W_{t-1} + U_t, \;\;\; U_t \overset{iid}{\sim} \mathcal{N}(0,\u
 Q_t &amp;\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
 X_t &amp;= Y_t + W_t + Q_t,
 \end{align}\]</span>
-where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Q_t\)</span> are independent and only <span class="math inline">\(X_t\)</span> is observed.
+<p>where <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Q_t\)</span> are independent and only <span class="math inline">\(X_t\)</span> is observed.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 </div>
@@ -710,6 +732,9 @@ since
 &amp;= \frac{\gamma(0)}{T} \sum_{h = -(T-1)}^{T-1} \left(1 - \frac{|h|}{T}\right) \rho(h) \\
 &amp;= \frac{\gamma(0)}{T} \sum_{h = -T}^{T} \left(1 - \frac{|h|}{T}\right) \rho(h).
 \end{align*}\]</span>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 
@@ -736,6 +761,9 @@ providing the following approximate formula
 <p>Step 3: Repeat Steps 1 and 2 <span class="math inline">\(B\)</span> times.</p>
 <p>Step 4: Compute the empirical variance <span class="math inline">\({\bar X^*}\)</span> (based on <span class="math inline">\(B\)</span> independent replications).</p>
 <p>The above procedure is known as Monte-Carlo method (in this case it is actually a Monte-Carlo integral) and is closely related to the concept of parametric bootstrap (see <span class="citation">Efron and Tibshirani (<a href="#ref-efron1994introduction">1994</a>)</span>) which is a very popular tool in statistics.</p>
+<div style="text-align: right">
+<span class="math inline">\(\LARGE{\bullet}\)</span>
+</div>
 </div>
 <p></p>
 <p>Now we define the classical estimators of <span class="math inline">\(\gamma(h)\)</span> and <span class="math inline">\(\rho(h)\)</span> for AutoCovariance and AutoCorrelation functions.</p>

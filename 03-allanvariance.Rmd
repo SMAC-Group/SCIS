@@ -68,11 +68,12 @@ An alternative approach to compute maximum likelihood estimator for $\boldsymbol
 \hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \mathcal{L}\left(\boldsymbol{\theta} | \mathbf{X}, \hat{\mathbf{Y}}(\boldsymbol{\theta}) \right),
 \end{equation*}
 where $\hat{\mathbf{Y}}(\boldsymbol{\theta})$ denotes the estimation of $\mathbf{Y}$ (i.e. the states) based on a Kalman filter assuming $\boldsymbol{\theta}$ to be the correct parameter vector. Unfortunately, this approach suffers from the same computational limitations as the maximum likelihood estimator approach.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
-## An Introduction of Allan Variance
-
+## An Introduction of the Allan Variance
 ### Definition of the Allan Variance
 The Allan variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators [see e.g. @allan1966statistics]. It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes). This method has been adapted to characterize the properties of a variety of devices including inertial sensors [see @elsheimy08av]. The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance [see @percival1994long]. We will discuss this connection further on.
 
@@ -110,9 +111,9 @@ For a stationary process $(X_t)$ with PSD $S_{X}(f)$ we have
 \end{equation*}
 ```
 
-Therefore, this result establishes a direct connection between the AV and PSD. Therefore a natural question is whether the mapping PSD $\mapsto$ AV is one-to-one. @greenhall1998spectral (see Theorem 1) showed that this is actually not the case. This is illustrated in the followsing Section 4.2.2.
+Therefore, this result establishes a direct connection between the AV and PSD. Therefore a natural question is whether the mapping PSD $\mapsto$ AV is one-to-one. @greenhall1998spectral (see Theorem 1) showed that this is actually not the case. This is illustrated in the followsing Section [4.2.2](Spectral Ambiguity of the Allan Variance).
 
-### Spectral Ambiguity of the Allan Variance
+### Spectral Ambiguity of the Allan Variance 
 Consider two (independent) stochastic processes $(X_t)$ and $(Y_t)$ with respective PSD $S_X(f)$ and $S_Y(f)$. Suppose that $S_X(f) \neq S_Y(f)$, then the two processes will have the same AV if
 
 \begin{equation*}
@@ -149,12 +150,12 @@ Now suppose that $\Phi(f) = 2 \Phi(2f)$. In this case, we have $\Phi(f) = 2 \Phi
     \end{aligned}
 \end{equation*}
 
-This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. @greenhall1998spectral showed that in the continuous case (i.e. $\tau_j \in \mathbb{R}$) $\Delta = 0$ if and only if $\Phi(f) = 2 \Phi(2f)$. However, the ``only if'' part of this result (while conjectured) is unknown in the discrete case.
+This result demonstrates that the mapping from PSD to AV is not necessarily one-to-one. @greenhall1998spectral showed that in the continuous case (i.e. $\tau_j \in \mathbb{R}$) $\Delta = 0$ if and only if $\Phi(f) = 2 \Phi(2f)$. However, the ``only if'' part of this result (while conjectured) is unknown in the discrete case.
 
 
 ### Properties of the Allan Variance
 
-One reason of explaining the widespread use of the Allan variance for sensor calibration is due to the following additivity property, which is particularly convenient to identify composite stochastic processes (see Definition REF MISSING!).
+One reason of explaining the widespread use of the AV for sensor calibration is due to the following additivity property, which is particularly convenient to identify composite stochastic processes (see Definition 2.17).
 
 ```{corollary, coroaddav, name = "Additivity of the AV"}
 Consider two (independent) stochastic processes $(X_t)$ and $(Y_t)$ with respective PSD $S_X(f)$ and $S_Y(f)$. Suppose that we observe the process $Z_t = X_t + Y_t$. Then, we have
@@ -164,8 +165,8 @@ Consider two (independent) stochastic processes $(X_t)$ and $(Y_t)$ with respect
 \end{equation*}
 ```
 
-```{proof}
-The proof of this result is direct from Lemma REF MISSING HERE. Indeed, since $S_Z(f) = S_X(f) + S_Y(f)$, we have
+```{proof, pf_coroaddav, name = "Additivity of the AV"}
+The proof of Additivity of the AV is direct from Lemma \@ref(lem:lemmavpsd). Indeed, since $S_Z(f) = S_X(f) + S_Y(f)$, we have
 
 \begin{equation*}
     \begin{aligned}
@@ -177,32 +178,24 @@ The proof of this result is direct from Lemma REF MISSING HERE. Indeed, since $S
 ```
 <br>
 
-While Lemma \@ref(lem:lemmavpsd) is an important results which is very convenient to determine the theoretical AV of a certain stochastic process. However, the applicability of this results is often limited since the integral defined in (REF MISSING HERE) can be intractable. An alternative to Lemma \@ref(lem:lemmavpsd) has been proposed by @zhang2008allan and is far advantageous from a computational standpoint. 
+Lemma \@ref(lem:lemmavpsd) is an important result which is very convenient to determine the theoretical AV of a certain stochastic process. However, the applicability of this result is often limited since the integral defined in Section [4.2.2](Spectral Ambiguity of the Allan Variance) can be intractable. An alternative to Lemma \@ref(lem:lemmavpsd) has been proposed by @zhang2008allan and is far advantageous from a computational standpoint. 
 
 ```{lemma, lemmaavtoacf, name = "AV connection to ACF"}
 For a stationary process $(X_t)$ with variance $\sigma^2_X$ and ACF $\rho(h)$ we have
 \begin{equation*}
-\label{stat.av}
-    \text{AV}_j \left(X_t \right)  = \frac{\sigma_X^2}{\tau_j^2} \bigg(\tau_j\left[1-\rho(\tau_j)\right] 
+\text{AV}_j \left(X_t \right)  = \frac{\sigma_X^2}{\tau_j^2} \bigg(\tau_j\left[1-\rho(\tau_j)\right] 
    + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg).
 \end{equation*}
 ```
 
 The proof of this result is instructive and is presented in @xu2017study.
 
-```{exercise}
-Using Lemma \@ref(lem:lemmaavtoacf), the exact form of the AV for different stationary processes, such as the general class of ARMA models, can easily be derived. Moreover, @zhang2008allan provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
-```
-<br>
+Using Lemma \@ref(lem:lemmaavtoacf), the exact form of the AV for different stationary processes, such as the general class of ARMA models, can be derived. Moreover, @zhang2008allan provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.
 
-```{exercise}
 Lemma \@ref(lem:lemmaavtoacf) was extended to non-stationary processes in @xu2017study.
-```
-<br>
 
-```{example, label = avma1, name = "Theoretical AV of an MA(1) process"}
+```{example, label = avma1, name = "Theoretical AV of an MA(1) Process"}
 From the autocovariance we obtain
-    
 \begin{equation*}
         \rho(h) = \text{corr}\left(X_t, X_{t-h} \right) =\left\{
   \begin{array}{cl}
@@ -231,23 +224,21 @@ We can now apply the formula given in Lemma \@ref(lem:lemmaavtoacf), which leads
 ```
 
 
-## Estimation
+## Estimation of the Allan Variance
+Several estimators of the AV have been introduced in the literature. The most commonly used one is (probably) the Maximum-Overlapping AV (MOAV) estimator proposed by @percival1994long, which is defined as follows:
 
-Several estimators of the AV have been introduced in the literature. The most commonly is (probably) the Maximum-Overlapping AV (MOAV) estimator proposed by @percival1994long, which is defined as follows:
-    
 ```{definition, defmoav, name = "Maximum-Overlapping AV Estimator"}
 The MOAV is defined as:
-    \begin{eqnarray}
-\label{eq:MOAVNS_est}
-        \hat{\phi}_j^2 \equiv \widehat{\text{AV}}_j \left(X_t \right) = \frac{1}{2 \left(T - 2\tau_j + 1\right)} \sum_{k = 2 \tau_j}^{T} \left(\bar{X}_{k}^{(j)} - \bar{X}_{k-\tau_j}^{(j)} \right)^2.
-\end{eqnarray}
+\begin{eqnarray*}
+\hat{\phi}_j^2 \equiv \widehat{\text{AV}}_j \left(X_t \right) = \frac{1}{2 \left(T - 2\tau_j + 1\right)} \sum_{k = 2 \tau_j}^{T} \left(\bar{X}_{k}^{(j)} - \bar{X}_{k-\tau_j}^{(j)} \right)^2.
+\end{eqnarray*}
 ```
     
 We will now study the properties of this estimator through the following lemmas.
 
-### Consistency
+### Consistency of MOAV Estimator
 
-```{lemma, lemmconsistencyAV, name = "Consistency"}
+```{lemma, lemmconsistencyAV, name = "Consistency of the Maximum-Overlapping AV Estimator"}
 Let $(X_t)$ be such that:
 
 - $(X_t - X_{t-1})$ is a (strongly) stationary process,
@@ -258,9 +249,12 @@ Then, we have
      $$\widehat{\text{AV}}_j \left(X_t \right) \overset{ \mathcal{P} }{\longrightarrow} \text{AV}_j \left(X_t \right).$$
 ```
 
-```{proof}
+```{proof, pf_lemmconsistencyAV, name = "Consistency of the Maximum-Overlapping AV Estimator"}
 TO BE ADDED
 ```
+<br>
+
+
 
 ```{exercise, name = "Connection to Wavelet Variance"}
 This result is closely related by the results of @percival1995estimation on the wavelet variance. We shall explore the connection between the AV and wavelet variance in the next section.

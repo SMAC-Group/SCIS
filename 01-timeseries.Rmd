@@ -221,6 +221,8 @@ X_t  \sim \mathcal{N} \left(0, Y_t^2\right) \;\; \text{where $Y_t$ is unobserved
 \end{equation*}
 
 In this case, it is clear that the estimation of $\text{Var}(X_t)$ is difficult since only $X_t$ is useful for the estimation. So in fact, $X_t^2$ is our best guess for $\text{Var}(X_t)$. 
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 On the other hand, let us consider an example of **stationary processes** where averaging becomes meaningful for such process.
@@ -231,6 +233,8 @@ X_t = \theta W_{t-1} + W_t \;\;\; \text{where} \;\;\;  W_t  \stackrel{iid}{\sim}
 \end{equation*}
 
 In this case, we can guess that a natural estimator of $\text{Var}(X_t)$ can be $\hat{\sigma}^2 = \frac{1}{T} \sum_{i = 1}^T X_i^2$. That is, now averages are meaningful for such process. 
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 We formalize the above idea by introducing the concept of stationarity. There exist two forms of stationarity, which are defined below:
@@ -278,6 +282,8 @@ In general, neither type of stationarity implies the other one. However,
 
 ```{example, exampleRelationStat1, name = "Strong Stationarity does NOT imply Weak Stationarity"}
 An iid Cauchy process is strongly but not weakly stationary as the mean of the process does not exist.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 ```{example, exampleRelationStat2, name = "Weak Stationarity does NOT imply Strong Stationarity"}
@@ -291,6 +297,8 @@ Y_t &\text{if }  t \in \left\{2k + 1 | k \in \mathbb{N}\right\},
 \right.
 \end{equation*}
 we have $Z_t$ is weakly stationary but not strongly stationary.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 ```{exercise, StatProcesses, name = "Stationarity of Latent Time Series Processes"}
@@ -339,6 +347,8 @@ In general, when $h \in \mathbb{Z}$ we obtain
 \end{equation*}
 which is a function of the lag $h$ only. Therefore, this AR1 process is weakly stationary.
 ```
+<br>
+
 
 ## Linear Processes
 In this section we introduce the concept of linear processes. As a matter of fact, considered stationary models can all, so far, be represented as linear processes. 
@@ -377,6 +387,7 @@ A process $(X_t)$ is said to have an absolutely summable covariance structure if
 &= \sigma^2\sum\limits_{j =  - \infty }^\infty  {{\psi _j}{\psi _{j+h}}}.
 \end{align*}
 ```
+<br>
 
 ```{proof, AbsSumCovLP, name = "All linear processes have absolutely summable covariance structures."}
 \begin{align*}
@@ -388,6 +399,7 @@ A process $(X_t)$ is said to have an absolutely summable covariance structure if
 \end{align*}
 So with the assumption that $\sum_{j=-\infty}^{\infty} \mid \psi_j \mid < \infty$, we obtain that all linear processes have absolutely summable covariance structures. Notice that here we have shown that the condition $\sum\limits_{j = - \infty }^\infty {\left| {{\psi _j}} \right|} < \infty$ is actually stronger than $\sum\limits_{h = - \infty }^\infty {\left| \gamma(h) \right|} < \infty$.
 ```
+<br>
 
 ```{example, AR1isLP, name = "AR1 is a linear process"}
 When we prove above that AR1 is weakly stationary, we have shown that for an AR1 process $X_t = \phi X_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}(0,\nu^2)$, it can be represented as 
@@ -395,6 +407,8 @@ When we prove above that AR1 is weakly stationary, we have shown that for an AR1
 X_t = \sum\limits_{j = 0}^{\infty} {{\phi ^j}{Z_{t - j}}}.
 \end{align*}
 Therefore, AR1 is a linear process.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
@@ -466,6 +480,8 @@ Q_t &\overset{iid}{\sim} \mathcal{N}(0,\sigma^2),\\
 X_t &= Y_t + W_t + Q_t,
 \end{align}
 where $Y_t$, $W_t$ and $Q_t$ are independent and only $X_t$ is observed.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
@@ -512,6 +528,8 @@ since
 &= \frac{\gamma(0)}{T} \sum_{h = -(T-1)}^{T-1} \left(1 - \frac{|h|}{T}\right) \rho(h) \\
 &= \frac{\gamma(0)}{T} \sum_{h = -T}^{T} \left(1 - \frac{|h|}{T}\right) \rho(h).
 \end{align*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 ```{example, EstSampleMeaninAR1, name = "Estimation with Sample Mean in AR1"}
@@ -548,6 +566,7 @@ Step 4: Compute the empirical variance ${\bar X^*}$ (based on $B$ independent re
 
 The above procedure is known as Monte-Carlo method (in this case it is actually a Monte-Carlo integral) and is closely related to the concept of parametric bootstrap (see @efron1994introduction) which is a very popular tool in statistics.
 
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 Now we define the classical estimators of $\gamma(h)$ and $\rho(h)$ for AutoCovariance and AutoCorrelation functions. 

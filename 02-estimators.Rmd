@@ -28,6 +28,8 @@ This LSE is an extremum estimator since it can be expressed as
 \begin{equation*}
 \hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta} \in \mathcal{B}}{\text{argmax}} \; -||\boldsymbol{y} - \boldsymbol{X} \boldsymbol{\beta} ||_2^2.
 \end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 ```{example, ExtreEstMLE, name = "Maximum Likelihood Estimator as Extremum Estimator"}
@@ -42,6 +44,8 @@ Therefore, the MLE can be seen as an extremum estimator with
 \begin{equation*}
 \hat{Q}_n(\boldsymbol{\theta}) = \frac{1}{n} \sum_{i = 1}^{n} \text{log}\left[f\left(z_i| \boldsymbol{\theta}\right)\right].
 \end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 ```{definition, GMM, name = "Generalized Method of Moments"}
@@ -87,6 +91,8 @@ Therefore we can write the GMM estimator of $\boldsymbol{\theta}_0$ as
 \begin{equation*}
 \hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmin}} \; || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; - || \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma} (\boldsymbol{\theta}) ||_{\widehat{\boldsymbol{W}}}^2 
 \end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
@@ -147,6 +153,8 @@ By Weak Law of Large Number, we have $\bar{X}_n \overset{\mathcal{P}}{\mapsto} \
 \mu = \mathbb{E}[X_i] = \int_{0}^{\infty} x \lambda_0 \text{exp}\left( - \lambda_0 x \right) dx = \frac{1}{\lambda_0}.
 \end{equation*}
 And also since the function $g(x) = 1/x$ is continuous in $\mathbb{R}^+$, we obtain by the Continuous Mapping Theorem that $\hat{\lambda} \overset{\mathcal{P}}{\mapsto} \lambda_0$, which concludes that the MLE for $\lambda_0$ is a consistent estimator of $\lambda_0$ in exponential distribution.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
@@ -241,6 +249,8 @@ So by condition C4, we have
 
 Therefore, $\underset{n \to \infty}{\text{lim}}\mathbb{P}(\hat{\boldsymbol{\theta}} \notin \mathcal{G}) = 0$.
 ```
+<br>
+
 
 ### Verification of Condition C1 
 In general, the verification of Condition C1 is difficult and is often assumed in the statistical literature. Here we present two results based on @newey1994vlarge and @komunjer2012global respectively, which allow us to verify the condition C1 for GMM-type estimators. A discussion on the verification of this condition for other estimators can for example be found in Chapter 7 of @baltagi2008companion. 
@@ -256,7 +266,7 @@ Since $\boldsymbol{W} >0$ and there exists a unique $\boldsymbol{\theta}_0 \in \
 Q_0(\boldsymbol{\theta}) = -\boldsymbol{g}_0(\boldsymbol{\theta})^T \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}) \leq -\boldsymbol{g}_0(\boldsymbol{\theta}_0) \boldsymbol{W} \boldsymbol{g}_0(\boldsymbol{\theta}_0) = Q_0(\boldsymbol{\theta_0}).
 \end{equation*}
 ```
-
+<br>
 
 Notice that if we write a GMM estimator as in Example \@ref(exm:ExtreEstGMM), then the condition $\boldsymbol{g}_0(\boldsymbol{\theta}) = 0$ if and only if $\boldsymbol{\theta} = \boldsymbol{\theta}_0$ can be replaced by $\boldsymbol{\gamma}(\boldsymbol{\theta}) = \boldsymbol{\gamma}(\boldsymbol{\theta}_0)$ if and only if $\boldsymbol{\theta} = \boldsymbol{\theta}_0$. 
 
@@ -321,6 +331,8 @@ we have $J(\boldsymbol{\theta}) \equiv \text{det} (\frac{\partial}{\partial \bol
 Finally, the last two conditions of Theorem \@ref(thm:Homomorphism) are trivially satisfied since $||\boldsymbol{g}^*(\boldsymbol{\theta})||$ can only diverge if $|| \boldsymbol{\theta} ||$ diverges and since $\boldsymbol{g}^*(\boldsymbol{\theta}) = s$ has (one) countably solutions in $\boldsymbol{\Theta}$.
 
 Therefore, it follows from Lemma \@ref(lem:GMMindentification) and Theorem \@ref(thm:Homomorphism) that the function $Q_0(\boldsymbol{\theta}) = - || \boldsymbol{\gamma}(\boldsymbol{\theta}_0)  - \boldsymbol{\gamma}(\boldsymbol{\theta})  ||^2_{\boldsymbol{W}}$ is uniquely maximized in $\boldsymbol{\theta}_0$.
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 ### Verification of Condition C4
@@ -406,6 +418,8 @@ Finally, considering the previous results on $a_1$ and $a_2$, we can see that th
 \begin{equation*}
 |\hat{Q}_n (\boldsymbol{\theta}) - Q_0(\boldsymbol{\theta})| \overset{\mathcal{P}}{\mapsto} 0.
 \end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 In general, showing that $\hat{Q}_n (\boldsymbol{\theta}) \overset{\mathcal{P}}{\mapsto} Q_0(\boldsymbol{\theta})$ for all $\boldsymbol{\theta} \in \boldsymbol{\Theta}$ for every $\boldsymbol{\theta} \in \boldsymbol{\Theta}$ is generally done using the Weak Law of Large Number (i.e. Theorem \@ref(thm:WLLN)). However, when $X_i$ which are not iid random variables, Theorem \@ref(thm:WLLN)) cannot be applied. The following theorem (taken from Proposition 7.5 of @hamilton1994time) generalizes this result for (weak) stationary processes with absolutely summable covariance structure. 
@@ -433,7 +447,7 @@ so that
 \end{equation*}
 which concludes the proof.
 ```
-
+<br>
 
 ```{example, ConsistSampleMean, name = "Consistency of Sample Mean"}
 Consider a stationary AR1 process and suppose we want to study whether its sample mean converges in probability to its expected value. This time we consider a non-zero mean AR1, i.e.
@@ -459,6 +473,8 @@ implying that the process has an absolutely summable covariance structure. There
 \begin{equation*}
     \bar{X}_T = \frac{1}{T} \sum_{t = 1}^T \, X_t \overset{\mathcal{P}}{\mapsto} \mathbb{E}[X_t] = \mu.
 \end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
@@ -495,7 +511,7 @@ Then by Theorem \@ref(thm:CMT), we have
 \end{equation*}
 which concludes the proof.
 ```
-
+<br>
 
 
 
@@ -599,6 +615,8 @@ due to the fact that
 &\underbrace{\left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}) \right)\bigg\rvert_{\boldsymbol{\theta} = \hat{\boldsymbol{\theta}}} \right)^T \widehat{\boldsymbol{W}}}_{\overset{p}{\to} \left(\frac{\partial}{\partial \boldsymbol{\theta}} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta})\right)\rvert_{\boldsymbol{\theta} = \boldsymbol{\theta}_0} \right)^T \boldsymbol{W}} \sqrt{n} \left( \hat{\boldsymbol{\gamma}} - \boldsymbol{\gamma}(\boldsymbol{\theta}_0) \right) + o_p(1).
 \end{aligned}
 \end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
 ```
 
 
