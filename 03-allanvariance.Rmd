@@ -1,10 +1,80 @@
 # Allan Variance Calibration Techniques
 
-- The Allan Variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators [see e.g. @allan1966statistics].
-- It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes). 
-- This method has been adapted to characterize the properties of a variety of devices including inertial sensors [see @elsheimy08av].
-- The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance [see @percival1994long]. We will discuss this connection further on.
+In this chapter, we will study the Allan variance (AV) and the corresponding calibration techniques. For this purpose, this chapter is organized in the following order:
 
+- Review on MLE-based methods;
+- An introduction of Allan variance;
+- Allan variance-based estimation.
+
+
+## Review on MLE-based Methods
+In general, inertial sensor stochastic calibration involves the estimation of the parameters of composite stochastic processes. These models are typically difficult to estimate because of their latent features. In the definition below we characterize the class of composite stochastic processes we shall consider here.
+
+```{definition, defCompStocProcesses, name = "Composite Stochastic Processes for IMU Calibration"}
+Let $(X_t)$ be a sum of latent independent stochastic process such that:
+
+- $(X_t)$ is made of a sum which includes a subset or all processes in the set $\{$**QN**, **WN**, **AR1**, **RW**, **DR**$\}$, where processes in the subset $\{$**QN**, **WN**, **RW**, **DR**$\}$ can be included only up to once and process **AR1** can be included $k$ times ($0 \leq k < \infty$). 
+
+- Let $\mathcal{Q}$ denote an arbitrary compact subset of $\mathbb{R}^+$. Then, the innovation process for processes **WN**, **RW** and **AR1** have respective variances $\sigma^2$, $\gamma^2$ and $\nu^2$ such that $\sigma^2, \gamma^2 \text{ and } \nu^2 \in \mathcal{Q}$ and processes **QN** and **DR** have $Q^2 \in \mathcal{Q}$ and $|\omega|\in \mathcal{Q}$ respectively.
+```
+
+There are three main class of estimation techniques that can be used for the estimation of the class of composite stochastic processes for IMU calibration. The methods are the following:
+
+- **Maximum likelihood based methods**: Although these methods are optimal in theory, their applicability is extremely limited due to numerical reasons and tends to perform badly in practice.
+
+- **Allan variance-based methods**: This class of method is the most popular approach for IMU calibration. However, they typically lead to inconsistent estimators and their finite sample performance is often much lower than GMWM-based technique.  
+
+- **GMWM and related methods**: In our (very biased) opinion, these techniques are currently the optimal choice for the estimation of the parameters of the class of processes considered in Definition \@ref(def:defCompStocProcesses). As we will see, this method is in fact a formalized version Allan variance-based methods.
+
+
+Maximum likelihood based approaches are generally inappropriate for the estimation of the class of processes considered in Definition \@ref(def:defCompStocProcesses). In this chapter, we shall avoid a technical discussion on likelihood based method and refer the readers to @stebler2011constrained and @guerrier2016discussion for more details. Instead, we will consider an example to illustrate the numerical issues of this technique.
+
+```{example, exMLEmethod, name="MLE-based IMU calibration"}
+Suppose we have a composite stochastic process composed of a WN and an AR1 process, i.e.
+\begin{equation*}
+\begin{aligned}
+Y_t &= \phi_0 Y_{t-1} + Z_t, \;\;\; Z_t \overset{iid}{\sim} \mathcal{N}\left(0, \nu^2_0 \right), \\
+U_t &\overset{iid}{\sim} \mathcal{N}\left(0, \sigma^2_0 \right), \;\;\;\; X_t = Y_t + U_t.
+\end{aligned}
+\end{equation*}
+Then we want to estimate the parameter $\boldsymbol{\theta}_0 = \left[\phi_0 \;\; \nu^2_0 \;\; \sigma^2_0\right]^T$.
+
+Since the process is Gaussian, we have
+\begin{equation*}
+\begin{aligned}
+\mathbf{X} \sim \mathcal{N} \left(\mathbf{0}, \boldsymbol{\Sigma}(\boldsymbol{\theta}_0)\right),
+\end{aligned}
+\end{equation*}
+where $\mathbf{X} \equiv [X_1, ..., X_T]^T$ and $\boldsymbol{\Sigma}(\boldsymbol{\theta}_0) \equiv \text{Cov}(\mathbf{X})$. Since $Y_t$ and $U_t$ are independent, we have
+\begin{equation*}
+\boldsymbol{\Sigma}(\boldsymbol{\theta}_0) = \text{Cov}(\mathbf{X}) = \text{Cov}(\mathbf{Y}) + \text{Cov}(\mathbf{U}) = \frac{\nu^2_0}{1 - \phi_0^2} \left[ \phi_0^{|i-j|}\right]_{i,j = 1, ..., T} + \sigma^2_0 \mathbf{I}_T,
+\end{equation*}
+where $\mathbf{Y} \equiv [Y_1, ..., Y_T]^T$, $\mathbf{U} \equiv [U_1, ..., U_T]^T$ and where $\mathbf{I}_T$ denotes the identity matrix of dimension $T$. Note that the form of $\text{Cov}(\mathbf{Y})$ is due to the autocovariance of an AR1 which has been discussed in Chapter 2.
+
+So we can now write the log-likelihood function of the model considered here which, up to a constant, can be expressed as
+\begin{equation*}
+\mathcal{L}\left(\boldsymbol{\theta} | \mathbf{X} \right) = - \log \left( \det \left( \boldsymbol{\Sigma}(\boldsymbol{\theta}) \right)\right)  - \mathbf{X}^T \boldsymbol{\Sigma}(\boldsymbol{\theta})^{-1} \mathbf{X}.
+\end{equation*}
+
+Therefore, we can find the maximum likelihood estimator for $\boldsymbol{\theta}_0$:
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \mathcal{L}\left(\boldsymbol{\theta} | \mathbf{X} \right) = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmin}} \; \text{log} \left( \det \left( \boldsymbol{\Sigma}(\boldsymbol{\theta}) \right)\right)  +  \mathbf{X}^T \boldsymbol{\Sigma}(\boldsymbol{\theta})^{-1} \mathbf{X}.
+\end{equation*}
+
+Unfortunately, the applicability of this estimator is essentially impossible when $T > 10^5$ since every evaluation of this the function $\mathcal{L}\left(\boldsymbol{\theta} | \mathbf{X} \right)$ requires to invert a $T \times T$ matrix, which entails a considerable (and often unrealistic) computational burden.
+
+An alternative approach to compute maximum likelihood estimator for $\boldsymbol{\theta}_0$ is based on the EM-algorithm of @dempster1977maximum. If the process $(Y_t)$ (or $U_t$) was observed, then we could easily estimate the parameters of our model by considering separately the likelihood of both processes. Since the composite process is a state-space model we could use the following approach:
+\begin{equation*}
+\hat{\boldsymbol{\theta}} = \underset{\boldsymbol{\theta} \in \boldsymbol{\Theta}}{\text{argmax}} \; \mathcal{L}\left(\boldsymbol{\theta} | \mathbf{X}, \hat{\mathbf{Y}}(\boldsymbol{\theta}) \right),
+\end{equation*}
+where $\hat{\mathbf{Y}}(\boldsymbol{\theta})$ denotes the estimation of $\mathbf{Y}$ (i.e. the states) based on a Kalman filter assuming $\boldsymbol{\theta}$ to be the correct parameter vector. Unfortunately, this approach suffers from the same computational limitations as the maximum likelihood estimator approach.
+```
+
+
+## An Introduction of Allan Variance
+
+### Definition of the Allan Variance
+The Allan variance (AV) is a statistical technique originally developed in the mid-1960s to study the stability of precision oscillators [see e.g. @allan1966statistics]. It can provide information on the types and magnitude of various superimposed noise terms (i.e. composite stochastic processes). This method has been adapted to characterize the properties of a variety of devices including inertial sensors [see @elsheimy08av]. The AV is a measure of variability developed for long term memory processes and can in fact be interpreted as a Haar wavelet coefficient variance [see @percival1994long]. We will discuss this connection further on.
 
 ```{definition, defAV, name = "Allan Variance"}
 We consider the AV at dyadic scales ($\tau_j$) starting from local averages of the process which can be denoted as
@@ -14,7 +84,7 @@ We consider the AV at dyadic scales ($\tau_j$) starting from local averages of t
     \label{mean.noav}
 \end{equation*}
 
-where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$ therefore determines the number of consecutive observations considered for the average. Then, the AV is defined as
+where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$ and therefore determines the number of consecutive observations considered for the average. Then, the AV is defined as
 
 \begin{equation*}
     \text{AV}_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
@@ -22,14 +92,14 @@ where $\tau_j \equiv 2^j, \; j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < 
 ```
 
 ```{exercise, alterDefScale, name = "Alternative scale definition"}
-The definition of the AV is actually valid for $\tau_j = \lfloor2^j\rfloor$ with $j  \in \left\{x \in \mathbb{R} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$. In some case, it could use to consider this alternative definition [see e.g. @elsheimy08av] but we shall restrict ourself here to the case where $j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$.
+The definition of the AV is actually valid for $\tau_j = \lfloor2^j\rfloor$ with $j  \in \left\{x \in \mathbb{R} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$. In some case, it could be used to consider this alternative definition [see e.g. @elsheimy08av] but we shall restrict ourselves here to the case where $j  \in \left\{x \in \mathbb{N} \, : \;  1 \leq x < \log_2 (T) - 1 \right\}$.
 ```
- 
+
 ```{exercise, notationAV, name = "Notation of the Allan Variance"}
 For notational simplicity, we may sometimes replace $\text{AV}_j \left(X_t \right)$ by simply $\phi_j^2$ when the dependence of the AV to the process $(X_t)$ is evident.
 ```
 
-As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process $(X_t)$ as shown in the following lemma [see e.g. @percival2006wavelet for a proof].
+As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process $(X_t)$ as shown in the following lemma [see e.g. @percival2006wavelet for the proof].
 
 ```{lemma, lemmavpsd, name = "AV connection to PSD"}
 For a stationary process $(X_t)$ with PSD $S_{X}(f)$ we have
@@ -40,10 +110,9 @@ For a stationary process $(X_t)$ with PSD $S_{X}(f)$ we have
 \end{equation*}
 ```
 
-Therefore, this result establishes a direct connection between the AV and PSD. A natural question is therefore whether the mapping PSD $\mapsto$ AV is one-to-one. @greenhall1998spectral (see Theorem 1) showed that this is actually not the case. This is illustrated in the following section ????? (ADD REF).
+Therefore, this result establishes a direct connection between the AV and PSD. Therefore a natural question is whether the mapping PSD $\mapsto$ AV is one-to-one. @greenhall1998spectral (see Theorem 1) showed that this is actually not the case. This is illustrated in the followsing Section 4.2.2.
 
-## Spectral Ambiguity of the AV
-
+### Spectral Ambiguity of the Allan Variance
 Consider two (independent) stochastic processes $(X_t)$ and $(Y_t)$ with respective PSD $S_X(f)$ and $S_Y(f)$. Suppose that $S_X(f) \neq S_Y(f)$, then the two processes will have the same AV if
 
 \begin{equation*}
@@ -52,12 +121,12 @@ Consider two (independent) stochastic processes $(X_t)$ and $(Y_t)$ with respect
 
 where $\Phi(f) \equiv S_{X}(f) - S_{Y}(f)$. To show that it is possible that $\Delta = 0$ when $\Phi(f) \neq 0$, we will use the following critical identity:
 
-\begin{equation}
-    \label{ident:av:indet}
-    \sin^4(x) = \sin^2(x) - \frac{1}{4} \sin^2(2x).
-\end{equation}
+\begin{equation*}
+\sin^4(x) = \sin^2(x) - \frac{1}{4} \sin^2(2x).
+\end{equation*}
 
-First, we note that $\Delta$ may be expressed using (\ref{ident:av:indet}) as follows:
+First, we note that $\Delta$ may be expressed using the above critical identity as follows:
+
 \begin{equation*}
     \begin{aligned}
         \Delta &=  \int_{0}^{\infty} \frac{\sin^4\left(\tau \pi f \right)}{\left(\tau \pi f \right)^2} \Phi(f) df \\
@@ -65,7 +134,7 @@ First, we note that $\Delta$ may be expressed using (\ref{ident:av:indet}) as fo
     \end{aligned}
 \end{equation*}
 
-Second, by the change of variable $u = 2f$ in the second term we obtain
+Second, by the change of variable $u = 2f$ in the second term, we obtain
 
 \begin{equation*}
     \begin{aligned}
@@ -80,12 +149,10 @@ Now suppose that $\Phi(f) = 2 \Phi(2f)$. In this case, we have $\Phi(f) = 2 \Phi
     \end{aligned}
 \end{equation*}
 
-```{exercise}
-This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. @greenhall1998spectral showed that in the continuous case (i.e. $\tau_j \in \mathbb{R}$) $\Delta = 0$ if and only if $\Phi(f) = 2 \Phi(2f)$. However, the ``only if'' part of this results (while conjectured) is unknown in the discrete case.
-```
+This result demonstrates that the mapping from PSD to Allan variance is not necessarily one-to-one. @greenhall1998spectral showed that in the continuous case (i.e. $\tau_j \in \mathbb{R}$) $\Delta = 0$ if and only if $\Phi(f) = 2 \Phi(2f)$. However, the ``only if'' part of this result (while conjectured) is unknown in the discrete case.
 
 
-## Properties of the Allan Variance
+### Properties of the Allan Variance
 
 One reason of explaining the widespread use of the Allan variance for sensor calibration is due to the following additivity property, which is particularly convenient to identify composite stochastic processes (see Definition REF MISSING!).
 
