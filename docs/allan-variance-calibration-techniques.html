@@ -135,13 +135,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-the-allan-variance"><i class="fa fa-check"></i><b>4.2.3</b> Properties of the Allan Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#estimation-of-the-allan-variance"><i class="fa fa-check"></i><b>4.3</b> Estimation of the Allan Variance</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency-of-moav-estimator"><i class="fa fa-check"></i><b>4.3.1</b> Consistency of MOAV Estimator</a></li>
-<li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.3.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#consistency-of-the-moav-estimator"><i class="fa fa-check"></i><b>4.3.1</b> Consistency of the MOAV Estimator</a></li>
+<li class="chapter" data-level="4.3.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#asymptotic-normality-of-the-moav-estimator"><i class="fa fa-check"></i><b>4.3.2</b> Asymptotic Normality of the MOAV Estimator</a></li>
 <li class="chapter" data-level="4.3.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#confidence-interval-of-the-moav-estimator"><i class="fa fa-check"></i><b>4.3.3</b> Confidence Interval of the MOAV Estimator</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4</b> Allan variance based estimation</a><ul>
+<li class="chapter" data-level="4.4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4</b> Allan Variance-based Estimation</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-log-log-representation"><i class="fa fa-check"></i><b>4.4.1</b> Allan Variance log-log Representation</a></li>
-<li class="chapter" data-level="4.4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-deviation-of-a-wn-process"><i class="fa fa-check"></i><b>4.4.2</b> Allan Deviation of a WN process</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html"><i class="fa fa-check"></i><b>5</b> The Generalized Method of Wavelet Moments</a></li>
@@ -266,7 +265,7 @@ An alternative approach to compute maximum likelihood estimator for <span class=
 <p>As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process <span class="math inline">\((X_t)\)</span> as shown in the following lemma <span class="citation">(see e.g. D. B. Percival and Walden <a href="#ref-percival2006wavelet">2006</a> for the proof)</span>.</p>
 
 <div class="lemma">
-<p><span id="lem:lemmavpsd" class="lemma"><strong>Lemma 4.1  (AV connection to PSD)  </strong></span>For a stationary process <span class="math inline">\((X_t)\)</span> with PSD <span class="math inline">\(S_{X}(f)\)</span> we have</p>
+<p><span id="lem:lemmavpsd" class="lemma"><strong>Lemma 4.1  (AV Connection to PSD)  </strong></span>For a stationary process <span class="math inline">\((X_t)\)</span> with PSD <span class="math inline">\(S_{X}(f)\)</span> we have</p>
 <span class="math display">\[\begin{equation*}
 \phi_j^2 \equiv \text{AV}_j \left(X_t \right) = 4  \int_0^{\infty}  \frac{\sin^4(\pi f \tau_j)}{(\pi f \tau_j)^2} S_{X}(f) df. 
 \label{eq:allanvariancePSD_LInk}
@@ -332,7 +331,7 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
 <p>Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a> is an important result which is very convenient to determine the theoretical AV of a certain stochastic process. However, the applicability of this result is often limited since the integral defined in Section <a href="Spectral%20Ambiguity%20of%20the%20Allan%20Variance">4.2.2</a> can be intractable. An alternative to Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a> has been proposed by <span class="citation">N. F. Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> and is far advantageous from a computational standpoint.</p>
 
 <div class="lemma">
-<span id="lem:lemmaavtoacf" class="lemma"><strong>Lemma 4.2  (AV connection to ACF)  </strong></span>For a stationary process <span class="math inline">\((X_t)\)</span> with variance <span class="math inline">\(\sigma^2_X\)</span> and ACF <span class="math inline">\(\rho(h)\)</span> we have
+<span id="lem:lemmaavtoacf" class="lemma"><strong>Lemma 4.2  (AV Connection to ACF)  </strong></span>For a stationary process <span class="math inline">\((X_t)\)</span> with variance <span class="math inline">\(\sigma^2_X\)</span> and ACF <span class="math inline">\(\rho(h)\)</span> we have
 <span class="math display">\[\begin{equation*}
 \text{AV}_j \left(X_t \right)  = \frac{\sigma_X^2}{\tau_j^2} \bigg(\tau_j\left[1-\rho(\tau_j)\right] 
    + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg).
@@ -386,11 +385,11 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
 </div>
 <p></p>
 <p>We will now study the properties of this estimator through the following lemmas.</p>
-<div id="consistency-of-moav-estimator" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> Consistency of MOAV Estimator</h3>
+<div id="consistency-of-the-moav-estimator" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Consistency of the MOAV Estimator</h3>
 
 <div class="lemma">
-<p><span id="lem:lemmconsistencyAV" class="lemma"><strong>Lemma 4.3  (Consistency of the Maximum-Overlapping AV Estimator)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that:</p>
+<p><span id="lem:lemmconsistencyAV" class="lemma"><strong>Lemma 4.3  (Consistency of the MOAV Estimator)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that:</p>
 <ul>
 <li><span class="math inline">\((X_t - X_{t-1})\)</span> is a (strongly) stationary process,</li>
 <li><span class="math inline">\((X_t - X_{t-1})^2\)</span> has absolutely summable covariance structure,</li>
@@ -401,69 +400,79 @@ Then, we have <span class="math display">\[\widehat{\text{AV}}_j \left(X_t \righ
 <p></p>
 
 <div class="proof">
- <span class="proof"><em>Proof</em> (Consistency of the Maximum-Overlapping AV Estimator). </span> TO BE ADDED
+<p> <span class="proof"><em>Proof</em> (Consistency of the MOAV Estimator). </span> The proof of the result is direct from the theorem of Weak Law of Large Number for Dependent Process in Chapter 3.</p>
+Let <span class="math inline">\(Z_t = X_t - X_{t-1}\)</span>, then since <span class="math inline">\(Z_t\)</span> is stationary with mean zero then so is <span class="math inline">\((X_t - X_{t-h})\)</span> for all <span class="math inline">\(h \in \mathbb{Z}\)</span>. This directly implies that <span class="math inline">\(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)}\)</span> is also stationary (since it is based on a linear combination of stationary processes) and so is <span class="math inline">\(Y_t \equiv (\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^2\)</span> (since it is based on a time invariant transformation of a stationary process). Moreover, there exist constants <span class="math inline">\(c_h\)</span> such that
+<span class="math display">\[\begin{equation*}
+    \sum_{h = -\infty}^{\infty} \; \gamma_Y (h) = \sum_{h = -\infty}^{\infty} \; c_{|h|} \gamma_{Z^2} (h).
+\end{equation*}\]</span>
+Therefore, we obtain
+<span class="math display">\[\begin{equation*}
+    \sum_{h = -\infty}^{\infty} \; |\gamma_Y (h)| = \sum_{h = -\infty}^{\infty} \; |c_{|h|} \gamma_{Z^2} (h)| \leq \sup_{k = 1, ..., \infty} c_k \; \sum_{h = -\infty}^{\infty} \; |\gamma_{Z^2} (h)| &lt; \infty,
+\end{equation*}\]</span>
+since both terms are bounded. Using the same approach we have that <span class="math inline">\(\mathbb{E}\left[Y_t^2\right]\)</span> is bounded since <span class="math inline">\(\mathbb{E}\left[Z_t^4\right]\)</span> is bounded. Thus, we can apply WLLN for dependent process on the process <span class="math inline">\(Y_t\)</span>, i.e.
+<span class="math display">\[\begin{equation*}
+    \widehat{\text{AVar}}_j \left(X_t \right) = \frac{1}{2} \bar{Z}_t \overset{\mathcal{P}}{\mapsto} \frac{1}{2} \mathbb{E}[{Z}_t] = \text{AVar}_j \left(X_t \right),
+\end{equation*}\]</span>
+which concludes the proof.
 </div>
 <p> <br></p>
-
-<div class="exercise">
-<span id="exr:unnamed-chunk-1" class="exercise"><strong>Remark 4.3  (Connection to Wavelet Variance)  </strong></span>This result is closely related by the results of <span class="citation">D. P. Percival (<a href="#ref-percival1995estimation">1995</a>)</span> on the wavelet variance. We shall explore the connection between the AV and wavelet variance in the next section.
+<p>This result is closely related by the results of <span class="citation">D. P. Percival (<a href="#ref-percival1995estimation">1995</a>)</span> on the wavelet variance. We shall explore the connection between the AV and wavelet variance later.</p>
 </div>
-<p></p>
-</div>
-<div id="asymptotic-normality-1" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> Asymptotic Normality</h3>
-<p>Compare to consistency, the asymptotic normality requires stronger conditions given in the following lemma.</p>
+<div id="asymptotic-normality-of-the-moav-estimator" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Asymptotic Normality of the MOAV Estimator</h3>
+<p>Compared to consistency, the asymptotic normality of the MOAV estimator requires stronger conditions given in the following lemma.</p>
 
 <div class="lemma">
-<p><span id="lem:lemmaasyav" class="lemma"><strong>Lemma 4.4  (Asymptotic normality)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that:</p>
+<p><span id="lem:lemmaasyav" class="lemma"><strong>Lemma 4.4  (Asymptotic Normality of the MOAV Estimator)  </strong></span>Let <span class="math inline">\((X_t)\)</span> be such that:</p>
 <ul>
 <li><span class="math inline">\((X_t - X_{t-1})\)</span> is a (strongly) stationary process.</li>
-<li><span class="math inline">\((X_t - X_{t-1})\)</span> is strong mixing process with mixing coefficient <span class="math inline">\(\alpha(n)\)</span> such that <span class="math inline">\(\sum_{n=1}^{\infty} \alpha(n)^{\frac{\delta}{2+\delta}} &lt; \infty\)</span> for some <span class="math inline">\(\delta &gt; 0\)</span>.</li>
+<li><span class="math inline">\((X_t - X_{t-1})\)</span> is a strong mixing process with mixing coefficient <span class="math inline">\(\alpha(n)\)</span> such that <span class="math inline">\(\sum_{n=1}^{\infty} \alpha(n)^{\frac{\delta}{2+\delta}} &lt; \infty\)</span> for some <span class="math inline">\(\delta &gt; 0\)</span>.</li>
 <li><span class="math inline">\(\mathbb{E}\left[\left(X_t - X_{t-1}\right)^{4+\delta}\right] &lt; \infty\)</span> for some <span class="math inline">\(\delta &gt; 0\)</span>.</li>
 </ul>
-Then, under these conditions we have that <span class="math display">\[\sqrt{T}\left(\widehat{\text{AV}}_j \left(X_t \right) - \text{AV}_j \left(X_t \right) \right) \overset{ \mathcal{D} }{\longrightarrow}
+Then, under these conditions we have that <span class="math display">\[\sqrt{T}\left(\widehat{\text{AVar}}_j \left(X_t \right) - \text{AVar}_j \left(X_t \right) \right) \overset{ \mathcal{D} }{\longrightarrow}
 \mathcal{N}(0, \sigma^2_T/T),\]</span> where <span class="math inline">\(\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)\)</span>.
 </div>
 <p></p>
 
 <div class="proof">
- <span class="proof"><em>Proof. </em></span> TO BE ADDED
+<p> <span class="proof"><em>Proof</em> (Asymptotic Normality of the MOAV Estimator). </span> The proof of the result is direct from the Central Limit Theorem for <span class="math inline">\(\alpha\)</span>-mixing process in Chapter 3. Let <span class="math inline">\(Z_t = X_t - X_{t-1}\)</span>, then since <span class="math inline">\(Z_t\)</span> is stationary with mean zero, then so is <span class="math inline">\((X_t - X_{t-h})\)</span> for all <span class="math inline">\(h \in \mathbb{Z}\)</span>. This directly implies that <span class="math inline">\(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)}\)</span> is also stationary (since it is based on a linear combination of stationary processes) and so is <span class="math inline">\(Y_t \equiv (\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^2\)</span> (since it is based on a time invariant transformation of a stationary process). And since <span class="math inline">\((Y_t)\)</span> is a borel-measurable function of <span class="math inline">\(Z_t\)</span>, we have <span class="math inline">\((Y_t)\)</span> is also a strong mixing process with mixing coefficient <span class="math inline">\(\alpha^{\ast}(n) \leq \alpha(n)\)</span>, hence <span class="math inline">\(\sum_{n=1}^{\infty} \alpha^{\ast}(n)^{\delta/2 + \delta} &lt; \infty\)</span> for some <span class="math inline">\(\delta &gt; 0\)</span>. Moreover, since <span class="math inline">\((\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})\)</span> is a linear function of <span class="math inline">\(Z_t\)</span>, and <span class="math inline">\(\mathbb{E}\left[Z_t^{4+\delta}\right] &lt; \infty\)</span>, by triangle inequality, we have <span class="math inline">\(\mathbb{E}\left[(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^{4+\delta}\right] &lt; \infty\)</span>.</p>
+Thus, we can apply CLT for <span class="math inline">\(\alpha\)</span>-mixing process on <span class="math inline">\(Y_t\)</span>, i.e.
+<span class="math display">\[\begin{equation*}
+    \sqrt{T}\left(\widehat{\text{AVar}}_j \left(X_t \right) - \text{AVar}_j \left(X_t \right) \right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(0, \sigma^2_T/T),
+\end{equation*}\]</span>
+where <span class="math inline">\(\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{Cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)\)</span>, which concludes the proof.
 </div>
-<p></p>
+<p> <br></p>
 </div>
 <div id="confidence-interval-of-the-moav-estimator" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> Confidence Interval of the MOAV Estimator</h3>
-Based on the asymptotic normality results (Lemma ), we can construct the <span class="math inline">\(1-\alpha\)</span> confidence intervals for <span class="math inline">\(\widehat{\text{AV}}_j \left(X_t \right)\)</span> as %
+Based on the asymptotic normality results (Lemma ), we can construct the <span class="math inline">\(1-\alpha\)</span> confidence intervals for <span class="math inline">\(\widehat{\text{AVar}}_j \left(X_t \right)\)</span> as
 <span class="math display">\[\begin{equation*}
-    \text{CI}\left(\text{AV}_j \left(X_t \right)\right) = \left[ \widehat{\text{AV}}_j \left(X_t \right) \pm z_{1 - \frac{\alpha}{2}} \frac{\sigma_{T}}{T} \right],
+    \text{CI}\left(\text{AVar}_j \left(X_t \right)\right) = \left[ \widehat{\text{AVar}}_j \left(X_t \right) \pm z_{1 - \frac{\alpha}{2}} \frac{\sigma_{T}}{T} \right],
 \end{equation*}\]</span>
-<p>% where <span class="math inline">\(z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)\)</span> is the <span class="math inline">\((1- \frac{\alpha}{2})\)</span> quantile of a standard normal distribution.\ However, the so called ``Long-Run Variance’’ <span class="math inline">\(\sigma^2_{T}\)</span> is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions <span class="citation">(see e.g. Newey and West <a href="#ref-newey1986simple">1986</a>)</span>.</p>
+<p>where <span class="math inline">\(z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)\)</span> is the <span class="math inline">\((1- \frac{\alpha}{2})\)</span> quantile of a standard normal distribution.</p>
+<p>However, the so-called “Long-Run Variance” <span class="math inline">\(\sigma^2_{T}\)</span> is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions <span class="citation">(see e.g. Newey and West <a href="#ref-newey1986simple">1986</a>)</span>.</p>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-3" class="exercise"><strong>Remark 4.4  </strong></span>Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. Next, we will discuss an alternative method to construct the CI for such statistic.
+<span id="exr:unnamed-chunk-1" class="exercise"><strong>Remark 4.3  </strong></span>Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. We will discuss an alternative method to construct the CI for such statistic later.
 </div>
 <p></p>
 </div>
 </div>
 <div id="allan-variance-based-estimation" class="section level2">
-<h2><span class="header-section-number">4.4</span> Allan variance based estimation</h2>
+<h2><span class="header-section-number">4.4</span> Allan Variance-based Estimation</h2>
 <div id="allan-variance-log-log-representation" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Allan Variance log-log Representation</h3>
-<p>As illustrated in Lemmas <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a> and <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a> the AV depends on the properties of the stochastic process <span class="math inline">\((X_t)\)</span>. We will see that ``log-log’’ representation of the AV is often useful for the identify various processes that may compose <span class="math inline">\((X_t)\)</span>.</p>
-<p>For example, let’s suppose that <span class="math inline">\(X_t\)</span> is a white noise process. We showed in REF MISSING HERE that the theoretical AV of such process is given</p>
+<p>As illustrated in Lemmas <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a> and <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a>, the AV depends on the properties of the stochastic process <span class="math inline">\((X_t)\)</span>. We will see that the “log-log” representation of the AV is often useful to identify various processes that may compose <span class="math inline">\((X_t)\)</span>.</p>
+For example, let’s suppose that <span class="math inline">\(X_t\)</span> is a white noise process. We showed in <a href="allan-variance-calibration-techniques.html#exm:avma1">4.2</a> that the theoretical AV of such process is given as
 <span class="math display">\[\begin{equation*}
-      \phi_j^2 \equiv \text{AV}_j(X_t) = \frac{\sigma^2}{\tau_j}.
+      \phi_j^2 \equiv \text{AVar}_j(X_t) = \frac{\sigma^2}{\tau_j}.
 \end{equation*}\]</span>
-<p>Therefore, we have that the Allan Deviation or AD (i.e. <span class="math inline">\(\sqrt{\text{AV}_j(X_t)}\)</span> or <span class="math inline">\(\phi_j\)</span>) is such that</p>
-<span class="math display">\[\begin{equation}
-       \log\left( \phi_j \right) = \log \left(\sqrt{\frac{\sigma^2}{\tau_j}}\right) = \log \left(\sigma\right) - \frac{1}{2} \log (\tau_j).
-       \label{eq:av:wn}
-\end{equation}\]</span>
-<p>Thus, the log of the AD is linear in <span class="math inline">\(\tau_j\)</span> with a slope of <span class="math inline">\(-1/2\)</span> and with intercept <span class="math inline">\(\log (\sigma)\)</span>. Let us start by considering a simple simulated example.</p>
-</div>
-<div id="allan-deviation-of-a-wn-process" class="section level3">
-<h3><span class="header-section-number">4.4.2</span> Allan Deviation of a WN process</h3>
-<p>Simulation based on a white noise process with <span class="math inline">\(\sigma^2 = 10^2\)</span> and <span class="math inline">\(T = 10^5\)</span>.</p>
+<p>Therefore, we have that the Allan Deviation or AD (i.e. <span class="math inline">\(\sqrt{\text{AVar}_j(X_t)}\)</span> or <span class="math inline">\(\phi_j\)</span>) is such that</p>
+<span class="math display">\[\begin{equation*}
+\text{log}\left( \phi_j \right) = \text{log} \left(\sqrt{\frac{\sigma^2}{\tau_j}}\right) = \text{log} \left(\sigma\right) - \frac{1}{2} \text{log} (\tau_j).
+\end{equation*}\]</span>
+<p>Thus, the log of the AD is linear in <span class="math inline">\(\tau_j\)</span> with a slope of <span class="math inline">\(-1/2\)</span> and with intercept <span class="math inline">\(\text{log} (\sigma)\)</span> as shown in the following simple simulated example.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load packages</span>
 <span class="kw">library</span>(av)      <span class="co"># Package for Allan Variance functions</span>
 <span class="kw">library</span>(simts)   <span class="co"># Package for time series simulations</span>
@@ -477,9 +486,44 @@ av =<span class="st"> </span><span class="kw">avar</span>(Xt)
 <span class="co"># Allan Variance log-log Representation</span>
 <span class="kw">plot</span>(av)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:exampleAVwhitenoise"></span>
-<img src="scis_files/figure-html/exampleAVwhitenoise-1.png" alt="ADD A NICE CAPTION" width="624" />
+<img src="scis_files/figure-html/exampleAVwhitenoise-1.png" alt="Simulation based on a white noise process with variance as 1 and number of observations as 10^5." width="624" />
 <p class="caption">
-Figure 4.1: ADD A NICE CAPTION
+Figure 4.1: Simulation based on a white noise process with variance as 1 and number of observations as 10^5.
+</p>
+</div>
+<p>Suppose now that <span class="math inline">\((X_t)\)</span> is a composite stochastic process composed of a WN and a RW. For simplicity, we assume that <span class="math inline">\(X_t = Y_t + W_t\)</span> where <span class="math inline">\(Y_t\)</span> is a WN process with variance <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(W_t\)</span> a RW with variance <span class="math inline">\(\gamma^2\)</span>. We already know that</p>
+<span class="math display">\[\begin{equation*}
+\text{log}\left( \text{AVar}_j(Y_t)  \right) = \text{log} \left(\sigma\right) - \frac{1}{2} \text{log} (\tau_j).
+\end{equation*}\]</span>
+<p>and it can be shown (using for example Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a>) that</p>
+<span class="math display">\[\begin{equation*}
+\text{AVar}_j(W_t) = \frac{1}{3} \gamma^2 \tau_j,
+\end{equation*}\]</span>
+<p>and therefore we can obtain</p>
+<span class="math display">\[\begin{equation*}
+\text{log}\left( \sqrt{\text{AVar}_j(W_t) } \right) = \log \left(\sqrt{\frac{1}{3} \gamma^2 \tau_j}\right) = \text{log} \left(\frac{1}{\sqrt{3}} \gamma\right) + \frac{1}{2} \text{log} (\tau_j).
+\end{equation*}\]</span>
+Thus, the log of the AD of <span class="math inline">\((Z_t)\)</span> is also linear in <span class="math inline">\(\tau_j\)</span> with a slope of <span class="math inline">\(+1/2\)</span>. By Corollary <a href="allan-variance-calibration-techniques.html#cor:coroaddav">4.1</a> we also have that
+<span class="math display">\[\begin{equation*}
+\text{AVar}_j(X_t) = \text{AVar}_j(Y_t) + \text{AVar}_j(W_t) =  \frac{\sigma^2}{\tau_j} + \frac{1}{3} \gamma^2 \tau_j.
+\end{equation*}\]</span>
+<p>This result can be shown in the following simulated example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load packages</span>
+<span class="kw">library</span>(av)      <span class="co"># Package for Allan Variance functions</span>
+<span class="kw">library</span>(simts)   <span class="co"># Package for time series simulations</span>
+
+<span class="co"># Simulate white noise</span>
+Xt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>) +<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">RW</span>(<span class="dt">gamma2 =</span> <span class="fl">0.03</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)
+
+<span class="co"># Compute allan variance</span>
+av =<span class="st"> </span><span class="kw">avar</span>(Xt)
+
+<span class="co"># Allan Variance log-log Representation</span>
+<span class="kw">plot</span>(av)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:exampleAVwnrw"></span>
+<img src="scis_files/figure-html/exampleAVwnrw-1.png" alt="Simulation based on a white noise process with variance as 10^2 and a random walk process with variance 0.03^2 and number of observations as 10^5." width="624" />
+<p class="caption">
+Figure 4.2: Simulation based on a white noise process with variance as 10^2 and a random walk process with variance 0.03^2 and number of observations as 10^5.
 </p>
 </div>
 

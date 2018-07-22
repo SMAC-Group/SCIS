@@ -102,7 +102,7 @@ For notational simplicity, we may sometimes replace $\text{AV}_j \left(X_t \righ
 
 As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process $(X_t)$ as shown in the following lemma [see e.g. @percival2006wavelet for the proof].
 
-```{lemma, lemmavpsd, name = "AV connection to PSD"}
+```{lemma, lemmavpsd, name = "AV Connection to PSD"}
 For a stationary process $(X_t)$ with PSD $S_{X}(f)$ we have
 
 \begin{equation*}
@@ -180,7 +180,7 @@ The proof of Additivity of the AV is direct from Lemma \@ref(lem:lemmavpsd). Ind
 
 Lemma \@ref(lem:lemmavpsd) is an important result which is very convenient to determine the theoretical AV of a certain stochastic process. However, the applicability of this result is often limited since the integral defined in Section [4.2.2](Spectral Ambiguity of the Allan Variance) can be intractable. An alternative to Lemma \@ref(lem:lemmavpsd) has been proposed by @zhang2008allan and is far advantageous from a computational standpoint. 
 
-```{lemma, lemmaavtoacf, name = "AV connection to ACF"}
+```{lemma, lemmaavtoacf, name = "AV Connection to ACF"}
 For a stationary process $(X_t)$ with variance $\sigma^2_X$ and ACF $\rho(h)$ we have
 \begin{equation*}
 \text{AV}_j \left(X_t \right)  = \frac{\sigma_X^2}{\tau_j^2} \bigg(\tau_j\left[1-\rho(\tau_j)\right] 
@@ -236,9 +236,9 @@ The MOAV is defined as:
     
 We will now study the properties of this estimator through the following lemmas.
 
-### Consistency of MOAV Estimator
+### Consistency of the MOAV Estimator
 
-```{lemma, lemmconsistencyAV, name = "Consistency of the Maximum-Overlapping AV Estimator"}
+```{lemma, lemmconsistencyAV, name = "Consistency of the MOAV Estimator"}
 Let $(X_t)$ be such that:
 
 - $(X_t - X_{t-1})$ is a (strongly) stationary process,
@@ -249,79 +249,88 @@ Then, we have
      $$\widehat{\text{AV}}_j \left(X_t \right) \overset{ \mathcal{P} }{\longrightarrow} \text{AV}_j \left(X_t \right).$$
 ```
 
-```{proof, pf_lemmconsistencyAV, name = "Consistency of the Maximum-Overlapping AV Estimator"}
-TO BE ADDED
+```{proof, pf_lemmconsistencyAV, name = "Consistency of the MOAV Estimator"}
+The proof of the result is direct from the theorem of Weak Law of Large Number for Dependent Process in Chapter 3. 
+
+Let $Z_t = X_t - X_{t-1}$, then since $Z_t$ is stationary with mean zero then so is $(X_t - X_{t-h})$ for all $h \in \mathbb{Z}$. This directly implies that $\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)}$ is also stationary (since it is based on a linear combination of stationary processes) and so is $Y_t \equiv (\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^2$ (since it is based on a time invariant transformation of a stationary process). Moreover, there exist constants $c_h$ such that
+\begin{equation*}
+    \sum_{h = -\infty}^{\infty} \; \gamma_Y (h) = \sum_{h = -\infty}^{\infty} \; c_{|h|} \gamma_{Z^2} (h).
+\end{equation*}
+
+Therefore, we obtain
+\begin{equation*}
+    \sum_{h = -\infty}^{\infty} \; |\gamma_Y (h)| = \sum_{h = -\infty}^{\infty} \; |c_{|h|} \gamma_{Z^2} (h)| \leq \sup_{k = 1, ..., \infty} c_k \; \sum_{h = -\infty}^{\infty} \; |\gamma_{Z^2} (h)| < \infty,
+\end{equation*}
+
+since both terms are bounded. Using the same approach we have that $\mathbb{E}\left[Y_t^2\right]$ is bounded since $\mathbb{E}\left[Z_t^4\right]$ is bounded. Thus, we can apply WLLN for dependent process on the process $Y_t$, i.e.
+\begin{equation*}
+    \widehat{\text{AVar}}_j \left(X_t \right) = \frac{1}{2} \bar{Z}_t \overset{\mathcal{P}}{\mapsto} \frac{1}{2} \mathbb{E}[{Z}_t] = \text{AVar}_j \left(X_t \right),
+\end{equation*}
+which concludes the proof.
+```
+<br>
+
+This result is closely related by the results of @percival1995estimation on the wavelet variance. We shall explore the connection between the AV and wavelet variance later.
+
+### Asymptotic Normality of the MOAV Estimator
+Compared to consistency, the asymptotic normality of the MOAV estimator requires stronger conditions given in the following lemma.
+
+```{lemma, label = lemmaasyav, name = "Asymptotic Normality of the MOAV Estimator"}
+Let $(X_t)$ be such that:
+
+- $(X_t - X_{t-1})$ is a (strongly) stationary process.
+- $(X_t - X_{t-1})$ is a strong mixing process with mixing coefficient $\alpha(n)$ such that $\sum_{n=1}^{\infty} \alpha(n)^{\frac{\delta}{2+\delta}} < \infty$ for some $\delta > 0$.
+- $\mathbb{E}\left[\left(X_t - X_{t-1}\right)^{4+\delta}\right] < \infty$ for some $\delta > 0$.
+
+Then, under these conditions we have that $$\sqrt{T}\left(\widehat{\text{AVar}}_j \left(X_t \right) - \text{AVar}_j \left(X_t \right) \right) \overset{ \mathcal{D} }{\longrightarrow}
+\mathcal{N}(0, \sigma^2_T/T),$$ where $\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)$.
+```
+
+```{proof, pf_lemmaasyav, name = "Asymptotic Normality of the MOAV Estimator"}
+The proof of the result is direct from the Central Limit Theorem for $\alpha$-mixing process in Chapter 3. Let $Z_t = X_t - X_{t-1}$, then since $Z_t$ is stationary with mean zero, then so is $(X_t - X_{t-h})$ for all $h \in \mathbb{Z}$. This directly implies that $\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)}$ is also stationary (since it is based on a linear combination of stationary processes) and so is $Y_t \equiv (\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^2$ (since it is based on a time invariant transformation of a stationary process). And since $(Y_t)$ is a borel-measurable function of $Z_t$, we have $(Y_t)$ is also a strong mixing process with mixing coefficient $\alpha^{\ast}(n) \leq \alpha(n)$, hence $\sum_{n=1}^{\infty} \alpha^{\ast}(n)^{\delta/2 + \delta} < \infty$ for some $\delta > 0$. Moreover, since $(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})$ is a linear function of $Z_t$, and $\mathbb{E}\left[Z_t^{4+\delta}\right] < \infty$, by triangle inequality, we have $\mathbb{E}\left[(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^{4+\delta}\right] < \infty$.
+    
+Thus, we can apply CLT for $\alpha$-mixing process on $Y_t$, i.e.
+\begin{equation*}
+    \sqrt{T}\left(\widehat{\text{AVar}}_j \left(X_t \right) - \text{AVar}_j \left(X_t \right) \right) \overset{\mathcal{D}}{\mapsto} \mathcal{N}(0, \sigma^2_T/T),
+\end{equation*}
+where $\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{Cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)$, which concludes the proof.
 ```
 <br>
 
 
-
-```{exercise, name = "Connection to Wavelet Variance"}
-This result is closely related by the results of @percival1995estimation on the wavelet variance. We shall explore the connection between the AV and wavelet variance in the next section.
-```
-
-### Asymptotic Normality
-
-Compare to consistency, the asymptotic normality requires stronger conditions given in the following lemma.
-
-```{lemma, label = lemmaasyav, name = "Asymptotic normality"}
-Let $(X_t)$ be such that:
-
-- $(X_t - X_{t-1})$ is a (strongly) stationary process.
-- $(X_t - X_{t-1})$ is strong mixing process with mixing coefficient $\alpha(n)$ such that $\sum_{n=1}^{\infty} \alpha(n)^{\frac{\delta}{2+\delta}} < \infty$ for some $\delta > 0$.
-- $\mathbb{E}\left[\left(X_t - X_{t-1}\right)^{4+\delta}\right] < \infty$ for some $\delta > 0$.
-
-Then, under these conditions we have that $$\sqrt{T}\left(\widehat{\text{AV}}_j \left(X_t \right) - \text{AV}_j \left(X_t \right) \right) \overset{ \mathcal{D} }{\longrightarrow}
-\mathcal{N}(0, \sigma^2_T/T),$$ where $\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)$.
-```
-
-```{proof}
-TO BE ADDED
-```
-
 ### Confidence Interval of the MOAV Estimator
-
-Based on the asymptotic normality results (Lemma \ref{lemma:asy:av}), we can construct the $1-\alpha$ confidence intervals for $\widehat{\text{AV}}_j \left(X_t \right)$ as
-%
+Based on the asymptotic normality results (Lemma \ref{lemma:asy:av}), we can construct the $1-\alpha$ confidence intervals for $\widehat{\text{AVar}}_j \left(X_t \right)$ as
 \begin{equation*}
-    \text{CI}\left(\text{AV}_j \left(X_t \right)\right) = \left[ \widehat{\text{AV}}_j \left(X_t \right) \pm z_{1 - \frac{\alpha}{2}} \frac{\sigma_{T}}{T} \right],
+    \text{CI}\left(\text{AVar}_j \left(X_t \right)\right) = \left[ \widehat{\text{AVar}}_j \left(X_t \right) \pm z_{1 - \frac{\alpha}{2}} \frac{\sigma_{T}}{T} \right],
 \end{equation*}
-%
-where $z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)$ is the $(1- \frac{\alpha}{2})$ quantile of a standard normal distribution.\\
-However, the so called ``Long-Run Variance'' $\sigma^2_{T}$ is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions [see e.g.  @newey1986simple].
+
+where $z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)$ is the $(1- \frac{\alpha}{2})$ quantile of a standard normal distribution.
+
+However, the so-called "Long-Run Variance" $\sigma^2_{T}$ is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions [see e.g.  @newey1986simple].
 
 ```{exercise}
-Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. Next, we will discuss an alternative method to construct the CI for such statistic.
+Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. We will discuss an alternative method to construct the CI for such statistic later.
 ```
 
-## Allan variance based estimation
-
+## Allan Variance-based Estimation
 ### Allan Variance log-log Representation
 
-As illustrated in Lemmas \@ref(lem:lemmavpsd) and \@ref(lem:lemmaavtoacf) the AV depends on the properties of the stochastic process $(X_t)$. We will see that ``log-log'' representation of the AV is often useful for the identify various processes that may compose $(X_t)$.
-     
-For example, let's suppose that $X_t$ is a white noise process. We showed in REF MISSING HERE that the theoretical AV of such process is given
+As illustrated in Lemmas \@ref(lem:lemmavpsd) and \@ref(lem:lemmaavtoacf), the AV depends on the properties of the stochastic process $(X_t)$. We will see that the "log-log" representation of the AV is often useful to identify various processes that may compose $(X_t)$.
 
+For example, let's suppose that $X_t$ is a white noise process. We showed in \@ref(exm:avma1) that the theoretical AV of such process is given as
 \begin{equation*}
-      \phi_j^2 \equiv \text{AV}_j(X_t) = \frac{\sigma^2}{\tau_j}.
+      \phi_j^2 \equiv \text{AVar}_j(X_t) = \frac{\sigma^2}{\tau_j}.
 \end{equation*}
 
-Therefore, we have that the Allan Deviation or AD (i.e. $\sqrt{\text{AV}_j(X_t)}$ or $\phi_j$) is such that
+Therefore, we have that the Allan Deviation or AD (i.e. $\sqrt{\text{AVar}_j(X_t)}$ or $\phi_j$) is such that
 
-\begin{equation}
-       \log\left( \phi_j \right) = \log \left(\sqrt{\frac{\sigma^2}{\tau_j}}\right) = \log \left(\sigma\right) - \frac{1}{2} \log (\tau_j).
-       \label{eq:av:wn}
-\end{equation}
+\begin{equation*}
+\text{log}\left( \phi_j \right) = \text{log} \left(\sqrt{\frac{\sigma^2}{\tau_j}}\right) = \text{log} \left(\sigma\right) - \frac{1}{2} \text{log} (\tau_j).
+\end{equation*}
 
-Thus, the log of the AD is linear in $\tau_j$ with a slope of $-1/2$ and with intercept $\log (\sigma)$. Let us start by considering a simple simulated example.
-    
+Thus, the log of the AD is linear in $\tau_j$ with a slope of $-1/2$ and with intercept $\text{log} (\sigma)$ as shown in the following simple simulated example.
 
-
-### Allan Deviation of a WN process
-
-Simulation based on a white noise process with $\sigma^2 = 10^2$ and $T = 10^5$.
-
-```{r exampleAVwhitenoise, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='ADD A NICE CAPTION'}
+```{r exampleAVwhitenoise, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Simulation based on a white noise process with variance as 1 and number of observations as 10^5.'}
 # Load packages
 library(av)      # Package for Allan Variance functions
 library(simts)   # Package for time series simulations
@@ -336,4 +345,42 @@ av = avar(Xt)
 plot(av)
 ```
 
-	
+Suppose now that $(X_t)$ is a composite stochastic process composed of a WN and a RW. For simplicity, we assume that $X_t = Y_t + W_t$ where $Y_t$ is a WN process with variance $\sigma^2$ and $W_t$ a RW with variance $\gamma^2$. We already know that
+
+\begin{equation*}
+\text{log}\left( \text{AVar}_j(Y_t)  \right) = \text{log} \left(\sigma\right) - \frac{1}{2} \text{log} (\tau_j).
+\end{equation*}
+
+and it can be shown (using for example Lemma \@ref(lem:lemmavpsd)) that
+
+\begin{equation*}
+\text{AVar}_j(W_t) = \frac{1}{3} \gamma^2 \tau_j,
+\end{equation*}
+
+and therefore we can obtain 
+
+\begin{equation*}
+\text{log}\left( \sqrt{\text{AVar}_j(W_t) } \right) = \log \left(\sqrt{\frac{1}{3} \gamma^2 \tau_j}\right) = \text{log} \left(\frac{1}{\sqrt{3}} \gamma\right) + \frac{1}{2} \text{log} (\tau_j).
+\end{equation*}
+
+Thus, the log of the AD of $(Z_t)$ is also linear in $\tau_j$ with a slope of $+1/2$. By Corollary \@ref(cor:coroaddav) we also have that
+\begin{equation*}
+\text{AVar}_j(X_t) = \text{AVar}_j(Y_t) + \text{AVar}_j(W_t) =  \frac{\sigma^2}{\tau_j} + \frac{1}{3} \gamma^2 \tau_j.
+\end{equation*}
+
+This result can be shown in the following simulated example:
+
+```{r exampleAVwnrw, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Simulation based on a white noise process with variance as 10^2 and a random walk process with variance 0.03^2 and number of observations as 10^5.'}
+# Load packages
+library(av)      # Package for Allan Variance functions
+library(simts)   # Package for time series simulations
+
+# Simulate white noise
+Xt = gen_gts(WN(sigma2 = 10^2), n = 10^5) + gen_gts(RW(gamma2 = 0.03^2), n = 10^5)
+
+# Compute allan variance
+av = avar(Xt)
+
+# Allan Variance log-log Representation
+plot(av)
+```
