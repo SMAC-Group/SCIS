@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-22">
+<meta name="date" content="2018-07-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -474,16 +474,16 @@ For example, let’s suppose that <span class="math inline">\(X_t\)</span> is a 
 \end{equation*}\]</span>
 <p>Thus, the log of the AD is linear in <span class="math inline">\(\tau_j\)</span> with a slope of <span class="math inline">\(-1/2\)</span> and with intercept <span class="math inline">\(\text{log} (\sigma)\)</span> as shown in the following simple simulated example.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load packages</span>
-<span class="kw">library</span>(av)      <span class="co"># Package for Allan Variance functions</span>
+<span class="kw">library</span>(av)      <span class="co"># Package for Allan variance functions</span>
 <span class="kw">library</span>(simts)   <span class="co"># Package for time series simulations</span>
 
 <span class="co"># Simulate white noise</span>
 Xt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)
 
-<span class="co"># Compute allan variance</span>
+<span class="co"># Compute Allan variance</span>
 av =<span class="st"> </span><span class="kw">avar</span>(Xt)
 
-<span class="co"># Allan Variance log-log Representation</span>
+<span class="co"># Allan variance log-log representation</span>
 <span class="kw">plot</span>(av)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:exampleAVwhitenoise"></span>
 <img src="scis_files/figure-html/exampleAVwhitenoise-1.png" alt="Simulation based on a white noise process with variance as 1 and number of observations as 10^5." width="624" />
@@ -509,16 +509,20 @@ Thus, the log of the AD of <span class="math inline">\((Z_t)\)</span> is also li
 \end{equation*}\]</span>
 <p>This result can be shown in the following simulated example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load packages</span>
-<span class="kw">library</span>(av)      <span class="co"># Package for Allan Variance functions</span>
-<span class="kw">library</span>(simts)   <span class="co"># Package for time series simulations</span>
+<span class="kw">library</span>(av)     
+<span class="kw">library</span>(simts)   
 
-<span class="co"># Simulate white noise</span>
-Xt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>) +<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">RW</span>(<span class="dt">gamma2 =</span> <span class="fl">0.03</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)
+<span class="co"># Simulate time series</span>
+Yt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)     
+Zt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">RW</span>(<span class="dt">gamma2 =</span> <span class="fl">0.03</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)  
+Xt =<span class="st"> </span>Yt +<span class="st"> </span>Zt
 
-<span class="co"># Compute allan variance</span>
+<span class="co"># Compute Allan variance</span>
 av =<span class="st"> </span><span class="kw">avar</span>(Xt)
+av_of_wn =<span class="st"> </span><span class="kw">av_wn</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span>^<span class="dv">2</span>, <span class="dt">n =</span> av$clusters) 
+av_of_rw =<span class="st"> </span><span class="kw">av_rw</span>(<span class="dt">omega2 =</span> <span class="fl">0.03</span>^<span class="dv">2</span>, <span class="dt">n =</span> av$clusters) 
 
-<span class="co"># Allan Variance log-log Representation</span>
+<span class="co"># Allan variance log-log representation</span>
 <span class="kw">plot</span>(av)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:exampleAVwnrw"></span>
 <img src="scis_files/figure-html/exampleAVwnrw-1.png" alt="Simulation based on a white noise process with variance as 10^2 and a random walk process with variance 0.03^2 and number of observations as 10^5." width="624" />
@@ -526,6 +530,8 @@ av =<span class="st"> </span><span class="kw">avar</span>(Xt)
 Figure 4.2: Simulation based on a white noise process with variance as 10^2 and a random walk process with variance 0.03^2 and number of observations as 10^5.
 </p>
 </div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># lines(av$clusters, log2(av_of_wn))</span>
+<span class="co"># lines(av$clusters, log2(av_of_rw))</span></code></pre></div>
 
 </div>
 </div>

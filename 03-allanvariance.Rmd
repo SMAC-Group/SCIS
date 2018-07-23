@@ -332,16 +332,16 @@ Thus, the log of the AD is linear in $\tau_j$ with a slope of $-1/2$ and with in
 
 ```{r exampleAVwhitenoise, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Simulation based on a white noise process with variance as 1 and number of observations as 10^5.'}
 # Load packages
-library(av)      # Package for Allan Variance functions
+library(av)      # Package for Allan variance functions
 library(simts)   # Package for time series simulations
 
 # Simulate white noise
 Xt = gen_gts(WN(sigma2 = 1), n = 10^5)
 
-# Compute allan variance
+# Compute Allan variance
 av = avar(Xt)
 
-# Allan Variance log-log Representation
+# Allan variance log-log representation
 plot(av)
 ```
 
@@ -372,15 +372,25 @@ This result can be shown in the following simulated example:
 
 ```{r exampleAVwnrw, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', fig.cap='Simulation based on a white noise process with variance as 10^2 and a random walk process with variance 0.03^2 and number of observations as 10^5.'}
 # Load packages
-library(av)      # Package for Allan Variance functions
-library(simts)   # Package for time series simulations
+library(av)     
+library(simts)   
 
-# Simulate white noise
-Xt = gen_gts(WN(sigma2 = 10^2), n = 10^5) + gen_gts(RW(gamma2 = 0.03^2), n = 10^5)
+# Simulate time series
+Yt = gen_gts(WN(sigma2 = 10^2), n = 10^5)     
+Zt = gen_gts(RW(gamma2 = 0.03^2), n = 10^5)  
+Xt = Yt + Zt
 
-# Compute allan variance
+# Compute Allan variance
 av = avar(Xt)
+av_of_wn = av_wn(sigma2 = 10^2, n = av$clusters) 
+av_of_rw = av_rw(omega2 = 0.03^2, n = av$clusters) 
 
-# Allan Variance log-log Representation
+# Allan variance log-log representation
 plot(av)
+# lines(av$clusters, log2(av_of_wn))
+# lines(av$clusters, log2(av_of_rw))
 ```
+
+
+
+
