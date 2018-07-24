@@ -340,9 +340,22 @@ Xt = gen_gts(WN(sigma2 = 1), n = 10^5)
 
 # Compute Allan variance
 av = avar(Xt)
+theo_av = av_wn(sigma2 = 1, n = av$clusters) 
 
 # Allan variance log-log representation
-plot(av)
+plot(av, legend_position = NA,
+     main = "Simulated WN", ylab = "Allan Deviation")
+lines(av$clusters, sqrt(theo_av), col = "red")
+
+# Add legend
+legend("bottomleft",
+       legend = c(as.expression(bquote(paste(.("Empirical AV"), hat(phi)))),
+                  as.expression(bquote(paste("CI(",hat(phi),", ",.(0.95),")"))),
+                  "Theoretical AV"),
+       pch = c(16, 15, NA), lty = c(1, NA, 1), 
+       col = c("darkblue", hcl(h = 210, l = 65, c = 100, alpha = 0.2), "red"), 
+       cex = 1, pt.cex = c(1.25, 3, 1.25), bty = "n"
+      )
 ```
 
 Suppose now that $(X_t)$ is a composite stochastic process composed of a WN and a RW. For simplicity, we assume that $X_t = Y_t + W_t$ where $Y_t$ is a WN process with variance $\sigma^2$ and $W_t$ a RW with variance $\gamma^2$. We already know that
@@ -386,11 +399,43 @@ av_of_wn = av_wn(sigma2 = 10^2, n = av$clusters)
 av_of_rw = av_rw(omega2 = 0.03^2, n = av$clusters) 
 
 # Allan variance log-log representation
-plot(av)
-# lines(av$clusters, log2(av_of_wn))
-# lines(av$clusters, log2(av_of_rw))
+plot(av, legend_position = NA,
+     main = "Simulated WN + RW", ylab = "Allan Deviation")
+lines(av$clusters, sqrt(av_of_wn), col = "red")
+lines(av$clusters, sqrt(av_of_rw), col = "blue")
+
+# Add legend
+legend("bottomleft",
+       legend = c(as.expression(bquote(paste(.("Empirical AV"), hat(phi)))),
+                  as.expression(bquote(paste("CI(",hat(phi),", ",.(0.95),")"))),
+                  "Theoretical AV (WN)",
+                  "Theoretical AV (RW)"),
+       pch = c(16, 15, NA, NA), lty = c(1, NA, 1, 1), 
+       col = c("darkblue", hcl(h = 210, l = 65, c = 100, alpha = 0.2), "red", "blue"), 
+       cex = 1, pt.cex = c(1.25, 3, 1.25, 1.25), bty = "n"
+       )
 ```
 
+
+The AV is a powerful technique to identify the processes considered in Definition \@ref(def:defCompStocProcesses). Indeed, the five processes we are considering can be characterized in the AV log-log representation as follows: 
+
+- QN - linear with slope of -1;
+- WN - linear with slope of -1/2;
+- AR1 - curved shape with a slope $\in [-1/2, \, 1/2]$;
+- RW - linear with slope of 1/2;
+- DR - linear with slope of 1.
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='Five processes characterized in the AV log-log representation', echo=FALSE}
+knitr::include_graphics("images/process_slope.pdf")
+```
+
+
+Here let's consider a real data which comes from a KVH-1750 gyro. This real data is collected over a 30-minute period at a frequency of 500Hz. 
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='KVH-1750 (Gyro), 30 mins at 500Hz', echo=FALSE}
+knitr::include_graphics("images/av_example_kvh.pdf")
+```
+
+The shape of the AD suggests that a WN + RW may be a reasonable approximation. But how could we estimate the parameters of this model? In the following section we will discuss the AV-based estimation of parameters for models. 
 
 
 
