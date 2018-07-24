@@ -219,3 +219,8 @@ The GMWM estimator is obtained as follows
 
 where $\boldsymbol{\nu}(\boldsymbol{\theta})$ is the theoretical WV implied by a model with parameter vector $\boldsymbol{\theta}$ and $\boldsymbol{\Omega}$ is a positive-definite weighting matrix.
 ```
+
+### Choice of weighting matrix
+
+### Consistency
+
