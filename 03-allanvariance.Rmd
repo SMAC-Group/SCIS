@@ -438,4 +438,90 @@ knitr::include_graphics("images/av_example_kvh.pdf")
 The shape of the AD suggests that a WN + RW may be a reasonable approximation. But how could we estimate the parameters of this model? In the following section we will discuss the AV-based estimation of parameters for models. 
 
 
+### Allan Variance-based Estimation
+We have seen that there exists a mapping from $\boldsymbol{\theta}_0$ (model's parameters) to the AV (or AD), i.e.
+\begin{equation*}
+\boldsymbol{\theta}_0 \mapsto \text{PSD or AVS} \mapsto \text{AV}.
+\end{equation*}
+
+In general, the mapping from the PSD to the AV is not one-to-one. Nevertheless, one may hope that in some case this mapping can be "inverted" (in some sense) so that the AV may be used to estimated $\boldsymbol{\theta}_0$. This is the central of AV linear regression approach.
+
+Let us assume that we want to estimate the parameters of a QN, WN, RW or DR process. Then the process $(X_t)$ is such that it has a linear representation in a $\text{log} ( \phi_{\tau_j} ) - \text{log}\left( \tau_j \right)$ plot for the set of scales $\boldsymbol{\eta} \in \boldsymbol{\mathcal{G}}$ where
+\begin{equation*}
+	\boldsymbol{\mathcal{G}} = \left\{ \left\{\tau_k, \, ...,\, \tau_{k + h} \right\} | k,h \in \mathbb{N}^{+}, k + h \leq J\right\}
+\end{equation*}
+denotes all possible sets which contain adjacent scales having cardinality $|\boldsymbol{\eta}| > 0$.
+
+Then, there exists a linear relationship between $\text{log} \left( \phi_{\tau_j} ({\theta}) \right)$ and $\text{log}\left( \tau_j \right)$ we can write
+
+\begin{equation*}
+\text{log} \left( {\phi}_{\tau_j} \left( {\theta} \right) \right) = g\left( \theta \right) + \lambda \text{log} \left( \tau_j \right), \;\;  \forall\tau_j \in \boldsymbol{\eta},
+\end{equation*}
+
+where the function $g (\cdot)$ as well as the constant $\lambda$ are known and depend on the model. For a white noise, we have for example $g(\sigma) = \text{log}(\sigma)$ and $\lambda = -1/2$. This linear relationship leads to the following "least-squares" estimator of $\theta$, noted as $\hat{\theta}_{AV}$ and defined as
+
+\begin{equation*}
+\hat{\theta}_{AV} \equiv \underset{\theta \in \Theta}{\text{argmin}} \; \sum_{\tau_j \in \boldsymbol{\eta}}\left[ 	\text{log} \left( \hat{\phi}_{\tau_j} \right) - g\left( \theta \right) - \lambda \text{log} \left( \tau_j \right) \right]^2,
+\end{equation*}
+
+which is an extremum estimator and admit the solution
+
+\begin{equation*}
+\hat{\theta}_{AV} = g^{-1} \left\{\frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ \log \left( \hat{\phi}_{\tau_j}  \right) - \lambda \log \left( \tau_j \right)\right]\right\} ,
+\end{equation*}
+
+where $| \boldsymbol{\eta}|$ denotes the cardinality of the set $\boldsymbol{\eta}$.
+
+```{example, AVparaest, name = "Derivation of the AV-based Parameter Estimator"}
+The derivation of the AV-based estimator is pretty straightforward. Since $\hat{\theta}_{AV}$ is an extremum estimator, we can first take the first derivative of the objective function with respect to $\boldsymbol{\theta}$, which yields:
+
+\begin{equation*}
+\begin{aligned}
+    &\frac{\partial}{\partial\boldsymbol{\theta}} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ 	\text{log} \left( \hat{\phi}_{\tau_j} \right) - g\left( \theta \right) - \lambda \text{log} \left( \tau_j \right) \right]^2 = 2\sum_{\tau_j \in \boldsymbol{\eta}}\left[ 	\text{log} \left( \hat{\phi}_{\tau_j} \right) - g\left( \theta \right) - \lambda \text{log} \left( \tau_j \right)\right] g^{\prime}\left( \theta \right) = 0 \\
+    &\Leftrightarrow \frac{1}{|\boldsymbol{\eta}|} g^{\prime}\left( \theta \right) g\left( \theta \right) = g^{\prime}\left( \theta \right) \sum_{\tau_j \in \boldsymbol{\eta}} \left[ 	\log \left( \hat{\phi}_{\tau_j} \right) - \lambda \log \left( \tau_j \right) \right] \\
+    &\Leftrightarrow \hat{\boldsymbol{\theta}}_{AV} = g^{-1} \left\{\frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ \log \left( \hat{\phi}_{\tau_j}  \right) - \lambda \text{log} \left( \tau_j \right)\right]\right\}.
+\end{aligned}
+\end{equation*}
+
+<div style="text-align: right"> $\LARGE{\bullet}$ </div>
+```
+
+Let us consider a simple example of the use of $\hat{\theta}_{AV}$ with a WN process. We already derived that
+\begin{equation*}
+\text{log}\left( \text{AVar}_j(Y_t)  \right) = \text{log} \left(\sigma\right) - \frac{1}{2} \text{log} (\tau_j)
+\end{equation*}
+implying that $g(\sigma) = \text{log}(\sigma)$ (and thus $g^{-1}(\sigma) = \exp(\sigma)$) and $\lambda = -1/2$. This leads to the following estimator of $\sigma$,
+
+\begin{equation*}
+\hat{\sigma}_{AV} = \exp\left\{ \frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}}  \text{log} \left( \hat{\phi}_{\tau_j}  \right) + \frac{1}{2} \text{log} \left( \tau_j \right) \right\}.
+\end{equation*}
+
+Similarly for a RW, we obtain
+
+\begin{equation*}
+\hat{\gamma}_{AV} = \sqrt{3} \exp\left\{ \frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}}  \text{log} \left( \hat{\phi}_{\tau_j}  \right) - \frac{1}{2} \text{log} \left( \tau_j \right) \right\}.
+\end{equation*}
+
+Using these results, let us estimate the parameters on the KVH-1750 gyro in Section [4.4.1](Allan Variance log-log Representation). We have agreed that for this real data, the shape of the AD suggests that a WN + RW may be a reasonable approximation. So taking into consideration the processes characterization in the AV log-log representation, we can use different scales to estimate paramters of WN and RW for more precise estimation as shown in the figure below:
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='KVH-1750 (Gyro): Scales for parameters estimation', echo=FALSE}
+knitr::include_graphics("images/av_example_kvh_part2.pdf")
+```
+
+Using the AV-based Parameter Estimators for the WN and RW processes, we can obtain the following estimates: 
+
+\begin{equation*}
+\begin{aligned}
+\hat{\sigma}_{AV} &= \frac{1}{2} \exp \left\{\frac{1}{12} \sum_{j = 1}^{12} \text{log} \left(\hat{\phi}_j\right)+ \frac{1}{2} \text{log} \left(2^j\right)\right\} \approx 1.710 \cdot 10^{-3}\\
+\hat{\gamma}_{AV} &= \sqrt{3} \exp \left\{\frac{1}{4} \sum_{j = 15}^{18} \text{log} \left(\hat{\phi}_j\right)- \frac{1}{2} \text{log} \left(2^j\right)\right\} \approx 2.043 \cdot 10^{-7}.
+\end{aligned}
+\end{equation*}
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='KVH-1750 (Gyro): Implied AV by WN and RW respectively', echo=FALSE}
+knitr::include_graphics("images/av_example_kvh_part3.pdf")
+```
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='KVH-1750 (Gyro): Implied AV by WN + RW', echo=FALSE}
+knitr::include_graphics("images/av_example_kvh_part4.pdf")
+```
 
