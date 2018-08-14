@@ -115,9 +115,7 @@ since both terms are bounded. Using the same approach we have that $\mathbb{E}\l
     \hat{\nu}^2_j = \frac{1}{M_j(T)} \sum_{t=L_j}^{T} {W}_{j,t}^2\overset{ \mathcal{P} }{\longrightarrow}  \nu^2_j.
 \end{equation*}
 
-\end{frame}
 
-\begin{frame}{Proof of Lemma \ref{lemm:consistencyWV}}
 \footnotesize
 Since
 $$\hat{\nu}^2_j \overset{ \mathcal{P} }{\longrightarrow} \nu^2_j \, ,$$
@@ -220,7 +218,126 @@ The GMWM estimator is obtained as follows
 where $\boldsymbol{\nu}(\boldsymbol{\theta})$ is the theoretical WV implied by a model with parameter vector $\boldsymbol{\theta}$ and $\boldsymbol{\Omega}$ is a positive-definite weighting matrix.
 ```
 
-### Choice of weighting matrix
-
 ### Consistency
+```{lemma, concistgmwm, name = "Consistency of the GMWM"}
+Suppose that:
 
+C1. The function $\boldsymbol{\nu}(\boldsymbol{\theta})$ is such that $\boldsymbol{\nu}(\boldsymbol{\theta})=\boldsymbol{\nu}(\boldsymbol{\theta}_0)$ if and only if $\boldsymbol{\theta}=\boldsymbol{\theta}_0$.
+
+C2. The set $\boldsymbol{\Theta}$ is compact.
+
+C3. The function $\boldsymbol{\nu}(\boldsymbol{\theta})$ is continuous in $\boldsymbol{\theta}$.
+
+C4. $\hat{\boldsymbol{\nu}}  \overset{\mathcal{P}}{\longrightarrow} \boldsymbol{\nu}$.
+
+C5. $\mathbf{\Omega}$ is positive-definite and ``consistent'' (if estimated).
+
+Then, we have:
+
+\begin{equation*}
+    \hat{\boldsymbol{\theta}}  \overset{ \mathcal{P} }{\longrightarrow} \boldsymbol{\theta}_0.
+\end{equation*}
+```
+
+```{remark, rqident}
+
+
+Condition (C1) is equivalent to Condition \ref{theo:consist:cond:unique:max} and, as seen earlier, it can be verified by checking the assumptions in Theorem \ref{Thm:homeo:gmm}. In the latter all assumptions are generally satisfied considering the most commonly employed time series models while showing that $J(\boldsymbol{\theta})$ is nonnegative (or nonpositive) is not necessarily straightforward, especially when dealing with latent models. The nonnegative or nonpositive property of $J(\boldsymbol{\theta})$ has been verified for a wide class of time series models (see next section).
+```    
+
+```{proof, proofident, name = "Sketch Identifiability"}
+
+Identifiability has been shown for the following class of models:
+  
+  - [Model 1] Sum of a white noise, quantization noise and $K$ first-order autoregressive processes
+  - [Model 2] Sum of a first-order moving-average process and $K$ first-order autoregressive processes
+  - [Model 3] $K$ first-order autoregressive processes
+  - [Model 4] Sum of a white noise, quantization noise, drift and \textbf{random walk} process
+  - [Model 5] Sum of a first-order moving-average process, drift and \random walk process
+```
+
+```{proof, proofcocistgmwm, name"(Sketch): Consistency of the GMWM"}
+
+
+While Condition (C2) is always assumed and, as discussed for Condition (C1), Condition (C3) is generally verified for all times series considered previously and is therefore nearly always verified
+
+Condition (C4) is verified based on Lemma \ref{lemm:consistencyWV} and finally Condition (C5) is either assumed or can be verified using an appropriate estimator for $\boldsymbol{\Omega}$. Based on the latter two conditions, it is possible to verify that $\hat{Q}_n(\boldsymbol{\theta})$ converges uniformly in probability to $Q_0(\boldsymbol{\theta})$ (Condition \ref{theo:consist:cond:converge}).
+
+Based on these verifiable (verified) conditions, we have that
+$$\hat{\boldsymbol{\theta}}  \overset{ \mathcal{P} }{\longrightarrow} \boldsymbol{\theta}_0,$$
+thus concluding the proof.
+\hfill $\blacksquare$
+```
+
+### Asymptotic Normality
+
+```{theorem, asynormgmwm, name = "Asymptotic Normality of the GMWM Estimator"}
+In addition to Conditions C1 to C5, we assume:
+
+C6. $\boldsymbol{\theta}_0$ is an interior point to $\boldsymbol{\Theta}$
+  
+C7. $\mathbf{H}(\boldsymbol{\theta}_0) \equiv \frac{\partial}{\partial \boldsymbol{\theta} \partial \boldsymbol{\theta}^T} \boldsymbol{\nu}(\boldsymbol{\theta})\big|_{\boldsymbol{\theta}=\boldsymbol{\theta}_0}$ exists and is non-singular
+
+C8. $\sqrt{T} (\hat{\boldsymbol{\nu}} - \boldsymbol{\nu}) \overset{ \mathcal{D} }{\longrightarrow} \mathcal{N}(\mathbf{0},\boldsymbol{\Sigma})$.
+
+  Then, we have
+
+\begin{equation*}
+    \sqrt{T}(\hat{\boldsymbol{\theta}} - \boldsymbol{\theta})  \overset{ \mathcal{D} }{\longrightarrow} \mathcal{N}(\mathbf{0},\mathbf{V}) \,,
+\end{equation*}
+where $\mathbf{V}$ is the asymptotic covariance matrix of $\hat{\boldsymbol{\theta}}$. 
+
+```
+
+```{proof, proofasynormgmwm}
+    
+The proof of asymptotic normality of the GMWM closely follows that of asymptotic normality for extremum estimators (see from Theorem \@ref(thm:CLTmulti) forwards).
+
+Condition (C6) is another condition that inevitably needs to be assumed (as for Condition (C2)) while Condition (C7) is not necessary but guarantees the feasibility of Taylor expansion according to the approach used (we avoid technical details).
+
+Knowing that Condition (C8) is verified (see Lemma \ref{lemma:asy:WV}), then we have that
+
+\begin{equation*}
+    \sqrt{T}(\hat{\boldsymbol{\theta}} - \boldsymbol{\theta})  \overset{ \mathcal{D} }{\longrightarrow} \mathcal{N}(\mathbf{0},\mathbf{V}) \,.
+\end{equation*}
+
+\hfill $\blacksquare$
+```
+
+
+### Model Selection
+
+
+In order to select a model among a set of candidate models for an observed time series, it is possible to estimate their out-of-sample prediction error and select the model that minimizes this error. 
+
+```{definition, defwvic, name = "Wavelet Variance Information Criterion (WVIC)"}
+
+The WVIC provides the out-of-sample prediction error between the WV implied by the selected model and the WV observed out-of-sample:
+
+\begin{equation*}
+    		\text{WVIC} = \mathbb{E} \left[ \mathbb{E}_0 \left[  \left(\hat{\boldsymbol{\nu}}^0 - \boldsymbol{\nu}(\hat{\boldsymbol{\theta}})\right)^{T} {\boldsymbol{\Omega}} \left(\hat{\boldsymbol{\nu}}^0 - \boldsymbol{\nu}(\hat{\boldsymbol{\theta}})\right)
+		\right] \right].
+\end{equation*}
+```
+
+
+```{definition, defwvicest1, name = "WVIC estimator"}
+
+An estimator of the WVIC is given by
+\begin{equation*}
+		\widehat{\text{WVIC}} =  \left( \hat{\boldsymbol{\nu}} - \boldsymbol{\nu} ( \hat{\boldsymbol{\theta}})\right)^T \boldsymbol{\Omega} \left( \hat{\boldsymbol{\nu}} - \boldsymbol{\nu} ( \hat{\boldsymbol{\theta}})\right)
+		+ 2 \text{tr} \left\{ \widehat{\text{cov}} \left[ \hat{\boldsymbol{\nu}} ,  \boldsymbol{\nu}( \hat{\boldsymbol{\theta}}) \right] \boldsymbol{\Omega}^T\right\}, 
+\end{equation*}
+
+where $\widehat{\text{cov}} \left[ \hat{\boldsymbol{\nu}} ,  \boldsymbol{\nu}( \hat{\boldsymbol{\theta}})\right]$ is the estimated covariance matrix between the empirical WV and the implied WV evaluated at the estimated vector parameter $\hat{\boldsymbol{\theta}}$. 
+```
+
+
+While the first term in $\widehat{\text{WVIC}}$ is given by the value of the GMWM objective function at the solution $\hat{\boldsymbol{\theta}}$, it is not straightforward to compute the second term (optimism):
+$$\text{tr} \left\{ \widehat{\text{cov}} \left[ \hat{\boldsymbol{\nu}} ,  \boldsymbol{\nu}( \hat{\boldsymbol{\theta}}) \right] \boldsymbol{\Omega}^T\right\}$$.
+
+There exist several way of computing the optimism term: 
+
+- Compute the analytic form of the covariance term (see Guerrier et al., 2018).
+- Compute the term via parametric bootstrap (see \cite{guerrier2015wvic}).
+- Compute it using independent replicates (see \cite{radi2017authomatic}).

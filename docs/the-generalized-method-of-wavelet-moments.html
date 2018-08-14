@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-07-24">
+<meta name="date" content="2018-08-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -141,13 +141,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4</b> Allan Variance-based Estimation</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-log-log-representation"><i class="fa fa-check"></i><b>4.4.1</b> Allan Variance log-log Representation</a></li>
+<li class="chapter" data-level="4.4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation-1"><i class="fa fa-check"></i><b>4.4.2</b> Allan Variance-based Estimation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html"><i class="fa fa-check"></i><b>5</b> The Generalized Method of Wavelet Moments</a><ul>
 <li class="chapter" data-level="5.1" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#the-wavelet-variance"><i class="fa fa-check"></i><b>5.1</b> The Wavelet Variance</a></li>
 <li class="chapter" data-level="5.2" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#the-gmwm"><i class="fa fa-check"></i><b>5.2</b> The GMWM</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#choice-of-weighting-matrix"><i class="fa fa-check"></i><b>5.2.1</b> Choice of weighting matrix</a></li>
-<li class="chapter" data-level="5.2.2" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#consistency-1"><i class="fa fa-check"></i><b>5.2.2</b> Consistency</a></li>
+<li class="chapter" data-level="5.2.1" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#consistency-1"><i class="fa fa-check"></i><b>5.2.1</b> Consistency</a></li>
+<li class="chapter" data-level="5.2.2" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>5.2.2</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="5.2.3" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#model-selection"><i class="fa fa-check"></i><b>5.2.3</b> Model Selection</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="extensions.html"><a href="extensions.html"><i class="fa fa-check"></i><b>6</b> Extensions</a></li>
@@ -271,8 +273,7 @@ Defining <span class="math inline">\(\hat{\boldsymbol{\nu}} \equiv [\hat{\nu}_{j
 <span class="math display">\[\begin{equation*}
     \hat{\nu}^2_j = \frac{1}{M_j(T)} \sum_{t=L_j}^{T} {W}_{j,t}^2\overset{ \mathcal{P} }{\longrightarrow}  \nu^2_j.
 \end{equation*}\]</span>
-<p>\end{frame}</p>
-<p>\begin{frame}{Proof of Lemma } Since <span class="math display">\[\hat{\nu}^2_j \overset{ \mathcal{P} }{\longrightarrow} \nu^2_j \, ,\]</span> and given that <span class="math inline">\(J\)</span> is a bounded quantity, we have that</p>
+<p>Since <span class="math display">\[\hat{\nu}^2_j \overset{ \mathcal{P} }{\longrightarrow} \nu^2_j \, ,\]</span> and given that <span class="math inline">\(J\)</span> is a bounded quantity, we have that</p>
 <span class="math display">\[\begin{eqnarray*}
     \|\hat{\boldsymbol{\nu}} - \boldsymbol{\nu}\|_2 &amp;=&amp; \sum_{j=1}^J (\hat{\nu}^2_j - \nu^2_j)^2\\
     &amp;&lt;&amp; J \,\, \underset{j}{\text{max}}\, ((\hat{\nu}^2_j - \nu^2_j)^2) \, .
@@ -354,11 +355,106 @@ Figure 5.3: ADD A NICE CAPTION
 where <span class="math inline">\(\boldsymbol{\nu}(\boldsymbol{\theta})\)</span> is the theoretical WV implied by a model with parameter vector <span class="math inline">\(\boldsymbol{\theta}\)</span> and <span class="math inline">\(\boldsymbol{\Omega}\)</span> is a positive-definite weighting matrix.
 </div>
 
-<div id="choice-of-weighting-matrix" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Choice of weighting matrix</h3>
-</div>
 <div id="consistency-1" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Consistency</h3>
+<h3><span class="header-section-number">5.2.1</span> Consistency</h3>
+
+<div class="lemma">
+<p><span id="lem:concistgmwm" class="lemma"><strong>Lemma 5.4  (Consistency of the GMWM)  </strong></span>Suppose that:</p>
+<p>C1. The function <span class="math inline">\(\boldsymbol{\nu}(\boldsymbol{\theta})\)</span> is such that <span class="math inline">\(\boldsymbol{\nu}(\boldsymbol{\theta})=\boldsymbol{\nu}(\boldsymbol{\theta}_0)\)</span> if and only if <span class="math inline">\(\boldsymbol{\theta}=\boldsymbol{\theta}_0\)</span>.</p>
+<p>C2. The set <span class="math inline">\(\boldsymbol{\Theta}\)</span> is compact.</p>
+<p>C3. The function <span class="math inline">\(\boldsymbol{\nu}(\boldsymbol{\theta})\)</span> is continuous in <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
+<p>C4. <span class="math inline">\(\hat{\boldsymbol{\nu}} \overset{\mathcal{P}}{\longrightarrow} \boldsymbol{\nu}\)</span>.</p>
+<p>C5. <span class="math inline">\(\mathbf{\Omega}\)</span> is positive-definite and ``consistent’’ (if estimated).</p>
+<p>Then, we have:</p>
+<span class="math display">\[\begin{equation*}
+    \hat{\boldsymbol{\theta}}  \overset{ \mathcal{P} }{\longrightarrow} \boldsymbol{\theta}_0.
+\end{equation*}\]</span>
+</div>
+
+
+<div class="remark">
+<p> <span class="remark"><em>Remark. </em></span> </p>
+Condition (C1) is equivalent to Condition  and, as seen earlier, it can be verified by checking the assumptions in Theorem . In the latter all assumptions are generally satisfied considering the most commonly employed time series models while showing that <span class="math inline">\(J(\boldsymbol{\theta})\)</span> is nonnegative (or nonpositive) is not necessarily straightforward, especially when dealing with latent models. The nonnegative or nonpositive property of <span class="math inline">\(J(\boldsymbol{\theta})\)</span> has been verified for a wide class of time series models (see next section).
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof</em> (Sketch Identifiability). </span>  Identifiability has been shown for the following class of models:</p>
+<ul>
+<li>[Model 1] Sum of a white noise, quantization noise and <span class="math inline">\(K\)</span> first-order autoregressive processes</li>
+<li>[Model 2] Sum of a first-order moving-average process and <span class="math inline">\(K\)</span> first-order autoregressive processes</li>
+<li>[Model 3] <span class="math inline">\(K\)</span> first-order autoregressive processes</li>
+<li>[Model 4] Sum of a white noise, quantization noise, drift and  process</li>
+<li>[Model 5] Sum of a first-order moving-average process, drift and walk process
+</div>
+</li>
+</ul>
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> </p>
+<p>While Condition (C2) is always assumed and, as discussed for Condition (C1), Condition (C3) is generally verified for all times series considered previously and is therefore nearly always verified</p>
+<p>Condition (C4) is verified based on Lemma  and finally Condition (C5) is either assumed or can be verified using an appropriate estimator for <span class="math inline">\(\boldsymbol{\Omega}\)</span>. Based on the latter two conditions, it is possible to verify that <span class="math inline">\(\hat{Q}_n(\boldsymbol{\theta})\)</span> converges uniformly in probability to <span class="math inline">\(Q_0(\boldsymbol{\theta})\)</span> (Condition ).</p>
+Based on these verifiable (verified) conditions, we have that <span class="math display">\[\hat{\boldsymbol{\theta}}  \overset{ \mathcal{P} }{\longrightarrow} \boldsymbol{\theta}_0,\]</span> thus concluding the proof. <span class="math inline">\(\blacksquare\)</span>
+</div>
+
+</div>
+<div id="asymptotic-normality-1" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Asymptotic Normality</h3>
+
+<div class="theorem">
+<p><span id="thm:asynormgmwm" class="theorem"><strong>Theorem 5.1  (Asymptotic Normality of the GMWM Estimator)  </strong></span>In addition to Conditions C1 to C5, we assume:</p>
+<p>C6. <span class="math inline">\(\boldsymbol{\theta}_0\)</span> is an interior point to <span class="math inline">\(\boldsymbol{\Theta}\)</span></p>
+<p>C7. <span class="math inline">\(\mathbf{H}(\boldsymbol{\theta}_0) \equiv \frac{\partial}{\partial \boldsymbol{\theta} \partial \boldsymbol{\theta}^T} \boldsymbol{\nu}(\boldsymbol{\theta})\big|_{\boldsymbol{\theta}=\boldsymbol{\theta}_0}\)</span> exists and is non-singular</p>
+<p>C8. <span class="math inline">\(\sqrt{T} (\hat{\boldsymbol{\nu}} - \boldsymbol{\nu}) \overset{ \mathcal{D} }{\longrightarrow} \mathcal{N}(\mathbf{0},\boldsymbol{\Sigma})\)</span>.</p>
+<p>Then, we have</p>
+<span class="math display">\[\begin{equation*}
+    \sqrt{T}(\hat{\boldsymbol{\theta}} - \boldsymbol{\theta})  \overset{ \mathcal{D} }{\longrightarrow} \mathcal{N}(\mathbf{0},\mathbf{V}) \,,
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\mathbf{V}\)</span> is the asymptotic covariance matrix of <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span>.</p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> <br />
+The proof of asymptotic normality of the GMWM closely follows that of asymptotic normality for extremum estimators (see from Theorem <a href="#thm:CLTmulti"><strong>??</strong></a> forwards).</p>
+<p>Condition (C6) is another condition that inevitably needs to be assumed (as for Condition (C2)) while Condition (C7) is not necessary but guarantees the feasibility of Taylor expansion according to the approach used (we avoid technical details).</p>
+<p>Knowing that Condition (C8) is verified (see Lemma ), then we have that</p>
+<span class="math display">\[\begin{equation*}
+    \sqrt{T}(\hat{\boldsymbol{\theta}} - \boldsymbol{\theta})  \overset{ \mathcal{D} }{\longrightarrow} \mathcal{N}(\mathbf{0},\mathbf{V}) \,.
+\end{equation*}\]</span>
+<span class="math inline">\(\blacksquare\)</span>
+</div>
+
+</div>
+<div id="model-selection" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Model Selection</h3>
+<p>In order to select a model among a set of candidate models for an observed time series, it is possible to estimate their out-of-sample prediction error and select the model that minimizes this error.</p>
+
+<div class="definition">
+<p><span id="def:defwvic" class="definition"><strong>Definition 5.5  (Wavelet Variance Information Criterion (WVIC))  </strong></span> The WVIC provides the out-of-sample prediction error between the WV implied by the selected model and the WV observed out-of-sample:</p>
+<span class="math display">\[\begin{equation*}
+            \text{WVIC} = \mathbb{E} \left[ \mathbb{E}_0 \left[  \left(\hat{\boldsymbol{\nu}}^0 - \boldsymbol{\nu}(\hat{\boldsymbol{\theta}})\right)^{T} {\boldsymbol{\Omega}} \left(\hat{\boldsymbol{\nu}}^0 - \boldsymbol{\nu}(\hat{\boldsymbol{\theta}})\right)
+        \right] \right].
+\end{equation*}\]</span>
+</div>
+
+
+<div class="definition">
+<span id="def:defwvicest1" class="definition"><strong>Definition 5.6  (WVIC estimator)  </strong></span> An estimator of the WVIC is given by
+<span class="math display">\[\begin{equation*}
+        \widehat{\text{WVIC}} =  \left( \hat{\boldsymbol{\nu}} - \boldsymbol{\nu} ( \hat{\boldsymbol{\theta}})\right)^T \boldsymbol{\Omega} \left( \hat{\boldsymbol{\nu}} - \boldsymbol{\nu} ( \hat{\boldsymbol{\theta}})\right)
+        + 2 \text{tr} \left\{ \widehat{\text{cov}} \left[ \hat{\boldsymbol{\nu}} ,  \boldsymbol{\nu}( \hat{\boldsymbol{\theta}}) \right] \boldsymbol{\Omega}^T\right\}, 
+\end{equation*}\]</span>
+where <span class="math inline">\(\widehat{\text{cov}} \left[ \hat{\boldsymbol{\nu}} , \boldsymbol{\nu}( \hat{\boldsymbol{\theta}})\right]\)</span> is the estimated covariance matrix between the empirical WV and the implied WV evaluated at the estimated vector parameter <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span>.
+</div>
+
+<p>While the first term in <span class="math inline">\(\widehat{\text{WVIC}}\)</span> is given by the value of the GMWM objective function at the solution <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span>, it is not straightforward to compute the second term (optimism): <span class="math display">\[\text{tr} \left\{ \widehat{\text{cov}} \left[ \hat{\boldsymbol{\nu}} ,  \boldsymbol{\nu}( \hat{\boldsymbol{\theta}}) \right] \boldsymbol{\Omega}^T\right\}\]</span>.</p>
+<p>There exist several way of computing the optimism term:</p>
+<ul>
+<li>Compute the analytic form of the covariance term (see Guerrier et al., 2018).</li>
+<li>Compute the term via parametric bootstrap (see ).</li>
+<li>Compute it using independent replicates (see ).</li>
+</ul>
 
 </div>
 </div>
