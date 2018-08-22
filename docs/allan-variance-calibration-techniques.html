@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>An Introduction to Inertial Sensors Stochastic Calibration</title>
   <meta name="description" content="TO DO">
-  <meta name="generator" content="bookdown 0.7.14 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="An Introduction to Inertial Sensors Stochastic Calibration" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Stéphane Guerrier, Roberto Molinari, Yuming Zhang, Haotian Xu, Gaetan Bakalli, Ahmed Radi and Mucyo Karemera">
 
 
-<meta name="date" content="2018-08-14">
+<meta name="date" content="2018-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -142,13 +142,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4</b> Allan Variance-based Estimation</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-log-log-representation"><i class="fa fa-check"></i><b>4.4.1</b> Allan Variance log-log Representation</a></li>
 <li class="chapter" data-level="4.4.2" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#allan-variance-based-estimation-1"><i class="fa fa-check"></i><b>4.4.2</b> Allan Variance-based Estimation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="allan-variance-calibration-techniques.html"><a href="allan-variance-calibration-techniques.html#properties-of-allan-variance-based-estimation"><i class="fa fa-check"></i><b>4.4.3</b> Properties of Allan variance-based Estimation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html"><i class="fa fa-check"></i><b>5</b> The Generalized Method of Wavelet Moments</a><ul>
 <li class="chapter" data-level="5.1" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#the-wavelet-variance"><i class="fa fa-check"></i><b>5.1</b> The Wavelet Variance</a></li>
 <li class="chapter" data-level="5.2" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#the-gmwm"><i class="fa fa-check"></i><b>5.2</b> The GMWM</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#choice-of-weighting-matrix"><i class="fa fa-check"></i><b>5.2.1</b> Choice of weighting matrix</a></li>
-<li class="chapter" data-level="5.2.2" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#consistency-1"><i class="fa fa-check"></i><b>5.2.2</b> Consistency</a></li>
+<li class="chapter" data-level="5.2.1" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#consistency-1"><i class="fa fa-check"></i><b>5.2.1</b> Consistency</a></li>
+<li class="chapter" data-level="5.2.2" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#asymptotic-normality-1"><i class="fa fa-check"></i><b>5.2.2</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="5.2.3" data-path="the-generalized-method-of-wavelet-moments.html"><a href="the-generalized-method-of-wavelet-moments.html#model-selection"><i class="fa fa-check"></i><b>5.2.3</b> Model Selection</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="extensions.html"><a href="extensions.html"><i class="fa fa-check"></i><b>6</b> Extensions</a></li>
@@ -178,7 +180,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In this chapter, we will study the Allan variance (AV) and the corresponding calibration techniques. For this purpose, this chapter is organized in the following order:</p>
 <ul>
 <li>Review on MLE-based methods;</li>
-<li>An introduction of Allan variance;</li>
+<li>An introduction of the Allan variance;</li>
+<li>Estimation of the Allan variance;</li>
 <li>Allan variance-based estimation.</li>
 </ul>
 <div id="review-on-mle-based-methods" class="section level2">
@@ -191,7 +194,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><span class="math inline">\((X_t)\)</span> is made of a sum which includes a subset or all processes in the set <span class="math inline">\(\{\)</span><strong>QN</strong>, <strong>WN</strong>, <strong>AR1</strong>, <strong>RW</strong>, <strong>DR</strong><span class="math inline">\(\}\)</span>, where processes in the subset <span class="math inline">\(\{\)</span><strong>QN</strong>, <strong>WN</strong>, <strong>RW</strong>, <strong>DR</strong><span class="math inline">\(\}\)</span> can be included only up to once and process <strong>AR1</strong> can be included <span class="math inline">\(k\)</span> times (<span class="math inline">\(0 \leq k &lt; \infty\)</span>).</p></li>
 <li>Let <span class="math inline">\(\mathcal{Q}\)</span> denote an arbitrary compact subset of <span class="math inline">\(\mathbb{R}^+\)</span>. Then, the innovation process for processes <strong>WN</strong>, <strong>RW</strong> and <strong>AR1</strong> have respective variances <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(\gamma^2\)</span> and <span class="math inline">\(\nu^2\)</span> such that <span class="math inline">\(\sigma^2, \gamma^2 \text{ and } \nu^2 \in \mathcal{Q}\)</span> and processes <strong>QN</strong> and <strong>DR</strong> have <span class="math inline">\(Q^2 \in \mathcal{Q}\)</span> and <span class="math inline">\(|\omega|\in \mathcal{Q}\)</span> respectively.
 </div>
-</li>
+<p></p></li>
 </ul>
 <p>There are three main class of estimation techniques that can be used for the estimation of the class of composite stochastic processes for IMU calibration. The methods are the following:</p>
 <ul>
@@ -239,7 +242,7 @@ An alternative approach to compute maximum likelihood estimator for <span class=
 <span class="math inline">\(\LARGE{\bullet}\)</span>
 </div>
 </div>
-
+<p></p>
 </div>
 <div id="an-introduction-of-the-allan-variance" class="section level2">
 <h2><span class="header-section-number">4.2</span> An Introduction of the Allan Variance</h2>
@@ -258,17 +261,17 @@ An alternative approach to compute maximum likelihood estimator for <span class=
     \text{AV}_j \left(X_t \right) \equiv \frac{1}{2} \, \mathbb{E}\left[ \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2 \right].
 \end{equation*}\]</span>
 </div>
-
+<p></p>
 
 <div class="exercise">
 <span id="exr:alterDefScale" class="exercise"><strong>Remark 4.1  (Alternative scale definition)  </strong></span>The definition of the AV is actually valid for <span class="math inline">\(\tau_j = \lfloor2^j\rfloor\)</span> with <span class="math inline">\(j \in \left\{x \in \mathbb{R} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>. In some case, it could be used to consider this alternative definition <span class="citation">(see e.g. El-Sheimy, Hou, and Niu <a href="#ref-elsheimy08av">2008</a>)</span> but we shall restrict ourselves here to the case where <span class="math inline">\(j \in \left\{x \in \mathbb{N} \, : \; 1 \leq x &lt; \log_2 (T) - 1 \right\}\)</span>.
 </div>
-
+<p></p>
 
 <div class="exercise">
 <span id="exr:notationAV" class="exercise"><strong>Remark 4.2  (Notation of the Allan Variance)  </strong></span>For notational simplicity, we may sometimes replace <span class="math inline">\(\text{AV}_j \left(X_t \right)\)</span> by simply <span class="math inline">\(\phi_j^2\)</span> when the dependence of the AV to the process <span class="math inline">\((X_t)\)</span> is evident.
 </div>
-
+<p></p>
 <p>As highlighted earlier, the AV is, among others, a widely and commonly used approach in engineering for sensor calibration as it is linked to the properties of the process <span class="math inline">\((X_t)\)</span> as shown in the following lemma <span class="citation">(see e.g. D. B. Percival and Walden <a href="#ref-percival2006wavelet">2006</a> for the proof)</span>.</p>
 
 <div class="lemma">
@@ -278,7 +281,7 @@ An alternative approach to compute maximum likelihood estimator for <span class=
 \label{eq:allanvariancePSD_LInk}
 \end{equation*}\]</span>
 </div>
-
+<p></p>
 <p>Therefore, this result establishes a direct connection between the AV and PSD. Therefore a natural question is whether the mapping PSD <span class="math inline">\(\mapsto\)</span> AV is one-to-one. <span class="citation">Greenhall (<a href="#ref-greenhall1998spectral">1998</a>)</span> (see Theorem 1) showed that this is actually not the case. This is illustrated in the followsing Section <a href="Spectral%20Ambiguity%20of%20the%20Allan%20Variance">4.2.2</a>.</p>
 </div>
 <div id="spectral-ambiguity-of-the-allan-variance" class="section level3">
@@ -322,7 +325,7 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
     \text{AV}_j \left(Z_t \right) = \text{AV}_j \left(X_t \right) + \text{AV}_j \left(Y_t \right).
 \end{equation*}\]</span>
 </div>
-
+<p></p>
 
 <div class="proof">
 <p> <span class="proof"><em>Proof</em> (Additivity of the AV). </span> The proof of Additivity of the AV is direct from Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmavpsd">4.1</a>. Indeed, since <span class="math inline">\(S_Z(f) = S_X(f) + S_Y(f)\)</span>, we have</p>
@@ -344,7 +347,7 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
    + \sum_{i=1}^{\tau_j-1} i \left[2 \rho(\tau_j-i) - \rho(i) - \rho(2\tau_j-i)\right]\bigg).
 \end{equation*}\]</span>
 </div>
-
+<p></p>
 <p>The proof of this result is instructive and is presented in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.</p>
 <p>Using Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a>, the exact form of the AV for different stationary processes, such as the general class of ARMA models, can be derived. Moreover, <span class="citation">N. F. Zhang (<a href="#ref-zhang2008allan">2008</a>)</span> provided the theoretical AV for non-stationary processes such as the random walk and ARFIMA models for which the AV, as mentioned earlier, represents a better measure of uncertainty compared to other methods.</p>
 <p>Lemma <a href="allan-variance-calibration-techniques.html#lem:lemmaavtoacf">4.2</a> was extended to non-stationary processes in <span class="citation">Xu et al. (<a href="#ref-xu2017study">2017</a>)</span>.</p>
@@ -377,7 +380,7 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
 <span class="math inline">\(\LARGE{\bullet}\)</span>
 </div>
 </div>
-
+<p></p>
 </div>
 </div>
 <div id="estimation-of-the-allan-variance" class="section level2">
@@ -390,7 +393,7 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
 \hat{\phi}_j^2 \equiv \widehat{\text{AV}}_j \left(X_t \right) = \frac{1}{2 \left(T - 2\tau_j + 1\right)} \sum_{k = 2 \tau_j}^{T} \left(\bar{X}_{k}^{(j)} - \bar{X}_{k-\tau_j}^{(j)} \right)^2.
 \end{eqnarray*}\]</span>
 </div>
-
+<p></p>
 <p>We will now study the properties of this estimator through the following lemmas.</p>
 <div id="consistency-of-the-moav-estimator" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Consistency of the MOAV Estimator</h3>
@@ -404,7 +407,7 @@ Now suppose that <span class="math inline">\(\Phi(f) = 2 \Phi(2f)\)</span>. In t
 </ul>
 Then, we have <span class="math display">\[\widehat{\text{AV}}_j \left(X_t \right) \overset{ \mathcal{P} }{\longrightarrow} \text{AV}_j \left(X_t \right).\]</span>
 </div>
-
+<p></p>
 
 <div class="proof">
 <p> <span class="proof"><em>Proof</em> (Consistency of the MOAV Estimator). </span> The proof of the result is direct from the theorem of Weak Law of Large Number for Dependent Process in Chapter 3.</p>
@@ -439,7 +442,7 @@ which concludes the proof.
 Then, under these conditions we have that <span class="math display">\[\sqrt{T}\left(\widehat{\text{AVar}}_j \left(X_t \right) - \text{AVar}_j \left(X_t \right) \right) \overset{ \mathcal{D} }{\longrightarrow}
 \mathcal{N}(0, \sigma^2_T/T),\]</span> where <span class="math inline">\(\sigma^2_T \equiv \sum_{h = -\infty}^{\infty}\text{cov}\left( \left(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)} \right)^2, \left(\bar{X}_{t+h}^{(j)} - \bar{X}_{t+h-\tau_j}^{(j)} \right)^2 \right)\)</span>.
 </div>
-
+<p></p>
 
 <div class="proof">
 <p> <span class="proof"><em>Proof</em> (Asymptotic Normality of the MOAV Estimator). </span> The proof of the result is direct from the Central Limit Theorem for <span class="math inline">\(\alpha\)</span>-mixing process in Chapter 3. Let <span class="math inline">\(Z_t = X_t - X_{t-1}\)</span>, then since <span class="math inline">\(Z_t\)</span> is stationary with mean zero, then so is <span class="math inline">\((X_t - X_{t-h})\)</span> for all <span class="math inline">\(h \in \mathbb{Z}\)</span>. This directly implies that <span class="math inline">\(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)}\)</span> is also stationary (since it is based on a linear combination of stationary processes) and so is <span class="math inline">\(Y_t \equiv (\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^2\)</span> (since it is based on a time invariant transformation of a stationary process). And since <span class="math inline">\((Y_t)\)</span> is a borel-measurable function of <span class="math inline">\(Z_t\)</span>, we have <span class="math inline">\((Y_t)\)</span> is also a strong mixing process with mixing coefficient <span class="math inline">\(\alpha^{\ast}(n) \leq \alpha(n)\)</span>, hence <span class="math inline">\(\sum_{n=1}^{\infty} \alpha^{\ast}(n)^{\delta/2 + \delta} &lt; \infty\)</span> for some <span class="math inline">\(\delta &gt; 0\)</span>. Moreover, since <span class="math inline">\((\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})\)</span> is a linear function of <span class="math inline">\(Z_t\)</span>, and <span class="math inline">\(\mathbb{E}\left[Z_t^{4+\delta}\right] &lt; \infty\)</span>, by triangle inequality, we have <span class="math inline">\(\mathbb{E}\left[(\bar{X}_{t}^{(j)} - \bar{X}_{t-\tau_j}^{(j)})^{4+\delta}\right] &lt; \infty\)</span>.</p>
@@ -458,12 +461,12 @@ Based on the asymptotic normality results (Lemma ), we can construct the <span c
     \text{CI}\left(\text{AVar}_j \left(X_t \right)\right) = \left[ \widehat{\text{AVar}}_j \left(X_t \right) \pm z_{1 - \frac{\alpha}{2}} \frac{\sigma_{T}}{T} \right],
 \end{equation*}\]</span>
 <p>where <span class="math inline">\(z_{1 - \frac{\alpha}{2}} \equiv \boldsymbol{\Phi}^{-1}\left( 1- \frac{\alpha}{2} \right)\)</span> is the <span class="math inline">\((1- \frac{\alpha}{2})\)</span> quantile of a standard normal distribution.</p>
-<p>However, the so-called “Long-Run Variance” <span class="math inline">\(\sigma^2_{T}\)</span> is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions <span class="citation">(see e.g. Whitney K Newey and West <a href="#ref-newey1986simple">1986</a>)</span>.</p>
+<p>However, the so-called “Long-Run Variance” <span class="math inline">\(\sigma^2_{T}\)</span> is usually unknown. Many methods have been proposed to consistently estimate it under mild conditions <span class="citation">(see e.g. Newey and West <a href="#ref-newey1986simple">1986</a>)</span>.</p>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-6" class="exercise"><strong>Remark 4.3  </strong></span>Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. We will discuss an alternative method to construct the CI for such statistic later.
+<span id="exr:unnamed-chunk-1" class="exercise"><strong>Remark 4.3  </strong></span>Gaussian-based confidence intervals are often problematic with the AV as the lower limit of CI can very well be negative. We will discuss an alternative method to construct the CI for such statistic later.
 </div>
-
+<p></p>
 </div>
 </div>
 <div id="allan-variance-based-estimation" class="section level2">
@@ -485,16 +488,16 @@ For example, let’s suppose that <span class="math inline">\(X_t\)</span> is a 
 <span class="kw">library</span>(simts)   <span class="co"># Package for time series simulations</span>
 
 <span class="co"># Simulate white noise</span>
-Xt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)
+Xt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)
 
 <span class="co"># Compute Allan variance</span>
 av =<span class="st"> </span><span class="kw">avar</span>(Xt)
-theo_av =<span class="st"> </span><span class="kw">av_wn</span>(<span class="dt">sigma2 =</span> <span class="dv">1</span>, <span class="dt">n =</span> av<span class="op">$</span>clusters) 
+theo_av =<span class="st"> </span><span class="kw">av_wn</span>(<span class="dt">sigma2 =</span> <span class="dv">1</span>, <span class="dt">n =</span> av$clusters) 
 
 <span class="co"># Allan variance log-log representation</span>
 <span class="kw">plot</span>(av, <span class="dt">legend_position =</span> <span class="ot">NA</span>,
      <span class="dt">main =</span> <span class="st">&quot;Simulated WN&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Allan Deviation&quot;</span>)
-<span class="kw">lines</span>(av<span class="op">$</span>clusters, <span class="kw">sqrt</span>(theo_av), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">lines</span>(av$clusters, <span class="kw">sqrt</span>(theo_av), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
 
 <span class="co"># Add legend</span>
 <span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>,
@@ -533,20 +536,20 @@ Thus, the log of the AD of <span class="math inline">\((Z_t)\)</span> is also li
 <span class="kw">library</span>(simts)   
 
 <span class="co"># Simulate time series</span>
-Yt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)     
-Zt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">RW</span>(<span class="dt">gamma2 =</span> <span class="fl">0.03</span><span class="op">^</span><span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)  
-Xt =<span class="st"> </span>Yt <span class="op">+</span><span class="st"> </span>Zt
+Yt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">WN</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)     
+Zt =<span class="st"> </span><span class="kw">gen_gts</span>(<span class="kw">RW</span>(<span class="dt">gamma2 =</span> <span class="fl">0.03</span>^<span class="dv">2</span>), <span class="dt">n =</span> <span class="dv">10</span>^<span class="dv">5</span>)  
+Xt =<span class="st"> </span>Yt +<span class="st"> </span>Zt
 
 <span class="co"># Compute Allan variance</span>
 av =<span class="st"> </span><span class="kw">avar</span>(Xt)
-av_of_wn =<span class="st"> </span><span class="kw">av_wn</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">2</span>, <span class="dt">n =</span> av<span class="op">$</span>clusters) 
-av_of_rw =<span class="st"> </span><span class="kw">av_rw</span>(<span class="dt">omega2 =</span> <span class="fl">0.03</span><span class="op">^</span><span class="dv">2</span>, <span class="dt">n =</span> av<span class="op">$</span>clusters) 
+av_of_wn =<span class="st"> </span><span class="kw">av_wn</span>(<span class="dt">sigma2 =</span> <span class="dv">10</span>^<span class="dv">2</span>, <span class="dt">n =</span> av$clusters) 
+av_of_rw =<span class="st"> </span><span class="kw">av_rw</span>(<span class="dt">omega2 =</span> <span class="fl">0.03</span>^<span class="dv">2</span>, <span class="dt">n =</span> av$clusters) 
 
 <span class="co"># Allan variance log-log representation</span>
 <span class="kw">plot</span>(av, <span class="dt">legend_position =</span> <span class="ot">NA</span>,
      <span class="dt">main =</span> <span class="st">&quot;Simulated WN + RW&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Allan Deviation&quot;</span>)
-<span class="kw">lines</span>(av<span class="op">$</span>clusters, <span class="kw">sqrt</span>(av_of_wn), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
-<span class="kw">lines</span>(av<span class="op">$</span>clusters, <span class="kw">sqrt</span>(av_of_rw), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+<span class="kw">lines</span>(av$clusters, <span class="kw">sqrt</span>(av_of_wn), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">lines</span>(av$clusters, <span class="kw">sqrt</span>(av_of_rw), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
 
 <span class="co"># Add legend</span>
 <span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>,
@@ -572,14 +575,14 @@ Figure 4.2: Simulation based on a white noise process with variance as 10^2 and 
 <li>RW - linear with slope of 1/2;</li>
 <li>DR - linear with slope of 1.</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="images/process_slope.pdf" alt="Five processes characterized in the AV log-log representation" width="80%" />
 <p class="caption">
 Figure 4.3: Five processes characterized in the AV log-log representation
 </p>
 </div>
 Here let’s consider a real data which comes from a KVH-1750 gyro. This real data is collected over a 30-minute period at a frequency of 500Hz.
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="images/av_example_kvh.pdf" alt="KVH-1750 (Gyro), 30 mins at 500Hz" width="80%" />
 <p class="caption">
 Figure 4.4: KVH-1750 (Gyro), 30 mins at 500Hz
@@ -626,7 +629,7 @@ Let us assume that we want to estimate the parameters of a QN, WN, RW or DR proc
 <span class="math inline">\(\LARGE{\bullet}\)</span>
 </div>
 </div>
-
+<p></p>
 Let us consider a simple example of the use of <span class="math inline">\(\hat{\theta}_{AV}\)</span> with a WN process. We already derived that
 <span class="math display">\[\begin{equation*}
 \text{log}\left( \text{AVar}_j(Y_t)  \right) = \text{log} \left(\sigma\right) - \frac{1}{2} \text{log} (\tau_j)
@@ -640,7 +643,7 @@ Let us consider a simple example of the use of <span class="math inline">\(\hat{
 \hat{\gamma}_{AV} = \sqrt{3} \exp\left\{ \frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}}  \text{log} \left( \hat{\phi}_{\tau_j}  \right) - \frac{1}{2} \text{log} \left( \tau_j \right) \right\}.
 \end{equation*}\]</span>
 <p>Using these results, let us estimate the parameters on the KVH-1750 gyro in Section <a href="Allan%20Variance%20log-log%20Representation">4.4.1</a>. We have agreed that for this real data, the shape of the AD suggests that a WN + RW may be a reasonable approximation. So taking into consideration the processes characterization in the AV log-log representation, we can use different scales to estimate paramters of WN and RW for more precise estimation as shown in the figure below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/av_example_kvh_part2.pdf" alt="KVH-1750 (Gyro): Scales for parameters estimation" width="80%" />
 <p class="caption">
 Figure 4.5: KVH-1750 (Gyro): Scales for parameters estimation
@@ -653,16 +656,79 @@ Figure 4.5: KVH-1750 (Gyro): Scales for parameters estimation
 \hat{\gamma}_{AV} &amp;= \sqrt{3} \exp \left\{\frac{1}{4} \sum_{j = 15}^{18} \text{log} \left(\hat{\phi}_j\right)- \frac{1}{2} \text{log} \left(2^j\right)\right\} \approx 2.043 \cdot 10^{-7}.
 \end{aligned}
 \end{equation*}\]</span>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="images/av_example_kvh_part3.pdf" alt="KVH-1750 (Gyro): Implied AV by WN and RW respectively" width="80%" />
 <p class="caption">
 Figure 4.6: KVH-1750 (Gyro): Implied AV by WN and RW respectively
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="images/av_example_kvh_part4.pdf" alt="KVH-1750 (Gyro): Implied AV by WN + RW" width="80%" />
 <p class="caption">
 Figure 4.7: KVH-1750 (Gyro): Implied AV by WN + RW
+</p>
+</div>
+</div>
+<div id="properties-of-allan-variance-based-estimation" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> Properties of Allan variance-based Estimation</h3>
+<p>Before studying the properties of the AV-based estimation technique, we want to check whether the MOAV estimator is consistent and asymptotically normal under the setting of composite stochastic processes for IMU calibration as defined in Definition <a href="allan-variance-calibration-techniques.html#def:defCompStocProcesses">4.1</a>. Lemma 1 of <span class="citation">Guerrier, Molinari, and Stebler (<a href="#ref-guerrier2016theoretical">2016</a>)</span> has answered this question by showing that all the conditions of Lemmas <a href="allan-variance-calibration-techniques.html#lem:lemmconsistencyAV">4.3</a> and <a href="allan-variance-calibration-techniques.html#lem:lemmaasyav">4.4</a> are satisfied under this setting.</p>
+Since <span class="math inline">\(\hat{\theta}_{AV}\)</span> admits the analytically solution of the AV-based estimator, the consistency of the AV-based estimator can be directly studied using the consistency of the AV and the continuous mapping theorem. Indeed, using the latter we have
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\hat{\theta}_{AV} &amp;= g^{-1} \left\{\frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ \text{log} \left( \hat{\phi}_{\tau_j}  \right) - \lambda \text{log} \left( \tau_j \right)\right]\right\}   \\
+        &amp;\overset{\mathcal{P}}{\mapsto}  g^{-1} \left\{\frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ \text{log} \left( {\phi}_{\tau_j}  \right) - \lambda \text{log} \left( \tau_j \right)\right]\right\} = \theta^* ,
+\end{aligned}
+\end{equation*}\]</span>
+<p>and therefore if we can show that <span class="math inline">\(\theta^* = \theta_0\)</span>, then the AV-based estimator is consistent.</p>
+
+<div class="corollary">
+<span id="cor:corConsistAVest" class="corollary"><strong>Corollary 4.2  (Consistency of AV-based Estimator)  </strong></span>The AV-based estimator is consistent if the process <span class="math inline">\((X_t)\)</span> is composed of either a QN, WN or DR process.
+</div>
+<p></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (Proof of Consistency of AV-based Estimator). </span> The proof of the consistency of AV-based estimator is direct by simply showing that <span class="math inline">\(\theta^* = \theta_0\)</span>.
+</div>
+<p> <br></p>
+
+<div class="corollary">
+<span id="cor:corInconsistAVest" class="corollary"><strong>Corollary 4.3  (Inconsistency of AV-based Estimator)  </strong></span>The AV-based estimator is not consistent if the process <span class="math inline">\((X_t)\)</span> includes at least one RW process or contains more than one latent process.
+</div>
+<p></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (Proof of Inconsistency of AV-based Estimator). </span> It can be shown that at any model <span class="math inline">\(\theta^* &gt; \theta_0\)</span>, implying the inconsistency of the AV-based estimation method.
+</div>
+<p> <br></p>
+<p>A formal proof of these results are given in <span class="citation">Guerrier, Molinari, and Stebler (<a href="#ref-guerrier2016theoretical">2016</a>)</span>.</p>
+The main reason for the inconsistency of this approach is that the effect of multiple superimposed stochastic processes cannot (perfectly) separated in the log-log representation. This suggests the following alternative definition of <span class="math inline">\(\hat{\theta}_{AV}\)</span>:
+<span class="math display">\[\begin{equation*}
+\hat{\theta}_{AV}^* = \text{argmin}_{\boldsymbol{\theta} \in \boldsymbol{\Theta}} \; \sum_{j = 1}^J \; \left( \hat{\phi}_j - \phi_j (\boldsymbol{\theta})\right)^2,
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(\phi_j (\boldsymbol{\theta})\)</span> denotes the theoretical AV under the assumption that <span class="math inline">\(\boldsymbol{\theta}\)</span> is the correct parameter vector. We will see that this approach is a special case of the GMWM estimator and it leads to consistent and asymptotically normally distributed estimators.</p>
+
+<div class="example">
+<span id="exm:exmKVH" class="example"><strong>Example 4.4  (Estimation for KVH-1750 Gyro using Alternative AV-based Estimator)  </strong></span>Let us revisit the KVH-1750 gyro dataset using the above alternative AV-based estimation approach. We have shown that
+<span class="math display">\[\begin{equation*}
+\text{AVar}_j(X_t) = \text{AVar}_j(Y_t) + \text{AVar}_j(W_t) =  \frac{\sigma^2}{\tau_j} + \frac{1}{3} \gamma^2 \tau_j.
+\end{equation*}\]</span>
+<p>and therefore we can define the following estimator:</p>
+<span class="math display">\[\begin{equation*}
+\hat{\boldsymbol{\theta}}_{AV}^* = [\hat{\sigma}_{AV}^* \;\;\;  \hat{\gamma}_{AV}^*]^T = \text{argmin}_{\boldsymbol{\theta} \in \boldsymbol{\Theta}} \; \sum_{j = 1}^J \; \left( \phi_j^2 -  \frac{\sigma^2}{\tau_j} - \frac{1}{3} \gamma^2 \tau_j \right)^2,
+\end{equation*}\]</span>
+<p>corresponding to the point estimates:</p>
+<span class="math display">\[\begin{equation*}
+\begin{aligned}
+\hat{\sigma}_{AV}^* &amp; \approx 1.847 \cdot 10^{-3}, \\
+\hat{\gamma}_{AV}^* &amp; \approx 1.493 \cdot 10^{-7}.
+\end{aligned}
+\end{equation*}\]</span>
+</div>
+<p></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="images/av_example_kvh_part5.pdf" alt="Estimation for KVH-1750 gyro using both the traditional and the alternative AV-based estimators" width="80%" />
+<p class="caption">
+Figure 4.8: Estimation for KVH-1750 gyro using both the traditional and the alternative AV-based estimators
 </p>
 </div>
 
@@ -706,6 +772,9 @@ Figure 4.7: KVH-1750 (Gyro): Implied AV by WN + RW
 </div>
 <div id="ref-newey1986simple">
 <p>Newey, Whitney K, and Kenneth D West. 1986. “A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelationconsistent Covariance Matrix.” National Bureau of Economic Research Cambridge, Mass., USA.</p>
+</div>
+<div id="ref-guerrier2016theoretical">
+<p>Guerrier, S., R. Molinari, and Y. Stebler. 2016. “Theoretical Limitations of Allan Variance-based Regression for Time Series Model Estimation.” <em>IEEE Signal Processing Letters</em> 23 (5). IEEE: 597–601.</p>
 </div>
 </div>
             </section>

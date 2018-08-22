@@ -3,7 +3,8 @@
 In this chapter, we will study the Allan variance (AV) and the corresponding calibration techniques. For this purpose, this chapter is organized in the following order:
 
 - Review on MLE-based methods;
-- An introduction of Allan variance;
+- An introduction of the Allan variance;
+- Estimation of the Allan variance;
 - Allan variance-based estimation.
 
 
@@ -523,5 +524,74 @@ knitr::include_graphics("images/av_example_kvh_part3.pdf")
 
 ```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='KVH-1750 (Gyro): Implied AV by WN + RW', echo=FALSE}
 knitr::include_graphics("images/av_example_kvh_part4.pdf")
+```
+
+
+### Properties of Allan variance-based Estimation
+Before studying the properties of the AV-based estimation technique, we want to check whether the MOAV estimator is consistent and asymptotically normal under the setting of composite stochastic processes for IMU calibration as defined in Definition \@ref(def:defCompStocProcesses). Lemma 1 of @guerrier2016theoretical has answered this question by showing that all the conditions of Lemmas
+\@ref(lem:lemmconsistencyAV) and \@ref(lem:lemmaasyav) are satisfied under this setting. 
+
+Since $\hat{\theta}_{AV}$ admits the analytically solution of the AV-based estimator, the consistency of the AV-based estimator can be directly studied using the consistency of the AV and the continuous mapping theorem. Indeed, using the latter we have
+\begin{equation*}
+\begin{aligned}
+\hat{\theta}_{AV} &= g^{-1} \left\{\frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ \text{log} \left( \hat{\phi}_{\tau_j}  \right) - \lambda \text{log} \left( \tau_j \right)\right]\right\}   \\
+        &\overset{\mathcal{P}}{\mapsto}  g^{-1} \left\{\frac{1}{| \boldsymbol{\eta}|} \sum_{\tau_j \in \boldsymbol{\eta}} \left[ \text{log} \left( {\phi}_{\tau_j}  \right) - \lambda \text{log} \left( \tau_j \right)\right]\right\} = \theta^* ,
+\end{aligned}
+\end{equation*}
+and therefore if we can show that $\theta^* = \theta_0$, then the AV-based estimator is consistent.
+
+
+```{corollary, corConsistAVest, name = "Consistency of AV-based Estimator"}
+The AV-based estimator is consistent if the process $(X_t)$ is composed of either a QN, WN or DR process.
+```
+
+```{proof, pf_corConsistAVest, name = "Proof of Consistency of AV-based Estimator"}
+The proof of the consistency of AV-based estimator is direct by simply showing that $\theta^* = \theta_0$.
+```
+<br>
+
+
+```{corollary, corInconsistAVest, name = "Inconsistency of AV-based Estimator"}
+The AV-based estimator is not consistent if the process $(X_t)$ includes at least one RW process or contains more than one latent process.
+```
+
+
+```{proof, pf_corInconsistAVest, name = "Proof of Inconsistency of AV-based Estimator"}
+It can be shown that at any model $\theta^* > \theta_0$, implying the inconsistency of the AV-based estimation method. 
+```
+<br>
+
+A formal proof of these results are given in @guerrier2016theoretical.
+ 
+The main reason for the inconsistency of this approach is that the effect of multiple superimposed stochastic processes cannot (perfectly) separated in the log-log representation. This suggests the following alternative definition of $\hat{\theta}_{AV}$:
+\begin{equation*}
+\hat{\theta}_{AV}^* = \text{argmin}_{\boldsymbol{\theta} \in \boldsymbol{\Theta}} \; \sum_{j = 1}^J \; \left( \hat{\phi}_j - \phi_j (\boldsymbol{\theta})\right)^2,
+\end{equation*}
+where $\phi_j (\boldsymbol{\theta})$ denotes the theoretical AV under the assumption that $\boldsymbol{\theta}$ is the correct parameter vector. We will see that this approach  is a special case of the GMWM estimator and it leads to consistent and asymptotically normally distributed estimators.
+
+```{example, exmKVH, name = "Estimation for KVH-1750 Gyro using Alternative AV-based Estimator"}
+Let us revisit the KVH-1750 gyro dataset using the above alternative AV-based estimation approach. We have shown that 
+\begin{equation*}
+\text{AVar}_j(X_t) = \text{AVar}_j(Y_t) + \text{AVar}_j(W_t) =  \frac{\sigma^2}{\tau_j} + \frac{1}{3} \gamma^2 \tau_j.
+\end{equation*}  
+
+and therefore we can define the following estimator:
+
+\begin{equation*}
+\hat{\boldsymbol{\theta}}_{AV}^* = [\hat{\sigma}_{AV}^* \;\;\;  \hat{\gamma}_{AV}^*]^T = \text{argmin}_{\boldsymbol{\theta} \in \boldsymbol{\Theta}} \; \sum_{j = 1}^J \; \left( \phi_j^2 -  \frac{\sigma^2}{\tau_j} - \frac{1}{3} \gamma^2 \tau_j \right)^2,
+\end{equation*}
+
+corresponding to the point estimates:
+
+\begin{equation*}
+\begin{aligned}
+\hat{\sigma}_{AV}^* & \approx 1.847 \cdot 10^{-3}, \\
+\hat{\gamma}_{AV}^* & \approx 1.493 \cdot 10^{-7}.
+\end{aligned}
+\end{equation*}
+```
+
+```{r, fig.height = 5, fig.width = 6.5, cache = TRUE, fig.align='center', out.width='80%', fig.cap='Estimation for KVH-1750 gyro using both the traditional and the alternative AV-based estimators', echo=FALSE}
+knitr::include_graphics("images/av_example_kvh_part5.pdf")
 ```
 
