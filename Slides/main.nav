@@ -1,0 +1,1109 @@
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.36pt}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {1}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\sectionentry {1}{GMWM-based IMU Calibration}{2}{GMWM-based IMU Calibration}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@sectionpages {1}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionpages {1}{1}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Introduction}}\headcommand {\beamer@subsectionpages {2}{1}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{1}{2/2}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {2}{2}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{2}{3/3}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {3}{3}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{3}{4/4}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {4}{4}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{4}{5/5}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {5}{5}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{5}{6/6}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {6}{6}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{6}{7/7}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {7}{7}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{7}{8/8}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {8}{8}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{8}{9/9}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {9}{9}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{9}{10/10}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {10}{10}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{10}{11/11}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {11}{11}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{11}{12/12}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {12}{12}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{12}{13/13}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {13}{13}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{13}{14/14}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {14}{14}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{14}{15/15}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {15}{15}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{15}{16/16}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {16}{16}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{16}{17/17}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {17}{17}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{17}{18/18}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {18}{18}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{1}{18}{19/19}{Introduction}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {19}{19}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@subsectionentry {0}{1}{2}{20}{Wavelet Variance}}\headcommand {\beamer@subsectionpages {2}{19}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{2}{1}{20/20}{Wavelet Variance}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {20}{20}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{2}{2}{21/21}{Wavelet Variance}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {21}{21}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{2}{3}{22/22}{Wavelet Variance}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {22}{22}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{2}{4}{23/23}{Wavelet Variance}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {23}{23}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{2}{5}{24/24}{Wavelet Variance}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {24}{24}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{2}{6}{25/25}{Wavelet Variance}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {25}{25}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@subsectionentry {0}{1}{3}{26}{GMWM Framework}}\headcommand {\beamer@subsectionpages {20}{25}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{1}{26/26}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {26}{26}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{2}{27/27}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {27}{27}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{3}{28/28}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {28}{28}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{4}{29/29}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {29}{29}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{5}{30/30}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {30}{30}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{6}{31/31}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {31}{31}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{7}{32/32}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {32}{32}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{8}{33/33}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {33}{33}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{9}{34/34}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {34}{34}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{10}{35/35}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {35}{35}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{11}{36/36}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {36}{36}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{12}{37/37}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {37}{37}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{13}{38/38}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {38}{38}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{14}{39/39}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {39}{39}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{15}{40/40}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {40}{40}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{16}{41/41}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {41}{41}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{17}{42/42}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {42}{42}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{18}{43/43}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {43}{43}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{3}{19}{44/44}{GMWM Framework}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {44}{44}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@subsectionentry {0}{1}{4}{45}{Computational platform}}\headcommand {\beamer@subsectionpages {26}{44}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{1}{45/45}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {45}{45}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{2}{46/46}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {46}{46}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{3}{47/47}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {47}{47}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{4}{48/48}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {48}{48}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{5}{49/49}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {49}{49}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{6}{50/50}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {50}{50}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{7}{51/51}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {51}{51}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{8}{52/52}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {52}{52}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{9}{53/53}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {53}{53}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{10}{54/54}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {54}{54}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{11}{55/55}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {55}{55}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{12}{56/56}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {56}{56}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{13}{57/57}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {57}{57}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{4}{14}{58/58}{Computational platform}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {58}{58}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@subsectionentry {0}{1}{5}{59}{Extensions}}\headcommand {\beamer@subsectionpages {45}{58}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{1}{59/59}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {59}{59}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{2}{60/60}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {60}{60}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{3}{61/61}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {61}{61}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{4}{62/62}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {62}{62}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{5}{63/63}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {63}{63}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{6}{64/64}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {64}{64}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{7}{65/65}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {65}{65}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{8}{66/66}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {66}{66}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{9}{67/67}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {67}{67}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{10}{68/68}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {68}{68}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{11}{69/69}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {69}{69}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{12}{70/70}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {70}{70}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{13}{71/71}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {71}{71}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{14}{72/72}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {72}{72}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{15}{73/73}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {73}{73}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{16}{74/74}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {74}{74}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{17}{75/75}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {75}{75}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{18}{76/76}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {76}{76}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{19}{77/77}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {77}{77}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{20}{78/78}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {78}{78}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{21}{79/79}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {79}{79}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\slideentry {1}{5}{22}{80/80}{Extensions}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@framepages {80}{80}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\sectionentry {2}{Introduction to Time Series}{81}{Introduction to Time Series}{0}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@sectionpages {2}{80}}
+\defcounter {refsection}{1}\relax 
+\headcommand {\beamer@subsectionpages {59}{80}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{0}{1}{81/81}{}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {81}{81}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{0}{2}{82/82}{}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {82}{82}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{0}{3}{83/83}{}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {83}{83}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{0}{4}{84/84}{}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {84}{84}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{1}{85}{Examples}}\headcommand {\beamer@subsectionpages {81}{84}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{1}{85/85}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {85}{85}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{2}{86/86}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {86}{86}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{3}{87/87}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {87}{87}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{4}{88/88}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {88}{88}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{5}{89/89}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {89}{89}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{6}{90/90}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {90}{90}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{1}{7}{91/91}{Examples}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {91}{91}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{2}{92}{Measuring Dependence}}\headcommand {\beamer@subsectionpages {85}{91}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{2}{1}{92/92}{Measuring Dependence}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {92}{92}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{2}{2}{93/93}{Measuring Dependence}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {93}{93}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{2}{3}{94/94}{Measuring Dependence}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {94}{94}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{2}{4}{95/95}{Measuring Dependence}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {95}{95}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{2}{5}{96/96}{Measuring Dependence}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {96}{96}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{2}{6}{97/97}{Measuring Dependence}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {97}{97}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{3}{98}{Stationarity}}\headcommand {\beamer@subsectionpages {92}{97}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{1}{98/98}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {98}{98}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{2}{99/99}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {99}{99}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{3}{100/100}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {100}{100}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{4}{101/101}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {101}{101}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{5}{102/102}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {102}{102}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{6}{103/103}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {103}{103}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{3}{7}{104/104}{Stationarity}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {104}{104}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@subsectionentry {0}{2}{4}{105}{Fundamental Representations}}\headcommand {\beamer@subsectionpages {98}{104}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{4}{1}{105/105}{Fundamental Representations}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {105}{105}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{4}{2}{106/106}{Fundamental Representations}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {106}{106}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{4}{3}{107/107}{Fundamental Representations}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {107}{107}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\slideentry {2}{4}{4}{108/108}{Fundamental Representations}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@framepages {108}{108}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\sectionentry {3}{Properties of Estimators}{109}{Properties of Estimators}{0}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@sectionpages {81}{108}}
+\defcounter {refsection}{2}\relax 
+\headcommand {\beamer@subsectionpages {105}{108}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{0}{1}{109/109}{}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {109}{109}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@subsectionentry {0}{3}{1}{110}{Extremum Estimators}}\headcommand {\beamer@subsectionpages {109}{109}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{1}{1}{110/110}{Extremum Estimators}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {110}{110}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{1}{2}{111/111}{Extremum Estimators}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {111}{111}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{1}{3}{112/112}{Extremum Estimators}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {112}{112}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{1}{4}{113/113}{Extremum Estimators}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {113}{113}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{1}{5}{114/114}{Extremum Estimators}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {114}{114}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@subsectionentry {0}{3}{2}{115}{Consistency}}\headcommand {\beamer@subsectionpages {110}{114}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{1}{115/115}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {115}{115}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{2}{116/116}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {116}{116}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{3}{117/117}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {117}{117}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{4}{118/118}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {118}{118}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{5}{119/119}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {119}{119}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{6}{120/120}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {120}{120}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{7}{121/121}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {121}{121}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{8}{122/122}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {122}{122}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{9}{123/123}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {123}{123}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{10}{124/124}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {124}{124}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{11}{125/125}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {125}{125}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{12}{126/126}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {126}{126}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{13}{127/127}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {127}{127}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{14}{128/128}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {128}{128}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{15}{129/129}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {129}{129}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{16}{130/130}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {130}{130}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{2}{17}{131/131}{Consistency}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {131}{131}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@subsectionentry {0}{3}{3}{132}{Asymptotic Normality}}\headcommand {\beamer@subsectionpages {115}{131}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{1}{132/132}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {132}{132}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{2}{133/133}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {133}{133}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{3}{134/134}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {134}{134}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{4}{135/135}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {135}{135}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{5}{136/136}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {136}{136}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{6}{137/137}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {137}{137}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{7}{138/138}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {138}{138}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{8}{139/139}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {139}{139}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{9}{140/140}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {140}{140}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{10}{141/141}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {141}{141}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{11}{142/142}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {142}{142}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{12}{143/143}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {143}{143}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\slideentry {3}{3}{13}{144/144}{Asymptotic Normality}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@framepages {144}{144}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\sectionentry {4}{Allan Variance Calibration Techniques}{145}{Allan Variance Calibration Techniques}{0}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@sectionpages {109}{144}}
+\defcounter {refsection}{3}\relax 
+\headcommand {\beamer@subsectionpages {132}{144}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{0}{1}{145/145}{}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {145}{145}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{0}{2}{146/146}{}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {146}{146}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{0}{3}{147/147}{}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {147}{147}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{1}{148}{Comment on MLE-based methods}}\headcommand {\beamer@subsectionpages {145}{147}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{1}{1}{148/148}{Comment on MLE-based methods}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {148}{148}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{1}{2}{149/149}{Comment on MLE-based methods}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {149}{149}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{1}{3}{150/150}{Comment on MLE-based methods}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {150}{150}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{2}{151}{Allan Variance Definition}}\headcommand {\beamer@subsectionpages {148}{150}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{2}{1}{151/151}{Allan Variance Definition}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {151}{151}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{2}{2}{152/152}{Allan Variance Definition}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {152}{152}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{3}{153}{Properties}}\headcommand {\beamer@subsectionpages {151}{152}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{3}{1}{153/153}{Properties}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {153}{153}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{3}{2}{154/154}{Properties}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {154}{154}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{3}{3}{155/155}{Properties}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {155}{155}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{3}{4}{156/156}{Properties}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {156}{156}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{3}{5}{157/157}{Properties}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {157}{157}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{3}{6}{158/158}{Properties}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {158}{158}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{4}{159}{Estimation}}\headcommand {\beamer@subsectionpages {153}{158}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{4}{1}{159/159}{Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {159}{159}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{4}{2}{160/160}{Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {160}{160}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{4}{3}{161/161}{Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {161}{161}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{4}{4}{162/162}{Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {162}{162}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{5}{163}{Allan variance based estimation}}\headcommand {\beamer@subsectionpages {159}{162}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{1}{163/163}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {163}{163}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{2}{164/164}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {164}{164}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{3}{165/165}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {165}{165}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{4}{166/166}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {166}{166}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{5}{167/167}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {167}{167}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{6}{168/168}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {168}{168}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{7}{169/169}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {169}{169}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{8}{170/170}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {170}{170}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{9}{171/171}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {171}{171}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{10}{172/172}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {172}{172}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{11}{173/173}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {173}{173}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{12}{174/174}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {174}{174}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{13}{175/175}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {175}{175}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{14}{176/176}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {176}{176}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{15}{177/177}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {177}{177}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{5}{16}{178/178}{Allan variance based estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {178}{178}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionentry {0}{4}{6}{179}{Properties of AV-based Estimation}}\headcommand {\beamer@subsectionpages {163}{178}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{6}{1}{179/179}{Properties of AV-based Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {179}{179}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{6}{2}{180/180}{Properties of AV-based Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {180}{180}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{6}{3}{181/181}{Properties of AV-based Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {181}{181}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\slideentry {4}{6}{4}{182/182}{Properties of AV-based Estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@framepages {182}{182}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\sectionentry {5}{GMWM estimation}{183}{GMWM estimation}{0}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@sectionpages {145}{182}}
+\defcounter {refsection}{4}\relax 
+\headcommand {\beamer@subsectionpages {179}{182}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{0}{1}{183/183}{}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {183}{183}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {0}{5}{1}{184}{Wavelet Variance}}\headcommand {\beamer@subsectionpages {183}{183}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{1}{184/184}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {184}{184}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{2}{185/185}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {185}{185}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{3}{186/186}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {186}{186}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{4}{187/187}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {187}{187}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{5}{188/188}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {188}{188}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{6}{189/189}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {189}{189}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{7}{190/190}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {190}{190}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{1}{8}{191/191}{Wavelet Variance}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {191}{191}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {0}{5}{2}{192}{Estimator}}\headcommand {\beamer@subsectionpages {184}{191}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{2}{1}{192/192}{Estimator}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {192}{192}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {0}{5}{3}{193}{Properties}}\headcommand {\beamer@subsectionpages {192}{192}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{1}{193/193}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {193}{193}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{2}{194/194}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {194}{194}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{3}{195/195}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {195}{195}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{4}{196/196}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {196}{196}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{5}{197/197}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {197}{197}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{6}{198/198}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {198}{198}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{3}{7}{199/199}{Properties}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {199}{199}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {0}{5}{4}{200}{Model Selection}}\headcommand {\beamer@subsectionpages {193}{199}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{4}{1}{200/200}{Model Selection}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {200}{200}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{4}{2}{201/201}{Model Selection}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {201}{201}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{4}{3}{202/202}{Model Selection}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {202}{202}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {0}{5}{5}{203}{Is the GMWM optimal?}}\headcommand {\beamer@subsectionpages {200}{202}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{1}{203/203}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {203}{203}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{2}{204/204}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {204}{204}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{3}{205/205}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {205}{205}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{4}{206/206}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {206}{206}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{5}{207/207}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {207}{207}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{6}{208/208}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {208}{208}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{7}{209/209}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {209}{209}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{8}{210/210}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {210}{210}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{9}{211/211}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {211}{211}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {5}{5}{10}{212/212}{Is the GMWM optimal?}{0}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {212}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\partentry {\translate {Appendix}}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@partpages {1}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@sectionpages {183}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionpages {203}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@appendixpages {213}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\sectionentry {6}{Appendix}{213}{Appendix}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@sectionpages {213}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionpages {213}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{1}{213}{Examples: Strong and Weak Stationarity}}\headcommand {\beamer@subsectionpages {213}{212}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{1}{1}{213/213}{Examples: Strong and Weak Stationarity}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {213}{213}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{2}{214}{Example Weak Stationarity of an AR1}}\headcommand {\beamer@subsectionpages {213}{213}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{2}{1}{214/214}{Example Weak Stationarity of an AR1}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {214}{214}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{2}{2}{215/215}{Example Weak Stationarity of an AR1}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {215}{215}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{3}{216}{Derivation: variance of the mean}}\headcommand {\beamer@subsectionpages {214}{215}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{3}{1}{216/216}{Derivation: variance of the mean}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {216}{216}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{3}{2}{217/217}{Derivation: variance of the mean}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {217}{217}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{4}{218}{Estimation of $\var (\mathaccentV {bar}016{X})$}}\headcommand {\beamer@subsectionpages {216}{217}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{4}{1}{218/218}{Estimation of $\var (\mathaccentV {bar}016{X})$}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {218}{218}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{4}{2}{219/219}{Estimation of $\var (\mathaccentV {bar}016{X})$}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {219}{219}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{4}{3}{220/220}{Estimation of $\var (\mathaccentV {bar}016{X})$}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {220}{220}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{5}{221}{Consistency - a simple example}}\headcommand {\beamer@subsectionpages {218}{220}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{5}{1}{221/221}{Consistency - a simple example}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {221}{221}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{5}{2}{222/222}{Consistency - a simple example}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {222}{222}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{6}{223}{Proof: Consistency of Extremum Estimators}}\headcommand {\beamer@subsectionpages {221}{222}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{6}{1}{223/223}{Proof: Consistency of Extremum Estimators}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {223}{223}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{6}{2}{224/224}{Proof: Consistency of Extremum Estimators}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {224}{224}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{6}{3}{225/225}{Proof: Consistency of Extremum Estimators}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {225}{225}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{6}{4}{226/226}{Proof: Consistency of Extremum Estimators}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {226}{226}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{7}{227}{Proof: Identification of GMM}}\headcommand {\beamer@subsectionpages {223}{226}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{7}{1}{227/227}{Proof: Identification of GMM}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {227}{227}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{8}{228}{Example: Proving Conditon (C.4)}}\headcommand {\beamer@subsectionpages {227}{227}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{8}{1}{228/228}{Example: Proving Conditon (C.4)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {228}{228}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{8}{2}{229/229}{Example: Proving Conditon (C.4)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {229}{229}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{8}{3}{230/230}{Example: Proving Conditon (C.4)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {230}{230}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{8}{4}{231/231}{Example: Proving Conditon (C.4)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {231}{231}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{8}{5}{232/232}{Example: Proving Conditon (C.4)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {232}{232}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{9}{233}{Proof: WLLN for dependent process}}\headcommand {\beamer@subsectionpages {228}{232}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{9}{1}{233/233}{Proof: WLLN for dependent process}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {233}{233}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{10}{234}{Proof: Consistency of ACF}}\headcommand {\beamer@subsectionpages {233}{233}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{10}{1}{234/234}{Proof: Consistency of ACF}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {234}{234}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{10}{2}{235/235}{Proof: Consistency of ACF}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {235}{235}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{11}{236}{Theoretical AV of an MA(1)}}\headcommand {\beamer@subsectionpages {234}{235}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{11}{1}{236/236}{Theoretical AV of an MA(1)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {236}{236}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{11}{2}{237/237}{Theoretical AV of an MA(1)}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {237}{237}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{12}{238}{Proof: Consistency AV}}\headcommand {\beamer@subsectionpages {236}{237}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{12}{1}{238/238}{Proof: Consistency AV}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {238}{238}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{13}{239}{Proof: Concistency of the AV}}\headcommand {\beamer@subsectionpages {238}{238}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{13}{1}{239/239}{Proof: Concistency of the AV}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {239}{239}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{14}{240}{Derivation: AV Estimator}}\headcommand {\beamer@subsectionpages {239}{239}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{14}{1}{240/240}{Derivation: AV Estimator}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {240}{240}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{15}{241}{Proof: Consistency of the WV}}\headcommand {\beamer@subsectionpages {240}{240}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{15}{1}{241/241}{Proof: Consistency of the WV}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {241}{241}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{15}{2}{242/242}{Proof: Consistency of the WV}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {242}{242}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{16}{243}{Proof: Asymptotic normality of the WV}}\headcommand {\beamer@subsectionpages {241}{242}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{16}{1}{243/243}{Proof: Asymptotic normality of the WV}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {243}{243}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@subsectionentry {1}{6}{17}{244}{License}}\headcommand {\beamer@subsectionpages {243}{243}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\slideentry {6}{17}{1}{244/244}{License}{1}}
+\defcounter {refsection}{5}\relax 
+\headcommand {\beamer@framepages {244}{244}}
+\headcommand {\beamer@partpages {213}{244}}
+\headcommand {\beamer@subsectionpages {244}{244}}
+\headcommand {\beamer@sectionpages {213}{244}}
+\headcommand {\beamer@documentpages {244}}
+\headcommand {\def \inserttotalframenumber {244}}

@@ -1,0 +1,95 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.36pt}
+\defcounter {refsection}{5}\relax 
+\beamer@sectionintoc {1}{GMWM-based IMU Calibration}{2}{0}{1}
+\defcounter {refsection}{1}\relax 
+\beamer@subsectionintoc {1}{1}{Introduction}{2}{0}{1}
+\defcounter {refsection}{1}\relax 
+\beamer@subsectionintoc {1}{2}{Wavelet Variance}{20}{0}{1}
+\defcounter {refsection}{1}\relax 
+\beamer@subsectionintoc {1}{3}{GMWM Framework}{26}{0}{1}
+\defcounter {refsection}{1}\relax 
+\beamer@subsectionintoc {1}{4}{Computational platform}{45}{0}{1}
+\defcounter {refsection}{1}\relax 
+\beamer@subsectionintoc {1}{5}{Extensions}{59}{0}{1}
+\defcounter {refsection}{1}\relax 
+\beamer@sectionintoc {2}{Introduction to Time Series}{81}{0}{2}
+\defcounter {refsection}{2}\relax 
+\beamer@subsectionintoc {2}{1}{Examples}{85}{0}{2}
+\defcounter {refsection}{2}\relax 
+\beamer@subsectionintoc {2}{2}{Measuring Dependence}{92}{0}{2}
+\defcounter {refsection}{2}\relax 
+\beamer@subsectionintoc {2}{3}{Stationarity}{98}{0}{2}
+\defcounter {refsection}{2}\relax 
+\beamer@subsectionintoc {2}{4}{Fundamental Representations}{105}{0}{2}
+\defcounter {refsection}{2}\relax 
+\beamer@sectionintoc {3}{Properties of Estimators}{109}{0}{3}
+\defcounter {refsection}{3}\relax 
+\beamer@subsectionintoc {3}{1}{Extremum Estimators}{110}{0}{3}
+\defcounter {refsection}{3}\relax 
+\beamer@subsectionintoc {3}{2}{Consistency}{115}{0}{3}
+\defcounter {refsection}{3}\relax 
+\beamer@subsectionintoc {3}{3}{Asymptotic Normality}{132}{0}{3}
+\defcounter {refsection}{3}\relax 
+\beamer@sectionintoc {4}{Allan Variance Calibration Techniques}{145}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@subsectionintoc {4}{1}{Comment on MLE-based methods}{148}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@subsectionintoc {4}{2}{Allan Variance Definition}{151}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@subsectionintoc {4}{3}{Properties}{153}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@subsectionintoc {4}{4}{Estimation}{159}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@subsectionintoc {4}{5}{Allan variance based estimation}{163}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@subsectionintoc {4}{6}{Properties of AV-based Estimation}{179}{0}{4}
+\defcounter {refsection}{4}\relax 
+\beamer@sectionintoc {5}{GMWM estimation}{183}{0}{5}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {5}{1}{Wavelet Variance}{184}{0}{5}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {5}{2}{Estimator}{192}{0}{5}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {5}{3}{Properties}{193}{0}{5}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {5}{4}{Model Selection}{200}{0}{5}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {5}{5}{Is the GMWM optimal?}{203}{0}{5}
+\defcounter {refsection}{5}\relax 
+\beamer@sectionintoc {6}{Appendix}{213}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{1}{Examples: Strong and Weak Stationarity}{213}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{2}{Example Weak Stationarity of an AR1}{214}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{3}{Derivation: variance of the mean}{216}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{4}{Estimation of $\var (\mathaccentV {bar}016{X})$}{218}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{5}{Consistency - a simple example}{221}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{6}{Proof: Consistency of Extremum Estimators}{223}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{7}{Proof: Identification of GMM}{227}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{8}{Example: Proving Conditon (C.4)}{228}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{9}{Proof: WLLN for dependent process}{233}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{10}{Proof: Consistency of ACF}{234}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{11}{Theoretical AV of an MA(1)}{236}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{12}{Proof: Consistency AV}{238}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{13}{Proof: Concistency of the AV}{239}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{14}{Derivation: AV Estimator}{240}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{15}{Proof: Consistency of the WV}{241}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{16}{Proof: Asymptotic normality of the WV}{243}{1}{6}
+\defcounter {refsection}{5}\relax 
+\beamer@subsectionintoc {6}{17}{License}{244}{1}{6}

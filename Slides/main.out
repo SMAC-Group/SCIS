@@ -1,0 +1,47 @@
+\BOOKMARK [2][]{Outline0.1}{GMWM-based IMU Calibration}{}% 1
+\BOOKMARK [3][]{Outline0.1.1.2}{Introduction}{Outline0.1}% 2
+\BOOKMARK [3][]{Outline0.1.2.20}{Wavelet Variance}{Outline0.1}% 3
+\BOOKMARK [3][]{Outline0.1.3.26}{GMWM Framework}{Outline0.1}% 4
+\BOOKMARK [3][]{Outline0.1.4.45}{Computational platform}{Outline0.1}% 5
+\BOOKMARK [3][]{Outline0.1.5.59}{Extensions}{Outline0.1}% 6
+\BOOKMARK [2][]{Outline0.2}{Introduction to Time Series}{}% 7
+\BOOKMARK [3][]{Outline0.2.1.85}{Examples}{Outline0.2}% 8
+\BOOKMARK [3][]{Outline0.2.2.92}{Measuring Dependence}{Outline0.2}% 9
+\BOOKMARK [3][]{Outline0.2.3.98}{Stationarity}{Outline0.2}% 10
+\BOOKMARK [3][]{Outline0.2.4.105}{Fundamental Representations}{Outline0.2}% 11
+\BOOKMARK [2][]{Outline0.3}{Properties of Estimators}{}% 12
+\BOOKMARK [3][]{Outline0.3.1.110}{Extremum Estimators}{Outline0.3}% 13
+\BOOKMARK [3][]{Outline0.3.2.115}{Consistency}{Outline0.3}% 14
+\BOOKMARK [3][]{Outline0.3.3.132}{Asymptotic Normality}{Outline0.3}% 15
+\BOOKMARK [2][]{Outline0.4}{Allan Variance Calibration Techniques}{}% 16
+\BOOKMARK [3][]{Outline0.4.1.148}{Comment on MLE-based methods}{Outline0.4}% 17
+\BOOKMARK [3][]{Outline0.4.2.151}{Allan Variance Definition}{Outline0.4}% 18
+\BOOKMARK [3][]{Outline0.4.3.153}{Properties}{Outline0.4}% 19
+\BOOKMARK [3][]{Outline0.4.4.159}{Estimation}{Outline0.4}% 20
+\BOOKMARK [3][]{Outline0.4.5.163}{Allan variance based estimation}{Outline0.4}% 21
+\BOOKMARK [3][]{Outline0.4.6.179}{Properties of AV-based Estimation}{Outline0.4}% 22
+\BOOKMARK [2][]{Outline0.5}{GMWM estimation}{}% 23
+\BOOKMARK [3][]{Outline0.5.1.184}{Wavelet Variance}{Outline0.5}% 24
+\BOOKMARK [3][]{Outline0.5.2.192}{Estimator}{Outline0.5}% 25
+\BOOKMARK [3][]{Outline0.5.3.193}{Properties}{Outline0.5}% 26
+\BOOKMARK [3][]{Outline0.5.4.200}{Model Selection}{Outline0.5}% 27
+\BOOKMARK [3][]{Outline0.5.5.203}{Is the GMWM optimal?}{Outline0.5}% 28
+\BOOKMARK [1][]{Outline1}{Appendix}{}% 29
+\BOOKMARK [2][]{Outline1.6}{Appendix}{Outline1}% 30
+\BOOKMARK [3][]{Outline1.6.1.213}{Examples: Strong and Weak Stationarity}{Outline1.6}% 31
+\BOOKMARK [3][]{Outline1.6.2.214}{Example Weak Stationarity of an AR1}{Outline1.6}% 32
+\BOOKMARK [3][]{Outline1.6.3.216}{Derivation: variance of the mean}{Outline1.6}% 33
+\BOOKMARK [3][]{Outline1.6.4.218}{Estimation of `39`42`"613A``45`47`"603Avar\(\)}{Outline1.6}% 34
+\BOOKMARK [3][]{Outline1.6.5.221}{Consistency - a simple example}{Outline1.6}% 35
+\BOOKMARK [3][]{Outline1.6.6.223}{Proof: Consistency of Extremum Estimators}{Outline1.6}% 36
+\BOOKMARK [3][]{Outline1.6.7.227}{Proof: Identification of GMM}{Outline1.6}% 37
+\BOOKMARK [3][]{Outline1.6.8.228}{Example: Proving Conditon \(C.4\)}{Outline1.6}% 38
+\BOOKMARK [3][]{Outline1.6.9.233}{Proof: WLLN for dependent process}{Outline1.6}% 39
+\BOOKMARK [3][]{Outline1.6.10.234}{Proof: Consistency of ACF}{Outline1.6}% 40
+\BOOKMARK [3][]{Outline1.6.11.236}{Theoretical AV of an MA\(1\)}{Outline1.6}% 41
+\BOOKMARK [3][]{Outline1.6.12.238}{Proof: Consistency AV}{Outline1.6}% 42
+\BOOKMARK [3][]{Outline1.6.13.239}{Proof: Concistency of the AV}{Outline1.6}% 43
+\BOOKMARK [3][]{Outline1.6.14.240}{Derivation: AV Estimator}{Outline1.6}% 44
+\BOOKMARK [3][]{Outline1.6.15.241}{Proof: Consistency of the WV}{Outline1.6}% 45
+\BOOKMARK [3][]{Outline1.6.16.243}{Proof: Asymptotic normality of the WV}{Outline1.6}% 46
+\BOOKMARK [3][]{Outline1.6.17.244}{License}{Outline1.6}% 47
