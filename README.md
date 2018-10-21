@@ -6,7 +6,7 @@ Active](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostat
 
 # Overview <a href="https://smac-group.com/"><img src="Slides/Images/logo.png" align="right" style="width: 20%; height: 20%"/></a>
 
-This book is currently under development and has been designed as an introductory course on Inertial Sensor Stochastic Calibration. This document is based on the following presentation:
+:warning: This book is currently under development and has been designed as an introductory course on Inertial Sensor Stochastic Calibration. This document is based on the following presentation:
 
 <a href="Slides/main.pdf"><img src="Slides/Images/first-slide.png" align="right" style="width: 80%; height: 80%"/></a>
 
