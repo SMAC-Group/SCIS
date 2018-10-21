@@ -9,7 +9,7 @@ Active](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostat
 :warning: This book is currently under development and has been designed as an introductory course on Inertial Sensor Stochastic Calibration. This document is based on the following presentation:
 
 
-!["Slides/main.pdf"]["Slides/Images/first-slide.png]
+!["Slides/main.pdf"][Slides/Images/first-slide.png]
 
 
 <a href="Slides/main.pdf"><img src="Slides/Images/first-slide.png" align="right" style="width: 80%; height: 80%"/></a>
