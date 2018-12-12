@@ -8,7 +8,7 @@ In this chapter we give an introduction to time series analysis. For this purpos
 - Basic time series models;
 - Linear processes;
 - Latent (or composite) stochastic processes;
-- Estimation problems with time series.
+- Estimation problems with time series. 
 
 ## Time Series
 ```{definition, ts, name = "Time Series"}
